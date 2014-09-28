@@ -1,4 +1,4 @@
-package com.cloudboy.study.thread.no1;
+package com.cloudboy.study.thread.lesson1;
 
 public class SimpleThreadTest {
 	
