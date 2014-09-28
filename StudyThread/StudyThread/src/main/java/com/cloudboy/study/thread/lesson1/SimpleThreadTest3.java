@@ -3,23 +3,25 @@ package com.cloudboy.study.thread.lesson1;
 /**
  * 测试2， 主线程启动子线程后，中断子线程的运行
  * 输出如下：
-  	main: Starting MessageLoop thread
-	main: Waiting for MessageLoop thread to finish
-	main: Still waiting...
-	main: Still waiting...
-	main: Still waiting...
-	main: Still waiting...
-	Thread-0: No 1
-	main: Still waiting...
-	main: Still waiting...
-	main: Still waiting...
-	main: Still waiting...
-	Thread-0: No 2
-	main: Still waiting...
-	main: Still waiting...
-	main: Tired of waiting!
-	Thread-0: I wasn't done!
-	main: Finally!
+main: Starting MessageLoop thread
+main: Waiting for MessageLoop thread to finish
+main: Still waiting...
+main: Still waiting...
+main: Still waiting...
+main: Still waiting...
+Thread-0: No 1
+Parent(main) state:TIMED_WAITING
+main: Still waiting...
+main: Still waiting...
+main: Still waiting...
+main: Still waiting...
+Thread-0: No 2
+Parent(main) state:TIMED_WAITING
+main: Still waiting...
+main: Still waiting...
+main: Tired of waiting!
+Thread-0: I wasn't done!
+main: Finally!
  * 
  * @author cloudboy(yun.xia)
  */
@@ -32,6 +34,12 @@ public class SimpleThreadTest3 {
     }
 
     private static class MessageLoop implements Runnable {
+    	Thread parent = null;
+    	
+    	public MessageLoop(Thread parent) {
+    		this.parent = parent;
+    	}
+    	
         public void run() {
             String importantInfo[] = {"No 1", "No 2", "No 3", "No 4"};
             try {
@@ -40,6 +48,7 @@ public class SimpleThreadTest3 {
                     Thread.sleep(4000);
                     // Print a message
                     threadMessage(importantInfo[i]);
+                    System.out.println("Parent(" + parent.getName() +") state:" + parent.getState());
                 }
             } catch (InterruptedException e) {
                 threadMessage("I wasn't done!");
@@ -53,7 +62,7 @@ public class SimpleThreadTest3 {
         // Delay, in milliseconds before we interrupt MessageLoop thread(10 seconds)
         long patience = 1000 * 10;
         long startTime = System.currentTimeMillis();
-        Thread t = new Thread(new MessageLoop());
+        Thread t = new Thread(new MessageLoop(Thread.currentThread()));
         t.start();
 
         threadMessage("Waiting for MessageLoop thread to finish");
