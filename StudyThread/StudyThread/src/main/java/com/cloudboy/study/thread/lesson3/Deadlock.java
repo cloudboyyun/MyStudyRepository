@@ -26,8 +26,8 @@ public class Deadlock {
     }
 
     public static void main(String[] args) {
-        final Friend alphonse = new Friend("Alphonse");
-        final Friend gaston = new Friend("Gaston");
+        final Friend alphonse = new Friend("A");
+        final Friend gaston = new Friend("B");
         
         new Thread(new Runnable() {
             public void run() { 
