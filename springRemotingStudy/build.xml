@@ -1,0 +1,6 @@
+﻿<project name="app-springRemotingStudy" 
+	default="all" 
+	basedir="." 
+	xmlns:ivy="antlib:org.apache.ivy.ant">
+	<import file="${buildscripts.dir}/common-app-cps-targets.xml"/>
+</project>
