@@ -1,6 +1,7 @@
-package com.cloudboy.springRemotingStudy.service.impl;
+package com.cloudboy.study.springRemoting.service.impl;
 import org.apache.log4j.Logger;
-import com.cloudboy.springRemotingStudy.service.MyService;
+
+import com.cloudboy.study.springRemoting.service.MyService;
 public class MyServiceImpl implements MyService {
     private static Logger logger = Logger.getLogger(MyServiceImpl.class);
     

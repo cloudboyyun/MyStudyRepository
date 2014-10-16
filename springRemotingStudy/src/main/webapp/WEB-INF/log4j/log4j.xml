@@ -9,19 +9,11 @@
 	</appender>
 	
 	<appender name="log.file" class="org.apache.log4j.DailyRollingFileAppender">   
-          <param name="File" value="/opt/log/cps/rds/rds.log"/>   
+          <param name="File" value="/opt/log/springRemotingStudy/springRemotingStudy.log"/>   
           <param name="DatePattern" value="'.'yyyy-MM-dd"/>
           <layout class="org.apache.log4j.PatternLayout">
               <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %l [%p] - %m%n"/>   
           </layout>
-	</appender>
-	
-	<appender name="monitor.file" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="/opt/log/cps/rds/CPS.app-rds-monitor.log" />
-		<param name="DatePattern" value="'.'yyyy-MM-dd" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %t %-5p %c{2} - %m%n" />
-		</layout>
 	</appender>
 	
 	<category name="org.hibernate">
@@ -32,15 +24,8 @@
 		<priority value="error" />
 	</category>
 	
-	<!-- 监控日志 -->
-	<category name="MONITORINFO" additivity="false">
-		<priority value="info" />
-		<appender-ref ref="monitor.file" />
-	</category>
-	
 	<root>
 		<priority value="info" />
 		<appender-ref ref="log.file"/>
-		<appender-ref ref="log.console"/>
 	</root>
 </log4j:configuration>
