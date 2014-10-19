@@ -14,8 +14,12 @@ public class MyServiceTest {
     public void testSayHello() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("clientContext.xml");
         MyService service = (MyService)context.getBean("myServiceClient");
-        String result = service.sayHello("cloudboy1");
-        System.out.println(result);
+//        String result = service.sayHello("cloudboy");
+//    	System.out.println(result);
+        for(int i=0; i<10; i++) {
+        	String result = service.sayHello("cloudboy" + i);
+        	System.out.println(result);
+        }
         context.close();
     }
 }
