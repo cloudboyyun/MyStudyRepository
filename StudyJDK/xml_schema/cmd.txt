@@ -1,0 +1,1 @@
+xjc -d D:\myGitRepositories\MyStudyRepository\StudyJDK\src\main\java -p "com.cloudboy.study.jaxb.lesson2.jaxb" "D:\myGitRepositories\MyStudyRepository\StudyJDK\xml_schema"

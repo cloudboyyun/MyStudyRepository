@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://com.cloudboy/study" xmlns:tns="https://com.cloudboy/study"
+	elementFormDefault="qualified">
+
+	<xs:element name="message">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reqTime" type="xs:date"/>
+				<xs:element name="userName" type="xs:string" />
+				<xs:element name="msgContent" type="tns:msgContent" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="msgContent">
+		<xs:sequence>
+			<xs:element name="content" type="xs:string" />
+			<xs:element name="amount" type="xs:decimal" />
+		</xs:sequence>
+	</xs:complexType>    
+</xs:schema>
