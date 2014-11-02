@@ -16,7 +16,8 @@
 <!--         	<value>http://192.168.1.106:8093/studySpringRemoting/spring/myService</value> -->
 <!-- 			<value>http://192.168.1.106:8094/studySpringRemoting/spring/myService</value> -->
 			<!-- visit the apache port -->
-			<value>http://192.168.1.106:8001/studySpringRemoting/spring/myService</value>
+<!-- 			<value>http://192.168.1.106:8001/studySpringRemoting/spring/myService</value> -->
+			<value>https://cloudboy:8001/studySpringRemoting/spring/myService</value>
         </property>                          
         <property name="serviceInterface">
             <value>com.cloudboy.study.springRemoting.service.MyService</value>
