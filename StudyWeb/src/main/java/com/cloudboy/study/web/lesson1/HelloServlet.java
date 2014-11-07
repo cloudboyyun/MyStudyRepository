@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(
 	    name="HelloServlet",
 	    urlPatterns={"/HelloServlet"},
-	    loadOnStartup=1,  
+	    loadOnStartup=1,
 	    initParams={  
 	            @WebInitParam(name="name",value="cloudboy"),  
 	            @WebInitParam(name="age",value="20")
