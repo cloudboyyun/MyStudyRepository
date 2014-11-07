@@ -16,6 +16,10 @@ import com.cloudboy.base.AppRTException;
 
 @WebServlet(name = "XMLServlet", urlPatterns = { "/XMLServlet" }, asyncSupported = true)
 public class XMLServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = -7408673724234057039L;
+
+	private XMLRequestHandler xmlRequestHandler;
 
 	/**
 	 * 线程池核心处理器大小
@@ -48,6 +52,7 @@ public class XMLServlet extends HttpServlet {
 	 */
 	private RejectedExecutionHandler rejectedExcutionHandler;
 
+	@Override
 	public void init() {
 		if (rejectedExcutionHandler == null) {
 			threadPoolExecutor = new ThreadPoolExecutor(corePoolSize,
@@ -70,13 +75,6 @@ public class XMLServlet extends HttpServlet {
 			return t;
 		}
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private XMLRequestHandler xmlRequestHandler;
 
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) {
