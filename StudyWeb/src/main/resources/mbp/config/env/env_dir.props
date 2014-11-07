@@ -1,0 +1,4 @@
+env.type=stage2
+env.dir=classpath:mbp/config/env/stage2
+project.name=mbp
+project.version=

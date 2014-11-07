@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-1.5.xsd">
+
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+
+	<!-- 请求核心处理服务 -->
+	<bean name="mbpCoreProcessService" class="mbp.service.MbpCoreProcessServiceImpl">
+		<property name="asynBizTypes">
+			<list>
+				<value>M009</value>
+				<value>M010</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- dukpt -->
+	<bean name="dukptService" class="mbp.dukpt.service.DukptServiceImpl" />
+
+	<!-- 银行编号转换器 -->
+	<bean name="mbp.bankCardService" class="mbp.service.inner.BankCardServiceImpl" />
+
+	<!-- 上下文对象工具类 -->
+	<bean name="contextHelper" class="mbp.common.helper.ContextHelper" />
+
+	<!-- 序列号服务 -->
+	<bean id="sequenceService" class="steel.share.sequence.SequenceServiceImpl">
+		<property name="sequenceDao">
+			<ref bean="sequenceDao" />
+		</property>
+		<property name="sequenceConfigs">
+			<map>
+				<!-- 终端激活码序号 -->
+				<entry key="mbp.activeCode">
+					<bean class="steel.share.sequence.SequenceConfig">
+						<property name="startValue">
+							<value>1</value>
+						</property>
+						<property name="autoTransaction">
+							<value>true</value>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 签名服务 -->
+	<bean id="signatureService" class="mbp.service.inner.SignatureServiceImpl">
+		<property name="signVerifier">
+			<bean class="mbp.service.sign.SignVerifier" />
+		</property>
+		<property name="bizSignTypes">
+			<map>
+				<entry key="1.0">
+					<map>
+						<!-- 商户证书验签 -->
+						<entry key="1M001"><ref bean="merchantSignState" /></entry>
+						<entry key="1M002"><ref bean="merchantSignState" /></entry>
+						<entry key="1M003"><ref bean="merchantSignState" /></entry>
+						<entry key="1M004"><ref bean="merchantSignState" /></entry>
+						<entry key="1M005"><ref bean="merchantSignState" /></entry>
+						<entry key="1M006"><ref bean="merchantSignState" /></entry>
+						<entry key="1M007"><ref bean="merchantSignState" /></entry>
+						<entry key="1M008"><ref bean="merchantSignState" /></entry>
+						<entry key="1M009"><ref bean="merchantSignState" /></entry>
+						<entry key="1M010"><ref bean="merchantSignState" /></entry>
+						<entry key="1M011"><ref bean="merchantSignState" /></entry>
+						<!-- 终端证书验签 -->
+						<entry key="1M012"><ref bean="terminalSignState" /></entry>
+						<entry key="1M013"><ref bean="terminalSignState" /></entry>
+						<entry key="1M014"><ref bean="terminalSignState" /></entry>
+						<entry key="1M015"><ref bean="terminalSignState" /></entry>
+						<entry key="1M016"><ref bean="terminalSignState" /></entry>
+						<entry key="1M017"><ref bean="terminalSignState" /></entry>
+						<entry key="1M018"><ref bean="terminalSignState" /></entry>
+						<entry key="1M021"><ref bean="terminalSignState" /></entry>
+						<entry key="1M022"><ref bean="terminalSignState" /></entry>
+						<entry key="1M023"><ref bean="terminalSignState" /></entry>
+						<entry key="1M024"><ref bean="terminalSignState" /></entry>
+						<entry key="1M025"><ref bean="terminalSignState" /></entry>
+						<entry key="1M027"><ref bean="terminalSignState" /></entry>
+						<entry key="1M028"><ref bean="terminalSignState" /></entry>
+						<entry key="1M029"><ref bean="terminalSignState" /></entry>
+						<entry key="1M030"><ref bean="terminalSignState" /></entry>
+						<entry key="1M031"><ref bean="terminalSignState" /></entry>
+						<entry key="1M033"><ref bean="terminalSignState" /></entry>
+						<entry key="1M047"><ref bean="terminalSignState" /></entry>
+						<entry key="1M048"><ref bean="terminalSignState" /></entry>
+						<entry key="1M049"><ref bean="terminalSignState" /></entry>
+						<!-- POS类型MAC证书验签 -->
+						<entry key="2M026"><ref bean="macPosSignState" /></entry>
+						<!-- 用户证书验签 -->
+						<entry key="1M036"><ref bean="userSignState" /></entry>
+						<entry key="1M037"><ref bean="userSignState" /></entry>
+						<entry key="1M038"><ref bean="userSignState" /></entry>
+						<entry key="1M039"><ref bean="userSignState" /></entry>
+						<entry key="1M040"><ref bean="userSignState" /></entry>
+						<entry key="1M041"><ref bean="userSignState" /></entry>
+						<entry key="1M042"><ref bean="userSignState" /></entry>
+						<entry key="1M043"><ref bean="userSignState" /></entry>
+						<!-- 终端证书验签 -->
+						<entry key="1M065"><ref bean="terminalSignState" /></entry>
+						<entry key="1M066"><ref bean="terminalSignState" /></entry>
+						<entry key="1M067"><ref bean="terminalSignState" /></entry>
+						<entry key="1M068"><ref bean="terminalSignState" /></entry>
+					</map>
+				</entry>
+				<entry key="2.0">
+					<map>
+						<!-- 用户证书签名 -->
+						<entry key="1M005"><ref bean="userSignState" /></entry>
+						<entry key="1M006"><ref bean="userSignState" /></entry>
+						<entry key="1M007"><ref bean="userSignState" /></entry>
+						<entry key="1M008"><ref bean="userSignState" /></entry>
+						<entry key="1M009"><ref bean="userSignState" /></entry>
+						<entry key="1M010"><ref bean="userSignState" /></entry>
+						<entry key="1M057"><ref bean="userSignState" /></entry>
+						<entry key="1M058"><ref bean="userSignState" /></entry>
+						<entry key="1M059"><ref bean="userSignState" /></entry>
+						<entry key="1M060"><ref bean="userSignState" /></entry>
+						<entry key="1M063"><ref bean="userSignState" /></entry>
+					</map>
+				</entry>
+				<entry key="3.0">
+					<map>
+						<!-- 终端证书验签 -->
+						<entry key="1M045"><ref bean="terminalSignState" /></entry>
+						<entry key="1M046"><ref bean="terminalSignState" /></entry>
+						<entry key="1M050"><ref bean="terminalSignState" /></entry>
+						<entry key="1M052"><ref bean="terminalSignState" /></entry>
+						<entry key="1M053"><ref bean="terminalSignState" /></entry>
+						<entry key="1M054"><ref bean="terminalSignState" /></entry>
+						<entry key="1M055"><ref bean="terminalSignState" /></entry>
+						<entry key="1M061"><ref bean="terminalSignState" /></entry>
+					</map>
+				</entry>
+				<entry key="4.0">
+					<map>
+						<!-- 快钱账户证书验签 -->
+						<entry key="1M003"><ref bean="memberSignState" /></entry>
+						<entry key="1M011"><ref bean="memberSignState" /></entry>
+						<entry key="1M057"><ref bean="memberSignState" /></entry>
+						<entry key="1M062"><ref bean="memberSignState" /></entry>
+						<entry key="1M069"><ref bean="memberSignState" /></entry>
+						<entry key="1M070"><ref bean="memberSignState" /></entry>
+						<entry key="1M071"><ref bean="memberSignState" /></entry>					
+						<entry key="1M073"><ref bean="memberSignState" /></entry>
+						<entry key="1M074"><ref bean="memberSignState" /></entry>
+						<entry key="1M075"><ref bean="memberSignState" /></entry>
+						<entry key="1M076"><ref bean="memberSignState" /></entry>						
+						<entry key="1M078"><ref bean="memberSignState" /></entry>
+						<entry key="1M079"><ref bean="memberSignState" /></entry>
+						<entry key="1M080"><ref bean="memberSignState" /></entry>
+						<entry key="1M081"><ref bean="memberSignState" /></entry>
+						<entry key="1M082"><ref bean="memberSignState" /></entry>
+						<entry key="1M085"><ref bean="memberSignState" /></entry>
+						<!--<entry key="1M086"><ref bean="memberSignState" /></entry>-->
+						<!-- CP接口 -->
+						<entry key="1M018"><ref bean="memberSignState" /></entry>
+						<entry key="1M031"><ref bean="memberSignState" /></entry>
+						<entry key="1M065"><ref bean="memberSignState" /></entry>
+						<entry key="1M066"><ref bean="memberSignState" /></entry>
+						<entry key="1M067"><ref bean="memberSignState" /></entry>
+						<!-- CNP接口 -->
+						<entry key="1M007"><ref bean="memberSignState" /></entry>
+						<entry key="1M009"><ref bean="memberSignState" /></entry>
+						<entry key="1M010"><ref bean="memberSignState" /></entry>
+						<entry key="1M059"><ref bean="memberSignState" /></entry>
+						<entry key="1M063"><ref bean="memberSignState" /></entry>
+					</map>
+				</entry>
+			</map>
+		</property>		
+	</bean>
+
+	<!-- 验签算法 -->
+	<bean id="md5SignState" class="mbp.service.sign.MD5SignState" />
+	<bean id="merchantSignState" class="mbp.service.sign.MerchantSignState" />
+	<bean id="terminalSignState" class="mbp.service.sign.TerminalSignState" />
+	<bean id="userSignState" class="mbp.service.sign.UserSignState" />
+	<bean id="macPosSignState" class="mbp.service.sign.MacPosSignState" />
+	<bean id="memberSignState" class="mbp.service.sign.MemberSignState" />
+
+	<!-- PCI服务 -->
+	<bean id="mbpPciService" class="mbp.service.inner.MbpPciServiceImpl">
+		<property name="sourceId">
+			<value>${mbp.sourceId}</value>
+		</property>
+		<property name="serviceChannelType">
+			<value>L</value>
+		</property>
+	</bean>
+
+	<!-- MAS受理能力服务 -->
+	<bean id="acceptCapacityClient"
+		class="mas.tender.edc.accept.impl.AcceptCapacityServiceClientImpl">
+		<property name="appName">
+			<value>MBP</value>
+		</property>
+		<property name="expireInterval">
+			<value>21600</value>
+		</property>
+	</bean>
+
+	<bean id="mbp.asynAcceptCapacityResponseService"
+		class="mas.tender.edc.accept.impl.AsynAcceptCapacityResponseServiceImpl" />
+
+	<!-- 数据字典服务 -->
+	<bean id="dictViewClient" class="steel.share.dictview.DictViewServiceCacheClient">
+		<property name="dictCacheService">
+			<ref bean="distributeCacheService" />
+		</property>
+		<property name="interceptors">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+	<alias name="dictViewClient" alias="dictViewService" />
+
+	<!-- 分布式应用事件监听器 -->
+	<bean id="jmsDistributedAppEventListener" class="steel.share.appevent.JmsDistributedAppEventListener">
+		<property name="connectionFactory">
+			<ref bean="mbpJmsConnectionFactory" />
+		</property>
+		<property name="concurrentConsumers">
+			<value>5</value>
+		</property>
+		<property name="subscribers">
+			<map>
+				<entry key="DICT_APP_DISTRIBUTE_EVENT">
+					<ref bean="dictViewClient" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- TAIS EDC交易客户端代理 -->
+	<bean id="tais.edcTxnClientProxy" class="tais.service.client.TaisTxnServiceEdcProxy" />
+
+	<!-- EDC交易客户端 -->
+	<bean id="mbp.EdcTxnClient" class="mas.tender.edc.client.EdcTxnClientImpl">
+		<property name="serviceChannelType">
+			<value>L</value>
+		</property>
+		<property name="sourceId">
+			<value>${mbp.sourceId}</value>
+		</property>
+		<property name="edcTxnClientProxy">
+			<ref bean="tais.edcTxnClientProxy" />
+		</property>
+	</bean>
+
+	<!-- MBP手机支付渠道交易处理入口 -->
+	<bean id="mbpServiceChannelTxnService" class="mbp.service.edc.MbpServiceChannelTxnServiceImpl">
+		<property name="serviceConditionCode">
+			<value>L</value>
+		</property>
+		<property name="edcTxnClient">
+			<ref bean="mbp.EdcTxnClient" />
+		</property>
+		<property name="followResponseProcessor">
+			<bean class="mbp.service.edc.MbpFollowTxnResponseProcessor" />
+		</property>
+	</bean>
+
+	<!-- 卡号转换银行编号 -->
+	<bean id="bankCardInfoService" class="mbp.service.inner.BankCardInfoServiceImpl" />
+
+	<bean id="jaxbHelper" class="mbp.xml.helper.JaxbHelper" />
+
+	<!-- 终端初始化服务 -->
+	<bean id="terminalParaIntiService" class="mbp.termpara.service.TerminalParaIntiServiceImpl" />
+
+	<!-- 商户配置服务 -->
+	<bean id="mbpMerchantConfigService" class="mbp.merchantConfig.service.MbpMerchantConfigServiceImpl" />
+
+	<!-- 升级检查服务 -->
+	<bean id="upgradeConfigService" class="mbp.upgrade.service.UpgradeConfigServiceImpl" />
+
+	<!-- 云帐户登陆检查服务 -->
+	<bean id="cloudUserLoginService" class="mbp.clouduser.service.CloudUserLoginServiceImpl" />
+
+	<!-- BBPOS TMK_KSN mapping -->
+	<bean id="tmkKsnService" class="mbp.bbpos.service.TmkKsnServiceImpl" />
+
+	<!-- 短信发送处理器 -->
+	<bean id="smsProcessorFactory" class="mbp.service.sendmsm.SmsProcessorFactoryImpl">
+		<property name="processorsWithMerchantId">
+			<map>
+				<!-- 太平洋保险定制短信发送器 -->
+				<entry key="999310063000096">
+					<bean class="mbp.service.sendmsm.processor.CpicPurQuickPaySendSmsProcessor" />
+				</entry>
+			</map>
+		</property>
+		<property name="processorsWithBizType">
+			<map>
+				<entry key="M009">
+					<bean class="mbp.service.sendmsm.processor.OneClickSendSmsProcessor" />
+				</entry>
+				<entry key="M010">
+					<bean class="mbp.service.sendmsm.processor.OneClickSendSmsProcessor" />
+				</entry>
+				<entry key="M034">
+					<bean class="mbp.service.sendmsm.processor.ValidateCodeSendSmsProcessor" />
+				</entry>
+				<entry key="M061">
+					<bean class="mbp.service.sendmsm.processor.ValidCodeSendSmsProcessor" />
+				</entry>
+				<entry key="M071">
+					<bean class="mbp.service.sendmsm.processor.PasswordNofitySendSmsProcessor" />
+				</entry>
+			</map>
+		</property>
+		<property name="processorsWithTxnType">
+			<map>
+				<entry key="00200">
+					<bean class="mbp.service.sendmsm.processor.PurQuickPaySendSmsProcessor" />
+				</entry>
+				<entry key="00210">
+					<bean class="mbp.service.sendmsm.processor.VoidQuickPaySendSmsProcessor" />
+				</entry>
+				<entry key="00500">
+					<bean class="mbp.service.sendmsm.processor.RefundQuickPaySendSmsProcessor" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 短信发送服务 -->
+	<bean id="sendSmsService" class="mbp.service.sendmsm.SendSmsServiceImpl" />
+
+	<!-- MAS商户服务 -->
+	<bean id="masMerchantService" class="mbp.service.inner.MasMerchantServiceImpl" />
+
+	<!-- MAS终端服务 -->
+	<bean id="masTerminalService" class="mbp.service.inner.MasTerminalServiceImpl" />
+
+	<!-- BBPOS银行卡号萃取器 -->
+	<bean id="bbposPanExtractor" class="mbp.service.pan.BBPosPanExtractor" />
+
+	<!-- 加密键盘银行卡号萃取器 -->
+	<bean id="keyboardPanExtractor" class="mbp.service.pan.KeyboardPanExtractor" />
+
+	<!-- OQS订单查询 -->
+	<bean id="oqs.oqsChannelService" class="oqs.services.impl.OqsChannelServiceImpl" />
+
+	<!-- 生成终端证书 -->
+	<bean id="certificateService" class="mbp.service.inner.CertificateServiceImpl" />
+
+	<!-- B2B2C商户用户证书 -->
+	<bean id="merchantUserCertService" class="mbp.b2b2c.service.MerchantUserCertServiceImpl" />
+
+	<!-- B2B2C验证码服务 -->
+	<bean id="validateCodeService" class="mbp.b2b2c.service.ValidateCodeServiceImpl" />
+
+	<!-- MRS机构用户绑定关系查询服务 -->
+	<bean id="orgUserBindingQueryService" class="mbp.service.inner.OrgUserBindingQueryServiceImpl" />
+
+	<!-- MBP OQS渠道服务实现 -->
+	<bean id="mbp.oqsChannelService" class="mbp.service.inner.OqsChannelServiceImpl" />
+
+	<!-- PSAM卡密钥管理服务 -->
+	<bean id="psamCardService" class="mbp.psam.service.PsamCardServiceImpl" />
+
+	<!-- 银行卡信息配置管理服务 -->
+	<bean id="bankCardService" class="mbp.bankCard.service.BankCardServiceImpl" />
+
+	<!-- 快捷消费短信动态码 -->
+	<bean id="txnDynCodeService" class="mbp.service.inner.TxnDynCodeServiceImpl" />
+
+	<!-- 订单服务 -->
+	<bean id="orderService" class="mbp.order.service.OrderServiceImpl" />
+	
+	<!-- 客户端信息服务 -->
+	<bean id="clientInfoService" class="mbp.clientinfo.service.ClientInfoServiceImpl" />
+
+	<!-- 银行信息服务 -->
+	<bean id="bankInfoService" class="mbp.bankinfo.service.BankInfoServiceImpl" />
+
+	<!-- 快钱帐号登录WEB服务模板 -->
+	<bean id="mbp.loginWebServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<constructor-arg>
+			<bean class="org.springframework.ws.soap.axiom.AxiomSoapMessageFactory">
+				<property name="payloadCaching" value="false" />
+			</bean>
+		</constructor-arg>
+		<property name="defaultUri" value="${ino.global.seashell.login.uri}" />
+	</bean>
+
+	<!-- 快钱帐号登录服务 -->
+	<bean id="loginService" class="mbp.service.inner.LoginServiceImpl">
+		<property name="loginWebServiceTemplate">
+			<bean parent="mbp.loginWebServiceTemplate">
+				<property name="marshaller">
+					<oxm:jibx-marshaller
+						target-class="com.bill99.schema.ma.unifylogin.LoginRequestData" />
+				</property>
+				<property name="unmarshaller">
+					<oxm:jibx-marshaller
+						target-class="com.bill99.schema.ma.unifylogin.LoginResponseData" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- 终端设备号检查服务 -->
+	<bean id="checkDeviceService" class="mbp.service.device.CheckDeviceServiceImpl" />
+
+	<!-- 快刷 验证码服务 -->
+	<bean id="validCodeService" class="mbp.validcode.service.ValidCodeServiceImpl" />
+
+	<!-- 快刷 验证码处理器 -->
+	<bean id="validCodeProcessorFactory" class="mbp.validcode.service.ValidCodeProcessorFactoryImpl">
+		<property name="processorsWithVersionFlag">
+			<map>
+				<entry key="LENOVO">
+					<bean class="mbp.validcode.service.processor.LenovoValidCodeProcessor" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- Mbp证书服务 -->
+	<bean id="mbpCertService" class="mbp.cert.service.MbpCertServiceImpl" />
+
+	<!-- 查询快钱帐号信息 WEB服务模板 -->
+	<bean id="mbp.memberqryWebServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<constructor-arg>
+			<bean class="org.springframework.ws.soap.axiom.AxiomSoapMessageFactory">
+				<property name="payloadCaching" value="false" />
+			</bean>
+		</constructor-arg>
+		<property name="defaultUri" value="${ino.global.seashell.memberqry.uri}" />
+	</bean>
+
+	<!-- 查询快钱帐号信息 服务 -->
+	<bean id="mbpMemberService" class="mbp.service.inner.MbpMemberServiceImpl">
+		<property name="memberqryWebServiceTemplate">
+			<bean parent="mbp.memberqryWebServiceTemplate">
+				<property name="marshaller">
+					<oxm:jibx-marshaller
+						target-class="com.bill99.schema.ma.mbrinfo.memberqry.MemberqryRequest" />
+				</property>
+				<property name="unmarshaller">
+					<oxm:jibx-marshaller
+						target-class="com.bill99.schema.ma.mbrinfo.memberqry.MemberqryResponse" />
+				</property>
+			</bean>
+		</property>
+		<property name="mbrinfoMerMemberCode">
+			<value>${ino.mbp.memberqry.merchantmembercode}</value>
+		</property>
+		<property name="mbrinfoKey">
+			<value>${ino.mbp.memberqry.key}</value>
+		</property>
+	</bean>
+
+	<!-- 密码服务 -->
+	<bean id="passwordManagerService" class="mbp.service.password.impl.MAMPasswordManagerServiceImpl" />
+
+	<!-- 提现服务 -->
+	<bean id="withdrawService" class="mbp.withdraw.service.WithdrawServiceImpl" />
+
+	<!-- 提现未处理服务 -->
+	<bean id="mbpWithdrawPendingService" class="mbp.withdraw.service.MbpWithdrawPendingServiceImpl" />
+
+	<!-- 提现已处理服务 -->
+	<bean id="mbpWithdrawCompleteService" class="mbp.withdraw.service.MbpWithdrawCompleteServiceImpl" />
+
+	<!-- 商户开通服务 -->
+	<bean id="merchantOpenService" class="mbp.service.oss.impl.MerchantOpenServiceImpl" />
+	
+	<!-- 终端交易查询服务 -->
+	<bean id="mbpTxnQueryService" class="mbp.service.edc.query.impl.MbpTxnQueryServiceImpl">
+	    <!-- 暂时不添加，目前不使用该接口 -->
+		<!--<property name="baseUrl">
+			<value>${ino.mbp.txnQuery.baseUrl}</value>
+		</property>-->
+	</bean>
+	
+	<!-- HTTP服务 -->
+	<bean id="httpClientService" class="steel.util.http.HttpClientServiceImpl" />
+	
+	<!-- PKI服务 -->
+	<bean id="mbpPkiService" class="mbp.service.inner.MbpPkiServiceImpl" />
+	
+</beans>
