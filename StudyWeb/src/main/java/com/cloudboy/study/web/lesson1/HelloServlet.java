@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 	    urlPatterns={"/HelloServlet"},
 	    loadOnStartup=1,
 	    initParams={  
-	            @WebInitParam(name="name",value="cloudboy"),  
-	            @WebInitParam(name="age",value="20")
+	            @WebInitParam(name="spaceName",value="cloudboy city"),  
+	            @WebInitParam(name="copyRight",value="cloudboy.org")
 	    })  
 public class HelloServlet extends HttpServlet {
     private static final long serialVersionUID = -1451562973020646948L;
@@ -30,12 +30,15 @@ public class HelloServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("GBK");
+        String name = request.getParameter("name");
+        
         ServletConfig config = getServletConfig();
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");
-        out.println("Hello world" + "<br />");
-        out.println(config.getInitParameter("name"));
+        out.println("Welcome to " + config.getInitParameter("name") + "<br />");
+        out.println("This space belongs to " + config.getInitParameter("copyRight") + "<br />");
+        out.println("You are welcome " + name);
         out.println("</body>");
         out.println("</html>");
     }
