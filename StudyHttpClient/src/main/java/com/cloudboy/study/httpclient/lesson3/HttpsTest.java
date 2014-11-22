@@ -22,14 +22,14 @@ public class HttpsTest {
 	private static MyLogger logger = MyLogger.getLogger(HttpsTest.class);
 	
 	public void testHelloServlet() {
+		System.setProperty("jsse.enableSNIExtension", "false");
 		URIBuilder uriBuilder = new URIBuilder();
 		uriBuilder.setScheme("https");
-		uriBuilder.setHost("192.168.1.106");
+		uriBuilder.setHost("www.cloudboy.org");
 		uriBuilder.setPort(8002);
         uriBuilder.setPath("/studyWeb/HelloServlet");
         
 		try {
-//			HttpClient httpclient = HttpClients.createDefault();
 			HttpClient httpclient = HttpClientFactory.getHttpClient();
 	        HttpResponse response = null;
 			URI uri = uriBuilder.build();
