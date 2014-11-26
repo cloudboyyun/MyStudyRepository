@@ -59,13 +59,13 @@ public class HttpClientFactory {
 		ks.load(null, null);
 		
 		// 读取crt证书文件(这里使用ca.crt或者server.crt都行)
-//		String certificationPath = "D:\\doc\\key\\server.crt";
-		String certificationPath = "D:\\doc\\key\\ca.crt";
+		String certificationPath = "D:\\doc\\key\\server.crt";
+//		String certificationPath = "D:\\doc\\key\\ca.crt";
 		FileInputStream fis = new FileInputStream(certificationPath);
 		CertificateFactory cf = CertificateFactory.getInstance("X.509");
 		Certificate cert = cf.generateCertificate(fis);
 		fis.close();
-		
+		logger.info("public key:", cert.getPublicKey());
 		ks.setCertificateEntry("myServer", cert);
 		return ks;
 	}
