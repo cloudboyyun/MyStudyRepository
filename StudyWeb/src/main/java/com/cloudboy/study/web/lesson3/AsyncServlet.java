@@ -32,6 +32,7 @@ public class AsyncServlet extends HttpServlet {
 		final AsyncContext asyncContext = req.startAsync();
 		// 设置超时时间，当超时之后程序会尝试重新执行异步任务，即我们新起的线程。
 		asyncContext.setTimeout(50 * 1000L);
+		asyncContext.addListener(new MyAsyncListener());
 		
 		// 新起线程开始异步调用，start方法不是阻塞式的，它会新起一个线程来启动Runnable接口，之后主程序会继续执行
 		asyncContext.start(new Runnable() {

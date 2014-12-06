@@ -36,7 +36,7 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");
-        out.println("Welcome to " + config.getInitParameter("name") + "<br />");
+        out.println("Welcome to " + config.getInitParameter("spaceName") + "<br />");
         out.println("This space belongs to " + config.getInitParameter("copyRight") + "<br />");
         out.println("You are welcome " + name);
         out.println("</body>");
