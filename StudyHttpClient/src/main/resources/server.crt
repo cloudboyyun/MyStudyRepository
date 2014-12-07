@@ -1,0 +1,60 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=CN, ST=SH, L=SH, O=cloudboy.org, OU=cloudboy, CN=ca.cloudboy.org
+        Validity
+            Not Before: Nov 16 11:15:07 2014 GMT
+            Not After : Nov 16 11:15:07 2015 GMT
+        Subject: C=CN, ST=SH, O=cloudboy.org, OU=cloudboy, CN=www.cloudboy.org
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:b2:f7:5a:d8:1e:0a:91:ac:99:ff:bd:cb:6c:6b:
+                    78:dc:4f:54:05:c4:9f:bb:af:a0:f7:44:ea:ee:5b:
+                    54:23:7f:77:fe:1e:f3:39:7f:56:dc:d4:33:43:8a:
+                    e1:31:37:ad:24:25:7c:22:09:e2:13:dc:d1:20:62:
+                    1c:15:fc:3a:2c:a4:86:f1:74:23:bb:1b:2b:00:33:
+                    39:99:3a:4d:34:f9:d7:d3:f7:fd:32:06:59:fe:13:
+                    76:e5:8c:cd:31:cb:25:9d:22:8e:81:b3:bd:c0:98:
+                    53:71:c9:50:18:d1:f4:68:fd:18:f0:8e:2a:c6:2c:
+                    71:95:41:6d:4c:b5:0d:b8:05
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                E3:EB:87:16:F1:AA:7D:89:F7:A8:73:02:7B:F9:D6:1B:CE:F2:D2:13
+            X509v3 Authority Key Identifier: 
+                keyid:31:1D:D3:35:36:0E:63:7B:2C:36:ED:42:F6:CC:31:C1:AD:E5:63:C4
+
+    Signature Algorithm: sha1WithRSAEncryption
+         ca:39:68:4d:44:69:28:58:07:1d:d4:4d:cd:78:bb:14:22:e9:
+         d9:3e:dc:3c:dd:5a:cc:51:51:cc:2e:c0:13:39:60:b8:b3:c9:
+         f8:27:3c:40:66:4d:d2:68:20:3b:5f:18:70:09:2a:8e:a5:ca:
+         05:e5:d4:1d:d4:67:63:6b:d3:67:de:98:4d:40:df:b5:f1:33:
+         f2:02:eb:b2:ec:43:1b:58:d2:0f:7d:dd:04:63:0b:c4:d0:ec:
+         22:b8:77:63:2d:04:b2:68:24:d1:64:7b:03:99:5e:e0:83:14:
+         a6:4f:a2:90:73:8b:e3:19:11:4d:55:30:a0:b4:7f:11:ee:ee:
+         f7:6b
+-----BEGIN CERTIFICATE-----
+MIICuzCCAiSgAwIBAgIBATANBgkqhkiG9w0BAQUFADBrMQswCQYDVQQGEwJDTjEL
+MAkGA1UECAwCU0gxCzAJBgNVBAcMAlNIMRUwEwYDVQQKDAxjbG91ZGJveS5vcmcx
+ETAPBgNVBAsMCGNsb3VkYm95MRgwFgYDVQQDDA9jYS5jbG91ZGJveS5vcmcwHhcN
+MTQxMTE2MTExNTA3WhcNMTUxMTE2MTExNTA3WjBfMQswCQYDVQQGEwJDTjELMAkG
+A1UECAwCU0gxFTATBgNVBAoMDGNsb3VkYm95Lm9yZzERMA8GA1UECwwIY2xvdWRi
+b3kxGTAXBgNVBAMMEHd3dy5jbG91ZGJveS5vcmcwgZ8wDQYJKoZIhvcNAQEBBQAD
+gY0AMIGJAoGBALL3WtgeCpGsmf+9y2xreNxPVAXEn7uvoPdE6u5bVCN/d/4e8zl/
+VtzUM0OK4TE3rSQlfCIJ4hPc0SBiHBX8OiykhvF0I7sbKwAzOZk6TTT519P3/TIG
+Wf4TduWMzTHLJZ0ijoGzvcCYU3HJUBjR9Gj9GPCOKsYscZVBbUy1DbgFAgMBAAGj
+ezB5MAkGA1UdEwQCMAAwLAYJYIZIAYb4QgENBB8WHU9wZW5TU0wgR2VuZXJhdGVk
+IENlcnRpZmljYXRlMB0GA1UdDgQWBBTj64cW8ap9ifeocwJ7+dYbzvLSEzAfBgNV
+HSMEGDAWgBQxHdM1Ng5jeyw27UL2zDHBreVjxDANBgkqhkiG9w0BAQUFAAOBgQDK
+OWhNRGkoWAcd1E3NeLsUIunZPtw83VrMUVHMLsATOWC4s8n4JzxAZk3SaCA7Xxhw
+CSqOpcoF5dQd1Gdja9Nn3phNQN+18TPyAuuy7EMbWNIPfd0EYwvE0OwiuHdjLQSy
+aCTRZHsDmV7ggxSmT6KQc4vjGRFNVTCgtH8R7u73aw==
+-----END CERTIFICATE-----

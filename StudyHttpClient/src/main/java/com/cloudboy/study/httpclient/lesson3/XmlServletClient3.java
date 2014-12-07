@@ -1,42 +1,39 @@
 package com.cloudboy.study.httpclient.lesson3;
 
+import java.io.InputStream;
+import java.security.KeyStore;
+
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.cloudboy.study.web.model.Bank;
 import com.cloudboy.study.web.model.MessageRequest;
 import com.cloudboy.study.web.model.MessageResponse;
 import com.cloudboy.study.web.model.RequestType;
 import com.cloudboy.study.web.model.User;
-import com.cloudboy.util.httpClient.HttpClientService;
+import com.cloudboy.util.httpClient.HttpClientServiceImpl;
+import com.cloudboy.util.security.KeyFileUtil;
 
 public class XmlServletClient3 {
 	
 	private static Logger logger = Logger.getLogger(XmlServletClient3.class);
-	private HttpClientService httpClientService = null;
-//	private final static String url = "http://www.cloudboy.org:8093/studyWeb/XMLServlet2";
+	private HttpClientServiceImpl httpClientService = null;
 	private final static String url = "https://www.cloudboy.org:8002/studyWeb/XMLServlet2";
+	
+	public XmlServletClient3() {
+		InputStream certFile = XmlServletClient3.class.getResourceAsStream("/ca.crt");
+		KeyStore trustKeyStore = null;
+		try {
+			trustKeyStore = KeyFileUtil.getKeyStoreByCrtFile(certFile);
+		} catch (Exception e) {
+			throw new RuntimeException("Read the cert file failed.");
+		}
+		httpClientService = new HttpClientServiceImpl(trustKeyStore);
+		httpClientService.init();
+	}
 
 	public void testXMLServlet() {
 		M001();
 		M002();
-		for(int i = 0; i<10; i++) {
-			logger.info(i);
-			sleep(10);
-			if(!M002()) {
-				break;
-			}
-		}
-	}
-	
-	private void sleep(int seconds) {
-		logger.info("休息:" + seconds + "秒");
-		try {
-			Thread.sleep(seconds * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	private void M001() {
@@ -73,15 +70,8 @@ public class XmlServletClient3 {
 		}
 	}
 	
-	@Autowired
-	public void setHttpClientService(HttpClientService httpClientService) {
-		this.httpClientService = httpClientService;
-	}
-	
 	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
-		XmlServletClient3 client = (XmlServletClient3)context.getBean("shc.XmlServletClient3");
+		XmlServletClient3 client = new XmlServletClient3();
 		client.testXMLServlet();
-		context.close();
 	}	
 }
