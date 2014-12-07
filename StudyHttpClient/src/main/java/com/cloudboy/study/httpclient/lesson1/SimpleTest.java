@@ -16,11 +16,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-
-import com.cloudboy.util.log.MyLogger;
+import org.apache.log4j.Logger;
 
 public class SimpleTest {
-	private static MyLogger logger = MyLogger.getLogger(SimpleTest.class);
+	private static Logger logger = Logger.getLogger(SimpleTest.class);
 	
 	public void testHelloServlet() {
 		URIBuilder uriBuilder = new URIBuilder();
@@ -34,7 +33,7 @@ public class SimpleTest {
 	        CloseableHttpResponse response = null;
 			URI uri = uriBuilder.build();
 			HttpPost httpPost = new HttpPost(uri);
-			logger.info("URI:", httpPost.getURI());
+			logger.info("URI:" + httpPost.getURI());
 			
 			List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 			formparams.add(new BasicNameValuePair("name", "cloudboy"));
@@ -43,11 +42,11 @@ public class SimpleTest {
 
 			response = httpclient.execute(httpPost);
 			
-			logger.info("response.getProtocolVersion():", response.getProtocolVersion());
-			logger.info("response.getStatusLine():", response.getStatusLine());
+			logger.info("response.getProtocolVersion():" + response.getProtocolVersion());
+			logger.info("response.getStatusLine():" + response.getStatusLine());
 			Header[] headers = response.getAllHeaders();
 			for(Header header : headers) {
-				logger.info("header name(", header.getName(), ") value(", header.getValue(), ")");
+				logger.info("header name(" + header.getName() + ") value(" + header.getValue() + ")");
 			}
 			HttpEntity responseEntity = response.getEntity();
 			String result = EntityUtils.toString(responseEntity);
