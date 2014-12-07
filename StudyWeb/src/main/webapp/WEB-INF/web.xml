@@ -19,6 +19,11 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 	
+	<!-- 设置session失效，单位分 -->
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+    
     <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

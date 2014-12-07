@@ -6,19 +6,19 @@ package com.cloudboy.study.web.lesson4;
  */
 import javax.servlet.http.Part;
 
-import com.cloudboy.util.log.MyLogger;
+import org.apache.log4j.Logger;
 
 public class UploadUtil {
-	private static MyLogger logger = MyLogger.getLogger(UploadUtil.class);
+	private static Logger logger = Logger.getLogger(UploadUtil.class);
 
 	public static String getFileType(Part p) {
 		String name = p.getHeader("content-disposition");
-		logger.info("name:", name);
+		logger.info("name:" + name);
 		String fileNameTmp = name.substring(name.indexOf("filename=") + 10);
-		logger.info("fileNameTmp:", fileNameTmp);
+		logger.info("fileNameTmp:" + fileNameTmp);
 		String type = fileNameTmp.substring(fileNameTmp.indexOf(".") + 1,
 				fileNameTmp.indexOf("\""));
-		logger.info("type:", type);
+		logger.info("type:" + type);
 		return type;
 	}
 
