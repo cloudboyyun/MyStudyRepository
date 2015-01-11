@@ -1,9 +1,9 @@
-package com.cloudboy.study.springRemoting.service;
+package com.cloudboy.study.httpInvoker.service;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cloudboy.study.springRemoting.service.MyService;
+import com.cloudboy.study.httpInvoker.service.MyService;
 public class MyServiceTest {
     
 	@Before

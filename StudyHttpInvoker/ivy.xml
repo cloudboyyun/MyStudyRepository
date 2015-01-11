@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="1.0">
-     <info organisation="com.99bill" module="springRemotingStudy"/>
+     <info organisation="com.99bill" module="studyHttpInvoker"/>
     <configurations>
             <conf name="default"/>
             <conf name="compile"/>
@@ -24,5 +24,7 @@
         <dependency org="org.springframework" name="spring-expression" rev="4.0.3.RELEASE"/>
         <dependency org="aopalliance" name="aopalliance" rev="1.0"/>
         <dependency org="org.aspectj" name="aspectjweaver" rev="1.7.4" conf="zip->default"/>
+        <dependency org="org.apache" name="commons-codec" rev="1.6" conf="zip->default"/>
+        <dependency org="org.apache" name="commons-httpclient" rev="3.1.1" conf="zip->default"/>
     </dependencies>
 </ivy-module>

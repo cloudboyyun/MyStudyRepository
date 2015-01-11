@@ -1,4 +1,4 @@
-﻿<project name="app-springRemotingStudy" 
+﻿<project name="app-studyHttpInvoker" 
 	default="all" 
 	basedir="." 
 	xmlns:ivy="antlib:org.apache.ivy.ant">

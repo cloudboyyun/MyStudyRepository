@@ -12,13 +12,13 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     <!-- 定义普通的bean实例 -->
-    <bean id="studySpringRemoting.MyService" class="com.cloudboy.study.springRemoting.service.impl.MyServiceImpl"/>
+    <bean id="studyHttpInvoker.MyService" class="com.cloudboy.study.httpInvoker.service.impl.MyServiceImpl"/>
     
     <!--  使用Exporter将普通bean导出成远程服务-->
     <bean name="/myService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
         <!--  需要导出的目标bean-->
-         <property name="service" ref="studySpringRemoting.MyService"/>
+         <property name="service" ref="studyHttpInvoker.MyService"/>
            <!--  服务的接口-->
-         <property name="serviceInterface" value="com.cloudboy.study.springRemoting.service.MyService"/>
+         <property name="serviceInterface" value="com.cloudboy.study.httpInvoker.service.MyService"/>
     </bean>
 </beans>

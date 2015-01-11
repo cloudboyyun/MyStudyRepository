@@ -13,14 +13,49 @@
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     <bean id="myServiceClient" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceUrl">
-<!--         	<value>http://192.168.1.106:8093/studySpringRemoting/spring/myService</value> -->
+        	<value>http://192.168.1.106:8095/studyHttpInvoker/services/myService</value>
 <!-- 			<value>http://192.168.1.106:8094/studySpringRemoting/spring/myService</value> -->
 			<!-- visit the apache port -->
 <!-- 			<value>http://192.168.1.106:8001/studySpringRemoting/spring/myService</value> -->
-			<value>https://cloudboy:8001/studySpringRemoting/spring/myService</value>
-        </property>                          
+<!-- 			<value>https://cloudboy:8001/studySpringRemoting/spring/myService</value> -->
+        </property>
         <property name="serviceInterface">
-            <value>com.cloudboy.study.springRemoting.service.MyService</value>
+            <value>com.cloudboy.study.httpInvoker.service.MyService</value>
+        </property>
+        <property name="httpInvokerRequestExecutor">
+            <ref bean = "httpInvokerRequestExecutor" />
         </property>
     </bean>
+    
+    <bean id="httpInvokerRequestExecutor" class="org.springframework.remoting.httpinvoker.CommonsHttpInvokerRequestExecutor">  
+        <property name="httpClient">  
+            <bean class="org.apache.commons.httpclient.HttpClient">  
+                <property name="connectionTimeout">
+                    <value>2000</value>
+                </property>
+                <property name="timeout">
+                    <value>5000</value>
+                </property>
+                <property name="httpConnectionManager">  
+                    <ref bean="multiThreadedHttpConnectionManager" />  
+                </property>
+            </bean>
+        </property>  
+    </bean>
+    
+    <bean id="multiThreadedHttpConnectionManager"  
+        class="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager">  
+        <property name="params">  
+            <bean class="org.apache.commons.httpclient.params.HttpConnectionManagerParams">
+                <!-- maxTotalConnections 客户端总并行链接最大数，默认为20 -->
+                <property name="maxTotalConnections">
+                    <value>600</value>
+                </property>
+                <!-- maxConnectionsPerHost 每个主机的最大并行链接数，默认为2  -->
+                <property name="defaultMaxConnectionsPerHost">
+                    <value>512</value>
+                </property>  
+            </bean>
+        </property>
+    </bean> 
 </beans> 
