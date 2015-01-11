@@ -15,8 +15,7 @@
     
     <bean id="myServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
         <property name="serviceUrl">
-<!--             <value>http://192.168.15.180:8086/hessian/myService</value> -->
-            <value>http://192.168.1.106:8094/studyHessian/hessian/myService</value>
+            <value>http://192.168.1.106:8094/studyHessian/services/myService</value>
         </property>                          
         <property name="serviceInterface">
             <value>com.cloudboy.study.hessian.service.MyService</value>

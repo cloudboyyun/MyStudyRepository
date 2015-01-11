@@ -41,6 +41,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>hessian</servlet-name>
-        <url-pattern>/hessian/*</url-pattern>
+        <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
 </web-app>
