@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="1.0">
+    <info organisation="com.99bill" module="app-studyHessian"/>
+    <configurations>
+        <conf name="default"/>
+        <conf name="compile"/>
+        <conf name="zip"/>
+        <conf name="test"/>
+    </configurations>
+    <publications>
+        <artifact ext="war"/>
+    </publications>
+    <dependencies>
+        <dependency org="com.caucho" name="hessian" rev="3.1.6" conf="zip->default"/>
+        <!-- <dependency org="com.caucho" name="hessian" rev="4.0.37" conf="zip->default"/> -->
+        <dependency org="org.apache" name="commons-lang" rev="2.1" conf="zip->default"/>
+        <dependency org="org.apache" name="commons-logging" rev="1.1.1" conf="zip->default"/>
+        <dependency org="org.apache" name="commons-logging-api" rev="1.1" conf="zip->default"/>
+        <dependency org="org.apache" name="log4j" rev="1.2.15" conf="zip->default"/>
+        <dependency org="org.spring" name="spring" rev="2.5.5" conf="zip->default"/>
+        <dependency org="org.spring" name="spring-security-core" rev="2.0.1" conf="zip->default"/>
+        <dependency org="org.spring" name="spring-security-core-tiger" rev="2.0.1" conf="zip->default"/>
+        <dependency org="org.spring" name="spring-support" rev="2.0.8" conf="zip->default"/>
+        <dependency org="org.spring" name="spring-test" rev="2.5.4" conf="zip->default"/>
+        <dependency org="org.springframework" name="spring-flex" rev="1.0.0.M1" conf="zip->default"/>
+        <dependency org="unknown" name="aopalliance" rev="1.0" conf="zip->default"/>
+        <dependency org="unknown" name="bcprov-jdk15" rev="140" conf="zip->default"/>
+        <dependency org="unknown" name="jcaptcha-all" rev="1.0-RC4" conf="zip->default"/>
+        <dependency org="xerces" name="xerces" rev="2.6.2" conf="zip->default"/>
+        <dependency org="xerces" name="xercesImpl" rev="2.5.0" conf="zip->default"/>
+    </dependencies>
+</ivy-module>

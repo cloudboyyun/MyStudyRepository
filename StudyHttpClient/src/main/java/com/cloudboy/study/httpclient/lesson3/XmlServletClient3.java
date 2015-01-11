@@ -11,7 +11,7 @@ import com.cloudboy.study.web.model.MessageResponse;
 import com.cloudboy.study.web.model.RequestType;
 import com.cloudboy.study.web.model.User;
 import com.cloudboy.util.httpClient.HttpClientServiceImpl;
-import com.cloudboy.util.security.KeyFileUtil;
+import com.cloudboy.util.security.KeyUtil;
 
 public class XmlServletClient3 {
 	
@@ -23,7 +23,7 @@ public class XmlServletClient3 {
 		InputStream certFile = XmlServletClient3.class.getResourceAsStream("/ca.crt");
 		KeyStore trustKeyStore = null;
 		try {
-			trustKeyStore = KeyFileUtil.getKeyStoreByCrtFile(certFile);
+			trustKeyStore = KeyUtil.getKeyStoreFromCrtStream(certFile);
 		} catch (Exception e) {
 			throw new RuntimeException("Read the cert file failed.");
 		}
