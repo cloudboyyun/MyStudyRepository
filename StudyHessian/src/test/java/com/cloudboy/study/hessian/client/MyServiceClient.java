@@ -44,7 +44,7 @@ public class MyServiceClient {
 	
 	@Test
 	public void uploadFile() {
-		File file = new File("d:\\temp\\身份证正面.jpg");
+		File file = new File("d:\\temp\\result.jpg");
 		UploadFileRequest request = new UploadFileRequest();
 		request.setFileName(file.getName());
 		FileInputStream fin = null;
