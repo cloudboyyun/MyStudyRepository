@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="1.0">
+ 	<info organisation="com.cloudboy" module="studyMemcached"/>
+	<configurations>
+			<conf name="default"/>
+			<conf name="compile"/>
+			<conf name="test"/>
+			<conf name="zip"/>
+	</configurations>
+	<publications>
+			<artifact ext="jar"/>
+	</publications> 
+	<dependencies>
+        <dependency org="xmlpull" name="xmlpull" rev="1.1.3.4d_b4_min" conf="zip->default"/>
+        <dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.7" conf="zip->default"/>
+        <dependency org="net.spy" name="spymemcached" rev="2.11.5" conf="zip->default"/>
+	</dependencies>
+</ivy-module>
