@@ -9,7 +9,7 @@ public class StudyThreadPoolExecutor {
 	/**
 	 * 线程池核心处理器大小
 	 */
-	private int corePoolSize = 5;
+	private int corePoolSize = 10;
 
 	/**
 	 * 线程池最大处理器大小
@@ -65,7 +65,7 @@ public class StudyThreadPoolExecutor {
 			pool.comeIn(executorName);
 		}
 		try {
-			Thread.sleep(100000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- in java cmd add -Dlog4j.configuration=log4j.xml -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="log.console" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="UTF-8" />
+		<layout class="com.cloudboy.util.log4j.ExPatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %t %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="log.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/log/cps/mbp/CPS.app-mbp.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="mbp.util.log4j.ExPatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %t %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<category name="com.cloudboy.study.threadPoolExecutor" additivity="false">
+		<priority value="info" />
+		<appender-ref ref="log.console" />
+	</category>
+
+	<root>
+		<priority value="error" />
+		<appender-ref ref="log.console" />
+	</root>
+</log4j:configuration>
