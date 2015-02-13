@@ -9,7 +9,7 @@ public class MyExecutor implements Runnable {
 	
 	public MyExecutor(String executorName) {
 		this.executorName = executorName;
-		logger.info("MyExecutor(" + executorName + ")" + " is created.");
+//		logger.info("MyExecutor(" + executorName + ")" + " is created.");
 	}
 	
 	@Override
