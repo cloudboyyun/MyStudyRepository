@@ -99,7 +99,7 @@ public class BaseMemcachedTest {
 		assertTrue(userRetrieved != null);
 		
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(11000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
