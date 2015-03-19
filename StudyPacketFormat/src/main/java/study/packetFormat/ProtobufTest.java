@@ -24,7 +24,6 @@ public class ProtobufTest implements JavaSamplerClient {
 		SampleResult result = new SampleResult();
 		try {
 	        result.sampleStart();
-	        
 	        Message message = DataFactory.getMessagePB();
 	        byte[] pbResult = message.toByteArray();
 			Message messageResult = Message.parseFrom(pbResult);
