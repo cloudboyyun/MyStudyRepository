@@ -29,9 +29,12 @@ public class JAXBXmlTest implements JavaSamplerClient {
 	        Message message = DataFactory.getMessage();
 	        String xmlResult = XmlJaxbUtil.marshal(message);
 	        Message messageResult = XmlJaxbUtil.unmarshal(xmlResult);
-			System.out.println("JAXBXmlTest:" + messageResult.getMsgContent().getReimbersementList().getReimbersement().size());
-			
-			result.setSuccessful(true);
+	        if(DataFactory.password.equals(messageResult.getMsgContent().getPassword())) {
+				result.setSuccessful(true);
+			} else {
+				System.out.println(messageResult.getMsgContent().getPassword());
+				result.setSuccessful(false);
+			}
 			result.sampleEnd();
 		} catch(Exception e) {
 			result.setSuccessful(false);

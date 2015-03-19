@@ -9,6 +9,9 @@ import study.packetFormat.model.xml.Reimbersement;
 import study.packetFormat.model.xml.ReimbersementList;
 
 public class DataFactory {
+	
+	public final static String password = "18616227982";
+	
 	public static Message getMessage() {
 		DeviceInfo dev = new DeviceInfo();
 		dev.setImei("864449001051907");
@@ -24,7 +27,7 @@ public class DataFactory {
 		header.setDeviceInfo(dev);
 		
 		MsgContent msgContent = new MsgContent();
-		msgContent.setPassword("18616227982");
+		msgContent.setPassword(password);
 		msgContent.setReimbersementList(new ReimbersementList());
 		Reimbersement reimbersement = null;
 		for(int i=0; i<3; i++) {
@@ -60,7 +63,7 @@ public class DataFactory {
 		headerBuilder.setDeviceInfo(deviceInfoBuilder);
 		
 		MessagePB.Message.MsgContent.Builder msgContentBuilder = MessagePB.Message.MsgContent.newBuilder();
-		msgContentBuilder.setPassword("18616227982");
+		msgContentBuilder.setPassword(password);
 		MessagePB.Message.Reimbersement.Builder reimbersementBuilder = null;
 		for(int i=0; i<3; i++) {
 			reimbersementBuilder = MessagePB.Message.Reimbersement.newBuilder();

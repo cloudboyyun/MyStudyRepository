@@ -28,9 +28,12 @@ public class ProtobufTest implements JavaSamplerClient {
 	        Message message = DataFactory.getMessagePB();
 	        byte[] pbResult = message.toByteArray();
 			Message messageResult = Message.parseFrom(pbResult);
-			System.out.println(messageResult.getMsgContent().getPassword());
-			
-			result.setSuccessful(true);
+			if(DataFactory.password.equals(messageResult.getMsgContent().getPassword())) {
+				result.setSuccessful(true);
+			} else {
+				System.out.println(messageResult.getMsgContent().getPassword());
+				result.setSuccessful(false);
+			}
 			result.sampleEnd();
 		} catch(Exception e) {
 			result.setSuccessful(false);

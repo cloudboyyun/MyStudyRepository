@@ -36,9 +36,13 @@ public class JacksonJsonTest implements JavaSamplerClient {
 			mapper.writeValue(stringWriter, message);
 			String jsonResult = stringWriter.toString();
 			Message messageResult = mapper.readValue(jsonResult, Message.class);
-			System.out.println(messageResult.getMsgContent().getPassword());
 			
-			result.setSuccessful(true);
+			if(DataFactory.password.equals(messageResult.getMsgContent().getPassword())) {
+				result.setSuccessful(true);
+			} else {
+				System.out.println(messageResult.getMsgContent().getPassword());
+				result.setSuccessful(false);
+			}
 			result.sampleEnd();
 		} catch(Exception e) {
 			result.setSuccessful(false);
