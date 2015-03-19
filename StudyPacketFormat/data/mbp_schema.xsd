@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://mobile.99bill.com/payment" xmlns:tns="https://mobile.99bill.com/payment"
+	elementFormDefault="qualified">
+
+	<xs:element name="message">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sign" type="xs:string" />
+				<xs:element name="header" type="tns:header" />
+				<xs:element name="msgContent" type="tns:msgContent" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="header">
+		<xs:sequence>
+			<xs:element name="version" type="xs:string" />
+			<xs:element name="appVersion" type="xs:string" />
+			<xs:element name="bizType" type="xs:string" />
+			<xs:element name="reqTime" type="xs:string" />
+			<xs:element name="responseCode" type="xs:string" />
+			<xs:element name="responseMsg" type="xs:string" />
+			<xs:element name="deviceInfo" type="tns:deviceInfo" />
+			<xs:element name="userName" type="xs:string" />
+			<xs:element name="loginToken" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="deviceInfo">
+		<xs:sequence>
+			<xs:element name="mac" type="xs:string" />
+			<xs:element name="imei" type="xs:string" />
+			<xs:element name="imsi" type="xs:string" />
+			<xs:element name="deviceId" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="msgContent">
+		<xs:sequence>
+			<xs:element name="password" type="xs:string" />
+			<xs:element name="userMebCode" type="xs:string" />
+			<xs:element name="reimbersementList" type="tns:reimbersementList" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- 信用卡还款查询列表  -->
+	<xs:complexType name="reimbersementList">
+		<xs:sequence>
+			<xs:element name="reimbersement" type="tns:reimbersement"  maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="reimbersement">
+		<xs:sequence>
+			<xs:element name="creditBankId" type="xs:string"></xs:element>
+			<xs:element name="creditBankName" type="xs:string"></xs:element>
+			<xs:element name="creditCardNo" type="xs:string"></xs:element>
+			<xs:element name="amount" type="xs:string"></xs:element>
+			<xs:element name="requestDate" type="xs:string"></xs:element>
+			<xs:element name="status" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>    
+</xs:schema>

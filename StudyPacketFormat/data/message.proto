@@ -1,0 +1,42 @@
+option java_package = "study.packetFormat.model.pb"; 
+option java_outer_classname = "MessagePB";
+
+message Message {
+    optional string sign = 1;
+    
+    message DeviceInfo { 
+    	 optional string mac = 1;
+    	 optional string imei = 2;
+    	 optional string imsi = 3;
+    	 optional string deviceId = 4;
+  	}
+  	
+    message Header { 
+    	required string version = 1 [default = "4.0"];
+    	optional string appVersion = 2;
+    	required string bizType = 3;
+    	required string reqTime = 4;
+    	optional string responseCode = 5;
+    	optional string responseMsg = 6;
+    	optional DeviceInfo deviceInfo = 7;
+    	required string userName = 8;
+    	optional string loginToken = 9;
+  	}
+  	required Header header = 2;
+  	
+  	message Reimbersement {
+    	optional string creditBankId = 1;
+    	optional string creditBankName = 2;
+    	optional string creditCardNo = 3;
+    	optional string amount = 4;
+    	optional string requestDate = 5;
+    	optional string status = 6;
+  	}
+  	
+  	message MsgContent { 
+    	optional string password = 1;
+    	optional string userMebCode = 2;
+    	repeated Reimbersement reimbersementList = 3;
+  	}
+  	required MsgContent msgContent = 3;
+}

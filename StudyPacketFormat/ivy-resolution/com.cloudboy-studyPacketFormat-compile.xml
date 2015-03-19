@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.cloudboy"
+		module="studyPacketFormat"
+		revision="working@USER-20140905FA"
+		conf="compile"
+		confs="default, compile, zip, test"
+		date="20150319142545"/>
+	<dependencies>
+		<module organisation="org.apache.jmeter" name="ApacheJMeter_java">
+			<revision name="2.11" status="release" pubdate="20140625101610" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="5">
+				<metadata-artifact status="no" details="" size="444" time="0" location="D:\Local_Repository\ivy-cache\org.apache.jmeter\ApacheJMeter_java\ivy-2.11.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.apache.jmeter\ApacheJMeter_java\ivys\ivy-2.11.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="2.11" rev-constraint-default="2.11" rev-constraint-dynamic="2.11" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="ApacheJMeter_java" type="jar" ext="jar" status="no" details="" size="42100" time="0" location="D:\Local_Repository\ivy-cache\org.apache.jmeter\ApacheJMeter_java\jars\ApacheJMeter_java-2.11.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/jmeter/ApacheJMeter_java/2.11/ApacheJMeter_java-2.11.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.jmeter" name="ApacheJMeter_core">
+			<revision name="2.11" status="release" pubdate="20140625100353" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="4">
+				<metadata-artifact status="no" details="" size="444" time="0" location="D:\Local_Repository\ivy-cache\org.apache.jmeter\ApacheJMeter_core\ivy-2.11.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.apache.jmeter\ApacheJMeter_core\ivys\ivy-2.11.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="2.11" rev-constraint-default="2.11" rev-constraint-dynamic="2.11" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="ApacheJMeter_core" type="jar" ext="jar" status="no" details="" size="1117450" time="0" location="D:\Local_Repository\ivy-cache\org.apache.jmeter\ApacheJMeter_core\jars\ApacheJMeter_core-2.11.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/jmeter/ApacheJMeter_core/2.11/ApacheJMeter_core-2.11.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.caucho" name="hessian">
+			<revision name="3.1.6" status="release" pubdate="20121121152407" resolver="Client-Resolver" artresolver="Client-Resolver" downloaded="false" searched="false" default="true" conf="default" position="3">
+				<metadata-artifact status="no" details="" size="392" time="0" location="D:\Local_Repository\ivy-cache\com.caucho\hessian\ivy-3.1.6.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\com.caucho\hessian\ivys\ivy-3.1.6.xml" origin-is-local="false" origin-location="http://192.168.52.211/com.caucho/hessian/ivys/ivy-3.1.6.xml"/>
+				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="3.1.6" rev-constraint-default="3.1.6" rev-constraint-dynamic="3.1.6" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="hessian" type="jar" ext="jar" status="no" details="" size="277038" time="0" location="D:\Local_Repository\ivy-cache\com.caucho\hessian\jars\hessian-3.1.6.jar">
+						<origin-location is-local="false" location="http://192.168.52.211/com.caucho/hessian/jars/hessian-3.1.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.protobuf" name="protobuf-java">
+			<revision name="2.6.1" status="release" pubdate="20141023091025" resolver="libraries" artresolver="libraries" homepage="https://developers.google.com/protocol-buffers/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, master" position="2">
+				<license name="New BSD license" url="http://www.opensource.org/licenses/bsd-license.php"/>
+				<metadata-artifact status="no" details="" size="3059" time="0" location="D:\Local_Repository\ivy-cache\com.google.protobuf\protobuf-java\ivy-2.6.1.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\com.google.protobuf\protobuf-java\ivy-2.6.1.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/2.6.1/protobuf-java-2.6.1.pom"/>
+				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="2.6.1" rev-constraint-default="2.6.1" rev-constraint-dynamic="2.6.1" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="protobuf-java" type="bundle" ext="jar" status="no" details="" size="596642" time="0" location="D:\Local_Repository\ivy-cache\com.google.protobuf\protobuf-java\bundles\protobuf-java-2.6.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/2.6.1/protobuf-java-2.6.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.codehaus.jackson" name="jackson-mapper-asl">
+			<revision name="1.9.13" status="release" pubdate="20130715110750" resolver="libraries" artresolver="libraries" homepage="http://jackson.codehaus.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, master" position="0">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2894" time="0" location="D:\Local_Repository\ivy-cache\org.codehaus.jackson\jackson-mapper-asl\ivy-1.9.13.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.codehaus.jackson\jackson-mapper-asl\ivy-1.9.13.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.pom"/>
+				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="1.9.13" rev-constraint-default="1.9.13" rev-constraint-dynamic="1.9.13" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="jackson-mapper-asl" type="jar" ext="jar" status="no" details="" size="780664" time="0" location="D:\Local_Repository\ivy-cache\org.codehaus.jackson\jackson-mapper-asl\jars\jackson-mapper-asl-1.9.13.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.codehaus.jackson" name="jackson-core-asl">
+			<revision name="1.9.13" status="release" pubdate="20130715110730" resolver="libraries" artresolver="libraries" homepage="http://jackson.codehaus.org" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="1">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2670" time="0" location="D:\Local_Repository\ivy-cache\org.codehaus.jackson\jackson-core-asl\ivy-1.9.13.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.codehaus.jackson\jackson-core-asl\ivy-1.9.13.xml.original" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.pom"/>
+				<caller organisation="org.codehaus.jackson" name="jackson-mapper-asl" conf="default, compile, runtime, master" rev="1.9.13" rev-constraint-default="1.9.13" rev-constraint-dynamic="1.9.13" callerrev="1.9.13"/>
+				<artifacts>
+					<artifact name="jackson-core-asl" type="jar" ext="jar" status="no" details="" size="232248" time="0" location="D:\Local_Repository\ivy-cache\org.codehaus.jackson\jackson-core-asl\jars\jackson-core-asl-1.9.13.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

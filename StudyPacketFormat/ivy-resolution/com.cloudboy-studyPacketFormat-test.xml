@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.cloudboy"
+		module="studyPacketFormat"
+		revision="working@USER-20140905FA"
+		conf="test"
+		confs="default, compile, zip, test"
+		date="20150319142545"/>
+	<dependencies>
+	</dependencies>
+</ivy-report>
