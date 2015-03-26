@@ -1,0 +1,1 @@
+D:\javalib\protobuf\protoc --proto_path=D:/myGitRepositories/MyStudyRepository/StudyProtobuf/data --java_out=D:/myGitRepositories/MyStudyRepository/StudyProtobuf/src/main/java D:/myGitRepositories/MyStudyRepository/StudyProtobuf/data/message.proto

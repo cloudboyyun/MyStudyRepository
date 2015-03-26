@@ -1,1 +1,6 @@
 /bin/
+/build/
+/lib/
+/ivy-resolution/
+/release/
+/build.number
