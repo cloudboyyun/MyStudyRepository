@@ -8,10 +8,10 @@ public final class MessagePB {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface MessageOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface MessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Message)
+      com.google.protobuf.MessageOrBuilder {
 
-    // optional string sign = 1;
     /**
      * <code>optional string sign = 1;</code>
      */
@@ -26,7 +26,6 @@ public final class MessagePB {
     com.google.protobuf.ByteString
         getSignBytes();
 
-    // required .Message.Header header = 2;
     /**
      * <code>required .Message.Header header = 2;</code>
      */
@@ -40,7 +39,6 @@ public final class MessagePB {
      */
     study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder getHeaderOrBuilder();
 
-    // required .Message.MsgContent msgContent = 3;
     /**
      * <code>required .Message.MsgContent msgContent = 3;</code>
      */
@@ -58,8 +56,9 @@ public final class MessagePB {
    * Protobuf type {@code Message}
    */
   public static final class Message extends
-      com.google.protobuf.GeneratedMessage
-      implements MessageOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Message)
+      MessageOrBuilder {
     // Use Message.newBuilder() to construct.
     private Message(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -106,8 +105,9 @@ public final class MessagePB {
               break;
             }
             case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              sign_ = input.readBytes();
+              sign_ = bs;
               break;
             }
             case 18: {
@@ -175,10 +175,10 @@ public final class MessagePB {
       return PARSER;
     }
 
-    public interface DeviceInfoOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
+    public interface DeviceInfoOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:Message.DeviceInfo)
+        com.google.protobuf.MessageOrBuilder {
 
-      // optional string mac = 1;
       /**
        * <code>optional string mac = 1;</code>
        */
@@ -193,7 +193,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getMacBytes();
 
-      // optional string imei = 2;
       /**
        * <code>optional string imei = 2;</code>
        */
@@ -208,7 +207,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getImeiBytes();
 
-      // optional string imsi = 3;
       /**
        * <code>optional string imsi = 3;</code>
        */
@@ -223,7 +221,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getImsiBytes();
 
-      // optional string deviceId = 4;
       /**
        * <code>optional string deviceId = 4;</code>
        */
@@ -242,8 +239,9 @@ public final class MessagePB {
      * Protobuf type {@code Message.DeviceInfo}
      */
     public static final class DeviceInfo extends
-        com.google.protobuf.GeneratedMessage
-        implements DeviceInfoOrBuilder {
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:Message.DeviceInfo)
+        DeviceInfoOrBuilder {
       // Use DeviceInfo.newBuilder() to construct.
       private DeviceInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
@@ -290,23 +288,27 @@ public final class MessagePB {
                 break;
               }
               case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000001;
-                mac_ = input.readBytes();
+                mac_ = bs;
                 break;
               }
               case 18: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000002;
-                imei_ = input.readBytes();
+                imei_ = bs;
                 break;
               }
               case 26: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000004;
-                imsi_ = input.readBytes();
+                imsi_ = bs;
                 break;
               }
               case 34: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000008;
-                deviceId_ = input.readBytes();
+                deviceId_ = bs;
                 break;
               }
             }
@@ -349,7 +351,6 @@ public final class MessagePB {
       }
 
       private int bitField0_;
-      // optional string mac = 1;
       public static final int MAC_FIELD_NUMBER = 1;
       private java.lang.Object mac_;
       /**
@@ -392,7 +393,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string imei = 2;
       public static final int IMEI_FIELD_NUMBER = 2;
       private java.lang.Object imei_;
       /**
@@ -435,7 +435,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string imsi = 3;
       public static final int IMSI_FIELD_NUMBER = 3;
       private java.lang.Object imsi_;
       /**
@@ -478,7 +477,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string deviceId = 4;
       public static final int DEVICEID_FIELD_NUMBER = 4;
       private java.lang.Object deviceId_;
       /**
@@ -530,7 +528,8 @@ public final class MessagePB {
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
 
         memoizedIsInitialized = 1;
         return true;
@@ -658,8 +657,9 @@ public final class MessagePB {
        * Protobuf type {@code Message.DeviceInfo}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements study.packetFormat.model.pb.MessagePB.Message.DeviceInfoOrBuilder {
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:Message.DeviceInfo)
+          study.packetFormat.model.pb.MessagePB.Message.DeviceInfoOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
           return study.packetFormat.model.pb.MessagePB.internal_static_Message_DeviceInfo_descriptor;
@@ -807,7 +807,6 @@ public final class MessagePB {
         }
         private int bitField0_;
 
-        // optional string mac = 1;
         private java.lang.Object mac_ = "";
         /**
          * <code>optional string mac = 1;</code>
@@ -821,9 +820,12 @@ public final class MessagePB {
         public java.lang.String getMac() {
           java.lang.Object ref = mac_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            mac_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              mac_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -881,7 +883,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string imei = 2;
         private java.lang.Object imei_ = "";
         /**
          * <code>optional string imei = 2;</code>
@@ -895,9 +896,12 @@ public final class MessagePB {
         public java.lang.String getImei() {
           java.lang.Object ref = imei_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            imei_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              imei_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -955,7 +959,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string imsi = 3;
         private java.lang.Object imsi_ = "";
         /**
          * <code>optional string imsi = 3;</code>
@@ -969,9 +972,12 @@ public final class MessagePB {
         public java.lang.String getImsi() {
           java.lang.Object ref = imsi_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            imsi_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              imsi_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -1029,7 +1035,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string deviceId = 4;
         private java.lang.Object deviceId_ = "";
         /**
          * <code>optional string deviceId = 4;</code>
@@ -1043,9 +1048,12 @@ public final class MessagePB {
         public java.lang.String getDeviceId() {
           java.lang.Object ref = deviceId_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            deviceId_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              deviceId_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -1114,10 +1122,10 @@ public final class MessagePB {
       // @@protoc_insertion_point(class_scope:Message.DeviceInfo)
     }
 
-    public interface HeaderOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
+    public interface HeaderOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:Message.Header)
+        com.google.protobuf.MessageOrBuilder {
 
-      // required string version = 1 [default = "4.0"];
       /**
        * <code>required string version = 1 [default = "4.0"];</code>
        */
@@ -1132,7 +1140,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getVersionBytes();
 
-      // optional string appVersion = 2;
       /**
        * <code>optional string appVersion = 2;</code>
        */
@@ -1147,7 +1154,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getAppVersionBytes();
 
-      // required string bizType = 3;
       /**
        * <code>required string bizType = 3;</code>
        */
@@ -1162,7 +1168,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getBizTypeBytes();
 
-      // required string reqTime = 4;
       /**
        * <code>required string reqTime = 4;</code>
        */
@@ -1177,7 +1182,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getReqTimeBytes();
 
-      // optional string responseCode = 5;
       /**
        * <code>optional string responseCode = 5;</code>
        */
@@ -1192,7 +1196,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getResponseCodeBytes();
 
-      // optional string responseMsg = 6;
       /**
        * <code>optional string responseMsg = 6;</code>
        */
@@ -1207,7 +1210,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getResponseMsgBytes();
 
-      // optional .Message.DeviceInfo deviceInfo = 7;
       /**
        * <code>optional .Message.DeviceInfo deviceInfo = 7;</code>
        */
@@ -1221,7 +1223,6 @@ public final class MessagePB {
        */
       study.packetFormat.model.pb.MessagePB.Message.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
 
-      // required string userName = 8;
       /**
        * <code>required string userName = 8;</code>
        */
@@ -1236,7 +1237,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getUserNameBytes();
 
-      // optional string loginToken = 9;
       /**
        * <code>optional string loginToken = 9;</code>
        */
@@ -1255,8 +1255,9 @@ public final class MessagePB {
      * Protobuf type {@code Message.Header}
      */
     public static final class Header extends
-        com.google.protobuf.GeneratedMessage
-        implements HeaderOrBuilder {
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:Message.Header)
+        HeaderOrBuilder {
       // Use Header.newBuilder() to construct.
       private Header(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
@@ -1303,33 +1304,39 @@ public final class MessagePB {
                 break;
               }
               case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000001;
-                version_ = input.readBytes();
+                version_ = bs;
                 break;
               }
               case 18: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000002;
-                appVersion_ = input.readBytes();
+                appVersion_ = bs;
                 break;
               }
               case 26: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000004;
-                bizType_ = input.readBytes();
+                bizType_ = bs;
                 break;
               }
               case 34: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000008;
-                reqTime_ = input.readBytes();
+                reqTime_ = bs;
                 break;
               }
               case 42: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000010;
-                responseCode_ = input.readBytes();
+                responseCode_ = bs;
                 break;
               }
               case 50: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000020;
-                responseMsg_ = input.readBytes();
+                responseMsg_ = bs;
                 break;
               }
               case 58: {
@@ -1346,13 +1353,15 @@ public final class MessagePB {
                 break;
               }
               case 66: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000080;
-                userName_ = input.readBytes();
+                userName_ = bs;
                 break;
               }
               case 74: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000100;
-                loginToken_ = input.readBytes();
+                loginToken_ = bs;
                 break;
               }
             }
@@ -1395,7 +1404,6 @@ public final class MessagePB {
       }
 
       private int bitField0_;
-      // required string version = 1 [default = "4.0"];
       public static final int VERSION_FIELD_NUMBER = 1;
       private java.lang.Object version_;
       /**
@@ -1438,7 +1446,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string appVersion = 2;
       public static final int APPVERSION_FIELD_NUMBER = 2;
       private java.lang.Object appVersion_;
       /**
@@ -1481,7 +1488,6 @@ public final class MessagePB {
         }
       }
 
-      // required string bizType = 3;
       public static final int BIZTYPE_FIELD_NUMBER = 3;
       private java.lang.Object bizType_;
       /**
@@ -1524,7 +1530,6 @@ public final class MessagePB {
         }
       }
 
-      // required string reqTime = 4;
       public static final int REQTIME_FIELD_NUMBER = 4;
       private java.lang.Object reqTime_;
       /**
@@ -1567,7 +1572,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string responseCode = 5;
       public static final int RESPONSECODE_FIELD_NUMBER = 5;
       private java.lang.Object responseCode_;
       /**
@@ -1610,7 +1614,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string responseMsg = 6;
       public static final int RESPONSEMSG_FIELD_NUMBER = 6;
       private java.lang.Object responseMsg_;
       /**
@@ -1653,7 +1656,6 @@ public final class MessagePB {
         }
       }
 
-      // optional .Message.DeviceInfo deviceInfo = 7;
       public static final int DEVICEINFO_FIELD_NUMBER = 7;
       private study.packetFormat.model.pb.MessagePB.Message.DeviceInfo deviceInfo_;
       /**
@@ -1675,7 +1677,6 @@ public final class MessagePB {
         return deviceInfo_;
       }
 
-      // required string userName = 8;
       public static final int USERNAME_FIELD_NUMBER = 8;
       private java.lang.Object userName_;
       /**
@@ -1718,7 +1719,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string loginToken = 9;
       public static final int LOGINTOKEN_FIELD_NUMBER = 9;
       private java.lang.Object loginToken_;
       /**
@@ -1775,7 +1775,8 @@ public final class MessagePB {
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
 
         if (!hasVersion()) {
           memoizedIsInitialized = 0;
@@ -1954,8 +1955,9 @@ public final class MessagePB {
        * Protobuf type {@code Message.Header}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder {
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:Message.Header)
+          study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
           return study.packetFormat.model.pb.MessagePB.internal_static_Message_Header_descriptor;
@@ -2181,7 +2183,6 @@ public final class MessagePB {
         }
         private int bitField0_;
 
-        // required string version = 1 [default = "4.0"];
         private java.lang.Object version_ = "4.0";
         /**
          * <code>required string version = 1 [default = "4.0"];</code>
@@ -2195,9 +2196,12 @@ public final class MessagePB {
         public java.lang.String getVersion() {
           java.lang.Object ref = version_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            version_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              version_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2255,7 +2259,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string appVersion = 2;
         private java.lang.Object appVersion_ = "";
         /**
          * <code>optional string appVersion = 2;</code>
@@ -2269,9 +2272,12 @@ public final class MessagePB {
         public java.lang.String getAppVersion() {
           java.lang.Object ref = appVersion_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            appVersion_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              appVersion_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2329,7 +2335,6 @@ public final class MessagePB {
           return this;
         }
 
-        // required string bizType = 3;
         private java.lang.Object bizType_ = "";
         /**
          * <code>required string bizType = 3;</code>
@@ -2343,9 +2348,12 @@ public final class MessagePB {
         public java.lang.String getBizType() {
           java.lang.Object ref = bizType_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            bizType_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              bizType_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2403,7 +2411,6 @@ public final class MessagePB {
           return this;
         }
 
-        // required string reqTime = 4;
         private java.lang.Object reqTime_ = "";
         /**
          * <code>required string reqTime = 4;</code>
@@ -2417,9 +2424,12 @@ public final class MessagePB {
         public java.lang.String getReqTime() {
           java.lang.Object ref = reqTime_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            reqTime_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              reqTime_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2477,7 +2487,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string responseCode = 5;
         private java.lang.Object responseCode_ = "";
         /**
          * <code>optional string responseCode = 5;</code>
@@ -2491,9 +2500,12 @@ public final class MessagePB {
         public java.lang.String getResponseCode() {
           java.lang.Object ref = responseCode_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            responseCode_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              responseCode_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2551,7 +2563,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string responseMsg = 6;
         private java.lang.Object responseMsg_ = "";
         /**
          * <code>optional string responseMsg = 6;</code>
@@ -2565,9 +2576,12 @@ public final class MessagePB {
         public java.lang.String getResponseMsg() {
           java.lang.Object ref = responseMsg_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            responseMsg_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              responseMsg_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2625,7 +2639,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional .Message.DeviceInfo deviceInfo = 7;
         private study.packetFormat.model.pb.MessagePB.Message.DeviceInfo deviceInfo_ = study.packetFormat.model.pb.MessagePB.Message.DeviceInfo.getDefaultInstance();
         private com.google.protobuf.SingleFieldBuilder<
             study.packetFormat.model.pb.MessagePB.Message.DeviceInfo, study.packetFormat.model.pb.MessagePB.Message.DeviceInfo.Builder, study.packetFormat.model.pb.MessagePB.Message.DeviceInfoOrBuilder> deviceInfoBuilder_;
@@ -2734,7 +2747,7 @@ public final class MessagePB {
           if (deviceInfoBuilder_ == null) {
             deviceInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
                 study.packetFormat.model.pb.MessagePB.Message.DeviceInfo, study.packetFormat.model.pb.MessagePB.Message.DeviceInfo.Builder, study.packetFormat.model.pb.MessagePB.Message.DeviceInfoOrBuilder>(
-                    deviceInfo_,
+                    getDeviceInfo(),
                     getParentForChildren(),
                     isClean());
             deviceInfo_ = null;
@@ -2742,7 +2755,6 @@ public final class MessagePB {
           return deviceInfoBuilder_;
         }
 
-        // required string userName = 8;
         private java.lang.Object userName_ = "";
         /**
          * <code>required string userName = 8;</code>
@@ -2756,9 +2768,12 @@ public final class MessagePB {
         public java.lang.String getUserName() {
           java.lang.Object ref = userName_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            userName_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              userName_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2816,7 +2831,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string loginToken = 9;
         private java.lang.Object loginToken_ = "";
         /**
          * <code>optional string loginToken = 9;</code>
@@ -2830,9 +2844,12 @@ public final class MessagePB {
         public java.lang.String getLoginToken() {
           java.lang.Object ref = loginToken_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            loginToken_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              loginToken_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -2901,10 +2918,10 @@ public final class MessagePB {
       // @@protoc_insertion_point(class_scope:Message.Header)
     }
 
-    public interface ReimbersementOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
+    public interface ReimbersementOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:Message.Reimbersement)
+        com.google.protobuf.MessageOrBuilder {
 
-      // optional string creditBankId = 1;
       /**
        * <code>optional string creditBankId = 1;</code>
        */
@@ -2919,7 +2936,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getCreditBankIdBytes();
 
-      // optional string creditBankName = 2;
       /**
        * <code>optional string creditBankName = 2;</code>
        */
@@ -2934,7 +2950,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getCreditBankNameBytes();
 
-      // optional string creditCardNo = 3;
       /**
        * <code>optional string creditCardNo = 3;</code>
        */
@@ -2949,7 +2964,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getCreditCardNoBytes();
 
-      // optional string amount = 4;
       /**
        * <code>optional string amount = 4;</code>
        */
@@ -2964,7 +2978,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getAmountBytes();
 
-      // optional string requestDate = 5;
       /**
        * <code>optional string requestDate = 5;</code>
        */
@@ -2979,7 +2992,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getRequestDateBytes();
 
-      // optional string status = 6;
       /**
        * <code>optional string status = 6;</code>
        */
@@ -2998,8 +3010,9 @@ public final class MessagePB {
      * Protobuf type {@code Message.Reimbersement}
      */
     public static final class Reimbersement extends
-        com.google.protobuf.GeneratedMessage
-        implements ReimbersementOrBuilder {
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:Message.Reimbersement)
+        ReimbersementOrBuilder {
       // Use Reimbersement.newBuilder() to construct.
       private Reimbersement(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
@@ -3046,33 +3059,39 @@ public final class MessagePB {
                 break;
               }
               case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000001;
-                creditBankId_ = input.readBytes();
+                creditBankId_ = bs;
                 break;
               }
               case 18: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000002;
-                creditBankName_ = input.readBytes();
+                creditBankName_ = bs;
                 break;
               }
               case 26: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000004;
-                creditCardNo_ = input.readBytes();
+                creditCardNo_ = bs;
                 break;
               }
               case 34: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000008;
-                amount_ = input.readBytes();
+                amount_ = bs;
                 break;
               }
               case 42: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000010;
-                requestDate_ = input.readBytes();
+                requestDate_ = bs;
                 break;
               }
               case 50: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000020;
-                status_ = input.readBytes();
+                status_ = bs;
                 break;
               }
             }
@@ -3115,7 +3134,6 @@ public final class MessagePB {
       }
 
       private int bitField0_;
-      // optional string creditBankId = 1;
       public static final int CREDITBANKID_FIELD_NUMBER = 1;
       private java.lang.Object creditBankId_;
       /**
@@ -3158,7 +3176,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string creditBankName = 2;
       public static final int CREDITBANKNAME_FIELD_NUMBER = 2;
       private java.lang.Object creditBankName_;
       /**
@@ -3201,7 +3218,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string creditCardNo = 3;
       public static final int CREDITCARDNO_FIELD_NUMBER = 3;
       private java.lang.Object creditCardNo_;
       /**
@@ -3244,7 +3260,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string amount = 4;
       public static final int AMOUNT_FIELD_NUMBER = 4;
       private java.lang.Object amount_;
       /**
@@ -3287,7 +3302,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string requestDate = 5;
       public static final int REQUESTDATE_FIELD_NUMBER = 5;
       private java.lang.Object requestDate_;
       /**
@@ -3330,7 +3344,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string status = 6;
       public static final int STATUS_FIELD_NUMBER = 6;
       private java.lang.Object status_;
       /**
@@ -3384,7 +3397,8 @@ public final class MessagePB {
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
 
         memoizedIsInitialized = 1;
         return true;
@@ -3526,8 +3540,9 @@ public final class MessagePB {
        * Protobuf type {@code Message.Reimbersement}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements study.packetFormat.model.pb.MessagePB.Message.ReimbersementOrBuilder {
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:Message.Reimbersement)
+          study.packetFormat.model.pb.MessagePB.Message.ReimbersementOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
           return study.packetFormat.model.pb.MessagePB.internal_static_Message_Reimbersement_descriptor;
@@ -3697,7 +3712,6 @@ public final class MessagePB {
         }
         private int bitField0_;
 
-        // optional string creditBankId = 1;
         private java.lang.Object creditBankId_ = "";
         /**
          * <code>optional string creditBankId = 1;</code>
@@ -3711,9 +3725,12 @@ public final class MessagePB {
         public java.lang.String getCreditBankId() {
           java.lang.Object ref = creditBankId_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            creditBankId_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              creditBankId_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -3771,7 +3788,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string creditBankName = 2;
         private java.lang.Object creditBankName_ = "";
         /**
          * <code>optional string creditBankName = 2;</code>
@@ -3785,9 +3801,12 @@ public final class MessagePB {
         public java.lang.String getCreditBankName() {
           java.lang.Object ref = creditBankName_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            creditBankName_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              creditBankName_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -3845,7 +3864,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string creditCardNo = 3;
         private java.lang.Object creditCardNo_ = "";
         /**
          * <code>optional string creditCardNo = 3;</code>
@@ -3859,9 +3877,12 @@ public final class MessagePB {
         public java.lang.String getCreditCardNo() {
           java.lang.Object ref = creditCardNo_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            creditCardNo_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              creditCardNo_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -3919,7 +3940,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string amount = 4;
         private java.lang.Object amount_ = "";
         /**
          * <code>optional string amount = 4;</code>
@@ -3933,9 +3953,12 @@ public final class MessagePB {
         public java.lang.String getAmount() {
           java.lang.Object ref = amount_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            amount_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              amount_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -3993,7 +4016,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string requestDate = 5;
         private java.lang.Object requestDate_ = "";
         /**
          * <code>optional string requestDate = 5;</code>
@@ -4007,9 +4029,12 @@ public final class MessagePB {
         public java.lang.String getRequestDate() {
           java.lang.Object ref = requestDate_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            requestDate_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              requestDate_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -4067,7 +4092,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string status = 6;
         private java.lang.Object status_ = "";
         /**
          * <code>optional string status = 6;</code>
@@ -4081,9 +4105,12 @@ public final class MessagePB {
         public java.lang.String getStatus() {
           java.lang.Object ref = status_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            status_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              status_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -4152,10 +4179,10 @@ public final class MessagePB {
       // @@protoc_insertion_point(class_scope:Message.Reimbersement)
     }
 
-    public interface MsgContentOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
+    public interface MsgContentOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:Message.MsgContent)
+        com.google.protobuf.MessageOrBuilder {
 
-      // optional string password = 1;
       /**
        * <code>optional string password = 1;</code>
        */
@@ -4170,7 +4197,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getPasswordBytes();
 
-      // optional string userMebCode = 2;
       /**
        * <code>optional string userMebCode = 2;</code>
        */
@@ -4185,7 +4211,6 @@ public final class MessagePB {
       com.google.protobuf.ByteString
           getUserMebCodeBytes();
 
-      // repeated .Message.Reimbersement reimbersementList = 3;
       /**
        * <code>repeated .Message.Reimbersement reimbersementList = 3;</code>
        */
@@ -4214,8 +4239,9 @@ public final class MessagePB {
      * Protobuf type {@code Message.MsgContent}
      */
     public static final class MsgContent extends
-        com.google.protobuf.GeneratedMessage
-        implements MsgContentOrBuilder {
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:Message.MsgContent)
+        MsgContentOrBuilder {
       // Use MsgContent.newBuilder() to construct.
       private MsgContent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
@@ -4262,13 +4288,15 @@ public final class MessagePB {
                 break;
               }
               case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000001;
-                password_ = input.readBytes();
+                password_ = bs;
                 break;
               }
               case 18: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000002;
-                userMebCode_ = input.readBytes();
+                userMebCode_ = bs;
                 break;
               }
               case 26: {
@@ -4322,7 +4350,6 @@ public final class MessagePB {
       }
 
       private int bitField0_;
-      // optional string password = 1;
       public static final int PASSWORD_FIELD_NUMBER = 1;
       private java.lang.Object password_;
       /**
@@ -4365,7 +4392,6 @@ public final class MessagePB {
         }
       }
 
-      // optional string userMebCode = 2;
       public static final int USERMEBCODE_FIELD_NUMBER = 2;
       private java.lang.Object userMebCode_;
       /**
@@ -4408,7 +4434,6 @@ public final class MessagePB {
         }
       }
 
-      // repeated .Message.Reimbersement reimbersementList = 3;
       public static final int REIMBERSEMENTLIST_FIELD_NUMBER = 3;
       private java.util.List<study.packetFormat.model.pb.MessagePB.Message.Reimbersement> reimbersementList_;
       /**
@@ -4452,7 +4477,8 @@ public final class MessagePB {
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
 
         memoizedIsInitialized = 1;
         return true;
@@ -4573,8 +4599,9 @@ public final class MessagePB {
        * Protobuf type {@code Message.MsgContent}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder {
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:Message.MsgContent)
+          study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
           return study.packetFormat.model.pb.MessagePB.internal_static_Message_MsgContent_descriptor;
@@ -4742,7 +4769,6 @@ public final class MessagePB {
         }
         private int bitField0_;
 
-        // optional string password = 1;
         private java.lang.Object password_ = "";
         /**
          * <code>optional string password = 1;</code>
@@ -4756,9 +4782,12 @@ public final class MessagePB {
         public java.lang.String getPassword() {
           java.lang.Object ref = password_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            password_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              password_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -4816,7 +4845,6 @@ public final class MessagePB {
           return this;
         }
 
-        // optional string userMebCode = 2;
         private java.lang.Object userMebCode_ = "";
         /**
          * <code>optional string userMebCode = 2;</code>
@@ -4830,9 +4858,12 @@ public final class MessagePB {
         public java.lang.String getUserMebCode() {
           java.lang.Object ref = userMebCode_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            userMebCode_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              userMebCode_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -4890,7 +4921,6 @@ public final class MessagePB {
           return this;
         }
 
-        // repeated .Message.Reimbersement reimbersementList = 3;
         private java.util.List<study.packetFormat.model.pb.MessagePB.Message.Reimbersement> reimbersementList_ =
           java.util.Collections.emptyList();
         private void ensureReimbersementListIsMutable() {
@@ -5032,7 +5062,8 @@ public final class MessagePB {
             java.lang.Iterable<? extends study.packetFormat.model.pb.MessagePB.Message.Reimbersement> values) {
           if (reimbersementListBuilder_ == null) {
             ensureReimbersementListIsMutable();
-            super.addAll(values, reimbersementList_);
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, reimbersementList_);
             onChanged();
           } else {
             reimbersementListBuilder_.addAllMessages(values);
@@ -5142,7 +5173,6 @@ public final class MessagePB {
     }
 
     private int bitField0_;
-    // optional string sign = 1;
     public static final int SIGN_FIELD_NUMBER = 1;
     private java.lang.Object sign_;
     /**
@@ -5185,7 +5215,6 @@ public final class MessagePB {
       }
     }
 
-    // required .Message.Header header = 2;
     public static final int HEADER_FIELD_NUMBER = 2;
     private study.packetFormat.model.pb.MessagePB.Message.Header header_;
     /**
@@ -5207,7 +5236,6 @@ public final class MessagePB {
       return header_;
     }
 
-    // required .Message.MsgContent msgContent = 3;
     public static final int MSGCONTENT_FIELD_NUMBER = 3;
     private study.packetFormat.model.pb.MessagePB.Message.MsgContent msgContent_;
     /**
@@ -5237,7 +5265,8 @@ public final class MessagePB {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasHeader()) {
         memoizedIsInitialized = 0;
@@ -5370,8 +5399,9 @@ public final class MessagePB {
      * Protobuf type {@code Message}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements study.packetFormat.model.pb.MessagePB.MessageOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Message)
+        study.packetFormat.model.pb.MessagePB.MessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return study.packetFormat.model.pb.MessagePB.internal_static_Message_descriptor;
@@ -5534,7 +5564,6 @@ public final class MessagePB {
       }
       private int bitField0_;
 
-      // optional string sign = 1;
       private java.lang.Object sign_ = "";
       /**
        * <code>optional string sign = 1;</code>
@@ -5548,9 +5577,12 @@ public final class MessagePB {
       public java.lang.String getSign() {
         java.lang.Object ref = sign_;
         if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          sign_ = s;
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            sign_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -5608,7 +5640,6 @@ public final class MessagePB {
         return this;
       }
 
-      // required .Message.Header header = 2;
       private study.packetFormat.model.pb.MessagePB.Message.Header header_ = study.packetFormat.model.pb.MessagePB.Message.Header.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           study.packetFormat.model.pb.MessagePB.Message.Header, study.packetFormat.model.pb.MessagePB.Message.Header.Builder, study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder> headerBuilder_;
@@ -5717,7 +5748,7 @@ public final class MessagePB {
         if (headerBuilder_ == null) {
           headerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               study.packetFormat.model.pb.MessagePB.Message.Header, study.packetFormat.model.pb.MessagePB.Message.Header.Builder, study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder>(
-                  header_,
+                  getHeader(),
                   getParentForChildren(),
                   isClean());
           header_ = null;
@@ -5725,7 +5756,6 @@ public final class MessagePB {
         return headerBuilder_;
       }
 
-      // required .Message.MsgContent msgContent = 3;
       private study.packetFormat.model.pb.MessagePB.Message.MsgContent msgContent_ = study.packetFormat.model.pb.MessagePB.Message.MsgContent.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           study.packetFormat.model.pb.MessagePB.Message.MsgContent, study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder, study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder> msgContentBuilder_;
@@ -5834,7 +5864,7 @@ public final class MessagePB {
         if (msgContentBuilder_ == null) {
           msgContentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               study.packetFormat.model.pb.MessagePB.Message.MsgContent, study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder, study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder>(
-                  msgContent_,
+                  getMsgContent(),
                   getParentForChildren(),
                   isClean());
           msgContent_ = null;
@@ -5853,27 +5883,27 @@ public final class MessagePB {
     // @@protoc_insertion_point(class_scope:Message)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Message_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_DeviceInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Message_DeviceInfo_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_Header_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Message_Header_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_Reimbersement_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Message_Reimbersement_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_MsgContent_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5907,47 +5937,47 @@ public final class MessagePB {
       "PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_Message_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_Message_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_Message_descriptor,
-              new java.lang.String[] { "Sign", "Header", "MsgContent", });
-          internal_static_Message_DeviceInfo_descriptor =
-            internal_static_Message_descriptor.getNestedTypes().get(0);
-          internal_static_Message_DeviceInfo_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_Message_DeviceInfo_descriptor,
-              new java.lang.String[] { "Mac", "Imei", "Imsi", "DeviceId", });
-          internal_static_Message_Header_descriptor =
-            internal_static_Message_descriptor.getNestedTypes().get(1);
-          internal_static_Message_Header_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_Message_Header_descriptor,
-              new java.lang.String[] { "Version", "AppVersion", "BizType", "ReqTime", "ResponseCode", "ResponseMsg", "DeviceInfo", "UserName", "LoginToken", });
-          internal_static_Message_Reimbersement_descriptor =
-            internal_static_Message_descriptor.getNestedTypes().get(2);
-          internal_static_Message_Reimbersement_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_Message_Reimbersement_descriptor,
-              new java.lang.String[] { "CreditBankId", "CreditBankName", "CreditCardNo", "Amount", "RequestDate", "Status", });
-          internal_static_Message_MsgContent_descriptor =
-            internal_static_Message_descriptor.getNestedTypes().get(3);
-          internal_static_Message_MsgContent_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_Message_MsgContent_descriptor,
-              new java.lang.String[] { "Password", "UserMebCode", "ReimbersementList", });
-          return null;
-        }
-      };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
+    internal_static_Message_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_Message_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Message_descriptor,
+        new java.lang.String[] { "Sign", "Header", "MsgContent", });
+    internal_static_Message_DeviceInfo_descriptor =
+      internal_static_Message_descriptor.getNestedTypes().get(0);
+    internal_static_Message_DeviceInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Message_DeviceInfo_descriptor,
+        new java.lang.String[] { "Mac", "Imei", "Imsi", "DeviceId", });
+    internal_static_Message_Header_descriptor =
+      internal_static_Message_descriptor.getNestedTypes().get(1);
+    internal_static_Message_Header_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Message_Header_descriptor,
+        new java.lang.String[] { "Version", "AppVersion", "BizType", "ReqTime", "ResponseCode", "ResponseMsg", "DeviceInfo", "UserName", "LoginToken", });
+    internal_static_Message_Reimbersement_descriptor =
+      internal_static_Message_descriptor.getNestedTypes().get(2);
+    internal_static_Message_Reimbersement_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Message_Reimbersement_descriptor,
+        new java.lang.String[] { "CreditBankId", "CreditBankName", "CreditCardNo", "Amount", "RequestDate", "Status", });
+    internal_static_Message_MsgContent_descriptor =
+      internal_static_Message_descriptor.getNestedTypes().get(3);
+    internal_static_Message_MsgContent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Message_MsgContent_descriptor,
+        new java.lang.String[] { "Password", "UserMebCode", "ReimbersementList", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

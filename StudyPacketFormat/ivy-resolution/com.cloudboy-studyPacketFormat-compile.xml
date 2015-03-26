@@ -7,7 +7,7 @@
 		revision="working@USER-20140905FA"
 		conf="compile"
 		confs="default, compile, zip, test"
-		date="20150319145757"/>
+		date="20150319150809"/>
 	<dependencies>
 		<module organisation="junit" name="junit">
 			<revision name="4.12" status="release" pubdate="20141205001743" resolver="libraries" artresolver="libraries" homepage="http://junit.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, master" position="9">
