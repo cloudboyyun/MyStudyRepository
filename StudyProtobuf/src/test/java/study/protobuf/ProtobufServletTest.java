@@ -70,5 +70,4 @@ public class ProtobufServletTest {
 		response.close();
 		httpclient.close();
 	}
-
 }

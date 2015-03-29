@@ -47,6 +47,7 @@ public class ProtobufServlet extends HttpServlet {
     	responsMessageBuilder.setHeader(headerBuilder);
     	responsMessageBuilder.setMsgContent(messageContent);
     	Message responseMessage = responsMessageBuilder.build();
+    	
     	response.setContentType("application/x-protobuf");
     	response.getOutputStream().write(responseMessage.toByteArray());
     	response.flushBuffer();
