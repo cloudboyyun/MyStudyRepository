@@ -7,7 +7,7 @@
 		revision="working@USER-20140905FA"
 		conf="zip"
 		confs="default, compile, test, zip"
-		date="20150201214839"/>
+		date="20150721235047"/>
 	<dependencies>
 		<module organisation="xmlpull" name="xmlpull">
 			<revision name="1.1.3.4d_b4_min" status="release" pubdate="20141206130215" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="6">

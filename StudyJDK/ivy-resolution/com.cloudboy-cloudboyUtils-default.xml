@@ -7,7 +7,7 @@
 		revision="working@USER-20140905FA"
 		conf="default"
 		confs="default, compile, test, zip"
-		date="20150201214839"/>
+		date="20150721235047"/>
 	<dependencies>
 		<module organisation="org.apache.commons" name="commons-lang3">
 			<revision name="3.3.2" status="release" pubdate="20141108004726" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default, *" position="0">

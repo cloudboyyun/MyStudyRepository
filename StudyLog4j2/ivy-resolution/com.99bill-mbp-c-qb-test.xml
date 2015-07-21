@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.99bill"
+		module="mbp-c-qb"
+		revision="working@USER-20140905FA"
+		conf="test"
+		confs="default, compile, zip, test"
+		date="20150721235220"/>
+	<dependencies>
+	</dependencies>
+</ivy-report>

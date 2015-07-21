@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.99bill"
+		module="studySpring"
+		revision="working@USER-20140905FA"
+		conf="default"
+		confs="default, compile, zip, test"
+		date="20150721235153"/>
+	<dependencies>
+		<module organisation="commons-logging" name="commons-logging">
+			<revision name="1.2" status="release" pubdate="20140919202943" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default, *" position="4">
+				<metadata-artifact status="no" details="" size="437" time="0" location="D:\Local_Repository\ivy-cache\commons-logging\commons-logging\ivy-1.2.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\commons-logging\commons-logging\ivys\ivy-1.2.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="studySpring" conf="default" rev="1.2" rev-constraint-default="1.2" rev-constraint-dynamic="1.2" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="commons-logging" type="jar" ext="jar" status="no" details="" size="61829" time="0" location="D:\Local_Repository\ivy-cache\commons-logging\commons-logging\jars\commons-logging-1.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.springframework" name="spring-expression">
+			<revision name="4.0.3.RELEASE" status="release" pubdate="20141010224420" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default, *" position="3">
+				<metadata-artifact status="no" details="" size="455" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-expression\ivy-4.0.3.RELEASE.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.springframework\spring-expression\ivys\ivy-4.0.3.RELEASE.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="studySpring" conf="default" rev="4.0.3.RELEASE" rev-constraint-default="4.0.3.RELEASE" rev-constraint-dynamic="4.0.3.RELEASE" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="spring-expression" type="jar" ext="jar" status="no" details="" size="204745" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-expression\jars\spring-expression-4.0.3.RELEASE.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/springframework/spring-expression/4.0.3.RELEASE/spring-expression-4.0.3.RELEASE.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.springframework" name="spring-context">
+			<revision name="4.0.3.RELEASE" status="release" pubdate="20141010224413" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default, *" position="2">
+				<metadata-artifact status="no" details="" size="449" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-context\ivy-4.0.3.RELEASE.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.springframework\spring-context\ivys\ivy-4.0.3.RELEASE.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="studySpring" conf="default" rev="4.0.3.RELEASE" rev-constraint-default="4.0.3.RELEASE" rev-constraint-dynamic="4.0.3.RELEASE" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="spring-context" type="jar" ext="jar" status="no" details="" size="974938" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-context\jars\spring-context-4.0.3.RELEASE.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/springframework/spring-context/4.0.3.RELEASE/spring-context-4.0.3.RELEASE.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.springframework" name="spring-core">
+			<revision name="4.0.3.RELEASE" status="release" pubdate="20141010224415" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default, *" position="1">
+				<metadata-artifact status="no" details="" size="443" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-core\ivy-4.0.3.RELEASE.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.springframework\spring-core\ivys\ivy-4.0.3.RELEASE.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="studySpring" conf="default" rev="4.0.3.RELEASE" rev-constraint-default="4.0.3.RELEASE" rev-constraint-dynamic="4.0.3.RELEASE" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="spring-core" type="jar" ext="jar" status="no" details="" size="973502" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-core\jars\spring-core-4.0.3.RELEASE.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/springframework/spring-core/4.0.3.RELEASE/spring-core-4.0.3.RELEASE.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.springframework" name="spring-beans">
+			<revision name="4.0.3.RELEASE" status="release" pubdate="20141010224414" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default, *" position="0">
+				<metadata-artifact status="no" details="" size="445" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-beans\ivy-4.0.3.RELEASE.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.springframework\spring-beans\ivys\ivy-4.0.3.RELEASE.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="studySpring" conf="default" rev="4.0.3.RELEASE" rev-constraint-default="4.0.3.RELEASE" rev-constraint-dynamic="4.0.3.RELEASE" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="spring-beans" type="jar" ext="jar" status="no" details="" size="669978" time="0" location="D:\Local_Repository\ivy-cache\org.springframework\spring-beans\jars\spring-beans-4.0.3.RELEASE.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/springframework/spring-beans/4.0.3.RELEASE/spring-beans-4.0.3.RELEASE.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

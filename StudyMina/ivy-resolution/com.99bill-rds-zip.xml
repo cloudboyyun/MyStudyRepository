@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.99bill"
+		module="rds"
+		revision="working@USER-20140905FA"
+		conf="zip"
+		confs="default, compile, test, zip"
+		date="20150721235155"/>
+	<dependencies>
+		<module organisation="org.slf4j" name="slf4j-log4j12">
+			<revision name="1.5.0-M0" status="release" pubdate="20121114161554" resolver="Client-Resolver" artresolver="Client-Resolver" downloaded="false" searched="false" default="true" conf="default" position="3">
+				<metadata-artifact status="no" details="" size="406" time="0" location="D:\Local_Repository\ivy-cache\org.slf4j\slf4j-log4j12\ivy-1.5.0-M0.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.slf4j\slf4j-log4j12\ivys\ivy-1.5.0-M0.xml" origin-is-local="false" origin-location="http://192.168.52.211/org.slf4j/slf4j-log4j12/ivys/ivy-1.5.0-M0.xml"/>
+				<caller organisation="com.99bill" name="rds" conf="zip" rev="1.5.0-M0" rev-constraint-default="1.5.0-M0" rev-constraint-dynamic="1.5.0-M0" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="slf4j-log4j12" type="jar" ext="jar" status="no" details="" size="8847" time="0" location="D:\Local_Repository\ivy-cache\org.slf4j\slf4j-log4j12\jars\slf4j-log4j12-1.5.0-M0.jar">
+						<origin-location is-local="false" location="http://192.168.52.211/org.slf4j/slf4j-log4j12/jars/slf4j-log4j12-1.5.0-M0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.5.0-M0" status="release" pubdate="20121114161540" resolver="Client-Resolver" artresolver="Client-Resolver" downloaded="false" searched="false" default="true" conf="default" position="2">
+				<metadata-artifact status="no" details="" size="398" time="0" location="D:\Local_Repository\ivy-cache\org.slf4j\slf4j-api\ivy-1.5.0-M0.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.slf4j\slf4j-api\ivys\ivy-1.5.0-M0.xml" origin-is-local="false" origin-location="http://192.168.52.211/org.slf4j/slf4j-api/ivys/ivy-1.5.0-M0.xml"/>
+				<caller organisation="com.99bill" name="rds" conf="zip" rev="1.5.0-M0" rev-constraint-default="1.5.0-M0" rev-constraint-dynamic="1.5.0-M0" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="no" details="" size="16517" time="0" location="D:\Local_Repository\ivy-cache\org.slf4j\slf4j-api\jars\slf4j-api-1.5.0-M0.jar">
+						<origin-location is-local="false" location="http://192.168.52.211/org.slf4j/slf4j-api/jars/slf4j-api-1.5.0-M0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.mina" name="mina-core">
+			<revision name="2.0.7" status="release" pubdate="20140901150456" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="1">
+				<metadata-artifact status="no" details="" size="427" time="0" location="D:\Local_Repository\ivy-cache\org.apache.mina\mina-core\ivy-2.0.7.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.apache.mina\mina-core\ivys\ivy-2.0.7.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="rds" conf="zip" rev="2.0.7" rev-constraint-default="2.0.7" rev-constraint-dynamic="2.0.7" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="mina-core" type="jar" ext="jar" status="no" details="" size="644786" time="0" location="D:\Local_Repository\ivy-cache\org.apache.mina\mina-core\jars\mina-core-2.0.7.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/mina/mina-core/2.0.7/mina-core-2.0.7.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache" name="log4j">
+			<revision name="1.2.15" status="release" pubdate="20141102115547" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="0">
+				<metadata-artifact status="no" details="" size="415" time="0" location="D:\Local_Repository\ivy-cache\org.apache\log4j\ivy-1.2.15.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\org.apache\log4j\ivys\ivy-1.2.15.xml" origin-is-local="false" origin-location="UNKNOWN"/>
+				<caller organisation="com.99bill" name="rds" conf="zip" rev="1.2.15" rev-constraint-default="1.2.15" rev-constraint-dynamic="1.2.15" callerrev="working@USER-20140905FA"/>
+				<artifacts>
+					<artifact name="log4j" type="jar" ext="jar" status="no" details="" size="391834" time="0" location="D:\Local_Repository\ivy-cache\org.apache\log4j\jars\log4j-1.2.15.jar">
+						<origin-location is-local="false" location="UNKNOWN"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

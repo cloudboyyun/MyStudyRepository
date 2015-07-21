@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="1.0">
- 	<info organisation="com.cloudboy" module="cloudboyUtils" revision="working@USER-20140905FA" status="integration" publication="20150201214814"/>
+ 	<info organisation="com.cloudboy" module="cloudboyUtils" revision="working@USER-20140905FA" status="integration" publication="20150721235046"/>
 	<configurations>
 			<conf name="default"/>
 			<conf name="compile"/>
