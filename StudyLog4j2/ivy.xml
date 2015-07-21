@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="1.0">
-    <info organisation="com.99bill" module="mbp-c-qb"/>
+    <info organisation="com.cloudboy" module="studyLog4j2"/>
     <configurations>
         <conf name="default"/>
         <conf name="compile"/>
@@ -11,12 +11,13 @@
         <artifact ext="jar"/>
     </publications>
     <dependencies>
-        <dependency org="com.lmax" name="disruptor" rev="3.3.0" conf="compile->default"/>
-        <dependency org="org.apache" name="log4j-1.2-api" rev="2.0.2" conf="compile->default"/>
-		<dependency org="org.apache" name="log4j-api" rev="2.0.2" conf="compile->default"/>
-		<dependency org="org.apache" name="log4j-core" rev="2.0.2" conf="compile->default"/>
-		<dependency org="org.apache" name="log4j-jcl" rev="2.0.2" conf="compile->default"/>
-		<dependency org="org.apache" name="log4j-slf4j-impl" rev="2.0.2" conf="compile->default"/>
-		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.7" conf="compile->default"/>
+        <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.3" conf="compile->default"/>
+        <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.3" conf="compile->default"/>
+        <dependency org="com.lmax" name="disruptor" rev="3.3.2" conf="compile->default"/>
+<!--         <dependency org="org.apache" name="log4j-1.2-api" rev="2.0.2" conf="compile->default"/> -->
+<!-- 		<dependency org="org.apache" name="log4j-core" rev="2.0.2" conf="compile->default"/> -->
+<!-- 		<dependency org="org.apache" name="log4j-jcl" rev="2.0.2" conf="compile->default"/> -->
+<!-- 		<dependency org="org.apache" name="log4j-slf4j-impl" rev="2.0.2" conf="compile->default"/> -->
+<!-- 		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.7" conf="compile->default"/> -->
     </dependencies>
 </ivy-module>
