@@ -18,6 +18,7 @@ import study.packetFormat.model.DataFactory;
 import study.packetFormat.model.GzipUtil;
 import study.packetFormat.model.XmlJaxbUtil;
 import study.packetFormat.model.pb.MessagePB;
+import study.packetFormat.model.pb.MyMessage;
 import study.packetFormat.model.xml.Message;
 
 import com.caucho.hessian.io.Hessian2Input;
@@ -29,6 +30,7 @@ public class SizeCompareUT {
 	
 	private static Message message;
 	private static MessagePB.Message messagePB;
+	private static MyMessage messageWire;
 	private static ObjectMapper mapper = null;
 	private static XStream xs = new XStream();
 
@@ -39,6 +41,7 @@ public class SizeCompareUT {
 		
 		message = DataFactory.getMessage();
 		messagePB = DataFactory.getMessagePB();
+		messageWire = DataFactory.getMessageWire();
 	}
 	
 	@Test
@@ -90,6 +93,9 @@ public class SizeCompareUT {
 		byte[] pbZipped = GzipUtil.compress(pb);
 		int pbZippedSize = pbZipped.length;
 		
+		byte[] wire = messageWire.toByteArray();
+		int wireSize = wire.length;
+		
 		System.out.println("xml size(bytes):" + xmlSize);
 		System.out.println("xmlZippedSize(bytes):" + xmlZippedSize);
 		System.out.println("json size(bytes):" + jsonSize);
@@ -98,6 +104,7 @@ public class SizeCompareUT {
 		System.out.println("hessianZippedSize size(bytes):" + hessianZippedSize);
 		System.out.println("pbSize size(bytes):" + pbSize);
 		System.out.println("pbZippedSize size(bytes):" + pbZippedSize);
+		System.out.println("wireSize size(bytes):" + wireSize);
 	}
 	
 	private String toXML(Message message) {

@@ -1,5 +1,6 @@
 option java_package = "study.packetFormat.model.pb"; 
 option java_outer_classname = "MessagePB";
+option optimize_for = CODE_SIZE;
 
 message Message {
     optional string sign = 1;
@@ -22,7 +23,7 @@ message Message {
     	required string userName = 8;
     	optional string loginToken = 9;
   	}
-  	required Header header = 2;
+  	optional Header header = 2;
   	
   	message Reimbersement {
     	optional string creditBankId = 1;
@@ -38,5 +39,5 @@ message Message {
     	optional string userMebCode = 2;
     	repeated Reimbersement reimbersementList = 3;
   	}
-  	required MsgContent msgContent = 3;
+  	optional MsgContent msgContent = 3;
 }

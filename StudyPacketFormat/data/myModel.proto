@@ -1,0 +1,7 @@
+option java_package = "study.packetFormat.model.pb"; 
+option java_outer_classname = "MyModelPB";
+
+message Data {
+    optional string userName = 1;
+    optional string password = 2;
+}

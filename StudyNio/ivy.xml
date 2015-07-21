@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="1.0">
+    <info organisation="com.cloudboy" module="studyNio"/>
+    <configurations>
+        <conf name="default"/>
+        <conf name="compile"/>
+        <conf name="zip"/>
+        <conf name="test"/>
+    </configurations>
+    <publications>
+        <artifact ext="jar"/>
+    </publications>
+    <dependencies>
+    </dependencies>
+</ivy-module>

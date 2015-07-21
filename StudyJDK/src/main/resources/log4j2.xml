@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+<Appenders>
+   <RollingRandomAccessFile name="logfile" 
+		fileName="d:/temp/app-mbp-c.log"
+		filePattern="d:/temp/app-mbp-c-%d{yyyy-MM-dd}.log.%i">
+		<PatternLayout>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss SSS} [%-5p] %t(%c.%M:%L) - %m%n</Pattern>
+		</PatternLayout>
+		<Policies>
+			<TimeBasedTriggeringPolicy interval="24" modulate="true"/>
+			<SizeBasedTriggeringPolicy size="10MB"/>
+		</Policies>
+		<DefaultRolloverStrategy max="50"/>
+	</RollingRandomAccessFile>
+	<Console name="stdout" target="SYSTEM_OUT">
+		<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %C %L - %msg%n" />
+	</Console>
+</Appenders>
+
+<Loggers>
+	<AsyncLogger name="com.cloudboy" level="warn" additivity="false" includeLocation="true">
+	     <AppenderRef ref="stdout"/>
+	</AsyncLogger>
+	<AsyncLogger name="com.cloudboy" level="info" additivity="false" includeLocation="true">
+		<AppenderRef ref="stdout"/>
+	</AsyncLogger>
+	<AsyncRoot level="warn" includeLocation="true">
+		<AppenderRef ref="stdout" />
+	</AsyncRoot>
+</Loggers>
+</Configuration>

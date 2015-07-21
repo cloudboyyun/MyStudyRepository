@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="1.0">
+    <info organisation="com.99bill" module="mbp-c-qb"/>
+    <configurations>
+        <conf name="default"/>
+        <conf name="compile"/>
+        <conf name="zip"/>
+        <conf name="test"/>
+    </configurations>
+    <publications>
+        <artifact ext="jar"/>
+    </publications>
+    <dependencies>
+        <dependency org="com.lmax" name="disruptor" rev="3.3.0" conf="compile->default"/>
+        <dependency org="org.apache" name="log4j-1.2-api" rev="2.0.2" conf="compile->default"/>
+		<dependency org="org.apache" name="log4j-api" rev="2.0.2" conf="compile->default"/>
+		<dependency org="org.apache" name="log4j-core" rev="2.0.2" conf="compile->default"/>
+		<dependency org="org.apache" name="log4j-jcl" rev="2.0.2" conf="compile->default"/>
+		<dependency org="org.apache" name="log4j-slf4j-impl" rev="2.0.2" conf="compile->default"/>
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.7" conf="compile->default"/>
+    </dependencies>
+</ivy-module>

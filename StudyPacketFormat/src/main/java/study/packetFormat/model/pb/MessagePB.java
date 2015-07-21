@@ -27,28 +27,28 @@ public final class MessagePB {
         getSignBytes();
 
     /**
-     * <code>required .Message.Header header = 2;</code>
+     * <code>optional .Message.Header header = 2;</code>
      */
     boolean hasHeader();
     /**
-     * <code>required .Message.Header header = 2;</code>
+     * <code>optional .Message.Header header = 2;</code>
      */
     study.packetFormat.model.pb.MessagePB.Message.Header getHeader();
     /**
-     * <code>required .Message.Header header = 2;</code>
+     * <code>optional .Message.Header header = 2;</code>
      */
     study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder getHeaderOrBuilder();
 
     /**
-     * <code>required .Message.MsgContent msgContent = 3;</code>
+     * <code>optional .Message.MsgContent msgContent = 3;</code>
      */
     boolean hasMsgContent();
     /**
-     * <code>required .Message.MsgContent msgContent = 3;</code>
+     * <code>optional .Message.MsgContent msgContent = 3;</code>
      */
     study.packetFormat.model.pb.MessagePB.Message.MsgContent getMsgContent();
     /**
-     * <code>required .Message.MsgContent msgContent = 3;</code>
+     * <code>optional .Message.MsgContent msgContent = 3;</code>
      */
     study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder getMsgContentOrBuilder();
   }
@@ -81,73 +81,6 @@ public final class MessagePB {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Message(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              sign_ = bs;
-              break;
-            }
-            case 18: {
-              study.packetFormat.model.pb.MessagePB.Message.Header.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = header_.toBuilder();
-              }
-              header_ = input.readMessage(study.packetFormat.model.pb.MessagePB.Message.Header.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(header_);
-                header_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 26: {
-              study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = msgContent_.toBuilder();
-              }
-              msgContent_ = input.readMessage(study.packetFormat.model.pb.MessagePB.Message.MsgContent.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(msgContent_);
-                msgContent_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return study.packetFormat.model.pb.MessagePB.internal_static_Message_descriptor;
@@ -166,7 +99,16 @@ public final class MessagePB {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Message(input, extensionRegistry);
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
       }
     };
 
@@ -264,65 +206,6 @@ public final class MessagePB {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private DeviceInfo(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000001;
-                mac_ = bs;
-                break;
-              }
-              case 18: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000002;
-                imei_ = bs;
-                break;
-              }
-              case 26: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000004;
-                imsi_ = bs;
-                break;
-              }
-              case 34: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000008;
-                deviceId_ = bs;
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return study.packetFormat.model.pb.MessagePB.internal_static_Message_DeviceInfo_descriptor;
@@ -341,7 +224,16 @@ public final class MessagePB {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new DeviceInfo(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 
@@ -525,68 +417,6 @@ public final class MessagePB {
         imsi_ = "";
         deviceId_ = "";
       }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getMacBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getImeiBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeBytes(3, getImsiBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeBytes(4, getDeviceIdBytes());
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getMacBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getImeiBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(3, getImsiBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(4, getDeviceIdBytes());
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
       public static study.packetFormat.model.pb.MessagePB.Message.DeviceInfo parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -749,62 +579,6 @@ public final class MessagePB {
           return result;
         }
 
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof study.packetFormat.model.pb.MessagePB.Message.DeviceInfo) {
-            return mergeFrom((study.packetFormat.model.pb.MessagePB.Message.DeviceInfo)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(study.packetFormat.model.pb.MessagePB.Message.DeviceInfo other) {
-          if (other == study.packetFormat.model.pb.MessagePB.Message.DeviceInfo.getDefaultInstance()) return this;
-          if (other.hasMac()) {
-            bitField0_ |= 0x00000001;
-            mac_ = other.mac_;
-            onChanged();
-          }
-          if (other.hasImei()) {
-            bitField0_ |= 0x00000002;
-            imei_ = other.imei_;
-            onChanged();
-          }
-          if (other.hasImsi()) {
-            bitField0_ |= 0x00000004;
-            imsi_ = other.imsi_;
-            onChanged();
-          }
-          if (other.hasDeviceId()) {
-            bitField0_ |= 0x00000008;
-            deviceId_ = other.deviceId_;
-            onChanged();
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          study.packetFormat.model.pb.MessagePB.Message.DeviceInfo parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (study.packetFormat.model.pb.MessagePB.Message.DeviceInfo) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
         private int bitField0_;
 
         private java.lang.Object mac_ = "";
@@ -1280,102 +1054,6 @@ public final class MessagePB {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private Header(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000001;
-                version_ = bs;
-                break;
-              }
-              case 18: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000002;
-                appVersion_ = bs;
-                break;
-              }
-              case 26: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000004;
-                bizType_ = bs;
-                break;
-              }
-              case 34: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000008;
-                reqTime_ = bs;
-                break;
-              }
-              case 42: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000010;
-                responseCode_ = bs;
-                break;
-              }
-              case 50: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000020;
-                responseMsg_ = bs;
-                break;
-              }
-              case 58: {
-                study.packetFormat.model.pb.MessagePB.Message.DeviceInfo.Builder subBuilder = null;
-                if (((bitField0_ & 0x00000040) == 0x00000040)) {
-                  subBuilder = deviceInfo_.toBuilder();
-                }
-                deviceInfo_ = input.readMessage(study.packetFormat.model.pb.MessagePB.Message.DeviceInfo.PARSER, extensionRegistry);
-                if (subBuilder != null) {
-                  subBuilder.mergeFrom(deviceInfo_);
-                  deviceInfo_ = subBuilder.buildPartial();
-                }
-                bitField0_ |= 0x00000040;
-                break;
-              }
-              case 66: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000080;
-                userName_ = bs;
-                break;
-              }
-              case 74: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000100;
-                loginToken_ = bs;
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return study.packetFormat.model.pb.MessagePB.internal_static_Message_Header_descriptor;
@@ -1394,7 +1072,16 @@ public final class MessagePB {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Header(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 
@@ -1772,119 +1459,6 @@ public final class MessagePB {
         userName_ = "";
         loginToken_ = "";
       }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        if (!hasVersion()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasBizType()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasReqTime()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasUserName()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getVersionBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getAppVersionBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeBytes(3, getBizTypeBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeBytes(4, getReqTimeBytes());
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          output.writeBytes(5, getResponseCodeBytes());
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          output.writeBytes(6, getResponseMsgBytes());
-        }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          output.writeMessage(7, deviceInfo_);
-        }
-        if (((bitField0_ & 0x00000080) == 0x00000080)) {
-          output.writeBytes(8, getUserNameBytes());
-        }
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
-          output.writeBytes(9, getLoginTokenBytes());
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getVersionBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getAppVersionBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(3, getBizTypeBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(4, getReqTimeBytes());
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(5, getResponseCodeBytes());
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(6, getResponseMsgBytes());
-        }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(7, deviceInfo_);
-        }
-        if (((bitField0_ & 0x00000080) == 0x00000080)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(8, getUserNameBytes());
-        }
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(9, getLoginTokenBytes());
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
       public static study.packetFormat.model.pb.MessagePB.Message.Header parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2086,101 +1660,6 @@ public final class MessagePB {
           return result;
         }
 
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof study.packetFormat.model.pb.MessagePB.Message.Header) {
-            return mergeFrom((study.packetFormat.model.pb.MessagePB.Message.Header)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(study.packetFormat.model.pb.MessagePB.Message.Header other) {
-          if (other == study.packetFormat.model.pb.MessagePB.Message.Header.getDefaultInstance()) return this;
-          if (other.hasVersion()) {
-            bitField0_ |= 0x00000001;
-            version_ = other.version_;
-            onChanged();
-          }
-          if (other.hasAppVersion()) {
-            bitField0_ |= 0x00000002;
-            appVersion_ = other.appVersion_;
-            onChanged();
-          }
-          if (other.hasBizType()) {
-            bitField0_ |= 0x00000004;
-            bizType_ = other.bizType_;
-            onChanged();
-          }
-          if (other.hasReqTime()) {
-            bitField0_ |= 0x00000008;
-            reqTime_ = other.reqTime_;
-            onChanged();
-          }
-          if (other.hasResponseCode()) {
-            bitField0_ |= 0x00000010;
-            responseCode_ = other.responseCode_;
-            onChanged();
-          }
-          if (other.hasResponseMsg()) {
-            bitField0_ |= 0x00000020;
-            responseMsg_ = other.responseMsg_;
-            onChanged();
-          }
-          if (other.hasDeviceInfo()) {
-            mergeDeviceInfo(other.getDeviceInfo());
-          }
-          if (other.hasUserName()) {
-            bitField0_ |= 0x00000080;
-            userName_ = other.userName_;
-            onChanged();
-          }
-          if (other.hasLoginToken()) {
-            bitField0_ |= 0x00000100;
-            loginToken_ = other.loginToken_;
-            onChanged();
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          if (!hasVersion()) {
-            
-            return false;
-          }
-          if (!hasBizType()) {
-            
-            return false;
-          }
-          if (!hasReqTime()) {
-            
-            return false;
-          }
-          if (!hasUserName()) {
-            
-            return false;
-          }
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          study.packetFormat.model.pb.MessagePB.Message.Header parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (study.packetFormat.model.pb.MessagePB.Message.Header) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
         private int bitField0_;
 
         private java.lang.Object version_ = "4.0";
@@ -3035,77 +2514,6 @@ public final class MessagePB {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private Reimbersement(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000001;
-                creditBankId_ = bs;
-                break;
-              }
-              case 18: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000002;
-                creditBankName_ = bs;
-                break;
-              }
-              case 26: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000004;
-                creditCardNo_ = bs;
-                break;
-              }
-              case 34: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000008;
-                amount_ = bs;
-                break;
-              }
-              case 42: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000010;
-                requestDate_ = bs;
-                break;
-              }
-              case 50: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000020;
-                status_ = bs;
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return study.packetFormat.model.pb.MessagePB.internal_static_Message_Reimbersement_descriptor;
@@ -3124,7 +2532,16 @@ public final class MessagePB {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Reimbersement(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 
@@ -3394,82 +2811,6 @@ public final class MessagePB {
         requestDate_ = "";
         status_ = "";
       }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getCreditBankIdBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getCreditBankNameBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeBytes(3, getCreditCardNoBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeBytes(4, getAmountBytes());
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          output.writeBytes(5, getRequestDateBytes());
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          output.writeBytes(6, getStatusBytes());
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getCreditBankIdBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getCreditBankNameBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(3, getCreditCardNoBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(4, getAmountBytes());
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(5, getRequestDateBytes());
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(6, getStatusBytes());
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
       public static study.packetFormat.model.pb.MessagePB.Message.Reimbersement parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3644,72 +2985,6 @@ public final class MessagePB {
           return result;
         }
 
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof study.packetFormat.model.pb.MessagePB.Message.Reimbersement) {
-            return mergeFrom((study.packetFormat.model.pb.MessagePB.Message.Reimbersement)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(study.packetFormat.model.pb.MessagePB.Message.Reimbersement other) {
-          if (other == study.packetFormat.model.pb.MessagePB.Message.Reimbersement.getDefaultInstance()) return this;
-          if (other.hasCreditBankId()) {
-            bitField0_ |= 0x00000001;
-            creditBankId_ = other.creditBankId_;
-            onChanged();
-          }
-          if (other.hasCreditBankName()) {
-            bitField0_ |= 0x00000002;
-            creditBankName_ = other.creditBankName_;
-            onChanged();
-          }
-          if (other.hasCreditCardNo()) {
-            bitField0_ |= 0x00000004;
-            creditCardNo_ = other.creditCardNo_;
-            onChanged();
-          }
-          if (other.hasAmount()) {
-            bitField0_ |= 0x00000008;
-            amount_ = other.amount_;
-            onChanged();
-          }
-          if (other.hasRequestDate()) {
-            bitField0_ |= 0x00000010;
-            requestDate_ = other.requestDate_;
-            onChanged();
-          }
-          if (other.hasStatus()) {
-            bitField0_ |= 0x00000020;
-            status_ = other.status_;
-            onChanged();
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          study.packetFormat.model.pb.MessagePB.Message.Reimbersement parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (study.packetFormat.model.pb.MessagePB.Message.Reimbersement) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
         private int bitField0_;
 
         private java.lang.Object creditBankId_ = "";
@@ -4264,64 +3539,6 @@ public final class MessagePB {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private MsgContent(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000001;
-                password_ = bs;
-                break;
-              }
-              case 18: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                bitField0_ |= 0x00000002;
-                userMebCode_ = bs;
-                break;
-              }
-              case 26: {
-                if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                  reimbersementList_ = new java.util.ArrayList<study.packetFormat.model.pb.MessagePB.Message.Reimbersement>();
-                  mutable_bitField0_ |= 0x00000004;
-                }
-                reimbersementList_.add(input.readMessage(study.packetFormat.model.pb.MessagePB.Message.Reimbersement.PARSER, extensionRegistry));
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-            reimbersementList_ = java.util.Collections.unmodifiableList(reimbersementList_);
-          }
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return study.packetFormat.model.pb.MessagePB.internal_static_Message_MsgContent_descriptor;
@@ -4340,7 +3557,16 @@ public final class MessagePB {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new MsgContent(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 
@@ -4474,61 +3700,6 @@ public final class MessagePB {
         userMebCode_ = "";
         reimbersementList_ = java.util.Collections.emptyList();
       }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getPasswordBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getUserMebCodeBytes());
-        }
-        for (int i = 0; i < reimbersementList_.size(); i++) {
-          output.writeMessage(3, reimbersementList_.get(i));
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getPasswordBytes());
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getUserMebCodeBytes());
-        }
-        for (int i = 0; i < reimbersementList_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, reimbersementList_.get(i));
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
       public static study.packetFormat.model.pb.MessagePB.Message.MsgContent parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4695,78 +3866,6 @@ public final class MessagePB {
           return result;
         }
 
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof study.packetFormat.model.pb.MessagePB.Message.MsgContent) {
-            return mergeFrom((study.packetFormat.model.pb.MessagePB.Message.MsgContent)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(study.packetFormat.model.pb.MessagePB.Message.MsgContent other) {
-          if (other == study.packetFormat.model.pb.MessagePB.Message.MsgContent.getDefaultInstance()) return this;
-          if (other.hasPassword()) {
-            bitField0_ |= 0x00000001;
-            password_ = other.password_;
-            onChanged();
-          }
-          if (other.hasUserMebCode()) {
-            bitField0_ |= 0x00000002;
-            userMebCode_ = other.userMebCode_;
-            onChanged();
-          }
-          if (reimbersementListBuilder_ == null) {
-            if (!other.reimbersementList_.isEmpty()) {
-              if (reimbersementList_.isEmpty()) {
-                reimbersementList_ = other.reimbersementList_;
-                bitField0_ = (bitField0_ & ~0x00000004);
-              } else {
-                ensureReimbersementListIsMutable();
-                reimbersementList_.addAll(other.reimbersementList_);
-              }
-              onChanged();
-            }
-          } else {
-            if (!other.reimbersementList_.isEmpty()) {
-              if (reimbersementListBuilder_.isEmpty()) {
-                reimbersementListBuilder_.dispose();
-                reimbersementListBuilder_ = null;
-                reimbersementList_ = other.reimbersementList_;
-                bitField0_ = (bitField0_ & ~0x00000004);
-                reimbersementListBuilder_ = 
-                  com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                     getReimbersementListFieldBuilder() : null;
-              } else {
-                reimbersementListBuilder_.addAllMessages(other.reimbersementList_);
-              }
-            }
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          study.packetFormat.model.pb.MessagePB.Message.MsgContent parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (study.packetFormat.model.pb.MessagePB.Message.MsgContent) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
         private int bitField0_;
 
         private java.lang.Object password_ = "";
@@ -5218,19 +4317,19 @@ public final class MessagePB {
     public static final int HEADER_FIELD_NUMBER = 2;
     private study.packetFormat.model.pb.MessagePB.Message.Header header_;
     /**
-     * <code>required .Message.Header header = 2;</code>
+     * <code>optional .Message.Header header = 2;</code>
      */
     public boolean hasHeader() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required .Message.Header header = 2;</code>
+     * <code>optional .Message.Header header = 2;</code>
      */
     public study.packetFormat.model.pb.MessagePB.Message.Header getHeader() {
       return header_;
     }
     /**
-     * <code>required .Message.Header header = 2;</code>
+     * <code>optional .Message.Header header = 2;</code>
      */
     public study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder getHeaderOrBuilder() {
       return header_;
@@ -5239,19 +4338,19 @@ public final class MessagePB {
     public static final int MSGCONTENT_FIELD_NUMBER = 3;
     private study.packetFormat.model.pb.MessagePB.Message.MsgContent msgContent_;
     /**
-     * <code>required .Message.MsgContent msgContent = 3;</code>
+     * <code>optional .Message.MsgContent msgContent = 3;</code>
      */
     public boolean hasMsgContent() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required .Message.MsgContent msgContent = 3;</code>
+     * <code>optional .Message.MsgContent msgContent = 3;</code>
      */
     public study.packetFormat.model.pb.MessagePB.Message.MsgContent getMsgContent() {
       return msgContent_;
     }
     /**
-     * <code>required .Message.MsgContent msgContent = 3;</code>
+     * <code>optional .Message.MsgContent msgContent = 3;</code>
      */
     public study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder getMsgContentOrBuilder() {
       return msgContent_;
@@ -5262,73 +4361,6 @@ public final class MessagePB {
       header_ = study.packetFormat.model.pb.MessagePB.Message.Header.getDefaultInstance();
       msgContent_ = study.packetFormat.model.pb.MessagePB.Message.MsgContent.getDefaultInstance();
     }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasHeader()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMsgContent()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getHeader().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getSignBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, header_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, msgContent_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getSignBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, header_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, msgContent_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
     public static study.packetFormat.model.pb.MessagePB.Message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5503,65 +4535,6 @@ public final class MessagePB {
         return result;
       }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof study.packetFormat.model.pb.MessagePB.Message) {
-          return mergeFrom((study.packetFormat.model.pb.MessagePB.Message)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(study.packetFormat.model.pb.MessagePB.Message other) {
-        if (other == study.packetFormat.model.pb.MessagePB.Message.getDefaultInstance()) return this;
-        if (other.hasSign()) {
-          bitField0_ |= 0x00000001;
-          sign_ = other.sign_;
-          onChanged();
-        }
-        if (other.hasHeader()) {
-          mergeHeader(other.getHeader());
-        }
-        if (other.hasMsgContent()) {
-          mergeMsgContent(other.getMsgContent());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasHeader()) {
-          
-          return false;
-        }
-        if (!hasMsgContent()) {
-          
-          return false;
-        }
-        if (!getHeader().isInitialized()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        study.packetFormat.model.pb.MessagePB.Message parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (study.packetFormat.model.pb.MessagePB.Message) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
       private int bitField0_;
 
       private java.lang.Object sign_ = "";
@@ -5644,13 +4617,13 @@ public final class MessagePB {
       private com.google.protobuf.SingleFieldBuilder<
           study.packetFormat.model.pb.MessagePB.Message.Header, study.packetFormat.model.pb.MessagePB.Message.Header.Builder, study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder> headerBuilder_;
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public boolean hasHeader() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public study.packetFormat.model.pb.MessagePB.Message.Header getHeader() {
         if (headerBuilder_ == null) {
@@ -5660,7 +4633,7 @@ public final class MessagePB {
         }
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public Builder setHeader(study.packetFormat.model.pb.MessagePB.Message.Header value) {
         if (headerBuilder_ == null) {
@@ -5676,7 +4649,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public Builder setHeader(
           study.packetFormat.model.pb.MessagePB.Message.Header.Builder builderForValue) {
@@ -5690,7 +4663,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public Builder mergeHeader(study.packetFormat.model.pb.MessagePB.Message.Header value) {
         if (headerBuilder_ == null) {
@@ -5709,7 +4682,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public Builder clearHeader() {
         if (headerBuilder_ == null) {
@@ -5722,7 +4695,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public study.packetFormat.model.pb.MessagePB.Message.Header.Builder getHeaderBuilder() {
         bitField0_ |= 0x00000002;
@@ -5730,7 +4703,7 @@ public final class MessagePB {
         return getHeaderFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       public study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder getHeaderOrBuilder() {
         if (headerBuilder_ != null) {
@@ -5740,7 +4713,7 @@ public final class MessagePB {
         }
       }
       /**
-       * <code>required .Message.Header header = 2;</code>
+       * <code>optional .Message.Header header = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           study.packetFormat.model.pb.MessagePB.Message.Header, study.packetFormat.model.pb.MessagePB.Message.Header.Builder, study.packetFormat.model.pb.MessagePB.Message.HeaderOrBuilder> 
@@ -5760,13 +4733,13 @@ public final class MessagePB {
       private com.google.protobuf.SingleFieldBuilder<
           study.packetFormat.model.pb.MessagePB.Message.MsgContent, study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder, study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder> msgContentBuilder_;
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public boolean hasMsgContent() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public study.packetFormat.model.pb.MessagePB.Message.MsgContent getMsgContent() {
         if (msgContentBuilder_ == null) {
@@ -5776,7 +4749,7 @@ public final class MessagePB {
         }
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public Builder setMsgContent(study.packetFormat.model.pb.MessagePB.Message.MsgContent value) {
         if (msgContentBuilder_ == null) {
@@ -5792,7 +4765,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public Builder setMsgContent(
           study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder builderForValue) {
@@ -5806,7 +4779,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public Builder mergeMsgContent(study.packetFormat.model.pb.MessagePB.Message.MsgContent value) {
         if (msgContentBuilder_ == null) {
@@ -5825,7 +4798,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public Builder clearMsgContent() {
         if (msgContentBuilder_ == null) {
@@ -5838,7 +4811,7 @@ public final class MessagePB {
         return this;
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder getMsgContentBuilder() {
         bitField0_ |= 0x00000004;
@@ -5846,7 +4819,7 @@ public final class MessagePB {
         return getMsgContentFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       public study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder getMsgContentOrBuilder() {
         if (msgContentBuilder_ != null) {
@@ -5856,7 +4829,7 @@ public final class MessagePB {
         }
       }
       /**
-       * <code>required .Message.MsgContent msgContent = 3;</code>
+       * <code>optional .Message.MsgContent msgContent = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           study.packetFormat.model.pb.MessagePB.Message.MsgContent, study.packetFormat.model.pb.MessagePB.Message.MsgContent.Builder, study.packetFormat.model.pb.MessagePB.Message.MsgContentOrBuilder> 
@@ -5918,8 +4891,8 @@ public final class MessagePB {
   static {
     java.lang.String[] descriptorData = {
       "\n\rmessage.proto\"\356\004\n\007Message\022\014\n\004sign\030\001 \001(" +
-      "\t\022\037\n\006header\030\002 \002(\0132\017.Message.Header\022\'\n\nms" +
-      "gContent\030\003 \002(\0132\023.Message.MsgContent\032G\n\nD" +
+      "\t\022\037\n\006header\030\002 \001(\0132\017.Message.Header\022\'\n\nms" +
+      "gContent\030\003 \001(\0132\023.Message.MsgContent\032G\n\nD" +
       "eviceInfo\022\013\n\003mac\030\001 \001(\t\022\014\n\004imei\030\002 \001(\t\022\014\n\004" +
       "imsi\030\003 \001(\t\022\020\n\010deviceId\030\004 \001(\t\032\316\001\n\006Header\022" +
       "\024\n\007version\030\001 \002(\t:\0034.0\022\022\n\nappVersion\030\002 \001(" +
@@ -5933,8 +4906,8 @@ public final class MessagePB {
       "\022\016\n\006status\030\006 \001(\t\032f\n\nMsgContent\022\020\n\010passwo" +
       "rd\030\001 \001(\t\022\023\n\013userMebCode\030\002 \001(\t\0221\n\021reimber" +
       "sementList\030\003 \003(\0132\026.Message.Reimbersement" +
-      "B(\n\033study.packetFormat.model.pbB\tMessage" +
-      "PB"
+      "B*\n\033study.packetFormat.model.pbB\tMessage" +
+      "PBH\002"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

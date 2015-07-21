@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="1.0">
-    <info organisation="com.cloudboy" module="studyPacketFormat" revision="working@USER-20140905FA" status="integration" publication="20150319144847"/>
+    <info organisation="com.cloudboy" module="studyPacketFormat" revision="working@USER-20140905FA" status="integration" publication="20150421181844"/>
     <configurations>
         <conf name="default"/>
         <conf name="compile"/>
@@ -12,7 +12,8 @@
     </publications>
     <dependencies>
     	<dependency org="log4j" name="log4j" rev="1.2.17" conf="compile->default"/>
-        <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.9.13" conf="compile->default"/>
+        <!-- <dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="1.9.13" conf="compile->default"/> -->
+        <dependency org="org.codehaus" name="jackson-all" rev="1.9.2" conf="compile->default"/>
         <dependency org="com.google.protobuf" name="protobuf-java" rev="2.6.1" conf="compile->default"/>
         <dependency org="com.caucho" name="hessian" rev="3.1.6" conf="compile->default"/>
         <dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.7" conf="compile->default"/>
@@ -20,5 +21,9 @@
         <dependency org="org.apache.jmeter" name="ApacheJMeter_core" rev="2.11" conf="compile->default"/>
         <dependency org="org.apache.jmeter" name="ApacheJMeter_java" rev="2.11" conf="compile->default"/>
         <dependency org="junit" name="junit" rev="4.12" conf="compile->default"/>
+        <dependency org="org.apache" name="commons-beanutils" rev="1.7.0" conf="compile->default"/>
+        <dependency org="org.apache" name="commons-logging" rev="1.1.1.2" conf="compile->default"/>
+        <dependency org="com.squareup.wire" name="wire-runtime" rev="1.7.0" conf="compile->default"/>
+        <dependency org="com.squareup.okio" name="okio" rev="1.1.0" conf="compile->default"/>
     </dependencies>
 </ivy-module>
