@@ -13,5 +13,7 @@
     <dependencies>
         <dependency org="com.googlecode.xmemcached" name="xmemcached" rev="2.0.0" conf="zip->default"/>
         <dependency org="org.slf4j" name="slf4j-api" rev="1.7.12" conf="zip->default"/>
+        <dependency org="net.spy" name="spymemcached" rev="2.11.5" conf="zip->default"/>
+        <dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.7" conf="zip->default"/>
     </dependencies>
 </ivy-module>
