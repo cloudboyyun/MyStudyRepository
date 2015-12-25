@@ -7,25 +7,25 @@
 		revision="working@USER-20140905FA"
 		conf="compile"
 		confs="default, compile, zip, test"
-		date="20150721235015"/>
+		date="20150831230206"/>
 	<dependencies>
 		<module organisation="com.squareup.okio" name="okio">
-			<revision name="1.1.0" status="release" pubdate="20150721235015" resolver="libraries" artresolver="libraries" downloaded="false" searched="true" default="true" conf="default" position="13">
-				<metadata-artifact status="no" details="" size="0" time="0" location="D:\Local_Repository\ivy-cache\com.squareup.okio\okio\ivy-1.1.0.xml" searched="true"/>
+			<revision name="1.1.0" status="release" pubdate="20150721235015" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="13">
+				<metadata-artifact status="no" details="" size="419" time="0" location="D:\Local_Repository\ivy-cache\com.squareup.okio\okio\ivy-1.1.0.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\com.squareup.okio\okio\ivys\ivy-1.1.0.xml" origin-is-local="false" origin-location="UNKNOWN"/>
 				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="1.1.0" rev-constraint-default="1.1.0" rev-constraint-dynamic="1.1.0" callerrev="working@USER-20140905FA"/>
 				<artifacts>
-					<artifact name="okio" type="jar" ext="jar" status="successful" details="" size="54596" time="1989" location="D:\Local_Repository\ivy-cache\com.squareup.okio\okio\jars\okio-1.1.0.jar">
+					<artifact name="okio" type="jar" ext="jar" status="no" details="" size="54596" time="0" location="D:\Local_Repository\ivy-cache\com.squareup.okio\okio\jars\okio-1.1.0.jar">
 						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/squareup/okio/okio/1.1.0/okio-1.1.0.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.squareup.wire" name="wire-runtime">
-			<revision name="1.7.0" status="release" pubdate="20150721235015" resolver="libraries" artresolver="libraries" downloaded="false" searched="true" default="true" conf="default" position="12">
-				<metadata-artifact status="no" details="" size="0" time="0" location="D:\Local_Repository\ivy-cache\com.squareup.wire\wire-runtime\ivy-1.7.0.xml" searched="true"/>
+			<revision name="1.7.0" status="release" pubdate="20150721235015" resolver="libraries" artresolver="libraries" downloaded="false" searched="false" default="true" conf="default" position="12">
+				<metadata-artifact status="no" details="" size="435" time="0" location="D:\Local_Repository\ivy-cache\com.squareup.wire\wire-runtime\ivy-1.7.0.xml" searched="false" original-local-location="D:\Local_Repository\ivy-cache\com.squareup.wire\wire-runtime\ivys\ivy-1.7.0.xml" origin-is-local="false" origin-location="UNKNOWN"/>
 				<caller organisation="com.cloudboy" name="studyPacketFormat" conf="compile" rev="1.7.0" rev-constraint-default="1.7.0" rev-constraint-dynamic="1.7.0" callerrev="working@USER-20140905FA"/>
 				<artifacts>
-					<artifact name="wire-runtime" type="jar" ext="jar" status="successful" details="" size="73793" time="3223" location="D:\Local_Repository\ivy-cache\com.squareup.wire\wire-runtime\jars\wire-runtime-1.7.0.jar">
+					<artifact name="wire-runtime" type="jar" ext="jar" status="no" details="" size="73793" time="0" location="D:\Local_Repository\ivy-cache\com.squareup.wire\wire-runtime\jars\wire-runtime-1.7.0.jar">
 						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/squareup/wire/wire-runtime/1.7.0/wire-runtime-1.7.0.jar"/>
 					</artifact>
 				</artifacts>

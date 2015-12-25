@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="1.0">
-    <info organisation="com.cloudboy" module="studyPacketFormat" revision="working@USER-20140905FA" status="integration" publication="20150421181844"/>
+    <info organisation="com.cloudboy" module="studyPacketFormat" revision="working@USER-20140905FA" status="integration" publication="20150823121002"/>
     <configurations>
         <conf name="default"/>
         <conf name="compile"/>
