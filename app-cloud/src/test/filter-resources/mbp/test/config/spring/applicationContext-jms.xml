@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">   
+
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+	
+	<import resource="classpath:context/if-acms-client.xml"/>
+	<bean class="com.bill99.inf.acms.client.config.ConfigInitLoadingConfigurer"
+		parent="baseConfigurer">
+		<property name="appName" value="app-mbp" />
+		<property name="keyPatterns" value="inf.acms,ino.global,ino.mbp" />
+	</bean>
+
+	<bean class="steel.spring.ext.PropertyPlaceholderConfigurer">
+		<property name="rootLocation">
+			<value>classpath:mbp/config/env/env_dir.props</value>
+		</property>
+		<property name="childLocations">
+			<list>
+				<value>${env.dir}/common/jms.props</value>
+				<value>${env.dir}/common/hibernate.props</value>
+				<value>${env.dir}/common/fshare.props</value>
+				<value>${env.dir}/${project.name}/mbp.props</value>
+				<value>${env.dir}/${project.name}/dbcc.props</value>
+			</list>
+		</property>
+		<property name="convertToSystemLocations">
+			<list>
+				<value>${env.dir}/common/cache.props</value>
+				<value>${env.dir}/${project.name}/localCache.props</value>
+			</list>
+		</property>
+		<property name="convertToLocalLocations">
+			<list>
+				<value>mbp.sourceId</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="ApplicationVendorListener" class="steel.base.AppVendorInfoListener">
+		<property name="projectName" value="@project.name@" />
+		<property name="projectVersion" value="@project.version@" />
+	</bean>
+
+	<import resource="classpath:mbp/config/spring/jmsContext.xml"/>
+	<import resource="classpath:mbp/config/spring/mam/mdpClientContext.xml"/>
+	<import resource="classpath:mbp/config/spring/fShareClientContext.xml"/>
+	<import resource="classpath:mbp/config/spring/securityContext.xml"/>
+</beans>
