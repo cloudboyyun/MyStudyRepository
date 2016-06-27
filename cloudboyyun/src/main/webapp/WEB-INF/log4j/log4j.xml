@@ -8,12 +8,20 @@
         </layout>
 	</appender>
 	
+	<appender name="log.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/opt/log/cloudboyyun/cloudboyyun.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %l [%p] - %m%n" />
+		</layout>
+	</appender>
+	
 	<category name="org.springframework">
 		<priority value="error" />
 	</category>
 	
 	<root>
 		<priority value="info" />
-		<appender-ref ref="log.console"/>
+		<appender-ref ref="log.file"/>
 	</root>
 </log4j:configuration>

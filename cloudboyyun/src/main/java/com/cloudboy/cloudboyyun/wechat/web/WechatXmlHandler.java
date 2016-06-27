@@ -1,7 +1,8 @@
-package com.cloudboy.cloudboyyun.wechat;
+package com.cloudboy.cloudboyyun.wechat.web;
 
 import java.lang.reflect.Field;  
 import java.lang.reflect.Method;  
+import java.util.Date;
 import java.util.Iterator;  
 
 import org.apache.log4j.Logger;
@@ -11,10 +12,10 @@ import org.dom4j.Element;
 
 import com.cloudboy.util.lang.StringUtils;
   
-public class ReceiveXmlProcess {
-	private Logger logger = Logger.getLogger(ReceiveXmlProcess.class);
+public class WechatXmlHandler {
+	private static Logger logger = Logger.getLogger(WechatXmlHandler.class);
 
-	public ReceiveXmlEntity getMsgEntity(String strXml){  
+	public static ReceiveXmlEntity parseMessage(String strXml){  
         ReceiveXmlEntity msg = null;  
         try {  
             if (StringUtils.isEmpty(strXml)) {  
@@ -42,5 +43,27 @@ public class ReceiveXmlProcess {
         	logger.error("", e);
         }  
         return msg;  
+    } 
+	
+	/** 
+     * 封装文字类的返回消息 
+     * @param to 
+     * @param from 
+     * @param content 
+     * @return 
+     */  
+    public static String formatXmlAnswer(String to, String from, String content) {  
+        StringBuffer sb = new StringBuffer();  
+        Date date = new Date();  
+        sb.append("<xml><ToUserName><![CDATA[");
+        sb.append(to);  
+        sb.append("]]></ToUserName><FromUserName><![CDATA[");  
+        sb.append(from);  
+        sb.append("]]></FromUserName><CreateTime>");  
+        sb.append(date.getTime());  
+        sb.append("</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[");  
+        sb.append(content);  
+        sb.append("]]></Content><FuncFlag>0</FuncFlag></xml>");  
+        return sb.toString();  
     }  
 }  

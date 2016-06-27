@@ -1,4 +1,4 @@
-package com.cloudboy.cloudboyyun.wechat;
+package com.cloudboy.cloudboyyun.wechat.web;
 
 public class ReceiveXmlEntity {  
     private String ToUserName="";  

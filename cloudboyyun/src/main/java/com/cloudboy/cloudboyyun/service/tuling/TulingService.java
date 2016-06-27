@@ -1,4 +1,4 @@
-package com.cloudboy.cloudboyyun.wechat;
+package com.cloudboy.cloudboyyun.service.tuling;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -13,15 +13,16 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TulingApiProcess {
-	private static Logger logger = Logger.getLogger(TulingApiProcess.class);
+public class TulingService {
+	private static Logger logger = Logger.getLogger(TulingService.class);
+	
 	/**
 	 * 调用图灵机器人api接口，获取智能回复内容，解析获取自己所需结果
 	 * 
 	 * @param content
 	 * @return
 	 */
-	public String getTulingResult(String content) {
+	public static String getTulingResult(String content) {
 		if(content.equals("我是小妞妞")) {
 			return "我是老牛牛";
 		}
