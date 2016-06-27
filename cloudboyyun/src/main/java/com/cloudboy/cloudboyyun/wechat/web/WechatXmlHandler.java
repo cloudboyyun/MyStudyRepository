@@ -15,7 +15,7 @@ import com.cloudboy.util.lang.StringUtils;
 public class WechatXmlHandler {
 	private static Logger logger = Logger.getLogger(WechatXmlHandler.class);
 
-	public static ReceiveXmlEntity parseMessage(String strXml){  
+	public static ReceiveXmlEntity parseMessage(String strXml) {
         ReceiveXmlEntity msg = null;  
         try {  
             if (StringUtils.isEmpty(strXml)) {  
@@ -27,8 +27,9 @@ public class WechatXmlHandler {
             Iterator<?> iter = root.elementIterator();  
             //利用反射机制，调用set方法  
             //获取该实体的元类型  
-            Class<?> c = Class.forName("com.cloudboy.cloudboyyun.process.wechat.ReceiveXmlEntity");
-            msg = (ReceiveXmlEntity)c.newInstance();//创建这个实体的对象  
+            Class<?> c = ReceiveXmlEntity.class;
+            // Class.forName("com.cloudboy.cloudboyyun.wechat.web.ReceiveXmlEntity");
+            msg = new ReceiveXmlEntity();
               
             while(iter.hasNext()){  
                 Element ele = (Element)iter.next();  
