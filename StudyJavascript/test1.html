@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 模板字符串的字符串插值
+			function test1() {
+				let value = 5;
+				console.log(`value = ${value}`);
+				
+				let foo = {toString: () => 'World'};
+				console.log(`Hello, ${foo}`);
+			}
+			test1();
+			
+			function greet(arg1, arg2, arg3) {
+				console.log(arg1);
+				console.log(arg2);
+				console.log(arg3);
+			}
+			
+			// 模板字符串的标签函数
+			// 标签函数的第一个参数是被嵌入表达式分隔的文本的数组。第二个参数开始是嵌入表达式的内容。
+			function test2() {
+				let name = 'Martin';
+				let age = 18;
+				greet `I'm ${name}. I'm ${age} years old.`;
+			}
+			test2();
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// push()向Array的末尾添加若干元素，pop()则把Array的最后一个元素删除掉：
+			function test1() {
+				let arr = [1, 2];
+				arr.push(3, 4);
+				console.log(arr);
+				console.log(arr.pop());
+				console.log(arr);
+			}
+			test1();
+			
+			// 如果要往Array的头部添加若干元素，使用unshift()方法，shift()方法则把Array的第一个元素删掉
+			function test2() {
+				let arr = [1, 2];
+				arr.unshift(3);
+				console.log(arr);
+				console.log(arr.shift());
+				console.log(arr);
+			}
+			test2();
+		</script>
+	</body>
+</html>
