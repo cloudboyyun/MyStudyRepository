@@ -1,11 +1,6 @@
-package com.cloudboy.study.newInJDK8;
+package com.cloudboy.study.newInJDK8.no1;
 
-/**
- * 特性1：Interface支持定义默认实现
- * @author yunxi
- *
- */
-public interface Feature1 {
+public interface Formula {
 	double calculate(int a);
 	
 	/**

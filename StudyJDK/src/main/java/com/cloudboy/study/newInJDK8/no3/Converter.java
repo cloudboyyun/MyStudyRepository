@@ -1,4 +1,4 @@
-package com.cloudboy.study.newInJDK8;
+package com.cloudboy.study.newInJDK8.no3;
 
 /**
  * 函数式接口：我们可以将lambda表达式当作任意只包含一个抽象方法的接口类型，确保你的接口一定达到这个要求，你只需要给你的接口添加 @FunctionalInterface
@@ -18,6 +18,6 @@ package com.cloudboy.study.newInJDK8;
  */
 
 @FunctionalInterface
-public interface Feature3<F, T> {
+public interface Converter<F, T> {
 	T convert(F from);
 }

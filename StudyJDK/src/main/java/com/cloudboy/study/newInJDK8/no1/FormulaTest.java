@@ -1,6 +1,6 @@
-package com.cloudboy.study.newInJDK8;
+package com.cloudboy.study.newInJDK8.no1;
 
-public class Feature1Impl implements Feature1 {
+public class FormulaTest implements Formula {
 
 	@Override
 	public double calculate(int a) {
@@ -14,7 +14,7 @@ public class Feature1Impl implements Feature1 {
 //	}
 	
 	public static void main(String[] args) {
-		Feature1 feature1 = new Feature1Impl();
+		Formula feature1 = new FormulaTest();
 		System.out.println(feature1.calculate(2));
 		System.out.println(feature1.sqrt(9));
 	}

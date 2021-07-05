@@ -1,18 +1,13 @@
-package com.cloudboy.study.newInJDK8;
+package com.cloudboy.study.newInJDK8.no3;
 
-/**
- * 方法与构造函数的引用，使用符号：::
- * @author yunxi
- *
- */
-public class Feature4 {
+public class Person {
 	private String firstName = "Unknow";
 	private String lastName  = "Unknow";
 	
-	public Feature4() {
+	public Person() {
 	}
 	
-	public Feature4(String firstName, String lastName) {
+	public Person(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}

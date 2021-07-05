@@ -1,4 +1,4 @@
-package com.cloudboy.study.newInJDK8;
+package com.cloudboy.study.newInJDK8.no2;
 
 import java.util.Arrays;
 import java.util.Collections;
