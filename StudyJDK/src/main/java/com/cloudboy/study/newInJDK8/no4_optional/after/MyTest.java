@@ -2,6 +2,8 @@ package com.cloudboy.study.newInJDK8.no4_optional.after;
 
 import java.util.Optional;
 
+import com.cloudboy.util.json.FastJsonUtils;
+
 public class MyTest {
 	
 	public static void test1() {
@@ -29,8 +31,10 @@ public class MyTest {
 				.map(c -> c.getIsoCode())
 				.orElse(null);
 		System.out.println("isoCode is: " + isoCode);
+		
+		System.out.println(FastJsonUtils.toJSONString(user));
 	}
-
+	
 	public static void main(String[] args) {
 		test1();
 		test2();
