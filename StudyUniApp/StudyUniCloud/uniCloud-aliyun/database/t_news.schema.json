@@ -1,0 +1,81 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"description": "新闻表",
+	"required": ["title", "time", "channel"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title": {
+			"bsonType": "string",
+			"label": "标题",
+			"description": "新闻的标题",
+			"trim": "both",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		},
+		"time": {
+			"bsonType": "timestamp",
+			"label": "时间",
+			"description": "新闻发布时间",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		},
+		"channel": {
+			"bsonType": "string",
+			"label": "频道",
+			"description": "频道",
+			"trim": "both",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		},
+		"pic": {
+			"bsonType": "string",
+			"label": "图片",
+			"description": "新闻图片url",
+			"format": "url",
+			"errorMessage": {
+				"format": "{label}格式无效"
+			}
+		},
+		"status": {
+			"bsonType": "array",
+			"label": "状态",
+			"description": "状态",
+			"defaultValue": 1,
+			"enum": [{
+					"value": 1,
+					"text": "有效"
+				},
+				{
+					"value": 0,
+					"text": "无效"
+				}
+			]
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"label": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified_date": {
+			"bsonType": "timestamp",
+			"label": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}
