@@ -2,7 +2,7 @@
 {
 	"bsonType": "object",
 	"description": "新闻表",
-	"required": ["title", "time", "channel"],
+	"required": ["title", "time", "channel", "status", "create_date", "modified_date"],
 	"permission": {
 		"read": true,
 		"create": true,

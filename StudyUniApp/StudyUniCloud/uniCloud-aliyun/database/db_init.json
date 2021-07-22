@@ -1,0 +1,70 @@
+// 在本文件中可配置云数据库初始化，数据格式见：https://uniapp.dcloud.io/uniCloud/hellodb?id=db-init
+// 编写完毕后对本文件点右键，可按配置规则创建表和添加数据
+{
+    "uni-id-roles": {
+        "data": [
+            {
+                "_id": {
+                    "$oid": "60f91cbb75311d000139f344"
+                },
+                "role_id": "admin",
+                "role_name": "超级管理员",
+                "permission": [],
+                "comment": "超级管理员拥有所有权限",
+                "create_date": 0
+            },
+            {
+                "_id": {
+                    "$oid": "60f93a8775311d00013ab0eb"
+                },
+                "role_id": "USER_ADMIN",
+                "role_name": "人事管理",
+                "permission": [
+                    "USER_ADD",
+                    "USER_EDIT",
+                    "USER_DEL"
+                ]
+            }
+        ]
+    },
+    "uni-id-users": {
+        "data": [
+            {
+                "_id": {
+                    "$oid": "60f93b0a9b33ed00016bca5e"
+                },
+                "username": "cloudboy",
+                "email": "cloudboy@163.com",
+                "role": [
+                    "USER_ADMIN"
+                ]
+            }
+        ]
+    },
+    "uni-id-permissions": {
+        "data": [
+            {
+                "_id": {
+                    "$oid": "60f93a2354df7700012dda8e"
+                },
+                "permission_id": "USER_EDIT",
+                "permission_name": "修改用户",
+                "created_date": 0
+            },
+            {
+                "_id": {
+                    "$oid": "60f93a4031de900001ea7d53"
+                },
+                "permission_id": "USER_ADD",
+                "permission_name": "新增用户"
+            },
+            {
+                "_id": {
+                    "$oid": "60f93a5375311d00013aafc4"
+                },
+                "permission_id": "USER_DEL",
+                "permission_name": "删除用户"
+            }
+        ]
+    }
+}

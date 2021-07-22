@@ -30,7 +30,16 @@
         "navigationBarTitleText": "详情"
     }
 }
-],
+    ,{
+            "path" : "pages/MyTest1/MyTest1",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

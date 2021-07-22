@@ -1,0 +1,8 @@
+{
+	"passwordSecret": "Cl-ps12345678",
+	"tokenSecret": "Cl-tk12345678",
+	"tokenExpiresIn": 7200,
+	"tokenExpiresThreshold": 600,
+	"passwordErrorLimit": 6,
+	"passwordErrorRetryTime": 3600,
+}

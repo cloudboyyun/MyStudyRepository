@@ -5,6 +5,7 @@
 			<text class="title">{{title}}</text>
 		</view>
 		<view @click="toNewsList">t_news</view>
+		<view @click="toMyTest1">MyTest1</view>
 	</view>
 </template>
 
@@ -22,6 +23,12 @@
 			toNewsList:function() {
 				uni.navigateTo({
 					url:"../t_news/list"
+				})
+			},
+			
+			toMyTest1:function() {
+				uni.navigateTo({
+					url:"../MyTest1/MyTest1"
 				})
 			}
 		}
