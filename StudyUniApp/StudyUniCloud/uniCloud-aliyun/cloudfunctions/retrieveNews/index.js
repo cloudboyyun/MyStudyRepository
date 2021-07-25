@@ -1,24 +1,31 @@
 'use strict';
 const config = {
-	// channels: ["财经","头条"],
-	channels: ["财经"],
+	channels: ["财经", "头条"],
 	url: "https://way.jd.com/jisuapi/get",
 	appkey: "f1eca1bfa67398b7089044dddc34f677",
 	num: 2,
 	start: 0
-}
+};
+const db = uniCloud.database()
 
 exports.main = async (event, context) => {
-	config.channels.forEach((channel) => {
-		getNews(channel).then((newsList) => {
-			if(newsList) {
-				newsList.forEach((news) => {
-					console.log(news);
-				}) 
-			}
-		});
+	const collection = db.collection('t_news');
+	var now = new Date().getTime();
+	for(let channel of config.channels) {
+		let newsList = await getNews(channel);
+		if (newsList && newsList.length > 0) {
+			newsList.forEach((news) => {
+				news.channel = channel;
+				news.create_date = now;
+				news.modified_date = now;
+			});
+			collection.add(newsList);
+		}
+	}
+	config.channels.forEach(async(channel) => {
+		
 	})
-	return event
+	return now;
 };
 
 async function getNews(channel) {
@@ -33,10 +40,8 @@ async function getNews(channel) {
 			dataType: 'json'
 		}
 	});
-	// console.log("res", res);
 	let result = JSON.parse(res.data.toString('utf8'));
-	console.log(result.code);
-	if(result.code = "10000") {
+	if (result.code = "10000") {
 		return result.result.result.list;
 	} else {
 		return null;

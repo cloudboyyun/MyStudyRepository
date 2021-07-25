@@ -23,7 +23,7 @@
 			}
 		},
 		"time": {
-			"bsonType": "timestamp",
+			"bsonType": "date",
 			"label": "时间",
 			"description": "新闻发布时间",
 			"errorMessage": {
