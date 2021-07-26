@@ -9,4 +9,11 @@
 // 详细JQL语法，请参考 https://uniapp.dcloud.net.cn/uniCloud/clientdb?id=jsquery
 
 // 下面示例查询uni-id-users表的所有数据
-db.collection('uni-id-users').get();
+// db.collection('uni-id-users').get();
+
+db.collection('t_news')
+	.field('title, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate, time, create_date')
+	.orderBy('create_date', 'desc')
+	.get();
+
+

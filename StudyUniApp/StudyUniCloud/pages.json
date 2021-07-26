@@ -5,33 +5,45 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		}, {
+			"path": "pages/t_news/add",
+			"style": {
+				"navigationBarTitleText": "新增"
+			}
+		}, {
+			"path": "pages/t_news/edit",
+			"style": {
+				"navigationBarTitleText": "编辑"
+			}
+		}, {
+			"path": "pages/t_news/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
+		}, {
+			"path": "pages/t_news/detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		}, {
+			"path": "pages/dbTest/ByCloudFunction/ByCloudFunction",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	,{
-    "path": "pages/t_news/add",
-    "style": {
-        "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/t_news/edit",
-    "style": {
-        "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/t_news/list",
-    "style": {
-        "navigationBarTitleText": "列表"
-    }
-}
-,{
-    "path": "pages/t_news/detail",
-    "style": {
-        "navigationBarTitleText": "详情"
-    }
-}
-    ,{
-            "path" : "pages/MyTest1/MyTest1",
+	    ,{
+            "path" : "pages/dbTest/ByJQL/ByJQL",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/dbTest/ByUniCloudDB/ByUniCloudDB",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

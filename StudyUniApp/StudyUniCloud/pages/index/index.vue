@@ -1,11 +1,9 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-		<view @click="toNewsList">t_news</view>
-		<view @click="toMyTest1">MyTest1</view>
+		<view class='menu-item' @click="toSchema2Code">自动生成的代码(schema2Code)</view>
+		<view class='menu-item' @click="toByCloudFunction">通过云函数(CloudFunction)操作数据库</view>
+		<view class='menu-item' @click="toByJQL">通过ClientDB-JQL操作数据库</view>
+		<view class='menu-item' @click="toUniCloudDB">通过unicloud-db组件操作数据库</view>
 	</view>
 </template>
 
@@ -20,15 +18,27 @@
 
 		},
 		methods: {
-			toNewsList:function() {
+			toSchema2Code:function() {
 				uni.navigateTo({
 					url:"../t_news/list"
 				})
 			},
 			
-			toMyTest1:function() {
+			toByCloudFunction:function() {
 				uni.navigateTo({
-					url:"../MyTest1/MyTest1"
+					url:"../dbTest/ByCloudFunction/ByCloudFunction"
+				})
+			},
+			
+			toByJQL:function() {
+				uni.navigateTo({
+					url:"../dbTest/ByJQL/ByJQL"
+				})
+			},
+			
+			toUniCloudDB:function() {
+				uni.navigateTo({
+					url:"../dbTest/ByUniCloudDB/ByUniCloudDB"
 				})
 			}
 		}
@@ -39,26 +49,13 @@
 	.content {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: center;
 	}
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.menu-item {
+		margin-top: 20rpx;
+		margin-left: 20rpx;
+		color:#007AFF;
 	}
 </style>
