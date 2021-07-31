@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<navigation-link :url="url">
+			  Your Profile
+			</navigation-link>
+		</div>
+		<script>
+			Vue.component('navigation-link', {
+			  props: ['url'],
+			  template: `
+					<a
+					  v-bind:href="url"
+					  class="nav-link"
+					>
+					<slot></slot>
+					</a>
+			  `
+			})
+			var app = new Vue({
+				el: '#app',
+				data: {
+					url: "https://www.baidu.com"
+				},
+				methods: {
+				}
+			})
+		</script>
+		<style>
+		</style>
+	</body>
+</html>

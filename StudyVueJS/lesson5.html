@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input v-model.lazy="message" placeholder="edit me"/>
+			<textarea v-model="message" placeholder="add multiple lines"></textarea>
+		</div>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: null
+				},
+				methods: {
+				}
+			})
+		</script>
+<style>
+	.green {
+		color: green;
+	}
+	.bolder {
+		font-weight: bolder;
+	}
+</style>
+	</body>
+</html>

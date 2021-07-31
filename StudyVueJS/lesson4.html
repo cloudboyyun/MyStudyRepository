@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<template v-if="loginType === 'username'">
+			  <label>Username</label>
+			  <input placeholder="Enter your username">
+			</template>
+			<template v-else>
+			  <label>Email</label>
+			  <input placeholder="Enter your email address">
+			</template>
+			<button @click='toggleLoginType'>更改登录方式</button>
+		</div>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					loginType: 'username'
+				},
+				methods: {
+					toggleLoginType() {
+						if(this.loginType == 'username') {
+							this.loginType = 'Email';
+						} else {
+							this.loginType = 'username'
+						}
+					}
+				}
+			})
+		</script>
+<style>
+	.green {
+		color: green;
+	}
+	.bolder {
+		font-weight: bolder;
+	}
+</style>
+	</body>
+</html>

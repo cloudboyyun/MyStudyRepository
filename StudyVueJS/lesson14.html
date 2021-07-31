@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="list-demo" class="demo">
+		  <button v-on:click="add">Add</button>
+			<input>
+		  <input v-focus>
+			<input>
+		</div>
+		<script>
+			new Vue({
+			  el: '#list-demo',
+			  data: {
+			  },
+			  methods: {
+			    add: function () {
+			      console.log("add")
+			    },
+			  },
+				// 自定义指令
+				directives: {
+				  focus: {
+				    // 指令的定义
+				    inserted: function (el) {
+				      el.focus()
+				    }
+				  }
+				}
+			})
+		</script>
+		<style>
+		</style>
+	</body>
+</html>

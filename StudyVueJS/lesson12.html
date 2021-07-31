@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<google-map>
+			  <google-map-region>
+			    <google-map-markers></google-map-markers>
+			  </google-map-region>
+			</google-map>
+		</div>
+		<script>
+			Vue.component('google-map', {
+			  props: [],
+			  template: `
+					<div>
+						<button @click="onClick">我是google-map</button>
+						<slot></slot>
+					</div>
+			  `,
+				// 提供给子组件的方法
+				provide: function () {
+				  return {
+				    getMap: this.getMap
+				  }
+				},
+				methods: {
+					getMap: function(para1, para2) {
+						return para1 + para2;
+					},
+					onClick() {
+						console.log("In google-map:", this.getMap(1, 2));
+					}
+				}
+			});
+			
+			Vue.component('google-map-region', {
+			  props: [],
+				// 依赖注入
+				inject: ['getMap'],
+			  template: `
+					<div>
+						<button @click="onClick">我是google-map-region</button>
+						<slot></slot>
+					</div>
+			  `,
+				methods: {
+					onClick() {
+						console.log("In region:", this.getMap(2, 2));
+					}
+				}
+			});
+			
+			Vue.component('google-map-markers', {
+			  props: [],
+				// 依赖注入
+				inject: ['getMap'],
+			  template: `
+					<div>
+						<button @click="onClick">我是google-map-markers</button>
+					</div>
+			  `,
+				methods: {
+					onClick() {
+						console.log("In markers:", this.getMap(3, 2));
+					}
+				}
+			});
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					foo: 1
+				},
+				computed: {
+					bar: function() {
+						return this.foo + 1;
+					}
+				},
+				methods: {
+					baz: function() {
+						return this.foo + 2;
+					},
+					focusIt() {
+						// 访问子组件内控件
+						this.$refs.component1.$refs.myInput.focus()
+					}
+				}
+			});
+			
+			// 根实例可以通过 $root来访问
+			console.log(app.$root.foo);
+			console.log(app.$root.bar);
+			console.log(app.$root.baz());
+		</script>
+		<style>
+		</style>
+	</body>
+</html>

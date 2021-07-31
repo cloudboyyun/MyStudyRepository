@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/vuex"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div :class='{green: isGreen, bolder: isBolder}'>{{ name }}</div>
+			<div :class='classObject'>{{ gender }}</div>
+		</div>
+		<script>
+			let CONFIG_DATA = {
+				name: '张三',
+				gender: '男'
+			}
+			var app = new Vue({
+				el: '#app',
+				data: {
+					...CONFIG_DATA,
+					isGreen: true,
+					isBolder: true,
+					classObject: {
+						green: false,
+						bolder: true
+					}
+				}
+			})
+		</script>
+<style>
+	.green {
+		color: green;
+	}
+	.bolder {
+		font-weight: bolder;
+	}
+</style>
+	</body>
+</html>

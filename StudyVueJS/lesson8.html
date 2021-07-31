@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div :style="{ fontSize: postFontSize + 'em' }">
+				<blog-post 
+					v-for="post in posts" 
+					v-bind:key="post.id" 
+					v-bind="post"
+					v-on:enlarge-text="onEnlargeText">
+				</blog-post>
+			</div>
+		</div>
+		<script>
+			Vue.component('blog-post', {
+				props: {
+					title: {
+						type: String,
+						required:true
+					},
+					content: String,
+					likes: {
+						type: Number,
+						default: 0
+					}
+				},
+				template: `
+			    <div class="blog-post">
+			      <h3>{{ title }}</h3>
+						<button @click="$emit('enlarge-text', 0.1)">
+							Enlarge text
+						</button><span>{{likes}}</span>
+			      <div v-html="content"></div>
+			    </div>
+			  `
+			})
+			var app = new Vue({
+				el: '#app',
+				data: {
+					posts: [{
+							id: 1,
+							title: 'My journey with Vue',
+							content: '因为好用呀',
+							likes: 9
+						},
+						{
+							id: 2,
+							title: 'Blogging with Vue',
+							content: '你好啊',
+							likes: 10
+						},
+						{
+							id: 3,
+							title: 'Why Vue is so fun',
+							content: '因为太好用了',
+						}
+					],
+					postFontSize: 1,
+					searchText: null
+				},
+				methods: {
+					onEnlargeText(enlargeAmount) {
+						this.postFontSize += enlargeAmount
+					}
+				}
+			})
+		</script>
+		<style>
+			.green {
+				color: green;
+			}
+
+			.bolder {
+				font-weight: bolder;
+			}
+		</style>
+	</body>
+</html>

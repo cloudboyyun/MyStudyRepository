@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+		<script>
+			Vue.directive('demo', {
+			  bind: function (el, binding, vnode) {
+			    var s = JSON.stringify
+			    el.innerHTML =
+			      'name: '       + s(binding.name) + '<br>' +
+			      'value: '      + s(binding.value) + '<br>' +
+			      'expression: ' + s(binding.expression) + '<br>' +
+			      'argument: '   + s(binding.arg) + '<br>' +
+			      'modifiers: '  + s(binding.modifiers) + '<br>' +
+			      'vnode keys: ' + Object.keys(vnode).join(', ')
+			  }
+			})
+			
+			new Vue({
+			  el: '#hook-arguments-example',
+			  data: {
+			    message: 'hello!'
+			  }
+			})
+		</script>
+		<style>
+			.list-item {
+				transition: all 1s;
+			  display: inline-block;
+			  margin-right: 20px;
+			}
+			.list-leave-active {
+			  position: absolute;
+			}
+			.list-enter, .list-leave-to {
+			  opacity: 0;
+			  transform: translateY(30px);
+			}
+		</style>
+	</body>
+</html>

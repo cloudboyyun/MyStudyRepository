@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button-counter title='计数器'></button-counter>
+		</div>
+		<script>
+			// 定义一个名为 button-counter 的新组件
+			Vue.component('button-counter', {
+				props: ['title'],
+			  data: function () {
+			    return {
+			      count: 0
+			    }
+			  },
+			  template: '<div><h3>{{ title }}</h3><button v-on:click="count++">You clicked me {{ count }} times.</button></div>'
+			})
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: null
+				},
+				methods: {
+				}
+			})
+		</script>
+<style>
+	.green {
+		color: green;
+	}
+	.bolder {
+		font-weight: bolder;
+	}
+</style>
+	</body>
+</html>

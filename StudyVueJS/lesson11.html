@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+	</head>
+	<body>
+		<div id="app">
+			<test-component1 ref='component1'></test-component1>
+			<div>我在父组件中哦foo = {{foo}}</div>
+			<div>
+				<button @click="focusIt">我也在父组件中哦</button>
+			</div>
+		</div>
+		<script>
+			Vue.component('test-component1', {
+			  props: [],
+			  template: `
+					<div>
+						<button @click="onClick">我在test-component1中</button>
+						<div>
+							<input ref='myInput' placeholder = '我也在test-component1中'/>
+						</div>
+					</div>
+			  `,
+				methods: {
+					onClick() {
+						console.log(123);
+						// 父实例可以通过 $parent来访问, 但这不推荐
+						this.$parent.foo = 2;
+					}
+				}
+			})
+			
+			var app = new Vue({
+				el: '#app',
+				data: {
+					foo: 1
+				},
+				computed: {
+					bar: function() {
+						return this.foo + 1;
+					}
+				},
+				methods: {
+					baz: function() {
+						return this.foo + 2;
+					},
+					focusIt() {
+						// 访问子组件内控件
+						this.$refs.component1.$refs.myInput.focus()
+					}
+				}
+			});
+			
+			// 根实例可以通过 $root来访问
+			console.log(app.$root.foo);
+			console.log(app.$root.bar);
+			console.log(app.$root.baz());
+		</script>
+		<style>
+		</style>
+	</body>
+</html>

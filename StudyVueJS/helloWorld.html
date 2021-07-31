@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Vue app</title>
+		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/vuex"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{ message }}
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vue!'
+				},
+				created: function() {
+					// `this` 指向 vm 实例
+					console.log('message is: ' + this.message);
+				}
+			})
+		</script>
+	</body>
+</html>

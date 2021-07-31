@@ -5,6 +5,7 @@
 		<title></title>
 	</head>
 	<body>
+		<button onclick="test3()">试试</button>
 		<script>
 			// 模板字符串的字符串插值
 			function test1() {
@@ -30,6 +31,36 @@
 				greet `I'm ${name}. I'm ${age} years old.`;
 			}
 			test2();
+			
+			function test3() {
+				let message1 = {
+					body: null
+				};
+				let message2 = {
+					body: {
+						user: {
+							firstName: "Martin"
+						}
+					}
+				};
+				printOut(message1);
+				printOut(message2);
+			}
+			
+			function printOut(message) {
+				// 下面这句会报错：Cannot read property 'user' of null
+				// let firstName = message.body.user.firstName;
+			
+				// 所以要进行如下判断，但这种写法太繁琐
+				// let firstName = (message &&
+				// 	message.body &&
+				// 	message.body.user &&
+				// 	message.body.user.firstName) || 'default';
+			
+				// ES2020引入新的运算符: ?.
+				let firstName = message?.body?.user?.firstName || 'default';
+				console.log(firstName)
+			}
 			
 		</script>
 	</body>
