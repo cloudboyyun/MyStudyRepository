@@ -167,7 +167,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-starter",
+		"navigationBarTitleText": "云名片",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8",
 		"enablePullDownRefresh": false

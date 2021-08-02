@@ -51,6 +51,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/TestVuex/TestVuex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

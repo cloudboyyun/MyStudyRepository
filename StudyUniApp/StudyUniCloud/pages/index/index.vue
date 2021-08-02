@@ -4,6 +4,7 @@
 		<view class='menu-item' @click="toByCloudFunction">通过云函数(CloudFunction)操作数据库</view>
 		<view class='menu-item' @click="toByJQL">通过ClientDB-JQL操作数据库</view>
 		<view class='menu-item' @click="toUniCloudDB">通过unicloud-db组件操作数据库</view>
+		<view class='menu-item' @click="toVuex">测试Vuex</view>
 	</view>
 </template>
 
@@ -39,6 +40,12 @@
 			toUniCloudDB:function() {
 				uni.navigateTo({
 					url:"../dbTest/ByUniCloudDB/ByUniCloudDB"
+				})
+			},
+			
+			toVuex: function() {
+				uni.navigateTo({
+					url:"../TestVuex/TestVuex"
 				})
 			}
 		}

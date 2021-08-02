@@ -7,7 +7,7 @@ module.exports = {
 			//点击悬浮下载栏后打开的网页链接
 			"openUrl": '/#/pages/ucenter/invite/invite',
 			//左侧显示的应用名称
-			"appname": 'uni-starter',
+			"appname": '土豆云名片',
 			//应用的图标
 			"logo": './static/logo.png',
 		}
@@ -50,7 +50,7 @@ module.exports = {
 	//关于应用
 	"about": {
 		//应用名称
-		"appName": "uni-starter",
+		"appName": "土豆云名片",
 		//应用logo
 		"logo": "/static/logo.png",
 		//公司名称
