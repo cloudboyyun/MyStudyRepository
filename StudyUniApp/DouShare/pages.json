@@ -1,5 +1,22 @@
 {
-	"pages": [{
+	"pages": [
+		{
+			"path": "pages/main/main",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/businessCard/businessCard",
+			"style": {
+				"navigationBarTitleText": "发名片",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
 			"path": "pages/list/list",
 			"style": {
 				"navigationStyle": "custom",
@@ -159,7 +176,7 @@
 		}, {
 			"path": "pages/ucenter/invite/invite",
 			"style": {
-				"navigationStyle":"custom",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 
@@ -193,10 +210,10 @@
 		"borderStyle": "black",
 		"backgroundColor": "#FFFFFF",
 		"list": [{
-			"pagePath": "pages/list/list",
+			"pagePath": "pages/main/main",
 			"iconPath": "static/tabbar/list.png",
 			"selectedIconPath": "static/tabbar/list_active.png",
-			"text": "列表"
+			"text": "首页"
 		}, {
 			"pagePath": "pages/grid/grid",
 			"iconPath": "static/tabbar/grid.png",
