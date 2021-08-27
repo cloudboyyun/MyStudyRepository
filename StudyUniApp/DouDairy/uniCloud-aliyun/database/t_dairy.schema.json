@@ -1,0 +1,124 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"description": "日历表",
+	"required": ["date", "year", "month", "day", "dateDesc", "weather",  "create_date", "modified_date"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"date": {
+			"bsonType":"string",
+			"label": "日期",
+			"description":"日期",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		},
+		"year": {
+			"bsonType":"int",
+			"label":"年",
+			"description":"年",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		},
+		"month": {
+			"bsonType":"int",
+			"label":"月",
+			"description":"月",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			},
+			"enum": [{
+					"value": 0,
+					"text": "一月"
+				},
+				{
+					"value": 1,
+					"text": "二月"
+				},
+				{
+					"value": 2,
+					"text": "三月"
+				},
+				{
+					"value": 3,
+					"text": "四月"
+				},
+				{
+					"value": 4,
+					"text": "五月"
+				},
+				{
+					"value": 5,
+					"text": "六月"
+				},
+				{
+					"value": 6,
+					"text": "七月"
+				},
+				{
+					"value": 7,
+					"text": "八月"
+				},
+				{
+					"value": 8,
+					"text": "九月"
+				},
+				{
+					"value": 9,
+					"text": "十月"
+				},
+				{
+					"value": 10,
+					"text": "十一月"
+				},
+				{
+					"value": 11,
+					"text": "十二月"
+				}
+			]
+		},
+		"day" :{
+			"bsonType":"int",
+			"label":"日",
+			"description":"日",
+			"minimum": 1,
+			"maximum": 31,
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		},
+		"dateDesc" : {
+			"bsonType":"object",
+			"label": "日期属性",
+			"description":"日期属性"
+		},
+		"weather" : {
+			"bsonType":"object",
+			"label": "天气属性",
+			"description":"天气属性"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"label": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"modified_date": {
+			"bsonType": "timestamp",
+			"label": "修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

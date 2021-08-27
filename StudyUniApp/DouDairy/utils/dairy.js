@@ -1,3 +1,4 @@
+
 export function getMonthDays(year, month) {
 	// 本月的天数
 	let days = new Date(year, month + 1, 0).getDate();
@@ -15,6 +16,7 @@ export function getMonthDays(year, month) {
 	// 如果不是周六，那本页最后一天应该是哪天？
 	let calendarEndDate = new Date(year, month, days + (6 - week));
 	console.log("calendarEndDate", calendarEndDate);
+	
 	let result = [];
 	for (let i = calendarStartDate; i <= calendarEndDate;i.setDate(i.getDate() + 1)) {
 		var item = {
