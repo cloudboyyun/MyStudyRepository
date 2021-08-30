@@ -1,12 +1,12 @@
 <template>
 	<view class='page'>
 		<view class='year-month-title'>
-			<view>{{year}}年{{month}}月</view>
-			<view>{{result.lunarYear}}</view>
-			<view>{{result.animalsYear}}</view>
+			<view class='year-month'>{{year}}年{{month}}月</view>
+			<view class='lunar-year'>{{result.lunarYear}}</view>
+			<view class='animals-year'>{{result.animalsYear}}</view>
 		</view>
 		<view class='calendar'>
-			<view class='row'>
+			<view class='row day-of-week'>
 				<view class='day weekend'>日</view>
 				<view class='day'>一</view>
 				<view class='day'>二</view>
@@ -17,8 +17,8 @@
 			</view>
 			<view class='row'>
 				<view v-for="(item,index) in result.dates" :key="index" class='day'>
-					<view>{{item.day}}</view>
-					<view>{{getDateDesc(item)}}</view>
+					<view class="solar-day" :class='solarDayClass(item)' >{{item.day}}</view>
+					<view class="lunar-day" :class='lunarDayClass(item)'>{{getDateDesc(item)}}</view>
 				</view>
 			</view>
 		</view>
@@ -35,8 +35,34 @@
 				result: {}
 			}
 		},
+		computed: {
+			solarDayClass() {
+				return function(item) {
+					let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
+					let inThisMonth = (item.month + 1) == this.month;
+					return {
+						'solar-day': true,
+						'weekday': !isWeekEnd && inThisMonth,
+						'weekend': isWeekEnd && inThisMonth,
+						'weekday-other-month': !isWeekEnd && !inThisMonth,
+						'weekend-other-month': isWeekEnd && !inThisMonth
+					};
+				}
+			},
+			
+			lunarDayClass() {
+				return function(item) {
+					let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
+					let inThisMonth = (item.month + 1) == this.month;
+					return {
+						'luna-day-this-month': inThisMonth,
+						'lunar-day-other-month': !inThisMonth
+					};
+				}
+			}
+		},
 		onLoad() {
-			let today = new Date(2021, 6, 25);
+			let today = new Date();
 			this.year = today.getFullYear();
 			this.month = today.getMonth() + 1;
 			this.loadPage();
@@ -81,6 +107,22 @@
 	.year-month-title {
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
+		margin-left: 20rpx;
+		margin-right: 20rpx;
+		margin-bottom: 30rpx;
+	}
+	
+	.year-month {
+		font-size: 40rpx;
+	}
+	
+	.lunar-year {
+		font-size: 40rpx;
+	}
+	
+	.animals-year {
+		font-size: 40rpx;
 	}
 	
 	.calendar {
@@ -93,16 +135,47 @@
 		flex-direction: row;
 		justify-content: space-around;
 		flex-wrap: wrap;
-		margin-left: 20rpx;
-		margin-right: 20rpx;
 		text-align: center;
 	}
 	
+	.day-of-week {
+		font-size: 20rpx;
+	}
+	
+	.solar-day {
+		font-size: 32rpx;
+	}
+	
+	.lunar-day {
+		font-size: 20rpx;
+	}
+	
+	.luna-day-this-month {
+		color: #a1a1a1;
+	}
+	
+	.lunar-day-other-month {
+		color: #e1e1e1;
+	}
+	
+	.weekday {
+		color: #111111;
+	}
+	
+	.weekday-other-month {
+		color: #dfdfdf;
+	}
+	
 	.weekend {
-		color: red;
+		color: #c1252d;
+	}
+	
+	.weekend-other-month {
+		color: #f1dcde;
 	}
 	
 	.day {
 		width: 14%;
+		margin-bottom: 20rpx;
 	}
 </style>

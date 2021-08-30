@@ -49,7 +49,14 @@ exports.main = async (event, context) => {
 	let records = query.data;
 	let result = {
 		dates: records,
-		lunarYear: null
+		lunarYear: null,
+		animalsYear: null
+	}
+	
+	for(let index in records) {
+		let item = records[index];
+		let date = new Date(item.date);
+		item.dayOfWeek = date.getDay();
 	}
 	
 	for(let index in records) {
