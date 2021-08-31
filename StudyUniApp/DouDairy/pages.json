@@ -182,9 +182,15 @@
 		"enablePullDownRefresh": false
 	},
 	"condition": {
-		"list": [{
+		"list": [
+			{
+				"path": "pages/main/main"
+			},
+			{
 				"path": "pages/list/detail"
-			},{
+			},
+			
+			{
 				"path": "pages/list/list"
 			},
 			{
@@ -196,28 +202,28 @@
 				"path": "pages/ucenter/settings/settings"
 			}
 		],
-		"current": 1
-	},
-	"tabBar": {
-		"color": "#7A7E83",
-		"selectedColor": "#007AFF",
-		"borderStyle": "black",
-		"backgroundColor": "#FFFFFF",
-		"list": [{
-			"pagePath": "pages/main/main",
-			"iconPath": "static/tabbar/list.png",
-			"selectedIconPath": "static/tabbar/list_active.png",
-			"text": "列表"
-		}, {
-			"pagePath": "pages/grid/grid",
-			"iconPath": "static/tabbar/grid.png",
-			"selectedIconPath": "static/tabbar/grid_active.png",
-			"text": "宫格"
-		}, {
-			"pagePath": "pages/ucenter/ucenter",
-			"iconPath": "static/tabbar/me.png",
-			"selectedIconPath": "static/tabbar/me_active.png",
-			"text": "我的"
-		}]
+		"current": 0
 	}
+	// "tabBar": {
+	// 	"color": "#7A7E83",
+	// 	"selectedColor": "#007AFF",
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#FFFFFF",
+	// 	"list": [{
+	// 		"pagePath": "pages/main/main",
+	// 		"iconPath": "static/tabbar/list.png",
+	// 		"selectedIconPath": "static/tabbar/list_active.png",
+	// 		"text": "列表"
+	// 	}, {
+	// 		"pagePath": "pages/grid/grid",
+	// 		"iconPath": "static/tabbar/grid.png",
+	// 		"selectedIconPath": "static/tabbar/grid_active.png",
+	// 		"text": "宫格"
+	// 	}, {
+	// 		"pagePath": "pages/ucenter/ucenter",
+	// 		"iconPath": "static/tabbar/me.png",
+	// 		"selectedIconPath": "static/tabbar/me_active.png",
+	// 		"text": "我的"
+	// 	}]
+	// }
 }

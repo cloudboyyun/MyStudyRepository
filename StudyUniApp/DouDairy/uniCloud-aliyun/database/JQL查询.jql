@@ -15,7 +15,7 @@
 // })
 
 db.collection('t_dairy')
-	.field('date, year, month, day, dateDesc')
+	.field('date, year, month, day, dateDesc, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate')
 	.orderBy('date', 'desc')
 	.get();
 
@@ -32,9 +32,9 @@ db.collection('t_dairy')
 // 	})
 // 	.get()
 
-db.collection('t_dairy')
-	.where({
-		date: '2021-08-10'
-	})
-	.get()
+// db.collection('t_dairy')
+// 	.where({
+// 		date: '2021-08-10'
+// 	})
+// 	.get()
 	

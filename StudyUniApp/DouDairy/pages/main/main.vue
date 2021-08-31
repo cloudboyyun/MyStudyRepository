@@ -5,7 +5,7 @@
 			<view class='lunar-year'>{{result.lunarYear}}</view>
 			<view class='animals-year'>{{result.animalsYear}}</view>
 		</view>
-		<view class='calendar'>
+		<view class='calendar' @touchmove="handletouchmove" @touchstart="handletouchstart" @touchend="handletouchend">
 			<view class='row day-of-week'>
 				<view class='day weekend'>日</view>
 				<view class='day'>一</view>
@@ -34,7 +34,11 @@
 			return {
 				year: null,
 				month: null,
-				result: {}
+				result: {},
+				flag: 0,
+				text: '',
+				lastX: 0,
+				lastY: 0
 			}
 		},
 		computed: {},
@@ -96,6 +100,79 @@
 					'weekday-other-month': !isWeekEnd && !inThisMonth,
 					'weekend-other-month': isWeekEnd && !inThisMonth
 				};
+			},
+
+			handletouchmove: function(event) {
+				if (this.flag !== 0) {
+					return;
+				}
+				let currentX = event.touches[0].pageX;
+				let currentY = event.touches[0].pageY;
+				let tx = currentX - this.lastX;
+				let ty = currentY - this.lastY;
+				let text = '';
+				this.mindex = -1;
+				//左右方向滑动
+				if (Math.abs(tx) > Math.abs(ty)) {
+					if (tx < 0) {
+						text = '向左滑动';
+						this.flag = 1;
+						this.nextMonth();
+					} else if (tx > 0) {
+						text = '向右滑动';
+						this.flag = 2;
+						this.lastMonth();
+					}
+				}
+				//上下方向滑动
+				else {
+					if (ty < 0) {
+						text = '向上滑动';
+						this.flag = 3;
+						this.nextMonth();
+					} else if (ty > 0) {
+						text = '向下滑动';
+						this.flag = 4;
+						this.lastMonth();
+					}
+				}
+
+				//将当前坐标进行保存以进行下一次计算
+				this.lastX = currentX;
+				this.lastY = currentY;
+				this.text = text;
+			},
+			handletouchstart: function(event) {
+				// console.log(event)
+				this.lastX = event.touches[0].pageX;
+				this.lastY = event.touches[0].pageY;
+			},
+			handletouchend: function(event) {
+				this.flag = 0;
+				this.text = '没有滑动';
+			},
+			
+			lastMonth() {
+				console.log("lastMonth");
+				let month = this.month - 1;
+				if(month < 1) {
+					this.month = 12;
+					this.year = this.year - 1;
+				} else {
+					this.month = month;
+				}
+				this.loadPage();
+			},
+			nextMonth() {
+				console.log("nextMonth");
+				let month = this.month + 1;
+				if(month > 12) {
+					this.month = 1;
+					this.year = this.year + 1;
+				} else {
+					this.month = month;
+				}
+				this.loadPage();
 			}
 		}
 	}
@@ -151,11 +228,11 @@
 	.luna-day-this-month {
 		color: #a1a1a1;
 	}
-	
+
 	.luna-day-this-month-holiday {
 		color: #b74854;
 	}
-	
+
 	.luna-day-other-month-holiday {
 		color: #e9dde1;
 	}

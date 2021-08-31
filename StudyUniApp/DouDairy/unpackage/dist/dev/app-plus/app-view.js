@@ -268,7 +268,21 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+        {
+          staticClass: _vm._$g(5, "sc"),
+          attrs: { _i: 5 },
+          on: {
+            touchmove: function($event) {
+              return _vm.$handleViewEvent($event)
+            },
+            touchstart: function($event) {
+              return _vm.$handleViewEvent($event)
+            },
+            touchend: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
         [
           _c(
             "v-uni-view",
