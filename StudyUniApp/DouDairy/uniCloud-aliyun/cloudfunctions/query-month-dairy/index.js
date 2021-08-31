@@ -48,15 +48,9 @@ exports.main = async (event, context) => {
 	
 	let records = query.data;
 	let result = {
-		dates: records,
+		dates: null,
 		lunarYear: null,
 		animalsYear: null
-	}
-	
-	for(let index in records) {
-		let item = records[index];
-		let date = new Date(item.date);
-		item.dayOfWeek = date.getDay();
 	}
 	
 	for(let index in records) {
@@ -67,6 +61,33 @@ exports.main = async (event, context) => {
 			break;
 		}
 	}
+	
+	let dates = [];
+	
+	for(let index in records) {
+		let record = records[index];
+		let date = new Date(record.date);
+		let lunarDesc = record.dateDesc.lunar;
+		let strArr = lunarDesc.split("月");
+		if (strArr[1] == "初一") {
+			lunarDesc = strArr[0] + "月";
+		} else {
+			lunarDesc = strArr[1];
+		}
+		let item = {
+			dayOfWeek: date.getDay(),
+			year: record.year,
+			month: record.month,
+			day: record.day,
+			date: record.date,
+			lunar: record.dateDesc.lunar,
+			lunarDesc: lunarDesc,
+			holiday: record.dateDesc.holiday
+		}
+		dates.push(item);
+	}
+	
+	result.dates = dates;
 	
 	//返回数据给客户端
 	return result;

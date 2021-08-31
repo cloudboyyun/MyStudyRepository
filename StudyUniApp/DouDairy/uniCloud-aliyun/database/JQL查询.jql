@@ -31,4 +31,10 @@ db.collection('t_dairy')
 // 		year: null
 // 	})
 // 	.get()
+
+db.collection('t_dairy')
+	.where({
+		date: '2021-08-10'
+	})
+	.get()
 	
