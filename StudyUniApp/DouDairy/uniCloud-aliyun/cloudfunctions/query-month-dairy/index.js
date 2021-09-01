@@ -36,7 +36,7 @@ async function loadMonthData(year, month) {
 	// 如果不是周六，那本页最后一天应该是哪天？
 	let calendarEndDate = null;
 	if(week == 6) {
-		calendarEndDate = monthEndDate.getDay();
+		calendarEndDate = monthEndDate;
 	} else {
 		calendarEndDate = new Date(year, month, days + (6 - week));
 	}
@@ -93,7 +93,12 @@ async function loadMonthData(year, month) {
 			date: record.date,
 			lunar: record.dateDesc.lunar,
 			lunarDesc: lunarDesc,
-			holiday: record.dateDesc.holiday
+			holiday: record.dateDesc.holiday,
+			lunarYear: record.dateDesc.lunarYear,
+			animalsYear: record.dateDesc.animalsYear,
+			weekday: record.dateDesc.weekday,
+			suit: record.dateDesc.suit,
+			avoid: record.dateDesc.avoid
 		}
 		dates.push(item);
 	}

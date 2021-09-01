@@ -21,6 +21,24 @@
 				</view>
 			</view>
 		</view>
+		<view class='day-detail-section'>
+			<view class='dds-main'>
+				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
+				<view class='dds-daydesc'>
+					<view class='dds-weekday'>{{selectedItem.weekday}}</view>
+					<view class='dds-lunar'>{{selectedItem.lunarYear}} {{selectedItem.lunar}}</view>
+				</view>
+				<image class='dds-animalsyear' src='/static/images/tu.png'></image>
+			</view>
+			<view class='dds-suit'>
+				<view class='dds-suit-word'>宜</view>
+				<view class='dds-suit-content'>{{selectedItem.suit}}</view>
+			</view>
+			<view class='dds-avoid'>
+				<view class='dds-avoid-word'>忌:</view>
+				<view class='dds-avoid-content'>{{selectedItem.avoid}}</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -37,27 +55,40 @@
 				year: null,
 				month: null,
 				result: {},
+				selectedDate: null,
 				flag: 0,
 				text: '',
 				lastX: 0,
-				lastY: 0,
-				selectedDate: null
+				lastY: 0
 			}
 		},
-		computed: {},
+		computed: {
+			selectedItem() {
+				if(this.selectedDate) {
+					for(let index in this.result.dates) {
+						let item = this.result.dates[index];
+						if(this.selectedDate == item.date) {
+							console.log("selectedItem", item);
+							return item;
+						}
+					}
+				}
+				return {};
+			}
+		},
 		onLoad() {
 			let today = new Date();
-			this.selectedDate = dateFormat(today, 'yyyy-MM-dd');
 			this.year = today.getFullYear();
 			this.month = today.getMonth() + 1;
+			this.initSelectedDate();
 			this.loadPage();
 		},
 		methods: {
 			async loadPage() {
-				console.log("selectedDate", this.selectedDate);
 				this.result = await loadMonthData(this.year, this.month);
+				console.log("result", this.result);
 			},
-
+			
 			// 农历字段的描述
 			getDateDesc(date) {
 				let result = null;
@@ -156,8 +187,10 @@
 				} else {
 					this.month = month;
 				}
+				this.initSelectedDate();
 				this.loadPage();
 			},
+			
 			nextMonth() {
 				console.log("nextMonth");
 				let month = this.month + 1;
@@ -167,7 +200,20 @@
 				} else {
 					this.month = month;
 				}
+				this.initSelectedDate();
 				this.loadPage();
+			},
+			
+			initSelectedDate() {
+				let date = new Date(this.year, this.month-1, 1);
+				let today = new Date();
+				let year = today.getFullYear();
+				let month = today.getMonth();
+				if(year == date.getFullYear() && (month == date.getMonth())) {
+					this.selectedDate = dateFormat(today, 'yyyy-MM-dd');
+				} else {
+					this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
+				}
 			},
 			
 			changeSelectedDate(item) {
@@ -210,12 +256,14 @@
 
 	.calendar {
 		background-color: white;
-		border-radius: 20rpx;
 		padding-top: 20rpx;
-		margin-left: 20rpx;
-		margin-right: 20rpx;
+		padding-left: 20rpx;
+		padding-right: 20rpx;
+		/* border-radius: 20rpx; */
+		/* margin-left: 20rpx;
+		margin-right: 20rpx; */
 	}
-
+	
 	.row {
 		width: 100%;
 		display: flex;
@@ -280,5 +328,96 @@
 	.selected {
 		border: 5rpx solid #bf5445;
 		border-radius: 20rpx;
+	}
+	
+	.day-detail-section {
+		/* background-color: #cfac7f; */
+		border-radius: 20rpx;
+		margin-top: 20rpx;
+		margin-left: 20rpx;
+		margin-right: 20rpx;
+		padding-top: 40rpx;
+		padding-left: 100rpx;
+		padding-right: 50rpx;
+		/* padding-bottom: 20rpx; */
+		background-image: url(@/static/images/detail4.png);
+		background-repeat:no-repeat;
+		background-position: left top;
+		background-size: 100% 100%;
+		height: 620rpx;
+	}
+	
+	.dds-daydesc {
+		margin-left: 20rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+	
+	.dds-main {
+		display:flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.dds-day {
+		font-size: 67rpx;
+		color: #d8272a;
+	}
+	
+	.dds-weekday {
+		font-size: 25rpx;
+		color: #181818;
+		font-weight: bold;
+	}
+	
+	.dds-lunar {
+		font-size: 25rpx;
+		color: #181818;
+		font-weight: bold;
+		margin-top: 5rpx;
+	}
+	
+	.dds-animalsyear {
+		margin-right: 20rpx;
+		margin-left: auto;
+		width: 100rpx;
+		height: 70rpx;
+	}
+	
+	.dds-suit {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: flex-start;
+		align-content: flex-start;
+		align-items: flex-start;
+	}
+	
+	.dds-avoid {
+		margin-top: 20rpx;
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.dds-suit-word {
+		color: #80afcc;
+		font-size: 40rpx;
+		margin-right: 20rpx;
+	}
+	
+	.dds-avoid-word {
+		color: #db8399;
+		font-size: 40rpx;
+		margin-right: 20rpx;
+	}
+	
+	.dds-suit-content {
+		line-height: 50rpx;
+	}
+	
+	.dds-avoid-content {
+		line-height: 50rpx;
 	}
 </style>
