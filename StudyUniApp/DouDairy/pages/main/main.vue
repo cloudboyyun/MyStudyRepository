@@ -14,7 +14,8 @@
 				<view class='day weekend'>六</view>
 			</view>
 			<view class='row'>
-				<view v-for="(item,index) in result.dates" :key="index" class='day'>
+				<view v-for="(item,index) in result.dates" :key="index" class='day' :class="{selected: item.date == selectedDate}"
+					@click='changeSelectedDate(item)'>
 					<view class="solar-day" :class='solarDayClass(item)'>{{item.day}}</view>
 					<view class="lunar-day" :class='lunarDayClass(item)'>{{getDateDesc(item)}}</view>
 				</view>
@@ -27,7 +28,9 @@
 	import {
 		loadMonthData
 	} from "../../utils/dairy.js";
-	import indexBackgroundImage from "@/static/images/bg1.jpeg";
+	import {
+		dateFormat
+	} from "../../utils/util.js";
 	export default {
 		data() {
 			return {
@@ -38,19 +41,20 @@
 				text: '',
 				lastX: 0,
 				lastY: 0,
-				indexBackgroundImage:indexBackgroundImage
+				selectedDate: null
 			}
 		},
 		computed: {},
 		onLoad() {
 			let today = new Date();
+			this.selectedDate = dateFormat(today, 'yyyy-MM-dd');
 			this.year = today.getFullYear();
 			this.month = today.getMonth() + 1;
 			this.loadPage();
 		},
 		methods: {
 			async loadPage() {
-				let that = this;
+				console.log("selectedDate", this.selectedDate);
 				this.result = await loadMonthData(this.year, this.month);
 			},
 
@@ -62,7 +66,6 @@
 				} else {
 					result = date.lunarDesc;
 				}
-				console.log(result.length);
 				if(result && result.length > 3) {
 					result = result.substring(0, 3);
 					result += "...";
@@ -165,6 +168,10 @@
 					this.month = month;
 				}
 				this.loadPage();
+			},
+			
+			changeSelectedDate(item) {
+				this.selectedDate = item.date;
 			}
 		}
 	}
@@ -179,7 +186,10 @@
 	.page {
 		width: 100%;
 		height: 100%;
-		background: url(@/static/images/bg1.jpeg) no-repeat top center;
+		/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */
+		background-image: url(@/static/images/bg1.jpeg);
+		background-repeat:no-repeat;
+		background-position: left top;
 		background-size: 100% 100%;
 	}
 	
@@ -259,9 +269,16 @@
 	.weekend-other-month {
 		color: #f1dcde;
 	}
-
+	
 	.day {
-		width: 14%;
-		margin-bottom: 20rpx;
+		width: 13%;
+		padding-bottom: 10rpx;
+		margin-bottom: 10rpx;
+		border: 5rpx solid #ffffff;
+	}
+	
+	.selected {
+		border: 5rpx solid #bf5445;
+		border-radius: 20rpx;
 	}
 </style>

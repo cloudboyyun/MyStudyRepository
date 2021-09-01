@@ -23,8 +23,6 @@ async function prepareMonthData(year, month) {
 		return result;
 	}
 	
-	console.log('prepareMonthData', key);
-	
 	let res = await uniCloud.callFunction({
 			name: 'query-month-dairy',
 			data: {

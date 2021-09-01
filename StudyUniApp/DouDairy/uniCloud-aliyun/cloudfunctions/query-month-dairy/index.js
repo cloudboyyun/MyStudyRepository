@@ -32,8 +32,14 @@ async function loadMonthData(year, month) {
 	// 本月最后一天
 	let monthEndDate = new Date(year, month + 1, 0);
 	week = monthEndDate.getDay();
+	console.log("monthEndDate", week);
 	// 如果不是周六，那本页最后一天应该是哪天？
-	let calendarEndDate = new Date(year, month, days + (6 - week));
+	let calendarEndDate = null;
+	if(week == 6) {
+		calendarEndDate = monthEndDate.getDay();
+	} else {
+		calendarEndDate = new Date(year, month, days + (6 - week));
+	}
 	console.log("calendarEndDate", calendarEndDate.format('yyyy-MM-dd'));
 	
 	const dbCmd = db.command;
