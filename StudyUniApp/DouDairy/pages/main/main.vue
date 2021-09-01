@@ -23,7 +23,7 @@
 		</view>
 		<view class='day-detail-section'>
 			<view class='dds-main'>
-				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
+				<view class='dds-day'>{{selectedItem.month+1}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
 					<view class='dds-weekday'>{{selectedItem.weekday}}</view>
 					<view class='dds-lunar'>{{selectedItem.lunarYear}} {{selectedItem.lunar}}</view>
@@ -413,10 +413,14 @@
 	}
 	
 	.dds-suit-content {
+		margin-top: 10rpx;
 		line-height: 50rpx;
+		font-size: 25rpx;
 	}
 	
 	.dds-avoid-content {
+		margin-top: 10rpx;
 		line-height: 50rpx;
+		font-size: 25rpx;
 	}
 </style>

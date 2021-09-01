@@ -32,9 +32,9 @@ db.collection('t_dairy')
 // 	})
 // 	.get()
 
-db.collection('t_dairy')
-	.where({
-		date: '2021-02-07'
-	})
-	.get()
+// db.collection('t_dairy')
+// 	.where({
+// 		date: '2022-01-05'
+// 	})
+// 	.get()
 	
