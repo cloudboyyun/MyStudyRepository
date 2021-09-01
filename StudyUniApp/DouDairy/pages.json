@@ -4,7 +4,8 @@
 		    "path" : "pages/main/main",
 		    "style" :                                                                                    
 		    {
-		        "navigationBarTitleText": "",
+		        "navigationBarTitleText": "云日历",
+						"navigationStyle": "custom",
 		        "enablePullDownRefresh": false
 		    }
 		    

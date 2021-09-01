@@ -1,9 +1,7 @@
 <template>
 	<view class='page'>
-		<view class='year-month-title'>
+		<view class='title-area'>
 			<view class='year-month'>{{year}}年{{month}}月</view>
-			<view class='lunar-year'>{{result.lunarYear}}</view>
-			<view class='animals-year'>{{result.animalsYear}}</view>
 		</view>
 		<view class='calendar' @touchmove="handletouchmove" @touchstart="handletouchstart" @touchend="handletouchend">
 			<view class='row day-of-week'>
@@ -27,8 +25,9 @@
 
 <script>
 	import {
-		getMonthDays
-	} from "../../utils/dairy.js"
+		loadMonthData
+	} from "../../utils/dairy.js";
+	import indexBackgroundImage from "@/static/images/bg1.jpeg";
 	export default {
 		data() {
 			return {
@@ -38,7 +37,8 @@
 				flag: 0,
 				text: '',
 				lastX: 0,
-				lastY: 0
+				lastY: 0,
+				indexBackgroundImage:indexBackgroundImage
 			}
 		},
 		computed: {},
@@ -49,22 +49,9 @@
 			this.loadPage();
 		},
 		methods: {
-			loadPage() {
-				// uni.setNavigationBarTitle({
-				//     title: '' + this.year + '年' + this.month + '月'
-				// });
+			async loadPage() {
 				let that = this;
-				uniCloud.callFunction({
-						name: 'query-month-dairy',
-						data: {
-							"year": this.year,
-							"month": this.month
-						}
-					})
-					.then(res => {
-						that.result = res.result;
-						console.log(that.result);
-					});
+				this.result = await loadMonthData(this.year, this.month);
 			},
 
 			// 农历字段的描述
@@ -74,6 +61,11 @@
 					result = date.holiday;
 				} else {
 					result = date.lunarDesc;
+				}
+				console.log(result.length);
+				if(result && result.length > 3) {
+					result = result.substring(0, 3);
+					result += "...";
 				}
 				return result;
 			},
@@ -179,29 +171,39 @@
 </script>
 
 <style>
-	.year-month-title {
-		display: flex;
+	page {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.page {
+		width: 100%;
+		height: 100%;
+		background: url(@/static/images/bg1.jpeg) no-repeat top center;
+		background-size: 100% 100%;
+	}
+	
+	.title-area {
+		padding-top:  calc(var(--status-bar-height) + 30rpx);
+		width: 100%;
+		padding-bottom: 50rpx;
+		display:flex;
 		flex-direction: row;
-		justify-content: space-between;
-		margin-left: 20rpx;
-		margin-right: 20rpx;
-		margin-bottom: 30rpx;
+		justify-content:center;
 	}
-
+	
 	.year-month {
-		font-size: 40rpx;
-	}
-
-	.lunar-year {
-		font-size: 40rpx;
-	}
-
-	.animals-year {
-		font-size: 40rpx;
+		color: #ffffff;
+		font-weight: bolder;
+		font-size: 32rpx;
 	}
 
 	.calendar {
-		width: 100%;
+		background-color: white;
+		border-radius: 20rpx;
+		padding-top: 20rpx;
+		margin-left: 20rpx;
+		margin-right: 20rpx;
 	}
 
 	.row {
@@ -214,11 +216,12 @@
 	}
 
 	.day-of-week {
-		font-size: 20rpx;
+		font-size: 21rpx;
 	}
 
 	.solar-day {
-		font-size: 32rpx;
+		font-size: 35rpx;
+		font-weight: bold;
 	}
 
 	.lunar-day {

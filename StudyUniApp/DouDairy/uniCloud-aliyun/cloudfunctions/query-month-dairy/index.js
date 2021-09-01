@@ -15,6 +15,11 @@ exports.main = async (event, context) => {
 	let year = event.year;
 	let month = event.month - 1;
 	
+	let thisMonthData = await loadMonthData(year, month);
+	return thisMonthData;
+};
+
+async function loadMonthData(year, month) {
 	// 本月的天数
 	let days = new Date(year, month + 1, 0).getDate();
 	// 本月第一天的日期
@@ -91,7 +96,7 @@ exports.main = async (event, context) => {
 	
 	//返回数据给客户端
 	return result;
-};
+}
 
 Date.prototype.format = function(fmt) { 
      var o = { 
