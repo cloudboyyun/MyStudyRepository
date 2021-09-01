@@ -1,5 +1,5 @@
 
-const DAIRY_VERSION = 'v0'
+const DAIRY_VERSION = 'v0.1'
 export async function loadMonthData(year, month) {
 	let thisMonthData = await prepareMonthData(year, month);
 	prepareMonthData(year, month-1);

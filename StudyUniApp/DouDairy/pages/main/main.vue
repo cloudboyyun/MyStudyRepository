@@ -331,7 +331,6 @@
 	}
 	
 	.day-detail-section {
-		/* background-color: #cfac7f; */
 		border-radius: 20rpx;
 		margin-top: 20rpx;
 		margin-left: 20rpx;
@@ -362,7 +361,7 @@
 	}
 	
 	.dds-day {
-		font-size: 67rpx;
+		font-size: 60rpx;
 		color: #d8272a;
 	}
 	
