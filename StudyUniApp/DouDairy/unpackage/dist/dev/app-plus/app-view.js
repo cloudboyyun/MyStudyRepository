@@ -248,10 +248,38 @@ var render = function() {
         "v-uni-view",
         { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
         [
+          _c("v-uni-view", { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } }),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
-            [_vm._v(_vm._$g(2, "t0-0") + "年" + _vm._$g(2, "t0-1") + "月")]
+            { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+            [_vm._v(_vm._$g(3, "t0-0") + "年" + _vm._$g(3, "t0-1") + "月")]
+          ),
+          _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(4, "sc"),
+              attrs: { _i: 4 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
+            [
+              _c("v-uni-image", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm._$g(5, "v-show"),
+                    expression: "_$g(5,'v-show')"
+                  }
+                ],
+                staticClass: _vm._$g(5, "sc"),
+                attrs: { src: "/static/images/today.png", _i: 5 }
+              })
+            ],
+            1
           )
         ],
         1
@@ -259,8 +287,8 @@ var render = function() {
       _c(
         "v-uni-view",
         {
-          staticClass: _vm._$g(3, "sc"),
-          attrs: { _i: 3 },
+          staticClass: _vm._$g(6, "sc"),
+          attrs: { _i: 6 },
           on: {
             touchmove: function($event) {
               return _vm.$handleViewEvent($event)
@@ -276,41 +304,41 @@ var render = function() {
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
                 [_vm._v("日")]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+                { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
                 [_vm._v("一")]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
+                { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
                 [_vm._v("二")]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
                 [_vm._v("三")]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+                { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
                 [_vm._v("四")]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+                { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
                 [_vm._v("五")]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+                { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
                 [_vm._v("六")]
               )
             ],
@@ -318,15 +346,15 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-            _vm._l(_vm._$g(13, "f"), function(item, index, $20, $30) {
+            { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
+            _vm._l(_vm._$g(16, "f"), function(item, index, $20, $30) {
               return _c(
                 "v-uni-view",
                 {
                   key: item,
-                  staticClass: _vm._$g("13-" + $30, "sc"),
-                  class: _vm._$g("13-" + $30, "c"),
-                  attrs: { _i: "13-" + $30 },
+                  staticClass: _vm._$g("16-" + $30, "sc"),
+                  class: _vm._$g("16-" + $30, "c"),
+                  attrs: { _i: "16-" + $30 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event)
@@ -337,20 +365,20 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g("14-" + $30, "sc"),
-                      class: _vm._$g("14-" + $30, "c"),
-                      attrs: { _i: "14-" + $30 }
+                      staticClass: _vm._$g("17-" + $30, "sc"),
+                      class: _vm._$g("17-" + $30, "c"),
+                      attrs: { _i: "17-" + $30 }
                     },
-                    [_vm._v(_vm._$g("14-" + $30, "t0-0"))]
+                    [_vm._v(_vm._$g("17-" + $30, "t0-0"))]
                   ),
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g("15-" + $30, "sc"),
-                      class: _vm._$g("15-" + $30, "c"),
-                      attrs: { _i: "15-" + $30 }
+                      staticClass: _vm._$g("18-" + $30, "sc"),
+                      class: _vm._$g("18-" + $30, "c"),
+                      attrs: { _i: "18-" + $30 }
                     },
-                    [_vm._v(_vm._$g("15-" + $30, "t0-0"))]
+                    [_vm._v(_vm._$g("18-" + $30, "t0-0"))]
                   )
                 ],
                 1
@@ -363,59 +391,42 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
+        { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
+            { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
+                { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
                 [
                   _vm._v(
-                    _vm._$g(18, "t0-0") + "月" + _vm._$g(18, "t0-1") + "日"
+                    _vm._$g(21, "t0-0") + "月" + _vm._$g(21, "t0-1") + "日"
                   )
                 ]
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
+                { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
                 [
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
-                    [_vm._v(_vm._$g(20, "t0-0"))]
+                    { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
+                    [_vm._v(_vm._$g(23, "t0-0"))]
                   ),
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
-                    [_vm._v(_vm._$g(21, "t0-0") + " " + _vm._$g(21, "t0-1"))]
+                    { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
+                    [_vm._v(_vm._$g(24, "t0-0") + " " + _vm._$g(24, "t0-1"))]
                   )
                 ],
                 1
               ),
               _c("v-uni-image", {
-                staticClass: _vm._$g(22, "sc"),
-                attrs: { src: "/static/images/tu.png", _i: 22 }
+                staticClass: _vm._$g(25, "sc"),
+                attrs: { src: "/static/images/tu.png", _i: 25 }
               })
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
-                [_vm._v("宜")]
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(25, "sc"), attrs: { _i: 25 } },
-                [_vm._v(_vm._$g(25, "t0-0"))]
-              )
             ],
             1
           ),
@@ -426,13 +437,48 @@ var render = function() {
               _c(
                 "v-uni-view",
                 { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
-                [_vm._v("忌:")]
+                [_vm._v("宜")]
               ),
+              _vm._$g(28, "i")
+                ? _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
+                    [_vm._v(_vm._$g(28, "t0-0"))]
+                  )
+                : _vm._e(),
+              _vm._$g(29, "i")
+                ? _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(29, "sc"), attrs: { _i: 29 } },
+                    [_vm._v("百无禁忌")]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
+            [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
-                [_vm._v(_vm._$g(28, "t0-0"))]
-              )
+                { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
+                [_vm._v("忌")]
+              ),
+              _vm._$g(32, "i")
+                ? _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
+                    [_vm._v(_vm._$g(32, "t0-0"))]
+                  )
+                : _vm._e(),
+              _vm._$g(33, "i")
+                ? _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
+                    [_vm._v("百无禁忌")]
+                  )
+                : _vm._e()
             ],
             1
           )
@@ -536,7 +582,7 @@ exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_1___);
 // Module
-exports.push([module.i, "\nbody {\n\twidth: 100%;\n\theight: 100%;\n}\n.page {\n\twidth: 100%;\n\theight: 100%;\n\t/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n}\n.title-area {\n\tpadding-top:  calc(var(--status-bar-height) + 30rpx);\n\twidth: 100%;\n\tpadding-bottom: 50rpx;\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack:center;\n\t-webkit-justify-content:center;\n\t        justify-content:center;\n}\n.year-month {\n\tcolor: #ffffff;\n\tfont-weight: bolder;\n\tfont-size: 32rpx;\n}\n.calendar {\n\tbackground-color: white;\n\tpadding-top: 20rpx;\n\tpadding-left: 20rpx;\n\tpadding-right: 20rpx;\n\t/* border-radius: 20rpx; */\n\t/* margin-left: 20rpx;\n\tmargin-right: 20rpx; */\n}\n.row {\n\twidth: 100%;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-justify-content: space-around;\n\t        justify-content: space-around;\n\t-webkit-flex-wrap: wrap;\n\t        flex-wrap: wrap;\n\ttext-align: center;\n}\n.day-of-week {\n\tfont-size: 21rpx;\n}\n.solar-day {\n\tfont-size: 35rpx;\n\tfont-weight: bold;\n}\n.lunar-day {\n\tfont-size: 20rpx;\n}\n.luna-day-this-month {\n\tcolor: #a1a1a1;\n}\n.luna-day-this-month-holiday {\n\tcolor: #b74854;\n}\n.luna-day-other-month-holiday {\n\tcolor: #e9dde1;\n}\n.lunar-day-other-month {\n\tcolor: #e1e1e1;\n}\n.weekday {\n\tcolor: #111111;\n}\n.weekday-other-month {\n\tcolor: #dfdfdf;\n}\n.weekend {\n\tcolor: #c1252d;\n}\n.weekend-other-month {\n\tcolor: #f1dcde;\n}\n.day {\n\twidth: 13%;\n\tpadding-bottom: 10rpx;\n\tmargin-bottom: 10rpx;\n\tborder: 5rpx solid #ffffff;\n}\n.selected {\n\tborder: 5rpx solid #bf5445;\n\tborder-radius: 20rpx;\n}\n.day-detail-section {\n\tborder-radius: 20rpx;\n\tmargin-top: 20rpx;\n\tmargin-left: 20rpx;\n\tmargin-right: 20rpx;\n\tpadding-top: 40rpx;\n\tpadding-left: 100rpx;\n\tpadding-right: 50rpx;\n\t/* padding-bottom: 20rpx; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n\theight: 620rpx;\n}\n.dds-daydesc {\n\tmargin-left: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n}\n.dds-main {\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.dds-day {\n\tfont-size: 60rpx;\n\tcolor: #d8272a;\n}\n.dds-weekday {\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n}\n.dds-lunar {\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n\tmargin-top: 5rpx;\n}\n.dds-animalsyear {\n\tmargin-right: 20rpx;\n\tmargin-left: auto;\n\twidth: 100rpx;\n\theight: 70rpx;\n}\n.dds-suit {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n\t-webkit-align-content: flex-start;\n\t        align-content: flex-start;\n\talign-items: flex-start;\n}\n.dds-avoid {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n}\n.dds-suit-word {\n\tcolor: #80afcc;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-avoid-word {\n\tcolor: #db8399;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-suit-content {\n\tmargin-top: 10rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n.dds-avoid-content {\n\tmargin-top: 10rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\twidth: 100%;\n\theight: 100%;\n}\n.page {\n\twidth: 100%;\n\theight: 100%;\n\t/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n}\n.title-area {\n\tpadding-top:  calc(var(--status-bar-height) + 30rpx);\n\twidth: 100%;\n\tpadding-bottom: 30rpx;\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack:justify;\n\t-webkit-justify-content:space-between;\n\t        justify-content:space-between;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.year-month {\n\tcolor: #ffffff;\n\tfont-weight: bolder;\n\tfont-size: 32rpx;\n}\n.today-icon {\n\twidth: 50rpx;\n\theight: 50rpx;\n\tmargin-right: 30rpx;\n}\n.today-icon-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.calendar {\n\tbackground-color: white;\n\tpadding-top: 20rpx;\n\tpadding-left: 20rpx;\n\tpadding-right: 20rpx;\n\t/* border-radius: 20rpx; */\n\t/* margin-left: 20rpx;\n\tmargin-right: 20rpx; */\n}\n.row {\n\twidth: 100%;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-justify-content: space-around;\n\t        justify-content: space-around;\n\t-webkit-flex-wrap: wrap;\n\t        flex-wrap: wrap;\n\ttext-align: center;\n}\n.day-of-week {\n\tfont-size: 21rpx;\n}\n.solar-day {\n\tfont-size: 35rpx;\n\tfont-weight: bold;\n}\n.lunar-day {\n\tfont-size: 20rpx;\n}\n.luna-day-this-month {\n\tcolor: #a1a1a1;\n}\n.luna-day-this-month-holiday {\n\tcolor: #b74854;\n}\n.luna-day-other-month-holiday {\n\tcolor: #e9dde1;\n}\n.lunar-day-other-month {\n\tcolor: #e1e1e1;\n}\n.weekday {\n\tcolor: #111111;\n}\n.weekday-other-month {\n\tcolor: #dfdfdf;\n}\n.weekend {\n\tcolor: #c1252d;\n}\n.weekend-other-month {\n\tcolor: #f1dcde;\n}\n.day {\n\twidth: 13%;\n\tpadding-bottom: 10rpx;\n\tmargin-bottom: 10rpx;\n\tborder: 5rpx solid #ffffff;\n}\n.selected {\n\tborder: 5rpx solid #bf5445;\n\tborder-radius: 20rpx;\n}\n.day-detail-section {\n\tborder-radius: 20rpx;\n\tmargin-top: 20rpx;\n\tmargin-left: 20rpx;\n\tmargin-right: 20rpx;\n\tpadding-top: 40rpx;\n\tpadding-left: 100rpx;\n\tpadding-right: 50rpx;\n\t/* padding-bottom: 20rpx; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n\theight: 620rpx;\n}\n.dds-daydesc {\n\tmargin-left: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n}\n.dds-main {\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.dds-day {\n\tfont-size: 60rpx;\n\tcolor: #d8272a;\n}\n.dds-weekday {\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n}\n.dds-lunar {\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n\tmargin-top: 5rpx;\n}\n.dds-animalsyear {\n\tmargin-right: 20rpx;\n\tmargin-left: auto;\n\twidth: 100rpx;\n\theight: 70rpx;\n}\n.dds-suit {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n\t-webkit-align-content: flex-start;\n\t        align-content: flex-start;\n\talign-items: flex-start;\n}\n.dds-avoid {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n}\n.dds-suit-word {\n\tcolor: #80afcc;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-avoid-word {\n\tcolor: #db8399;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-suit-content {\n\tmargin-top: 10rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n.dds-avoid-content {\n\tmargin-top: 10rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -14368,7 +14414,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n", ""]);
 // Exports
 module.exports = exports;
 

@@ -19,6 +19,7 @@
 			// #endif
 
 			// #ifdef APP-PLUS
+			plus.screen.lockOrientation("portrait-primary");  
 			//idfa有需要的用户在应用首次启动时自己获取存储到storage中
 			//https://ask.dcloud.net.cn/article/36107
 			/*if(~plus.storage.getItem('idfa')){

@@ -193,15 +193,15 @@
 				}
 				//上下方向滑动
 				else {
-					if (ty < 0) {
-						text = '向上滑动';
-						this.flag = 3;
-						this.nextMonth();
-					} else if (ty > 0) {
-						text = '向下滑动';
-						this.flag = 4;
-						this.lastMonth();
-					}
+					// if (ty < 0) {
+					// 	text = '向上滑动';
+					// 	this.flag = 3;
+					// 	this.nextMonth();
+					// } else if (ty > 0) {
+					// 	text = '向下滑动';
+					// 	this.flag = 4;
+					// 	this.lastMonth();
+					// }
 				}
 
 				//将当前坐标进行保存以进行下一次计算
@@ -277,7 +277,7 @@
 	.title-area {
 		padding-top:  calc(var(--status-bar-height) + 30rpx);
 		width: 100%;
-		padding-bottom: 50rpx;
+		padding-bottom: 30rpx;
 		display:flex;
 		flex-direction: row;
 		justify-content:space-between;
