@@ -1,7 +1,11 @@
 <template>
 	<view class='page'>
 		<view class='title-area'>
+			<view></view>
 			<view class='year-month'>{{year}}年{{month}}月</view>
+			<view class='today-icon' @click="onTodayIconClick()">
+				<image class='today-icon-image' v-show="showTodayIcon" src='/static/images/today.png'></image>
+			</view>
 		</view>
 		<view class='calendar' @touchmove="handletouchmove" @touchstart="handletouchstart" @touchend="handletouchend">
 			<view class='row day-of-week'>
@@ -15,7 +19,7 @@
 			</view>
 			<view class='row'>
 				<view v-for="(item,index) in result.dates" :key="index" class='day' :class="{selected: item.date == selectedDate}"
-					@click='changeSelectedDate(item)'>
+					@click='onDateClick(item)'>
 					<view class="solar-day" :class='solarDayClass(item)'>{{item.day}}</view>
 					<view class="lunar-day" :class='lunarDayClass(item)'>{{getDateDesc(item)}}</view>
 				</view>
@@ -32,11 +36,13 @@
 			</view>
 			<view class='dds-suit'>
 				<view class='dds-suit-word'>宜</view>
-				<view class='dds-suit-content'>{{selectedItem.suit}}</view>
+				<view class='dds-suit-content' v-if="selectedItem.suit">{{selectedItem.suit}}</view>
+				<view class='dds-suit-content' v-if="!selectedItem.suit">百无禁忌</view>
 			</view>
 			<view class='dds-avoid'>
 				<view class='dds-avoid-word'>忌</view>
-				<view class='dds-avoid-content'>{{selectedItem.avoid}}</view>
+				<view class='dds-avoid-content' v-if="selectedItem.avoid">{{selectedItem.avoid}}</view>
+				<view class='dds-suit-content' v-if="!selectedItem.avoid">百无禁忌</view>
 			</view>
 		</view>
 	</view>
@@ -79,14 +85,15 @@
 					}
 				}
 				return {};
+			},
+			showTodayIcon() {
+				let today = new Date();
+				let todayStr = dateFormat(today, 'yyyy-MM-dd');
+				return todayStr != this.selectedDate;
 			}
 		},
 		onLoad() {
 			let that = this;
-			let today = new Date();
-			this.year = today.getFullYear();
-			this.month = today.getMonth() + 1;
-			this.initSelectedDate();
 			uniCloud.callFunction({
 				name: 'get-dairy-config',
 				success(res) {
@@ -99,14 +106,28 @@
 					setDairyVersion(configData.dairy_data_version);
 				},
 				complete() {
-					that.loadPage();
+					let today = new Date();
+					that.loadPage(today);
 				}
 			})
 		},
 		methods: {
-			async loadPage() {
-				this.result = await loadMonthData(this.year, this.month);
-				console.log("result", this.result);
+			async loadPage(date) {
+				if(!date) {
+					return;
+				}
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1;
+				if(year > this.MAX_YEAR || (year == this.MAX_YEAR && month>this.MAX_MONTH)) {
+					return;
+				}
+				if(year < this.MIN_YEAR || (year == this.MIN_YEAR && month<this.MIN_MONTH)) {
+					return;
+				}
+				this.result = await loadMonthData(year, month);
+				this.year = year;
+				this.month = month;
+				this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
 			},
 			
 			// 农历字段的描述
@@ -199,53 +220,39 @@
 			},
 			
 			lastMonth() {
-				console.log("lastMonth");
-				let month = this.month - 1;
-				let year = this.year;
-				if(month < 1) {
-					month = 12;
-					year--;
-				}
-				if(year < this.MIN_YEAR || (year == this.MIN_YEAR && month<this.MIN_MONTH)) {
-					return;
-				}
-				this.year = year;
-				this.month = month;
-				this.initSelectedDate();
-				this.loadPage();
+				let selectDate = this.initSelectedDate(this.year, this.month - 1);
+				this.loadPage(selectDate);
 			},
 			
 			nextMonth() {
-				console.log("nextMonth");
-				let month = this.month + 1;
-				let year = this.year;
+				let selectDate = this.initSelectedDate(this.year, this.month + 1);
+				this.loadPage(selectDate);
+			},
+			
+			initSelectedDate(year, month) {
 				if(month > 12) {
 					month = 1;
 					year++;
+				} else if(month < 1) {
+					month = 12;
+					year--;
 				}
-				if(year > this.MAX_YEAR || (year == this.MAX_YEAR && month>this.MAX_MONTH)) {
-					return;
-				}
-				this.year = year;
-				this.month = month;
-				this.initSelectedDate();
-				this.loadPage();
-			},
-			
-			initSelectedDate() {
-				let date = new Date(this.year, this.month-1, 1);
+				let date = new Date(year, month-1, 1);
 				let today = new Date();
-				let year = today.getFullYear();
-				let month = today.getMonth();
-				if(year == date.getFullYear() && (month == date.getMonth())) {
-					this.selectedDate = dateFormat(today, 'yyyy-MM-dd');
+				if(today.getFullYear() == date.getFullYear() 
+					&& (today.getMonth() == date.getMonth())) {
+					return today;
 				} else {
-					this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
+					return date;
 				}
 			},
 			
-			changeSelectedDate(item) {
+			onDateClick(item) {
 				this.selectedDate = item.date;
+			},
+			
+			onTodayIconClick() {
+				this.loadPage(new Date());
 			}
 		}
 	}
@@ -273,13 +280,25 @@
 		padding-bottom: 50rpx;
 		display:flex;
 		flex-direction: row;
-		justify-content:center;
+		justify-content:space-between;
+		align-items: center;
 	}
 	
 	.year-month {
 		color: #ffffff;
 		font-weight: bolder;
 		font-size: 32rpx;
+	}
+	
+	.today-icon {
+		width: 50rpx;
+		height: 50rpx;
+		margin-right: 30rpx;
+	}
+	
+	.today-icon-image {
+		width: 100%;
+		height: 100%;
 	}
 
 	.calendar {
