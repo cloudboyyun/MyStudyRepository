@@ -1,5 +1,8 @@
 <template>
 	<view class='page'>
+		<view v-if="showLoading" class='loading'>
+		  <image src='/static/images/loading.gif'></image>
+		</view>
 		<view class='title-area'>
 			<view class='today-icon'></view>
 			<view class='year-month'>{{year}}年{{month}}月</view>
@@ -70,7 +73,8 @@
 				MIN_YEAR: 2020,
 				MIN_MONTH: 12,
 				MAX_YEAR: 2022,
-				MAX_MONTH: 12
+				MAX_MONTH: 12,
+				showLoading: true
 			}
 		},
 		computed: {
@@ -94,6 +98,7 @@
 		},
 		onLoad() {
 			let that = this;
+			this.showLoading = true;
 			uniCloud.callFunction({
 				name: 'get-dairy-config',
 				success(res) {
@@ -128,6 +133,7 @@
 				this.year = year;
 				this.month = month;
 				this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
+				this.showLoading = false;
 			},
 			
 			// 农历字段的描述
