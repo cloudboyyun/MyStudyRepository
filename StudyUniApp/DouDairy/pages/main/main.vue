@@ -35,7 +35,7 @@
 				<view class='dds-suit-content'>{{selectedItem.suit}}</view>
 			</view>
 			<view class='dds-avoid'>
-				<view class='dds-avoid-word'>忌:</view>
+				<view class='dds-avoid-word'>忌</view>
 				<view class='dds-avoid-content'>{{selectedItem.avoid}}</view>
 			</view>
 		</view>
@@ -386,6 +386,7 @@
 	}
 	
 	.dds-suit {
+		margin-top: 20rpx;
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;

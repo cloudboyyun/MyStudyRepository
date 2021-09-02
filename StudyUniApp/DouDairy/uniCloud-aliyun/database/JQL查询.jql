@@ -18,19 +18,13 @@ db.collection('t_dairy')
 	.field('date, year, month, day, dateDesc, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate')
 	.orderBy('date', 'desc')
 	.get();
+	
+db.collection('t_dairy')
+	.field('date, year, month, day, dateDesc, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate')
+	.orderBy('date', 'asc')
+	.get();
 
-// db.collection('t_dairy')
-// 	.field('date, year, month, day, dateDesc')
-// 	.where('date>= "2021-04-25"')
-// 	.orderBy('date', 'asc')
-// 	.get();
-	
-	
-// db.collection('t_dairy')
-// 	.where({
-// 		year: null
-// 	})
-// 	.get()
+
 
 // db.collection('t_dairy')
 // 	.where({

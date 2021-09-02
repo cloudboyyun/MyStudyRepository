@@ -9,7 +9,58 @@ const config = {
 
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
-	console.log('event : ', event)
+	console.log('event : ', event);
+	// await inc(event);
+	await dec(event);
+	return event;
+};
+
+// 减量日期
+async function dec(event) {
+	let now = new Date();
+	let startDate = new Date(now.getFullYear(), 0, 1);
+	if(event.startDate) {
+		startDate = new Date(event.startDate);
+	}
+	let startYear = startDate.getFullYear();
+	let startMonth = startDate.getMonth();
+	let startDay = startDate.getDate();
+	
+	const collection = await db.collection('t_dairy');
+	let lastRecordRecord = await collection
+		.orderBy("date", "asc")
+		.limit(1)
+		.get();
+	
+	if(lastRecordRecord.data.length) {
+		console.log("lastRecordRecord", lastRecordRecord);
+		let lastRecord = lastRecordRecord.data[0];
+		startYear = lastRecord.year;
+		startMonth = lastRecord.month;
+		startDay = lastRecord.day - 1;
+	}
+	
+	for(let i=0; i<config.retriveTimesPerDay; i++) {
+		let date = new Date(startYear, startMonth, startDay-i);
+		let dateDesc = await getDairyDetail(date);
+		let dateStr = date.format("yyyy-MM-dd");
+		let record = {
+			date: dateStr,
+			year: date.getFullYear(),
+			month: date.getMonth(),
+			day: date.getDate(),
+			dateDesc: dateDesc,
+			create_date: now.getTime(),
+			modified_date: now.getTime()
+		}
+		collection.add(record);
+	}
+	
+	return;
+}
+
+// 增量日期
+async function inc(event) {
 	let now = new Date();
 	let startDate = new Date(now.getFullYear(), 0, 1);
 	if(event.startDate) {
@@ -51,9 +102,8 @@ exports.main = async (event, context) => {
 		collection.add(record);
 	}
 	
-	//返回数据给客户端
-	return event
-};
+	return;
+}
 
 Date.prototype.format = function(fmt) { 
      var o = { 
