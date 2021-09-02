@@ -1,7 +1,7 @@
 <template>
 	<view class='page'>
 		<view class='title-area'>
-			<view></view>
+			<view class='today-icon'></view>
 			<view class='year-month'>{{year}}年{{month}}月</view>
 			<view class='today-icon' @click="onTodayIconClick()">
 				<image class='today-icon-image' v-show="showTodayIcon" src='/static/images/today.png'></image>
