@@ -1,5 +1,9 @@
 
-const DAIRY_VERSION = 'v0.1'
+let DAIRY_VERSION = 'v0.1';
+export function setDairyVersion(dairyVersion) {
+	DAIRY_VERSION = dairyVersion;
+}
+
 export async function loadMonthData(year, month) {
 	let thisMonthData = await prepareMonthData(year, month);
 	prepareMonthData(year, month-1);
@@ -16,7 +20,7 @@ async function prepareMonthData(year, month) {
 		year = year + 1;
 	}
 	
-	let key = DAIRY_VERSION + year + '-' + month;
+	let key = DAIRY_VERSION + '-' + year + '-' + month;
 	let result = uni.getStorageSync(key);
 	if(result) {
 		console.log('从缓存中获取', key);

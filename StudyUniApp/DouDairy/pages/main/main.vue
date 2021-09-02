@@ -44,7 +44,8 @@
 
 <script>
 	import {
-		loadMonthData
+		loadMonthData,
+		setDairyVersion
 	} from "../../utils/dairy.js";
 	import {
 		dateFormat
@@ -59,7 +60,11 @@
 				flag: 0,
 				text: '',
 				lastX: 0,
-				lastY: 0
+				lastY: 0,
+				MIN_YEAR: 2020,
+				MIN_MONTH: 12,
+				MAX_YEAR: 2022,
+				MAX_MONTH: 12
 			}
 		},
 		computed: {
@@ -77,11 +82,26 @@
 			}
 		},
 		onLoad() {
+			let that = this;
 			let today = new Date();
 			this.year = today.getFullYear();
 			this.month = today.getMonth() + 1;
 			this.initSelectedDate();
-			this.loadPage();
+			uniCloud.callFunction({
+				name: 'get-dairy-config',
+				success(res) {
+					const configData = res.result;
+					console.log('get-dairy-config', configData.result);
+					that.MIN_YEAR = configData.dairy_data_min_year;
+					that.MIN_MONTH = configData.dairy_data_min_month;
+					that.MAX_YEAR = configData.dairy_data_max_year;
+					that.MAX_MONTH = configData.dairy_data_max_month;
+					setDairyVersion(configData.dairy_data_version);
+				},
+				complete() {
+					that.loadPage();
+				}
+			})
 		},
 		methods: {
 			async loadPage() {
@@ -181,12 +201,16 @@
 			lastMonth() {
 				console.log("lastMonth");
 				let month = this.month - 1;
+				let year = this.year;
 				if(month < 1) {
-					this.month = 12;
-					this.year = this.year - 1;
-				} else {
-					this.month = month;
+					month = 12;
+					year--;
 				}
+				if(year < this.MIN_YEAR || (year == this.MIN_YEAR && month<this.MIN_MONTH)) {
+					return;
+				}
+				this.year = year;
+				this.month = month;
 				this.initSelectedDate();
 				this.loadPage();
 			},
@@ -194,12 +218,16 @@
 			nextMonth() {
 				console.log("nextMonth");
 				let month = this.month + 1;
+				let year = this.year;
 				if(month > 12) {
-					this.month = 1;
-					this.year = this.year + 1;
-				} else {
-					this.month = month;
+					month = 1;
+					year++;
 				}
+				if(year > this.MAX_YEAR || (year == this.MAX_YEAR && month>this.MAX_MONTH)) {
+					return;
+				}
+				this.year = year;
+				this.month = month;
 				this.initSelectedDate();
 				this.loadPage();
 			},

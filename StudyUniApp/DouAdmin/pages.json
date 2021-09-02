@@ -20,26 +20,37 @@
 				"navigationBarTitleText": "修改密码"
 			}
 
+		}, {
+			"path": "pages/test/test1/test1",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/test/test2/test2",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/t_dairy_config/add",
+			"style": {
+				"navigationBarTitleText": "新增"
+			}
+		}, {
+			"path": "pages/t_dairy_config/edit",
+			"style": {
+				"navigationBarTitleText": "编辑"
+			}
+		}, {
+			"path": "pages/t_dairy_config/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
 		}
-	    ,{
-            "path" : "pages/test/test1/test1",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/test/test2/test2",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"subPackages": [{
 		"root": "pages/system",
 		"pages": [{
