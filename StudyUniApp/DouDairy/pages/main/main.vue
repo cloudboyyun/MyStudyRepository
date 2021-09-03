@@ -150,35 +150,33 @@
 				if(year < this.MIN_YEAR || (year == this.MIN_YEAR && month<this.MIN_MONTH)) {
 					return;
 				}
-				let currentSwiperItem = this.selectedSwiperItem;
-				let lastSwiperItem = 0;
-				let nextSwiperItem = 2;
-				switch(currentSwiperItem) {
+				let currentSwiperIndex = this.selectedSwiperItem;
+				let leftSwiperIndex = 0;
+				let rightSwiperIndex = 2;
+				switch(currentSwiperIndex) {
 					case 0:
-						lastSwiperItem = 2;
-						nextSwiperItem = 1;
+						leftSwiperIndex = 2;
+						rightSwiperIndex = 1;
 						break;						
 					case 2:
-						lastSwiperItem = 1;
-						nextSwiperItem = 0;
+						leftSwiperIndex = 1;
+						rightSwiperIndex = 0;
 						break;
 				}
-				this.resultGroup[currentSwiperItem] = await loadMonthData(year, month);
+				this.resultGroup[currentSwiperIndex] = await loadMonthData(year, month);
 				this.year = year;
 				this.month = month;
 				this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
 				
-				this.resultGroup[lastSwiperItem] = await loadMonthData(year, month-1);
-				this.resultGroup[nextSwiperItem] = await loadMonthData(year, month+1);
+				this.resultGroup[leftSwiperIndex] = await loadMonthData(year, month-1);
+				this.resultGroup[rightSwiperIndex] = await loadMonthData(year, month+1);
 				console.log("resultGroup", this.resultGroup);
 				this.showLoading = false;
 			},
 			
 			onSwiperItemChange(e) {
-				let current = e.detail.current;
-				console.log('current', current);
-				this.selectedSwiperItem = current;
-				let monthData = this.resultGroup[current];
+				this.selectedSwiperItem = e.detail.current;
+				let monthData = this.resultGroup[this.selectedSwiperItem];
 				let year = monthData.year;
 				let month = monthData.month;
 				let date = new Date(year, month-1, 1);
@@ -238,8 +236,21 @@
 				this.loadPage(new Date());
 			},
 			
-			onDateDescPress(item, e) {
-				console.log("onDateDescPress", item, e);
+			onDateDescPress(date, e) {
+				console.log("onDateDescPress", e);
+				let result = null;
+				if (date.holiday) {
+					result = date.holiday;
+				} else {
+					result = date.lunarDesc;
+				}
+				if(!result || result.length <= 3) {
+					return;
+				}
+				uni.showToast({
+					title:result,
+					position: 'top'
+				})
 			}
 		}
 	}
