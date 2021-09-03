@@ -59,6 +59,8 @@ async function loadMonthData(year, month) {
 	
 	let records = query.data;
 	let result = {
+		year: year,
+		month: month+1,
 		dates: null,
 		lunarYear: null,
 		animalsYear: null

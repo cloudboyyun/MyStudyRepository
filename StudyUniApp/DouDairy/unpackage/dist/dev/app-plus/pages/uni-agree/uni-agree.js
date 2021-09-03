@@ -130,6 +130,98 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 module.exports = {
+  ".loading": {
+    "": {
+      "position": [
+        "fixed",
+        0,
+        0,
+        0
+      ],
+      "width": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "height": [
+        120,
+        0,
+        0,
+        0
+      ],
+      "zIndex": [
+        999,
+        0,
+        0,
+        0
+      ],
+      "top": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bottom": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "backgroundColor": [
+        "#ffffff",
+        0,
+        0,
+        0
+      ],
+      "opacity": [
+        0.9,
+        0,
+        0,
+        0
+      ],
+      "display": [
+        "flex",
+        0,
+        0,
+        0
+      ],
+      "flexDirection": [
+        "column",
+        0,
+        0,
+        0
+      ],
+      "alignItems": [
+        "center",
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  ".loading-image": {
+    "": {
+      "marginTop": [
+        26,
+        0,
+        0,
+        1
+      ],
+      "width": [
+        "500rpx",
+        0,
+        0,
+        1
+      ],
+      "height": [
+        "500rpx",
+        0,
+        0,
+        1
+      ]
+    }
+  },
   "@VERSION": 2
 }
 

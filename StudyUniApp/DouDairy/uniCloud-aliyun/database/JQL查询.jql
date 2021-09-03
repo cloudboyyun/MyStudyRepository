@@ -14,23 +14,23 @@
 // 	date: '' + year + '-0' + month + '-' + day
 // })
 
-db.collection('t_dairy')
-	.field('date, year, month, day, dateDesc, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate')
-	.orderBy('date', 'desc')
-	.get();
-	
 // db.collection('t_dairy')
 // 	.field('date, year, month, day, dateDesc, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate')
 // 	.orderBy('date', 'asc')
 // 	.get();
 
 db.collection('t_dairy')
-	.aggregate()
-	.bucketAuto({
-	    groupBy: '$date',
-	    buckets: 1,
-	  })
-	.end();
+	.field('date, year, month, day, dateDesc, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S","+0800") as createDate')
+	.orderBy('date', 'asc')
+	.get();
+
+// db.collection('t_dairy')
+// 	.aggregate()
+// 	.bucketAuto({
+// 	    groupBy: '$date',
+// 	    buckets: 1,
+// 	  })
+// 	.end();
 	
 // db.collection('t_dairy').count(); // 896
 	

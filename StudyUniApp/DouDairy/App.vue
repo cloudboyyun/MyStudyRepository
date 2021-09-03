@@ -56,10 +56,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: first baseline;
+		/* justify-content: first baseline; */
 	}
 	
-	.loading image{
+	.loading-image{
 	  margin-top: 26vh;
 	  width: 500rpx;
 	  height: 500rpx;

@@ -5,15 +5,8 @@ export function setDairyVersion(dairyVersion) {
 }
 
 export async function loadMonthData(year, month) {
-	let thisMonthData = await prepareMonthData(year, month);
-	prepareMonthData(year, month-1);
-	prepareMonthData(year, month +1);
-	return thisMonthData;
-}
-
-async function prepareMonthData(year, month) {
 	if(month < 1) {
-		month = 1;
+		month = 12;
 		year = year - 1;
 	} else if(month > 12) {
 		month = 1;
@@ -41,4 +34,3 @@ async function prepareMonthData(year, month) {
 	
 	return res.result;
 }
-

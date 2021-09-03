@@ -1,7 +1,7 @@
 <template>
 	<view class='page'>
 		<view v-if="showLoading" class='loading'>
-		  <image src='/static/images/loading.gif'></image>
+		  <image class='loading-image' src='/static/images/loading.gif'></image>
 		</view>
 		<view class='title-area'>
 			<view class='today-icon'></view>
@@ -10,24 +10,30 @@
 				<image class='today-icon-image' v-show="showTodayIcon" src='/static/images/today.png'></image>
 			</view>
 		</view>
-		<view class='calendar' @touchmove="handletouchmove" @touchstart="handletouchstart" @touchend="handletouchend">
-			<view class='row day-of-week'>
-				<view class='day weekend'>日</view>
-				<view class='day'>一</view>
-				<view class='day'>二</view>
-				<view class='day'>三</view>
-				<view class='day'>四</view>
-				<view class='day'>五</view>
-				<view class='day weekend'>六</view>
-			</view>
-			<view class='row'>
-				<view v-for="(item,index) in result.dates" :key="index" class='day' :class="{selected: item.date == selectedDate}"
-					@click='onDateClick(item)'>
-					<view class="solar-day" :class='solarDayClass(item)'>{{item.day}}</view>
-					<view class="lunar-day" :class='lunarDayClass(item)'>{{getDateDesc(item)}}</view>
+		<swiper class='swiper' :current="selectedSwiperItem" circular="true" @change="onSwiperItemChange">
+			<swiper-item v-for="(result, i) in resultGroup" :key="i">
+				<view class='calendar'>
+					<view class='row day-of-week'>
+						<view class='day weekend'>日</view>
+						<view class='day'>一</view>
+						<view class='day'>二</view>
+						<view class='day'>三</view>
+						<view class='day'>四</view>
+						<view class='day'>五</view>
+						<view class='day weekend'>六</view>
+					</view>
+					<view class='row'>
+						<view v-for="(item,index) in result.dates" :key="index" class='day' :class="{selected: item.date == selectedDate}"
+							@click='onDateClick(item)'>
+							<view class="solar-day" :class='solarDayClass(item)'>{{item.day}}</view>
+							<view class="lunar-day" :class='lunarDayClass(item)' 
+								@longpress="onDateDescPress(item, $event)">{{getDateDesc(item)}}</view>
+						</view>
+					</view>
 				</view>
-			</view>
-		</view>
+			</swiper-item>
+		</swiper>
+		
 		<view class='day-detail-section'>
 			<view class='dds-main'>
 				<view class='dds-day'>{{selectedItem.month+1}}月{{selectedItem.day}}日</view>
@@ -35,7 +41,7 @@
 					<view class='dds-weekday'>{{selectedItem.weekday}}</view>
 					<view class='dds-lunar'>{{selectedItem.lunarYear}} {{selectedItem.lunar}}</view>
 				</view>
-				<image class='dds-animalsyear' src='/static/images/tu.png'></image>
+				<image class='dds-animalsyear' :src='selectedItem.animalImage'></image>
 			</view>
 			<view class='dds-suit'>
 				<view class='dds-suit-word'>宜</view>
@@ -52,6 +58,19 @@
 </template>
 
 <script>
+	const ANIMALS = new Map([
+		['狗', '/static/images/gou.png'],
+		['猴', '/static/images/hou.png'],
+		['虎', '/static/images/hu.png'],
+		['鸡', '/static/images/ji.png'],
+		['马', '/static/images/ma.png'],
+		['牛', '/static/images/niu.png'],
+		['蛇', '/static/images/she.png'],
+		['鼠', '/static/images/shu.png'],
+		['兔', '/static/images/tu.png'],
+		['羊', '/static/images/yang.png'],
+		['猪', '/static/images/zhu.png']
+	]);
 	import {
 		loadMonthData,
 		setDairyVersion
@@ -64,7 +83,8 @@
 			return {
 				year: null,
 				month: null,
-				result: {},
+				resultGroup: [{}, {}, {}],
+				selectedSwiperItem: 1,
 				selectedDate: null,
 				flag: 0,
 				text: '',
@@ -80,10 +100,11 @@
 		computed: {
 			selectedItem() {
 				if(this.selectedDate) {
-					for(let index in this.result.dates) {
-						let item = this.result.dates[index];
+					for(let index in this.resultGroup[this.selectedSwiperItem].dates) {
+						let item = this.resultGroup[this.selectedSwiperItem].dates[index];
 						if(this.selectedDate == item.date) {
 							console.log("selectedItem", item);
+							item.animalImage = ANIMALS.get(item.animalsYear);
 							return item;
 						}
 					}
@@ -129,11 +150,45 @@
 				if(year < this.MIN_YEAR || (year == this.MIN_YEAR && month<this.MIN_MONTH)) {
 					return;
 				}
-				this.result = await loadMonthData(year, month);
+				let currentSwiperItem = this.selectedSwiperItem;
+				let lastSwiperItem = 0;
+				let nextSwiperItem = 2;
+				switch(currentSwiperItem) {
+					case 0:
+						lastSwiperItem = 2;
+						nextSwiperItem = 1;
+						break;						
+					case 2:
+						lastSwiperItem = 1;
+						nextSwiperItem = 0;
+						break;
+				}
+				this.resultGroup[currentSwiperItem] = await loadMonthData(year, month);
 				this.year = year;
 				this.month = month;
 				this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
+				
+				this.resultGroup[lastSwiperItem] = await loadMonthData(year, month-1);
+				this.resultGroup[nextSwiperItem] = await loadMonthData(year, month+1);
+				console.log("resultGroup", this.resultGroup);
 				this.showLoading = false;
+			},
+			
+			onSwiperItemChange(e) {
+				let current = e.detail.current;
+				console.log('current', current);
+				this.selectedSwiperItem = current;
+				let monthData = this.resultGroup[current];
+				let year = monthData.year;
+				let month = monthData.month;
+				let date = new Date(year, month-1, 1);
+				let today = new Date();
+				if(today.getFullYear() == date.getFullYear() 
+					&& (today.getMonth() == date.getMonth())) {
+					this.loadPage(today);
+				} else {
+					this.loadPage(date);
+				}
 			},
 			
 			// 农历字段的描述
@@ -174,84 +229,6 @@
 					'weekend-other-month': isWeekEnd && !inThisMonth
 				};
 			},
-
-			handletouchmove: function(event) {
-				if (this.flag !== 0) {
-					return;
-				}
-				let currentX = event.touches[0].pageX;
-				let currentY = event.touches[0].pageY;
-				let tx = currentX - this.lastX;
-				let ty = currentY - this.lastY;
-				let text = '';
-				this.mindex = -1;
-				//左右方向滑动
-				if (Math.abs(tx) > Math.abs(ty)) {
-					if (tx < 0) {
-						text = '向左滑动';
-						this.flag = 1;
-						this.nextMonth();
-					} else if (tx > 0) {
-						text = '向右滑动';
-						this.flag = 2;
-						this.lastMonth();
-					}
-				}
-				//上下方向滑动
-				else {
-					// if (ty < 0) {
-					// 	text = '向上滑动';
-					// 	this.flag = 3;
-					// 	this.nextMonth();
-					// } else if (ty > 0) {
-					// 	text = '向下滑动';
-					// 	this.flag = 4;
-					// 	this.lastMonth();
-					// }
-				}
-
-				//将当前坐标进行保存以进行下一次计算
-				this.lastX = currentX;
-				this.lastY = currentY;
-				this.text = text;
-			},
-			handletouchstart: function(event) {
-				// console.log(event)
-				this.lastX = event.touches[0].pageX;
-				this.lastY = event.touches[0].pageY;
-			},
-			handletouchend: function(event) {
-				this.flag = 0;
-				this.text = '没有滑动';
-			},
-			
-			lastMonth() {
-				let selectDate = this.initSelectedDate(this.year, this.month - 1);
-				this.loadPage(selectDate);
-			},
-			
-			nextMonth() {
-				let selectDate = this.initSelectedDate(this.year, this.month + 1);
-				this.loadPage(selectDate);
-			},
-			
-			initSelectedDate(year, month) {
-				if(month > 12) {
-					month = 1;
-					year++;
-				} else if(month < 1) {
-					month = 12;
-					year--;
-				}
-				let date = new Date(year, month-1, 1);
-				let today = new Date();
-				if(today.getFullYear() == date.getFullYear() 
-					&& (today.getMonth() == date.getMonth())) {
-					return today;
-				} else {
-					return date;
-				}
-			},
 			
 			onDateClick(item) {
 				this.selectedDate = item.date;
@@ -259,6 +236,10 @@
 			
 			onTodayIconClick() {
 				this.loadPage(new Date());
+			},
+			
+			onDateDescPress(item, e) {
+				console.log("onDateDescPress", item, e);
 			}
 		}
 	}
@@ -306,15 +287,17 @@
 		width: 100%;
 		height: 100%;
 	}
+	
+	.swiper {
+		height: 720rpx;
+	}
 
 	.calendar {
+		height: 720rpx;
 		background-color: white;
 		padding-top: 20rpx;
 		padding-left: 20rpx;
 		padding-right: 20rpx;
-		/* border-radius: 20rpx; */
-		/* margin-left: 20rpx;
-		margin-right: 20rpx; */
 	}
 	
 	.row {
