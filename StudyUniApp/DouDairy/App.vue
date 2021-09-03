@@ -52,7 +52,7 @@
 		top: 0;
 		bottom: 0;
 		background-color:#ffffff;
-		opacity: 0.9;
+		opacity: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

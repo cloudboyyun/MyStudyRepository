@@ -10,7 +10,7 @@
 				<image class='today-icon-image' v-show="showTodayIcon" src='/static/images/today.png'></image>
 			</view>
 		</view>
-		<swiper class='swiper' :current="selectedSwiperItem" circular="true" @change="onSwiperItemChange">
+		<swiper class='swiper' :current="selectedSwiperIndex" circular="true" @change="onSwiperItemChange">
 			<swiper-item v-for="(result, i) in resultGroup" :key="i">
 				<view class='calendar'>
 					<view class='row day-of-week'>
@@ -76,7 +76,9 @@
 		setDairyVersion
 	} from "../../utils/dairy.js";
 	import {
-		dateFormat
+		dateFormat,
+		monthIncrease,
+		monthDecrease
 	} from "../../utils/util.js";
 	export default {
 		data() {
@@ -84,7 +86,7 @@
 				year: null,
 				month: null,
 				resultGroup: [{}, {}, {}],
-				selectedSwiperItem: 1,
+				selectedSwiperIndex: 1,
 				selectedDate: null,
 				flag: 0,
 				text: '',
@@ -100,8 +102,8 @@
 		computed: {
 			selectedItem() {
 				if(this.selectedDate) {
-					for(let index in this.resultGroup[this.selectedSwiperItem].dates) {
-						let item = this.resultGroup[this.selectedSwiperItem].dates[index];
+					for(let index in this.resultGroup[this.selectedSwiperIndex].dates) {
+						let item = this.resultGroup[this.selectedSwiperIndex].dates[index];
 						if(this.selectedDate == item.date) {
 							console.log("selectedItem", item);
 							item.animalImage = ANIMALS.get(item.animalsYear);
@@ -144,13 +146,7 @@
 				}
 				let year = date.getFullYear();
 				let month = date.getMonth() + 1;
-				if(year > this.MAX_YEAR || (year == this.MAX_YEAR && month>this.MAX_MONTH)) {
-					return;
-				}
-				if(year < this.MIN_YEAR || (year == this.MIN_YEAR && month<this.MIN_MONTH)) {
-					return;
-				}
-				let currentSwiperIndex = this.selectedSwiperItem;
+				let currentSwiperIndex = this.selectedSwiperIndex;
 				let leftSwiperIndex = 0;
 				let rightSwiperIndex = 2;
 				switch(currentSwiperIndex) {
@@ -167,16 +163,26 @@
 				this.year = year;
 				this.month = month;
 				this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
-				
-				this.resultGroup[leftSwiperIndex] = await loadMonthData(year, month-1);
-				this.resultGroup[rightSwiperIndex] = await loadMonthData(year, month+1);
-				console.log("resultGroup", this.resultGroup);
+				let leftMonth = monthDecrease(year, month);
+				if(leftMonth.year < this.MIN_YEAR || 
+					(leftMonth.year == this.MIN_YEAR && leftMonth.month<this.MIN_MONTH)) {
+					leftMonth.year = this.MAX_YEAR;
+					leftMonth.month = this.MAX_MONTH;
+				}
+				let rightMonth = monthIncrease(year, month);
+				if(rightMonth.year > this.MAX_YEAR || 
+					(rightMonth.year == this.MAX_YEAR && rightMonth.month>this.MAX_MONTH)) {
+					rightMonth.year = this.MIN_YEAR;
+					rightMonth.month = this.MIN_MONTH;
+				}
+				this.resultGroup[leftSwiperIndex] = await loadMonthData(leftMonth.year, leftMonth.month);
+				this.resultGroup[rightSwiperIndex] = await loadMonthData(rightMonth.year, rightMonth.month);
 				this.showLoading = false;
 			},
 			
 			onSwiperItemChange(e) {
-				this.selectedSwiperItem = e.detail.current;
-				let monthData = this.resultGroup[this.selectedSwiperItem];
+				this.selectedSwiperIndex = e.detail.current;
+				let monthData = this.resultGroup[this.selectedSwiperIndex];
 				let year = monthData.year;
 				let month = monthData.month;
 				let date = new Date(year, month-1, 1);
@@ -394,7 +400,7 @@
 	}
 	
 	.dds-daydesc {
-		margin-left: 20rpx;
+		margin-left: 30rpx;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -408,7 +414,7 @@
 	}
 	
 	.dds-day {
-		font-size: 60rpx;
+		font-size: 55rpx;
 		color: #d8272a;
 	}
 	

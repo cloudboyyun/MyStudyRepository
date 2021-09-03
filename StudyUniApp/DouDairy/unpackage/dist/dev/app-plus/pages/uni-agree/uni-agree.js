@@ -175,7 +175,7 @@ module.exports = {
         0
       ],
       "opacity": [
-        0.9,
+        1,
         0,
         0,
         0

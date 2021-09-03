@@ -22,3 +22,31 @@ Date.prototype.format = function(fmt) {
 export function dateFormat(date, format) {
 	return date.format(format);
 }
+
+export function monthIncrease(year, month) {
+	let year1 = year;
+	let month1 = month + 1;
+	if(month1 > 12) {
+		month1 = 1;
+		year1++;
+	}
+	let result = {
+		year: year1,
+		month: month1
+	}
+	return result;
+}
+
+export function monthDecrease(year, month) {
+	let year1 = year;
+	let month1 = month - 1;
+	if(month1 < 1) {
+		month1 = 12;
+		year1--;
+	}
+	let result = {
+		year: year1,
+		month: month1
+	}
+	return result;
+}
