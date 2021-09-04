@@ -1,0 +1,12 @@
+db.collection('t_wan_dairy')
+	.aggregate()
+	.bucketAuto({
+	    groupBy: '$date',
+	    buckets: 1,
+	  })
+	.end();
+	
+db.collection('t_wan_dairy')
+	.where({
+		date: null
+	}).count()

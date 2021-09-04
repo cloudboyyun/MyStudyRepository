@@ -34,9 +34,4 @@ db.collection('t_dairy')
 	
 // db.collection('t_dairy').count(); // 896
 	
-// db.collection('t_dairy')
-// 	.where({
-// 		date: '2022-01-05'
-// 	})
-// 	.get()
 	
