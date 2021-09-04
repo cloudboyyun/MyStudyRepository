@@ -13,7 +13,8 @@ exports.main = async (event, context) => {
 		console.log("records:", records.data.length);
 		for (let i in records.data) {
 			let item = records.data[i];
-			let date = '' + item.year + '-0' + (item.month) + '-';
+			// let date = '' + item.year + '-0' + (item.month) + '-';
+			let date = '' + item.year + '-' + (item.month) + '-';
 			if (item.day < 10) {
 				date = date + "0";
 			}
@@ -28,8 +29,7 @@ exports.main = async (event, context) => {
 			date: dbCmd.eq(null)
 		}).count();
 		count = ccount.total;
-		console.log("count:", count)
+		console.log("count:", count);
 	}
-	//返回数据给客户端
-	return event
-};
+	return event;
+}

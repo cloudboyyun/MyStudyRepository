@@ -36,10 +36,10 @@
 		
 		<view class='day-detail-section'>
 			<view class='dds-main'>
-				<view class='dds-day'>{{selectedItem.month+1}}月{{selectedItem.day}}日</view>
+				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
-					<view class='dds-weekday'>{{selectedItem.weekday}}</view>
-					<view class='dds-lunar'>{{selectedItem.lunarYear}} {{selectedItem.lunar}}</view>
+					<view class='dds-weekday'>星期{{selectedItem.weekday}}</view>
+					<view class='dds-lunar'>{{selectedItem.lunarYear}}年 {{selectedItem.lunar}}</view>
 				</view>
 				<image class='dds-animalsyear' :src='selectedItem.animalImage'></image>
 			</view>
@@ -224,7 +224,7 @@
 
 			solarDayClass(item) {
 				let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
-				let inThisMonth = (item.month + 1) == this.month;
+				let inThisMonth = (item.month == this.month);
 				return {
 					'solar-day': true,
 					'weekday': !isWeekEnd && inThisMonth,

@@ -480,12 +480,12 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
-                    [_vm._v(_vm._$g(27, "t0-0"))]
+                    [_vm._v("星期" + _vm._$g(27, "t0-0"))]
                   ),
                   _c(
                     "v-uni-view",
                     { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
-                    [_vm._v(_vm._$g(28, "t0-0") + " " + _vm._$g(28, "t0-1"))]
+                    [_vm._v(_vm._$g(28, "t0-0") + "年 " + _vm._$g(28, "t0-1"))]
                   )
                 ],
                 1

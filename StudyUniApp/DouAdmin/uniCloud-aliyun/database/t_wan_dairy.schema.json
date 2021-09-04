@@ -1,0 +1,23 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"date": {
+			"bsonType":"string",
+			"label": "日期",
+			"description":"日期",
+			"errorMessage": {
+				"required": "{label}不能为空"
+			}
+		}
+	}
+}

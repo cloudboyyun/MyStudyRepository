@@ -43,13 +43,10 @@ async function loadMonthData(year, month) {
 	console.log("calendarEndDate", calendarEndDate.format('yyyy-MM-dd'));
 	
 	const dbCmd = db.command;
-	let query = await db.collection('t_dairy')
+	let query = await db.collection('t_wan_dairy')
 	.field({
-		'date': true,
-		'year': true,
-		'month': true,
-		'day': true,
-		'dateDesc': true
+		'_id': false,
+		'oDate': false
 	})
 	.where({
 		date: dbCmd.gte(calendarStartDate.format('yyyy-MM-dd')).and(dbCmd.lte(calendarEndDate.format('yyyy-MM-dd')))
@@ -67,10 +64,10 @@ async function loadMonthData(year, month) {
 	}
 	
 	for(let index in records) {
-		let item = records[index];
-		if(item.year == year && item.month == month) {
-			result.lunarYear = item.dateDesc.lunarYear;
-			result.animalsYear = item.dateDesc.animalsYear;
+		let record = records[index];
+		if(record.year == year && record.month == month) {
+			result.lunarYear = record.gzYear;
+			result.animalsYear = record.animal;
 			break;
 		}
 	}
@@ -80,12 +77,11 @@ async function loadMonthData(year, month) {
 	for(let index in records) {
 		let record = records[index];
 		let date = new Date(record.date);
-		let lunarDesc = record.dateDesc.lunar;
-		let strArr = lunarDesc.split("月");
-		if (strArr[1] == "初一") {
-			lunarDesc = strArr[0] + "月";
+		let lunarDesc = null;
+		if (record.lunarDate == "1") {
+			lunarDesc = record.lMonth + "月";
 		} else {
-			lunarDesc = strArr[1];
+			lunarDesc = record.lDate;
 		}
 		let item = {
 			dayOfWeek: date.getDay(),
@@ -93,14 +89,14 @@ async function loadMonthData(year, month) {
 			month: record.month,
 			day: record.day,
 			date: record.date,
-			lunar: record.dateDesc.lunar,
+			lunar: record.lMonth + "月" + record.lDate,
 			lunarDesc: lunarDesc,
-			holiday: record.dateDesc.holiday,
-			lunarYear: record.dateDesc.lunarYear,
-			animalsYear: record.dateDesc.animalsYear,
-			weekday: record.dateDesc.weekday,
-			suit: record.dateDesc.suit,
-			avoid: record.dateDesc.avoid
+			holiday: record.term,
+			lunarYear: record.gzYear,
+			animalsYear: record.animal,
+			weekday: record.cnDay,
+			suit: record.suit,
+			avoid: record.avoid
 		}
 		dates.push(item);
 	}

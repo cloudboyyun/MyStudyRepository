@@ -1,12 +1,42 @@
 db.collection('t_wan_dairy')
 	.aggregate()
 	.bucketAuto({
-	    groupBy: '$date',
-	    buckets: 1,
-	  })
+		groupBy: '$date',
+		buckets: 1,
+	})
 	.end();
-	
+
 db.collection('t_wan_dairy')
 	.where({
 		date: null
 	}).count()
+
+db.collection('t_wan_dairy')
+	.where({
+		date: '2021-09-04'
+	}).get();
+
+db.collection('t_wan_dairy')
+	.where({
+		date: '2021-11-07'
+	}).get();
+
+// const dbCmd = db.command;
+// db.collection('t_wan_dairy').where({
+// 	month: dbCmd.in(['10', '11', '12'])
+// }).get();
+
+// const dbCmd = db.command;
+// db.collection('t_wan_dairy').where({
+// 	month: dbCmd.in(['10', '11', '12'])
+// }).update({
+// 	date: null
+// });
+
+db.collection('t_wan_dairy')
+	.aggregate()
+	.bucketAuto({
+	    groupBy: '$date',
+	    buckets: 1,
+	  })
+	.end();
