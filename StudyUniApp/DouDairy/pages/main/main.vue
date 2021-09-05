@@ -30,7 +30,6 @@
 							@click='onDateClick(item)'>
 							<view class="solar-day" :class='solarDayClass(item)'>
 								{{item.day}}
-								<view :v-show="selectedItem.status">{{selectedItem.status}}</view>
 							</view>
 							<view class="lunar-day" :class='lunarDayClass(item)' 
 								@longpress="onDateDescPress(item, $event)">{{getDateDesc(item)}}</view>
@@ -239,14 +238,11 @@
 			solarDayClass(item) {
 				let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
 				let inThisMonth = (item.month == this.month);
-				let isWorkingDay = item.status == '2';
-				let isHoliday = item.status == '1';
 				return {
-					'solar-day': true,
 					'weekday': !isWeekEnd && inThisMonth,
 					'weekend': isWeekEnd && inThisMonth,
 					'weekday-other-month': !isWeekEnd && !inThisMonth,
-					'weekend-other-month': isWeekEnd && !inThisMonth,
+					'weekend-other-month': isWeekEnd && !inThisMonth
 				};
 			},
 			
