@@ -16,9 +16,10 @@ db.collection('t_wan_dairy')
 		date: '2021-09-04'
 	}).get();
 
+const dbCmd = db.command
 db.collection('t_wan_dairy')
 	.where({
-		date: '2021-11-07'
+		date: dbCmd.in(['2021-08-29', '2021-09-26','2021-09-19','2021-09-20','2021-09-21'])
 	}).get();
 
 // const dbCmd = db.command;
@@ -33,10 +34,10 @@ db.collection('t_wan_dairy')
 // 	date: null
 // });
 
-db.collection('t_wan_dairy')
-	.aggregate()
-	.bucketAuto({
-	    groupBy: '$date',
-	    buckets: 1,
-	  })
-	.end();
+// db.collection('t_wan_dairy')
+// 	.aggregate()
+// 	.bucketAuto({
+// 	    groupBy: '$date',
+// 	    buckets: 1,
+// 	  })
+// 	.end();

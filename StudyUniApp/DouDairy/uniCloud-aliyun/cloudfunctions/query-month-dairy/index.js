@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
 		throw "year and month should be specified."
 	}
 	let year = event.year;
-	let month = event.month - 1;
+	let month = event.month;
 	
 	let thisMonthData = await loadMonthData(year, month);
 	return thisMonthData;
@@ -21,16 +21,16 @@ exports.main = async (event, context) => {
 
 async function loadMonthData(year, month) {
 	// 本月的天数
-	let days = new Date(year, month + 1, 0).getDate();
+	let days = new Date(year, month, 0).getDate();
 	// 本月第一天的日期
-	let monthStartDate = new Date(year, month, 1);
+	let monthStartDate = new Date(year, month-1, 1);
 	// 本月第一天是周几
 	let week = monthStartDate.getDay();
 	// 如果不是周日，则本页第一天应该是哪天
-	let calendarStartDate = new Date(year, month, -week + 1);
+	let calendarStartDate = new Date(year, month-1, -week + 1);
 	console.log("calendarStartDate", calendarStartDate.format('yyyy-MM-dd'));
 	// 本月最后一天
-	let monthEndDate = new Date(year, month + 1, 0);
+	let monthEndDate = new Date(year, month, 0);
 	week = monthEndDate.getDay();
 	console.log("monthEndDate", week);
 	// 如果不是周六，那本页最后一天应该是哪天？
@@ -38,7 +38,7 @@ async function loadMonthData(year, month) {
 	if(week == 6) {
 		calendarEndDate = monthEndDate;
 	} else {
-		calendarEndDate = new Date(year, month, days + (6 - week));
+		calendarEndDate = new Date(year, month-1, days + (6 - week));
 	}
 	console.log("calendarEndDate", calendarEndDate.format('yyyy-MM-dd'));
 	
@@ -57,19 +57,8 @@ async function loadMonthData(year, month) {
 	let records = query.data;
 	let result = {
 		year: year,
-		month: month+1,
-		dates: null,
-		gzYear: null,
-		animal: null
-	}
-	
-	for(let index in records) {
-		let record = records[index];
-		if(record.year == year && record.month == month) {
-			result.gzYear = record.gzYear;
-			result.animal = record.animal;
-			break;
-		}
+		month: month,
+		dates: null
 	}
 	
 	let dates = [];
@@ -98,7 +87,8 @@ async function loadMonthData(year, month) {
 			animal: record.animal,
 			weekday: record.cnDay,
 			suit: record.suit,
-			avoid: record.avoid
+			avoid: record.avoid,
+			status: record.status
 		}
 		dates.push(item);
 	}
