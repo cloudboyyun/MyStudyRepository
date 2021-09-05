@@ -59,15 +59,15 @@ async function loadMonthData(year, month) {
 		year: year,
 		month: month+1,
 		dates: null,
-		lunarYear: null,
-		animalsYear: null
+		gzYear: null,
+		animal: null
 	}
 	
 	for(let index in records) {
 		let record = records[index];
 		if(record.year == year && record.month == month) {
-			result.lunarYear = record.gzYear;
-			result.animalsYear = record.animal;
+			result.gzYear = record.gzYear;
+			result.animal = record.animal;
 			break;
 		}
 	}
@@ -92,8 +92,10 @@ async function loadMonthData(year, month) {
 			lunar: record.lMonth + "月" + record.lDate,
 			lunarDesc: lunarDesc,
 			holiday: record.term,
-			lunarYear: record.gzYear,
-			animalsYear: record.animal,
+			gzYear: record.gzYear,
+			gzMonth: record.gzMonth,
+			gzDate: record.gzDate,
+			animal: record.animal,
 			weekday: record.cnDay,
 			suit: record.suit,
 			avoid: record.avoid

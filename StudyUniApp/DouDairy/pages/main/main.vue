@@ -39,7 +39,12 @@
 				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
 					<view class='dds-weekday'>星期{{selectedItem.weekday}}</view>
-					<view class='dds-lunar'>{{selectedItem.lunarYear}}年 {{selectedItem.lunar}}</view>
+					<view class='dds-lunar'>
+						<image src='/static/images/lunar.png' class='dds-lunar-png'></image>
+						<view class='dds-lunar-value'>{{selectedItem.lunar}}</view>
+					</view>
+					<view class='dds-ganzhi'>{{selectedItem.gzYear}}年 {{selectedItem.gzMonth}}月 {{selectedItem.gzDate}}日</view>
+					
 				</view>
 				<image class='dds-animalsyear' :src='selectedItem.animalImage'></image>
 			</view>
@@ -106,7 +111,7 @@
 						let item = this.resultGroup[this.selectedSwiperIndex].dates[index];
 						if(this.selectedDate == item.date) {
 							console.log("selectedItem", item);
-							item.animalImage = ANIMALS.get(item.animalsYear);
+							item.animalImage = ANIMALS.get(item.animal);
 							return item;
 						}
 					}
@@ -213,7 +218,7 @@
 			// 农历字段的样式
 			lunarDayClass(item) {
 				let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
-				let inThisMonth = (item.month + 1) == this.month;
+				let inThisMonth = (item.month == this.month);
 				return {
 					'luna-day-this-month': !item.holiday && inThisMonth,
 					'lunar-day-other-month': !item.holiday && !inThisMonth,
@@ -386,12 +391,11 @@
 	.day-detail-section {
 		border-radius: 20rpx;
 		margin-top: 20rpx;
-		margin-left: 20rpx;
-		margin-right: 20rpx;
+		margin-left: 5rpx;
+		margin-right: 5rpx;
 		padding-top: 40rpx;
 		padding-left: 100rpx;
-		padding-right: 50rpx;
-		/* padding-bottom: 20rpx; */
+		padding-right: 20rpx;
 		background-image: url(@/static/images/detail4.png);
 		background-repeat:no-repeat;
 		background-position: left top;
@@ -419,16 +423,38 @@
 	}
 	
 	.dds-weekday {
+		display:flex;
+		flex-direction: row;
+		align-items: center;
 		font-size: 25rpx;
+		color: #181818;
+		line-height: 25rpx;
+	}
+	
+	.dds-lunar {
+		margin-top: 2rpx;
+		display:flex;
+		flex-direction: row;
+		align-items: center;
+		text-align: center;
+	}
+	
+	.dds-lunar-png {
+		width: 20rpx;
+		height: 20rpx;
+	}
+	
+	.dds-lunar-value {
+		margin-left: 10rpx;
+		font-size: 32rpx;
 		color: #181818;
 		font-weight: bold;
 	}
 	
-	.dds-lunar {
+	.dds-ganzhi {
+		/* margin-top: 5rpx; */
 		font-size: 25rpx;
 		color: #181818;
-		font-weight: bold;
-		margin-top: 5rpx;
 	}
 	
 	.dds-animalsyear {
@@ -468,12 +494,14 @@
 	
 	.dds-suit-content {
 		margin-top: 10rpx;
+		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}
 	
 	.dds-avoid-content {
 		margin-top: 10rpx;
+		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}

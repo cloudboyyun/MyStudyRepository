@@ -485,38 +485,63 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
-                    [_vm._v(_vm._$g(28, "t0-0") + "年 " + _vm._$g(28, "t0-1"))]
+                    [
+                      _c("v-uni-image", {
+                        staticClass: _vm._$g(29, "sc"),
+                        attrs: { src: "/static/images/lunar.png", _i: 29 }
+                      }),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
+                        [_vm._v(_vm._$g(30, "t0-0"))]
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
+                    [
+                      _vm._v(
+                        _vm._$g(31, "t0-0") +
+                          "年 " +
+                          _vm._$g(31, "t0-1") +
+                          "月 " +
+                          _vm._$g(31, "t0-2") +
+                          "日"
+                      )
+                    ]
                   )
                 ],
                 1
               ),
               _c("v-uni-image", {
-                staticClass: _vm._$g(29, "sc"),
-                attrs: { src: _vm._$g(29, "a-src"), _i: 29 }
+                staticClass: _vm._$g(32, "sc"),
+                attrs: { src: _vm._$g(32, "a-src"), _i: 32 }
               })
             ],
             1
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
+            { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
+                { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
                 [_vm._v("宜")]
               ),
-              _vm._$g(32, "i")
+              _vm._$g(35, "i")
                 ? _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
-                    [_vm._v(_vm._$g(32, "t0-0"))]
+                    { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
+                    [_vm._v(_vm._$g(35, "t0-0"))]
                   )
                 : _vm._e(),
-              _vm._$g(33, "i")
+              _vm._$g(36, "i")
                 ? _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
+                    { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } },
                     [_vm._v("百无禁忌")]
                   )
                 : _vm._e()
@@ -525,24 +550,24 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
+            { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
+                { staticClass: _vm._$g(38, "sc"), attrs: { _i: 38 } },
                 [_vm._v("忌")]
               ),
-              _vm._$g(36, "i")
+              _vm._$g(39, "i")
                 ? _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } },
-                    [_vm._v(_vm._$g(36, "t0-0"))]
+                    { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
+                    [_vm._v(_vm._$g(39, "t0-0"))]
                   )
                 : _vm._e(),
-              _vm._$g(37, "i")
+              _vm._$g(40, "i")
                 ? _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
+                    { staticClass: _vm._$g(40, "sc"), attrs: { _i: 40 } },
                     [_vm._v("百无禁忌")]
                   )
                 : _vm._e()
@@ -649,7 +674,7 @@ exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_1___);
 // Module
-exports.push([module.i, "\nbody {\n\twidth: 100%;\n\theight: 100%;\n}\n.page {\n\twidth: 100%;\n\theight: 100%;\n\t/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n}\n.title-area {\n\tpadding-top:  calc(var(--status-bar-height) + 30rpx);\n\twidth: 100%;\n\tpadding-bottom: 30rpx;\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack:justify;\n\t-webkit-justify-content:space-between;\n\t        justify-content:space-between;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.year-month {\n\tcolor: #ffffff;\n\tfont-weight: bolder;\n\tfont-size: 32rpx;\n}\n.today-icon {\n\twidth: 50rpx;\n\theight: 50rpx;\n\tmargin-right: 30rpx;\n}\n.today-icon-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.swiper {\n\theight: 720rpx;\n}\n.calendar {\n\theight: 720rpx;\n\tbackground-color: white;\n\tpadding-top: 20rpx;\n\tpadding-left: 20rpx;\n\tpadding-right: 20rpx;\n}\n.row {\n\twidth: 100%;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-justify-content: space-around;\n\t        justify-content: space-around;\n\t-webkit-flex-wrap: wrap;\n\t        flex-wrap: wrap;\n\ttext-align: center;\n}\n.day-of-week {\n\tfont-size: 21rpx;\n}\n.solar-day {\n\tfont-size: 35rpx;\n\tfont-weight: bold;\n}\n.lunar-day {\n\tfont-size: 20rpx;\n}\n.luna-day-this-month {\n\tcolor: #a1a1a1;\n}\n.luna-day-this-month-holiday {\n\tcolor: #b74854;\n}\n.luna-day-other-month-holiday {\n\tcolor: #e9dde1;\n}\n.lunar-day-other-month {\n\tcolor: #e1e1e1;\n}\n.weekday {\n\tcolor: #111111;\n}\n.weekday-other-month {\n\tcolor: #dfdfdf;\n}\n.weekend {\n\tcolor: #c1252d;\n}\n.weekend-other-month {\n\tcolor: #f1dcde;\n}\n.day {\n\twidth: 13%;\n\tpadding-bottom: 10rpx;\n\tmargin-bottom: 10rpx;\n\tborder: 5rpx solid #ffffff;\n}\n.selected {\n\tborder: 5rpx solid #bf5445;\n\tborder-radius: 20rpx;\n}\n.day-detail-section {\n\tborder-radius: 20rpx;\n\tmargin-top: 20rpx;\n\tmargin-left: 20rpx;\n\tmargin-right: 20rpx;\n\tpadding-top: 40rpx;\n\tpadding-left: 100rpx;\n\tpadding-right: 50rpx;\n\t/* padding-bottom: 20rpx; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n\theight: 620rpx;\n}\n.dds-daydesc {\n\tmargin-left: 30rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n}\n.dds-main {\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.dds-day {\n\tfont-size: 55rpx;\n\tcolor: #d8272a;\n}\n.dds-weekday {\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n}\n.dds-lunar {\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n\tmargin-top: 5rpx;\n}\n.dds-animalsyear {\n\tmargin-right: 20rpx;\n\tmargin-left: auto;\n\twidth: 100rpx;\n\theight: 70rpx;\n}\n.dds-suit {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n\t-webkit-align-content: flex-start;\n\t        align-content: flex-start;\n\talign-items: flex-start;\n}\n.dds-avoid {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n}\n.dds-suit-word {\n\tcolor: #80afcc;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-avoid-word {\n\tcolor: #db8399;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-suit-content {\n\tmargin-top: 10rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n.dds-avoid-content {\n\tmargin-top: 10rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n\twidth: 100%;\n\theight: 100%;\n}\n.page {\n\twidth: 100%;\n\theight: 100%;\n\t/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n}\n.title-area {\n\tpadding-top:  calc(var(--status-bar-height) + 30rpx);\n\twidth: 100%;\n\tpadding-bottom: 30rpx;\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack:justify;\n\t-webkit-justify-content:space-between;\n\t        justify-content:space-between;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.year-month {\n\tcolor: #ffffff;\n\tfont-weight: bolder;\n\tfont-size: 32rpx;\n}\n.today-icon {\n\twidth: 50rpx;\n\theight: 50rpx;\n\tmargin-right: 30rpx;\n}\n.today-icon-image {\n\twidth: 100%;\n\theight: 100%;\n}\n.swiper {\n\theight: 720rpx;\n}\n.calendar {\n\theight: 720rpx;\n\tbackground-color: white;\n\tpadding-top: 20rpx;\n\tpadding-left: 20rpx;\n\tpadding-right: 20rpx;\n}\n.row {\n\twidth: 100%;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-justify-content: space-around;\n\t        justify-content: space-around;\n\t-webkit-flex-wrap: wrap;\n\t        flex-wrap: wrap;\n\ttext-align: center;\n}\n.day-of-week {\n\tfont-size: 21rpx;\n}\n.solar-day {\n\tfont-size: 35rpx;\n\tfont-weight: bold;\n}\n.lunar-day {\n\tfont-size: 20rpx;\n}\n.luna-day-this-month {\n\tcolor: #a1a1a1;\n}\n.luna-day-this-month-holiday {\n\tcolor: #b74854;\n}\n.luna-day-other-month-holiday {\n\tcolor: #e9dde1;\n}\n.lunar-day-other-month {\n\tcolor: #e1e1e1;\n}\n.weekday {\n\tcolor: #111111;\n}\n.weekday-other-month {\n\tcolor: #dfdfdf;\n}\n.weekend {\n\tcolor: #c1252d;\n}\n.weekend-other-month {\n\tcolor: #f1dcde;\n}\n.day {\n\twidth: 13%;\n\tpadding-bottom: 10rpx;\n\tmargin-bottom: 10rpx;\n\tborder: 5rpx solid #ffffff;\n}\n.selected {\n\tborder: 5rpx solid #bf5445;\n\tborder-radius: 20rpx;\n}\n.day-detail-section {\n\tborder-radius: 20rpx;\n\tmargin-top: 20rpx;\n\tmargin-left: 5rpx;\n\tmargin-right: 5rpx;\n\tpadding-top: 40rpx;\n\tpadding-left: 100rpx;\n\tpadding-right: 20rpx;\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n\tbackground-repeat:no-repeat;\n\tbackground-position: left top;\n\tbackground-size: 100% 100%;\n\theight: 620rpx;\n}\n.dds-daydesc {\n\tmargin-left: 30rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n}\n.dds-main {\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n}\n.dds-day {\n\tfont-size: 55rpx;\n\tcolor: #d8272a;\n}\n.dds-weekday {\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\tfont-size: 25rpx;\n\tcolor: #181818;\n\tline-height: 25rpx;\n}\n.dds-lunar {\n\tmargin-top: 2rpx;\n\tdisplay:-webkit-box;\n\tdisplay:-webkit-flex;\n\tdisplay:flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\ttext-align: center;\n}\n.dds-lunar-png {\n\twidth: 20rpx;\n\theight: 20rpx;\n}\n.dds-lunar-value {\n\tmargin-left: 10rpx;\n\tfont-size: 32rpx;\n\tcolor: #181818;\n\tfont-weight: bold;\n}\n.dds-ganzhi {\n\t/* margin-top: 5rpx; */\n\tfont-size: 25rpx;\n\tcolor: #181818;\n}\n.dds-animalsyear {\n\tmargin-right: 20rpx;\n\tmargin-left: auto;\n\twidth: 100rpx;\n\theight: 70rpx;\n}\n.dds-suit {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: start;\n\t-webkit-align-items: flex-start;\n\t        align-items: flex-start;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n\t-webkit-align-content: flex-start;\n\t        align-content: flex-start;\n\talign-items: flex-start;\n}\n.dds-avoid {\n\tmargin-top: 20rpx;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n}\n.dds-suit-word {\n\tcolor: #80afcc;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-avoid-word {\n\tcolor: #db8399;\n\tfont-size: 40rpx;\n\tmargin-right: 20rpx;\n}\n.dds-suit-content {\n\tmargin-top: 10rpx;\n\tmargin-right: 20rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n.dds-avoid-content {\n\tmargin-top: 10rpx;\n\tmargin-right: 20rpx;\n\tline-height: 50rpx;\n\tfont-size: 25rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
