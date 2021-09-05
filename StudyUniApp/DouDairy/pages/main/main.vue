@@ -1,5 +1,8 @@
 <template>
 	<view class='page'>
+		<view v-if="showFullLoading" class='full-loading'>
+		  <image class='loading-image' src='/static/images/loading.gif'></image>
+		</view>
 		<view v-if="showLoading" class='loading'>
 		  <image class='loading-image' src='/static/images/loading.gif'></image>
 		</view>
@@ -101,7 +104,8 @@
 				MIN_MONTH: 12,
 				MAX_YEAR: 2022,
 				MAX_MONTH: 12,
-				showLoading: true
+				showLoading: false,
+				showFullLoading: true
 			}
 		},
 		computed: {
@@ -126,7 +130,7 @@
 		},
 		onLoad() {
 			let that = this;
-			this.showLoading = true;
+			this.showFullLoading = true;
 			uniCloud.callFunction({
 				name: 'get-dairy-config',
 				success(res) {
@@ -183,9 +187,11 @@
 				this.resultGroup[leftSwiperIndex] = await loadMonthData(leftMonth.year, leftMonth.month);
 				this.resultGroup[rightSwiperIndex] = await loadMonthData(rightMonth.year, rightMonth.month);
 				this.showLoading = false;
+				this.showFullLoading = false;
 			},
 			
 			onSwiperItemChange(e) {
+				this.showLoading = true;
 				this.selectedSwiperIndex = e.detail.current;
 				let monthData = this.resultGroup[this.selectedSwiperIndex];
 				let year = monthData.year;

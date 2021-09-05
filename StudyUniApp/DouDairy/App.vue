@@ -44,7 +44,7 @@
 </script>
 
 <style>
-	.loading {
+	.full-loading {
 		position: fixed;
 		width: 100%;
 		height: 120vh;
@@ -53,6 +53,20 @@
 		bottom: 0;
 		background-color:#ffffff;
 		opacity: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.loading {
+		position: fixed;
+		width: 100%;
+		height: 120vh;
+		z-index: 999;
+		top: 0;
+		bottom: 0;
+		background-color:#ffffff;
+		opacity: 0.5;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
