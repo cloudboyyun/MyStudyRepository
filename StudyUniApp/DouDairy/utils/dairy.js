@@ -16,7 +16,6 @@ export async function loadMonthData(year, month) {
 	let key = DAIRY_VERSION + '-' + year + '-' + month;
 	let result = uni.getStorageSync(key);
 	if(result) {
-		console.log('从缓存中获取', key);
 		return result;
 	}
 	

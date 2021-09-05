@@ -44,7 +44,8 @@
 			</swiper-item>
 		</swiper>
 
-		<view class='day-detail-section'>
+		<view class='day-detail-section' @touchmove="handletouchmove" @touchstart="handletouchstart"
+			@touchend="handletouchend">
 			<view class='dds-main'>
 				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
@@ -104,16 +105,16 @@
 				selectedSwiperIndex: 1,
 				selectedDate: null,
 				todayStr: null,
-				flag: 0,
-				text: '',
-				lastX: 0,
-				lastY: 0,
 				MIN_YEAR: 2020,
 				MIN_MONTH: 12,
 				MAX_YEAR: 2022,
 				MAX_MONTH: 12,
 				showLoading: false,
-				showFullLoading: true
+				showFullLoading: true,
+				flag: 0,
+				text: '',
+				lastX: 0,
+				lastY: 0
 			}
 		},
 		computed: {
@@ -266,6 +267,66 @@
 					title: "缓存已清除",
 					position: 'top'
 				})
+			},
+
+			handletouchmove: function(event) {
+				if (this.flag !== 0) {
+					return;
+				}
+				let currentX = event.touches[0].pageX;
+				let currentY = event.touches[0].pageY;
+				let tx = currentX - this.lastX;
+				let ty = currentY - this.lastY;
+				let text = '';
+				this.mindex = -1;
+				//左右方向滑动
+				if (Math.abs(tx) > Math.abs(ty)) {
+					if (tx < 0) {
+						text = '向左滑动';
+						this.flag = 1;
+						this.nextDay();
+					} else if (tx > 0) {
+						text = '向右滑动';
+						this.flag = 2;
+						this.lastDay();
+					}
+				}
+				//上下方向滑动
+				else {
+					if (ty < 0) {
+						text = '向上滑动';
+						this.flag = 3;
+						this.nextMonth();
+					} else if (ty > 0) {
+						text = '向下滑动';
+						this.flag = 4;
+						// this.lastDay();
+					}
+				}
+
+				//将当前坐标进行保存以进行下一次计算
+				this.lastX = currentX;
+				this.lastY = currentY;
+				this.text = text;
+			},
+			handletouchstart: function(event) {
+				this.lastX = event.touches[0].pageX;
+				this.lastY = event.touches[0].pageY;
+			},
+			handletouchend: function(event) {
+				this.flag = 0;
+				this.text = '没有滑动';
+			},
+			
+			nextDay() {
+				let selectedDate = new Date(this.selectedDate);
+				let newDate = new Date(selectedDate.getTime() + 1000*60*60*24);
+				this.loadPage(newDate);
+			},
+			lastDay() {
+				let selectedDate = new Date(this.selectedDate);
+				let newDate = new Date(selectedDate.getTime() - 1000*60*60*24);
+				this.loadPage(newDate);
 			}
 		}
 	}
@@ -375,7 +436,7 @@
 		border: 3rpx solid #729e82;
 		border-radius: 20rpx;
 	}
-	
+
 	.today {
 		border: 5rpx solid #bf5445;
 		border-radius: 20rpx;
@@ -407,7 +468,7 @@
 	.restingDay {
 		position: relative;
 	}
-	
+
 	.restingDay:after {
 		content: '休';
 		font-size: 16rpx;
