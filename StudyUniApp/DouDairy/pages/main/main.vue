@@ -28,6 +28,7 @@
 					<view class='row'>
 						<view v-for="(item,index) in result.dates" :key="index" class='day' :class="{
 								selected: (item.date == selectedDate),
+								today: (item.date == todayStr),
 								mask: (item.month != month),
 								workingDay: (item.status == '2'),
 								restingDay: (item.status == '1')
@@ -102,6 +103,7 @@
 				resultGroup: [{}, {}, {}],
 				selectedSwiperIndex: 1,
 				selectedDate: null,
+				todayStr: null,
 				flag: 0,
 				text: '',
 				lastX: 0,
@@ -129,13 +131,13 @@
 				return {};
 			},
 			showTodayIcon() {
-				let today = new Date();
-				let todayStr = dateFormat(today, 'yyyy-MM-dd');
-				return todayStr != this.selectedDate;
+				return this.todayStr != this.selectedDate;
 			}
 		},
 		onLoad() {
 			let that = this;
+			let today = new Date();
+			this.todayStr = dateFormat(today, 'yyyy-MM-dd');
 			this.showFullLoading = true;
 			uniCloud.callFunction({
 				name: 'get-dairy-config',
@@ -149,7 +151,6 @@
 					setDairyVersion(configData.dairy_data_version);
 				},
 				complete() {
-					let today = new Date();
 					that.loadPage(today);
 				}
 			})
@@ -371,6 +372,11 @@
 	}
 
 	.selected {
+		border: 3rpx solid #729e82;
+		border-radius: 20rpx;
+	}
+	
+	.today {
 		border: 5rpx solid #bf5445;
 		border-radius: 20rpx;
 	}
@@ -386,8 +392,10 @@
 	.workingDay:after {
 		content: '班';
 		font-size: 16rpx;
-		padding-left: 5rpx;
-		padding-right: 5rpx;
+		line-height: 16rpx;
+		width: 16rpx;
+		height: 16rpx;
+		padding: 5rpx;
 		position: absolute;
 		top: -5rpx;
 		right: 0rpx;
@@ -403,8 +411,10 @@
 	.restingDay:after {
 		content: '休';
 		font-size: 16rpx;
-		padding-left: 5rpx;
-		padding-right: 5rpx;
+		line-height: 16rpx;
+		width: 16rpx;
+		height: 16rpx;
+		padding: 5rpx;
 		position: absolute;
 		top: -5rpx;
 		right: 0rpx;
