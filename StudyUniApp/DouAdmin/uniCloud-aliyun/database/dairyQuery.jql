@@ -41,3 +41,13 @@ db.collection('t_wan_dairy')
 // 	    buckets: 1,
 // 	  })
 // 	.end();
+
+db.collection('t_wan_dairy')
+	.field({
+		date: true,
+		term: true
+	})
+	.where({
+		term: dbCmd.in(['立春', '立夏','立秋','立冬']),
+		year: '2021'
+	}).get();

@@ -1,5 +1,5 @@
 <template>
-	<view class='page'>
+	<view class='main' :style="{backgroundImage: backgroundImage}">
 		<view v-if="showFullLoading" class='full-loading'>
 			<image class='loading-image' src='/static/images/loading.gif'></image>
 		</view>
@@ -114,7 +114,8 @@
 				flag: 0,
 				text: '',
 				lastX: 0,
-				lastY: 0
+				lastY: 0,
+				backgroundImage: "url('/static/images/xia.png')"
 			}
 		},
 		computed: {
@@ -228,7 +229,7 @@
 				}
 				return result;
 			},
-
+			
 			solarDayClass(item) {
 				let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
 				return {
@@ -338,11 +339,11 @@
 		height: 100%;
 	}
 
-	.page {
+	.main {
 		width: 100%;
 		height: 100%;
 		/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */
-		background-image: url(@/static/images/bg1.jpeg);
+		/* background-image: url('/static/images/bg1.jpeg'); */
 		background-repeat: no-repeat;
 		background-position: left top;
 		background-size: 100% 100%;
