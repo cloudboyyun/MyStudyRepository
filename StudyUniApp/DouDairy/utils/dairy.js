@@ -33,3 +33,30 @@ export async function loadMonthData(year, month) {
 	
 	return res.result;
 }
+
+export async function loadYearGanzhi(year) {
+	let key = DAIRY_VERSION + '-' + year;
+	console.log("xy2", key)
+	let records = uni.getStorageSync(key);
+	if(!records) {
+		let res = await uniCloud.callFunction({
+				name: 'query-year-ganzhi',
+				data: {
+					"year": year
+				}
+			});
+		records = res.result;
+		uni.setStorage({
+			key: key,
+			data: records
+		});
+	}
+	
+	let result = new Map();
+	for(let index in records) {
+		let record = records[index];
+		result.set(record.term, record.date);
+	}
+	return result;
+}
+

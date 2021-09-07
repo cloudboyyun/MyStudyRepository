@@ -15,8 +15,8 @@ exports.main = async (event, context) => {
 	let year = event.year;
 	let month = event.month;
 	
-	let thisMonthData = await loadMonthData(year, month);
-	return thisMonthData;
+	let result = await loadMonthData(year, month);
+	return result;
 };
 
 async function loadMonthData(year, month) {
@@ -28,11 +28,9 @@ async function loadMonthData(year, month) {
 	let week = monthStartDate.getDay();
 	// 如果不是周日，则本页第一天应该是哪天
 	let calendarStartDate = new Date(year, month-1, -week + 1);
-	console.log("calendarStartDate", calendarStartDate.format('yyyy-MM-dd'));
 	// 本月最后一天
 	let monthEndDate = new Date(year, month, 0);
 	week = monthEndDate.getDay();
-	console.log("monthEndDate", week);
 	// 如果不是周六，那本页最后一天应该是哪天？
 	let calendarEndDate = null;
 	if(week == 6) {
@@ -40,7 +38,6 @@ async function loadMonthData(year, month) {
 	} else {
 		calendarEndDate = new Date(year, month-1, days + (6 - week));
 	}
-	console.log("calendarEndDate", calendarEndDate.format('yyyy-MM-dd'));
 	
 	const dbCmd = db.command;
 	let query = await db.collection('t_wan_dairy')

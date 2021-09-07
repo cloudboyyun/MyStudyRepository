@@ -89,7 +89,8 @@
 	]);
 	import {
 		loadMonthData,
-		setDairyVersion
+		setDairyVersion,
+		loadYearGanzhi
 	} from "../../utils/dairy.js";
 	import {
 		dateFormat,
@@ -115,7 +116,7 @@
 				text: '',
 				lastX: 0,
 				lastY: 0,
-				backgroundImage: "url('/static/images/xia.png')"
+				yearGanzhi: null
 			}
 		},
 		computed: {
@@ -134,6 +135,28 @@
 			},
 			showTodayIcon() {
 				return this.todayStr != this.selectedDate;
+			},
+			backgroundImage() {
+				let result = "url('/static/images/chun.png')";
+				if(this.selectedDate && this.yearGanzhi) {
+					console.log('selectedDate', this.selectedDate);
+					console.log('yearGanzhi', this.yearGanzhi);
+					if(this.selectedDate < this.yearGanzhi.get('立春')) {
+						result = "url('/static/images/dong.png')"
+					} else if(this.selectedDate >= this.yearGanzhi.get('立春') &&
+						this.selectedDate < this.yearGanzhi.get('立夏')) {
+						result = "url('/static/images/chun.png')"
+					} else if(this.selectedDate >= this.yearGanzhi.get('立夏') &&
+						this.selectedDate < this.yearGanzhi.get('立秋')) {
+						result = "url('/static/images/xia.png')"
+					} else if(this.selectedDate >= this.yearGanzhi.get('立秋') &&
+						this.selectedDate < this.yearGanzhi.get('立冬')) {
+						result = "url('/static/images/qiu.png')"
+					} else if(this.selectedDate >= this.yearGanzhi.get('立冬')) {
+						result = "url('/static/images/dong.png')"
+					}
+				}
+				return result;
 			}
 		},
 		onLoad() {
@@ -195,6 +218,7 @@
 				}
 				this.resultGroup[leftSwiperIndex] = await loadMonthData(leftMonth.year, leftMonth.month);
 				this.resultGroup[rightSwiperIndex] = await loadMonthData(rightMonth.year, rightMonth.month);
+				this.yearGanzhi = await loadYearGanzhi(year);
 				this.showLoading = false;
 				this.showFullLoading = false;
 			},

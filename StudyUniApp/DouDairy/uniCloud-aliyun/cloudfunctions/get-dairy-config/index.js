@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
 		'_id': false
 	})
 	.get();
-	let configData = query.data[0]; 
+	let configData = query.data[0];
 	//返回数据给客户端
 	return configData;
 };
