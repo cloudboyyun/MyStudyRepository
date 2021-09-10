@@ -7,11 +7,11 @@
 			<image class='loading-image' src='/static/images/loading.gif'></image>
 		</view>
 		<view class='title-area'>
-			<view class='today-icon'></view>
-			<view class='year-month'>{{year}}年{{month}}月</view>
 			<view class='today-icon' @click="onTodayIconClick()">
 				<image class='today-icon-image' v-show="showTodayIcon" src='/static/images/today.png'></image>
 			</view>
+			<view class='year-month'>{{year}}年{{month}}月</view>
+			<view class='today-icon'></view>
 		</view>
 		<swiper class='swiper' :current="selectedSwiperIndex" circular="true" @change="onSwiperItemChange">
 			<swiper-item v-for="(result, i) in resultGroup" :key="i">
@@ -33,7 +33,8 @@
 								workingDay: (item.status == '2'),
 								restingDay: (item.status == '1')
 							}" @click='onDateClick(item)'>
-							<view class="solar-day" :class='solarDayClass(item)'>
+							<view class="solar-day" 
+								:class="[item.dayOfWeek == 6 || item.dayOfWeek == 0?'weekend':'weekday']">
 								{{item.day}}
 							</view>
 							<view class="lunar-day" :class="[item.holiday? 'lunar-day-holiday':'lunar-day-common']"
@@ -45,7 +46,7 @@
 		</swiper>
 
 		<view class='day-detail-section' @touchmove="handletouchmove" @touchstart="handletouchstart"
-			@touchend="handletouchend">
+			@touchend="handletouchend" :style="{backgroundImage: detailBackgroundImage}">
 			<view class='dds-main'>
 				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
@@ -116,7 +117,8 @@
 				text: '',
 				lastX: 0,
 				lastY: 0,
-				yearGanzhi: null
+				yearGanzhi: null,
+				detailBackgroundImage: "url('/static/images/detail4.png')"
 			}
 		},
 		computed: {
@@ -137,23 +139,23 @@
 				return this.todayStr != this.selectedDate;
 			},
 			backgroundImage() {
-				let result = "url('/static/images/chun.png')";
+				let result = "url('/static/images/chun.jpeg')";
 				if(this.selectedDate && this.yearGanzhi) {
 					console.log('selectedDate', this.selectedDate);
 					console.log('yearGanzhi', this.yearGanzhi);
 					if(this.selectedDate < this.yearGanzhi.get('立春')) {
-						result = "url('/static/images/dong.png')"
+						result = "url('/static/images/dong.jfif')"
 					} else if(this.selectedDate >= this.yearGanzhi.get('立春') &&
 						this.selectedDate < this.yearGanzhi.get('立夏')) {
-						result = "url('/static/images/chun.png')"
+						result = "url('/static/images/chun.jpeg')"
 					} else if(this.selectedDate >= this.yearGanzhi.get('立夏') &&
 						this.selectedDate < this.yearGanzhi.get('立秋')) {
-						result = "url('/static/images/xia.png')"
+						result = "url('/static/images/xia.jfif')"
 					} else if(this.selectedDate >= this.yearGanzhi.get('立秋') &&
 						this.selectedDate < this.yearGanzhi.get('立冬')) {
-						result = "url('/static/images/qiu.png')"
+						result = "url('/static/images/qiu.jpg')"
 					} else if(this.selectedDate >= this.yearGanzhi.get('立冬')) {
-						result = "url('/static/images/dong.png')"
+						result = "url('/static/images/dong.jfif')"
 					}
 				}
 				return result;
@@ -254,13 +256,13 @@
 				return result;
 			},
 			
-			solarDayClass(item) {
-				let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
-				return {
-					'weekday': !isWeekEnd,
-					'weekend': isWeekEnd
-				};
-			},
+			// solarDayClass(item) {
+			// 	let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
+			// 	return {
+			// 		'weekday': !isWeekEnd,
+			// 		'weekend': isWeekEnd
+			// 	};
+			// },
 
 			onDateClick(item) {
 				this.selectedDate = item.date;
@@ -366,8 +368,6 @@
 	.main {
 		width: 100%;
 		height: 100%;
-		/* background: url(@/static/images/bg1.jpeg) no-repeat top center; */
-		/* background-image: url('/static/images/bg1.jpeg'); */
 		background-repeat: no-repeat;
 		background-position: left top;
 		background-size: 100% 100%;
@@ -393,6 +393,7 @@
 		width: 50rpx;
 		height: 50rpx;
 		margin-right: 30rpx;
+		margin-left: 30rpx;
 	}
 
 	.today-icon-image {
@@ -451,7 +452,7 @@
 	}
 
 	.day {
-		width: 13%;
+		width: 12%;
 		padding-bottom: 10rpx;
 		margin-bottom: 10rpx;
 		border: 5rpx solid #ffffff;
@@ -517,7 +518,7 @@
 		padding-top: 40rpx;
 		padding-left: 100rpx;
 		padding-right: 20rpx;
-		background-image: url(@/static/images/detail4.png);
+		/* background-image: url(/static/images/detail4.png); */
 		background-repeat: no-repeat;
 		background-position: left top;
 		background-size: 100% 100%;
