@@ -16,6 +16,7 @@ exports.main = async (event, context) => {
 	let noCheckAction = ['register']
 	if (noCheckAction.indexOf(event.action) === -1) {
 		if (!event.uniIdToken) {
+			console.error('缺少token', params)
 			return {
 				code: 403,
 				msg: '缺少token'

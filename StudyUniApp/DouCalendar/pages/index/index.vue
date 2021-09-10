@@ -34,7 +34,7 @@
 								workingDay: (item.status == '2'),
 								restingDay: (item.status == '1')
 							}" @click='onDateClick(item)'>
-							<view class="solar-day" 
+							<view class="solar-day"
 								:class="[item.dayOfWeek == 6 || item.dayOfWeek == 0?'weekend':'weekday']">
 								{{item.day}}
 							</view>
@@ -139,23 +139,29 @@
 				return this.todayStr != this.selectedDate;
 			},
 			backgroundImage() {
-				let result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";
-				if(this.selectedDate && this.yearGanzhi) {
+				let result =
+					"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";
+				if (this.selectedDate && this.yearGanzhi) {
 					console.log('selectedDate', this.selectedDate);
 					console.log('yearGanzhi', this.yearGanzhi);
-					if(this.selectedDate < this.yearGanzhi.get('立春')) {
-						result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')"
-					} else if(this.selectedDate >= this.yearGanzhi.get('立春') &&
+					if (this.selectedDate < this.yearGanzhi.get('立春')) {
+						result =
+							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')"
+					} else if (this.selectedDate >= this.yearGanzhi.get('立春') &&
 						this.selectedDate < this.yearGanzhi.get('立夏')) {
-						result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')"
-					} else if(this.selectedDate >= this.yearGanzhi.get('立夏') &&
+						result =
+							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')"
+					} else if (this.selectedDate >= this.yearGanzhi.get('立夏') &&
 						this.selectedDate < this.yearGanzhi.get('立秋')) {
-						result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/16e792a5-6144-4de5-b403-596d96a1a691.jfif')"
-					} else if(this.selectedDate >= this.yearGanzhi.get('立秋') &&
+						result =
+							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/16e792a5-6144-4de5-b403-596d96a1a691.jfif')"
+					} else if (this.selectedDate >= this.yearGanzhi.get('立秋') &&
 						this.selectedDate < this.yearGanzhi.get('立冬')) {
-						result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')"
-					} else if(this.selectedDate >= this.yearGanzhi.get('立冬')) {
-						result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')"
+						result =
+							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')"
+					} else if (this.selectedDate >= this.yearGanzhi.get('立冬')) {
+						result =
+							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')"
 					}
 				}
 				console.log("backgroundImage", result);
@@ -163,78 +169,45 @@
 			}
 		},
 		onLoad() {
-			let that = this;
-			let today = new Date();
-			this.todayStr = dateFormat(today, 'yyyy-MM-dd');
-			this.showFullLoading = true;
-			uniCloud.callFunction({
-				name: 'xy-calendar',
-				data: {
-					action: 'getDairyConfig',
-					params: {
-					}
-				},
-				success(res) {
-					const configData = res.result;
-					console.log('getDairyConfig', configData);
-					that.MIN_YEAR = configData.dairy_data_min_year;
-					that.MIN_MONTH = configData.dairy_data_min_month;
-					that.MAX_YEAR = configData.dairy_data_max_year;
-					that.MAX_MONTH = configData.dairy_data_max_month;
-					setDairyVersion(configData.dairy_data_version);
-				},
-				fail(e) {
-					console.error(e);
-				},
-				complete() {
-					that.loginByWeixin();
-					that.loadPage(today);
-				}
-			})
+			this._onLoad();
 		},
 		methods: {
-			async initUser() {
-				let code = await this.getWeixinCode();
-				console.log("code", code);
-			},
-			loginByWeixin() {
-				this.getWeixinCode().then((code) => {
-					return uniCloud.callFunction({
-						name: 'uni-id-func',
-						data: {
-							action: 'loginByWeixin',
-							params: {
-								code: code,
-								role: ['calendar-miniprogram-user']
-							}
-						}
-					})
-				}).then((res) => {
-					console.log('loginByWeixin', JSON.stringify(res.result));
-					if (res.result.code === 0) {
-						uni.setStorageSync('uni_id_token', res.result.token)
-						uni.setStorageSync('uni_id_token_expired', res.result.tokenExpired);
-						this.checkToken();
-					}
-				}).catch((e) => {
-					console.error(e)
-					uni.showModal({
-						showCancel: false,
-						content: '微信登录失败，请稍后再试'
-					})
+			async _onLoad() {
+				let that = this;
+				let today = new Date();
+				this.todayStr = dateFormat(today, 'yyyy-MM-dd');
+				this.showFullLoading = true;
+				await this.loginByWeixin();
+				let configDataResult = await uniCloud.callFunction({
+					name: 'xy-calendar',
+					data: {
+						action: 'getDairyConfig',
+						params: {}
+					},
 				})
+				const configData = configDataResult.result;
+				console.log('getDairyConfig', configData);
+				that.MIN_YEAR = configData.dairy_data_min_year;
+				that.MIN_MONTH = configData.dairy_data_min_month;
+				that.MAX_YEAR = configData.dairy_data_max_year;
+				that.MAX_MONTH = configData.dairy_data_max_month;
+				setDairyVersion(configData.dairy_data_version);
+				await that.loadPage(today);
 			},
-			async checkToken() {
-				let res = await uniCloud.callFunction({
+			async loginByWeixin() {
+				let code = await this.getWeixinCode();
+				let loginByWeixinResult = await uniCloud.callFunction({
 					name: 'uni-id-func',
 					data: {
-						action: 'checkToken',
+						action: 'loginByWeixin',
 						params: {
-							uniIdToken: uni.getStorageSync('uni_id_token')
+							code: code,
+							role: ['calendar-miniprogram-user']
 						}
 					}
 				});
-				console.log("checkToken", res);
+				uni.setStorageSync('uni_id_token', loginByWeixinResult.result.token)
+				uni.setStorageSync('uni_id_token_expired', loginByWeixinResult.result.tokenExpired);
 			},
 			getWeixinCode() {
 				return new Promise((resolve, reject) => {
@@ -323,7 +296,7 @@
 				}
 				return result;
 			},
-			
+
 			// solarDayClass(item) {
 			// 	let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
 			// 	return {
@@ -412,15 +385,15 @@
 				this.flag = 0;
 				this.text = '没有滑动';
 			},
-			
+
 			nextDay() {
 				let selectedDate = new Date(this.selectedDate);
-				let newDate = new Date(selectedDate.getTime() + 1000*60*60*24);
+				let newDate = new Date(selectedDate.getTime() + 1000 * 60 * 60 * 24);
 				this.loadPage(newDate);
 			},
 			lastDay() {
 				let selectedDate = new Date(this.selectedDate);
-				let newDate = new Date(selectedDate.getTime() - 1000*60*60*24);
+				let newDate = new Date(selectedDate.getTime() - 1000 * 60 * 60 * 24);
 				this.loadPage(newDate);
 			}
 		}
