@@ -1,25 +1,98 @@
 'use strict';
 
+const uniID = require('uni-id')
 const db = uniCloud.database();
-
-// 获取月历的每页数据，每周以周日开始
-// event中要求传入:
-// year: 年
-// month: 月（1~12）
 exports.main = async (event, context) => {
-	//event为客户端上传的参数
-	console.log('event : ', event);
-	if(!event.year || !event.month) {
-		throw "year and month should be specified."
+	let uniIDIns = uniID.createInstance({ // 创建uni-id实例，其上方法同uniID
+		context: context // 传入context防止不同请求互相影响
+	})
+	/* 如果你通过云函数Url访问
+	 * 使用GET时参数位于event.queryStringParameters
+	 * 使用POST时参数位于event.body
+	 * 请自行处理上述场景
+	 */
+	let params = event.params || {}
+	let payload = {}
+	let noCheckAction = ['register']
+	if (noCheckAction.indexOf(event.action) === -1) {
+		if (!event.uniIdToken) {
+			return {
+				code: 403,
+				msg: '缺少token'
+			}
+		}
+		payload = await uniIDIns.checkToken(event.uniIdToken)
+		if (payload.code && payload.code > 0) {
+			return payload
+		}
+		params.uid = payload.uid
 	}
-	let year = event.year;
-	let month = event.month;
-	
-	let result = await loadMonthData(year, month);
-	return result;
+	let res = {}
+
+	switch (event.action) {
+		case 'getDairyConfig':
+			res = await getDairyConfig(params);
+			break;
+		case 'loadMonthData':
+			res = await loadMonthData(params);
+			break;
+		case 'queryYearGanzhi':
+			res = await queryYearGanzhi(params);
+			break;
+		default:
+			res = {
+				code: 403,
+				msg: '非法访问'
+			}
+			break;
+	}
+
+	//返回数据给客户端
+	return res
 };
 
-async function loadMonthData(year, month) {
+async function queryYearGanzhi(params) {
+	console.log("queryYearGanzhi params", params);
+	if(!params.year) {
+		throw "year should be specified."
+	}
+	let year = params.year;
+	const dbCmd = db.command;
+	let query = await db.collection('t_wan_dairy')
+	.field({
+		'_id': false,
+		'date': true,
+		'term': true
+	})
+	.where({
+		term: dbCmd.in(['立春', '立夏','立秋','立冬']),
+		year: "" + year
+	})
+	.get();
+	let records = query.data;
+	return records;
+}
+
+async function getDairyConfig(params) {
+	console.log("getDairyConfig params", params);
+	let query = await db.collection('t_dairy_config')
+	.field({
+		'_id': false
+	})
+	.get();
+	let configData = query.data[0]; 
+	//返回数据给客户端
+	return configData;
+}
+
+async function loadMonthData(params) {
+	console.log("loadMonthData params", params);
+	if(!params.year || !params.month) {
+		throw "year and month should be specified."
+	}
+	let year = params.year;
+	let month = params.month;
+	
 	// 本月的天数
 	let days = new Date(year, month, 0).getDate();
 	// 本月第一天的日期

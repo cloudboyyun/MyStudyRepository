@@ -9271,8 +9271,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.setDairyVersion = setDairyVersion;exports.loadMonthData = loadMonthData;exports.loadYearGanzhi = loadYearGanzhi;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
-var DAIRY_VERSION = 'v0.1';
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.setDairyVersion = setDairyVersion;exports.loadMonthData = loadMonthData;exports.loadYearGanzhi = loadYearGanzhi;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var DAIRY_VERSION = 'v0.1';
 function setDairyVersion(dairyVersion) {
   DAIRY_VERSION = dairyVersion;
 }function
@@ -9293,10 +9292,14 @@ loadMonthData(_x, _x2) {return _loadMonthData.apply(this, arguments);}function _
 
 
               uniCloud.callFunction({
-                name: 'query-month-dairy',
+                name: 'xy-calendar',
                 data: {
-                  "year": year,
-                  "month": month } }));case 7:res = _context.sent;
+                  action: 'loadMonthData',
+                  params: {
+                    "year": year,
+                    "month": month } } }));case 7:res = _context.sent;
+
+
 
 
             uni.setStorage({
@@ -9313,9 +9316,12 @@ loadYearGanzhi(_x3) {return _loadYearGanzhi.apply(this, arguments);}function _lo
             records = uni.getStorageSync(key);if (
             records) {_context2.next = 9;break;}_context2.next = 6;return (
               uniCloud.callFunction({
-                name: 'query-year-ganzhi',
+                name: 'xy-calendar',
                 data: {
-                  "year": year } }));case 6:res = _context2.sent;
+                  action: 'queryYearGanzhi',
+                  params: {
+                    "year": year } } }));case 6:res = _context2.sent;
+
 
 
             records = res.result;

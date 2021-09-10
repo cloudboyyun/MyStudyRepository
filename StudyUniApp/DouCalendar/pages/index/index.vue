@@ -168,22 +168,89 @@
 			this.todayStr = dateFormat(today, 'yyyy-MM-dd');
 			this.showFullLoading = true;
 			uniCloud.callFunction({
-				name: 'get-dairy-config',
+				name: 'xy-calendar',
+				data: {
+					action: 'getDairyConfig',
+					params: {
+					}
+				},
 				success(res) {
 					const configData = res.result;
-					console.log('get-dairy-config', configData.result);
+					console.log('getDairyConfig', configData);
 					that.MIN_YEAR = configData.dairy_data_min_year;
 					that.MIN_MONTH = configData.dairy_data_min_month;
 					that.MAX_YEAR = configData.dairy_data_max_year;
 					that.MAX_MONTH = configData.dairy_data_max_month;
 					setDairyVersion(configData.dairy_data_version);
 				},
+				fail(e) {
+					console.error(e);
+				},
 				complete() {
+					that.loginByWeixin();
 					that.loadPage(today);
 				}
 			})
 		},
 		methods: {
+			async initUser() {
+				let code = await this.getWeixinCode();
+				console.log("code", code);
+			},
+			loginByWeixin() {
+				this.getWeixinCode().then((code) => {
+					return uniCloud.callFunction({
+						name: 'uni-id-func',
+						data: {
+							action: 'loginByWeixin',
+							params: {
+								code: code,
+								role: ['calendar-miniprogram-user']
+							}
+						}
+					})
+				}).then((res) => {
+					console.log('loginByWeixin', JSON.stringify(res.result));
+					if (res.result.code === 0) {
+						uni.setStorageSync('uni_id_token', res.result.token)
+						uni.setStorageSync('uni_id_token_expired', res.result.tokenExpired);
+						this.checkToken();
+					}
+				}).catch((e) => {
+					console.error(e)
+					uni.showModal({
+						showCancel: false,
+						content: '微信登录失败，请稍后再试'
+					})
+				})
+			},
+			async checkToken() {
+				let res = await uniCloud.callFunction({
+					name: 'uni-id-func',
+					data: {
+						action: 'checkToken',
+						params: {
+							uniIdToken: uni.getStorageSync('uni_id_token')
+						}
+					}
+				});
+				console.log("checkToken", res);
+			},
+			getWeixinCode() {
+				return new Promise((resolve, reject) => {
+					// #ifdef MP-WEIXIN
+					uni.login({
+						provider: 'weixin',
+						success(res) {
+							resolve(res.code)
+						},
+						fail(err) {
+							reject(new Error('微信登录失败'))
+						}
+					})
+					// #endif
+				})
+			},
 			async loadPage(date) {
 				if (!date) {
 					return;

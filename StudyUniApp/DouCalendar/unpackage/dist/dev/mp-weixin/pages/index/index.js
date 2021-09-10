@@ -335,59 +335,126 @@ var _util = __webpack_require__(/*! ../../utils/util.js */ 24);function _interop
 //
 //
 //
-var ANIMALS = new Map([['狗', '/static/images/gou.png'], ['猴', '/static/images/hou.png'], ['虎', '/static/images/hu.png'], ['鸡', '/static/images/ji.png'], ['马', '/static/images/ma.png'], ['牛', '/static/images/niu.png'], ['蛇', '/static/images/she.png'], ['鼠', '/static/images/shu.png'], ['兔', '/static/images/tu.png'], ['羊', '/static/images/yang.png'], ['猪', '/static/images/zhu.png']]);var _default = { data: function data() {return { year: null, month: null, resultGroup: [{}, {}, {}], selectedSwiperIndex: 1, selectedDate: null, todayStr: null, MIN_YEAR: 2020, MIN_MONTH: 12, MAX_YEAR: 2022, MAX_MONTH: 12, showLoading: false, showFullLoading: true, flag: 0, text: '', lastX: 0, lastY: 0, yearGanzhi: null };}, computed: { selectedItem: function selectedItem() {if (this.selectedDate) {for (var index in this.resultGroup[this.selectedSwiperIndex].dates) {var item = this.resultGroup[this.selectedSwiperIndex].dates[index];if (this.selectedDate == item.date) {console.log("selectedItem", item);item.animalImage = ANIMALS.get(item.animal);return item;}}}return {};}, showTodayIcon: function showTodayIcon() {return this.todayStr != this.selectedDate;}, backgroundImage: function backgroundImage() {var result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";if (this.selectedDate && this.yearGanzhi) {console.log('selectedDate', this.selectedDate);console.log('yearGanzhi', this.yearGanzhi);if (this.selectedDate < this.yearGanzhi.get('立春')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')";} else if (this.selectedDate >= this.yearGanzhi.get('立春') && this.selectedDate < this.yearGanzhi.get('立夏')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";} else if (this.selectedDate >= this.yearGanzhi.get('立夏') && this.selectedDate < this.yearGanzhi.get('立秋')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/16e792a5-6144-4de5-b403-596d96a1a691.jfif')";} else if (this.selectedDate >= this.yearGanzhi.get('立秋') && this.selectedDate < this.yearGanzhi.get('立冬')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')";} else if (this.selectedDate >= this.yearGanzhi.get('立冬')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')";}}console.log("backgroundImage", result);return result;} }, onLoad: function onLoad() {var that = this;var today = new Date();this.todayStr = (0, _util.dateFormat)(today, 'yyyy-MM-dd');this.showFullLoading = true;uniCloud.callFunction({ name: 'get-dairy-config', success: function success(res) {var configData = res.result;console.log('get-dairy-config', configData.result);
+var ANIMALS = new Map([['狗', '/static/images/gou.png'], ['猴', '/static/images/hou.png'], ['虎', '/static/images/hu.png'], ['鸡', '/static/images/ji.png'], ['马', '/static/images/ma.png'], ['牛', '/static/images/niu.png'], ['蛇', '/static/images/she.png'], ['鼠', '/static/images/shu.png'], ['兔', '/static/images/tu.png'], ['羊', '/static/images/yang.png'], ['猪', '/static/images/zhu.png']]);var _default = { data: function data() {return { year: null, month: null, resultGroup: [{}, {}, {}], selectedSwiperIndex: 1, selectedDate: null, todayStr: null, MIN_YEAR: 2020, MIN_MONTH: 12, MAX_YEAR: 2022, MAX_MONTH: 12, showLoading: false, showFullLoading: true, flag: 0, text: '', lastX: 0, lastY: 0, yearGanzhi: null };}, computed: { selectedItem: function selectedItem() {if (this.selectedDate) {for (var index in this.resultGroup[this.selectedSwiperIndex].dates) {var item = this.resultGroup[this.selectedSwiperIndex].dates[index];if (this.selectedDate == item.date) {console.log("selectedItem", item);item.animalImage = ANIMALS.get(item.animal);return item;}}}return {};}, showTodayIcon: function showTodayIcon() {return this.todayStr != this.selectedDate;}, backgroundImage: function backgroundImage() {var result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";if (this.selectedDate && this.yearGanzhi) {console.log('selectedDate', this.selectedDate);console.log('yearGanzhi', this.yearGanzhi);if (this.selectedDate < this.yearGanzhi.get('立春')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')";} else if (this.selectedDate >= this.yearGanzhi.get('立春') && this.selectedDate < this.yearGanzhi.get('立夏')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";} else if (this.selectedDate >= this.yearGanzhi.get('立夏') && this.selectedDate < this.yearGanzhi.get('立秋')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/16e792a5-6144-4de5-b403-596d96a1a691.jfif')";} else if (this.selectedDate >= this.yearGanzhi.get('立秋') && this.selectedDate < this.yearGanzhi.get('立冬')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')";} else if (this.selectedDate >= this.yearGanzhi.get('立冬')) {result = "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')";}}console.log("backgroundImage", result);return result;} }, onLoad: function onLoad() {var that = this;var today = new Date();this.todayStr = (0, _util.dateFormat)(today, 'yyyy-MM-dd');this.showFullLoading = true;uniCloud.callFunction({ name: 'xy-calendar', data: { action: 'getDairyConfig', params: {} },
+
+
+      success: function success(res) {
+        var configData = res.result;
+        console.log('getDairyConfig', configData);
         that.MIN_YEAR = configData.dairy_data_min_year;
         that.MIN_MONTH = configData.dairy_data_min_month;
         that.MAX_YEAR = configData.dairy_data_max_year;
         that.MAX_MONTH = configData.dairy_data_max_month;
         (0, _dairy.setDairyVersion)(configData.dairy_data_version);
       },
+      fail: function fail(e) {
+        console.error(e);
+      },
       complete: function complete() {
+        that.loginByWeixin();
         that.loadPage(today);
       } });
 
   },
   methods: {
-    loadPage: function loadPage(date) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var year, month, currentSwiperIndex, leftSwiperIndex, rightSwiperIndex, leftMonth, rightMonth;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
-                date) {_context.next = 2;break;}return _context.abrupt("return");case 2:
+    initUser: function initUser() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var code;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.getWeixinCode());case 2:code = _context.sent;
+                console.log("code", code);case 4:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    loginByWeixin: function loginByWeixin() {var _this2 = this;
+      this.getWeixinCode().then(function (code) {
+        return uniCloud.callFunction({
+          name: 'uni-id-func',
+          data: {
+            action: 'loginByWeixin',
+            params: {
+              code: code,
+              role: ['calendar-miniprogram-user'] } } });
+
+
+
+      }).then(function (res) {
+        console.log('loginByWeixin', JSON.stringify(res.result));
+        if (res.result.code === 0) {
+          uni.setStorageSync('uni_id_token', res.result.token);
+          uni.setStorageSync('uni_id_token_expired', res.result.tokenExpired);
+          _this2.checkToken();
+        }
+      }).catch(function (e) {
+        console.error(e);
+        uni.showModal({
+          showCancel: false,
+          content: '微信登录失败，请稍后再试' });
+
+      });
+    },
+    checkToken: function checkToken() {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  uniCloud.callFunction({
+                    name: 'uni-id-func',
+                    data: {
+                      action: 'checkToken',
+                      params: {
+                        uniIdToken: uni.getStorageSync('uni_id_token') } } }));case 2:res = _context2.sent;
+
+
+
+                console.log("checkToken", res);case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    getWeixinCode: function getWeixinCode() {
+      return new Promise(function (resolve, reject) {
+
+        uni.login({
+          provider: 'weixin',
+          success: function success(res) {
+            resolve(res.code);
+          },
+          fail: function fail(err) {
+            reject(new Error('微信登录失败'));
+          } });
+
+
+      });
+    },
+    loadPage: function loadPage(date) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var year, month, currentSwiperIndex, leftSwiperIndex, rightSwiperIndex, leftMonth, rightMonth;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:if (
+                date) {_context3.next = 2;break;}return _context3.abrupt("return");case 2:
 
 
                 year = date.getFullYear();
                 month = date.getMonth() + 1;
-                currentSwiperIndex = _this.selectedSwiperIndex;
+                currentSwiperIndex = _this3.selectedSwiperIndex;
                 leftSwiperIndex = 0;
-                rightSwiperIndex = 2;_context.t0 =
-                currentSwiperIndex;_context.next = _context.t0 ===
-                0 ? 10 : _context.t0 ===
+                rightSwiperIndex = 2;_context3.t0 =
+                currentSwiperIndex;_context3.next = _context3.t0 ===
+                0 ? 10 : _context3.t0 ===
 
 
 
-                2 ? 13 : 16;break;case 10:leftSwiperIndex = 2;rightSwiperIndex = 1;return _context.abrupt("break", 16);case 13:
+                2 ? 13 : 16;break;case 10:leftSwiperIndex = 2;rightSwiperIndex = 1;return _context3.abrupt("break", 16);case 13:
                 leftSwiperIndex = 1;
-                rightSwiperIndex = 0;return _context.abrupt("break", 16);case 16:_context.next = 18;return (
+                rightSwiperIndex = 0;return _context3.abrupt("break", 16);case 16:_context3.next = 18;return (
 
 
-                  (0, _dairy.loadMonthData)(year, month));case 18:_this.resultGroup[currentSwiperIndex] = _context.sent;
-                _this.year = year;
-                _this.month = month;
-                _this.selectedDate = (0, _util.dateFormat)(date, 'yyyy-MM-dd');
+                  (0, _dairy.loadMonthData)(year, month));case 18:_this3.resultGroup[currentSwiperIndex] = _context3.sent;
+                _this3.year = year;
+                _this3.month = month;
+                _this3.selectedDate = (0, _util.dateFormat)(date, 'yyyy-MM-dd');
                 leftMonth = (0, _util.monthDecrease)(year, month);
-                if (leftMonth.year < _this.MIN_YEAR ||
-                leftMonth.year == _this.MIN_YEAR && leftMonth.month < _this.MIN_MONTH) {
-                  leftMonth.year = _this.MAX_YEAR;
-                  leftMonth.month = _this.MAX_MONTH;
+                if (leftMonth.year < _this3.MIN_YEAR ||
+                leftMonth.year == _this3.MIN_YEAR && leftMonth.month < _this3.MIN_MONTH) {
+                  leftMonth.year = _this3.MAX_YEAR;
+                  leftMonth.month = _this3.MAX_MONTH;
                 }
                 rightMonth = (0, _util.monthIncrease)(year, month);
-                if (rightMonth.year > _this.MAX_YEAR ||
-                rightMonth.year == _this.MAX_YEAR && rightMonth.month > _this.MAX_MONTH) {
-                  rightMonth.year = _this.MIN_YEAR;
-                  rightMonth.month = _this.MIN_MONTH;
-                }_context.next = 28;return (
-                  (0, _dairy.loadMonthData)(leftMonth.year, leftMonth.month));case 28:_this.resultGroup[leftSwiperIndex] = _context.sent;_context.next = 31;return (
-                  (0, _dairy.loadMonthData)(rightMonth.year, rightMonth.month));case 31:_this.resultGroup[rightSwiperIndex] = _context.sent;_context.next = 34;return (
-                  (0, _dairy.loadYearGanzhi)(year));case 34:_this.yearGanzhi = _context.sent;
-                _this.showLoading = false;
-                _this.showFullLoading = false;case 37:case "end":return _context.stop();}}}, _callee);}))();
+                if (rightMonth.year > _this3.MAX_YEAR ||
+                rightMonth.year == _this3.MAX_YEAR && rightMonth.month > _this3.MAX_MONTH) {
+                  rightMonth.year = _this3.MIN_YEAR;
+                  rightMonth.month = _this3.MIN_MONTH;
+                }_context3.next = 28;return (
+                  (0, _dairy.loadMonthData)(leftMonth.year, leftMonth.month));case 28:_this3.resultGroup[leftSwiperIndex] = _context3.sent;_context3.next = 31;return (
+                  (0, _dairy.loadMonthData)(rightMonth.year, rightMonth.month));case 31:_this3.resultGroup[rightSwiperIndex] = _context3.sent;_context3.next = 34;return (
+                  (0, _dairy.loadYearGanzhi)(year));case 34:_this3.yearGanzhi = _context3.sent;
+                _this3.showLoading = false;
+                _this3.showFullLoading = false;case 37:case "end":return _context3.stop();}}}, _callee3);}))();
     },
 
     onSwiperItemChange: function onSwiperItemChange(e) {
