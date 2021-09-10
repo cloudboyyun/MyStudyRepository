@@ -1,0 +1,48 @@
+
+.full-loading {
+	position: fixed;
+	width: 100%;
+	height: 120vh;
+	z-index: 999;
+	top: 0;
+	bottom: 0;
+	background-color:#ffffff;
+	opacity: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.loading {
+	position: fixed;
+	width: 100%;
+	height: 120vh;
+	z-index: 999;
+	top: 0;
+	bottom: 0;
+	background-color:#ffffff;
+	opacity: 0.5;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	/* justify-content: first baseline; */
+}
+.loading-image{
+  margin-top: 26vh;
+  width: 500rpx;
+  height: 500rpx;
+}
+
