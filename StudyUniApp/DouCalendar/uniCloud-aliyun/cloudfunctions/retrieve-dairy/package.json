@@ -1,8 +1,0 @@
-{
-    "cloudfunction-config": {
-        "memorySize": 128,
-        "timeout": 5,
-        "triggers": [],
-        "path": ""
-    }
-}
