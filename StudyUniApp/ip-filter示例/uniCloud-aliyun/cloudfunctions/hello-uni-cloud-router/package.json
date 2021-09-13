@@ -1,0 +1,21 @@
+{
+	"name": "uni-cloud-router-demo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"ip-filter": "file:../../../uni_modules/ip-filter/uniCloud/cloudfunctions/common/ip-filter",
+		"uni-cloud-router": "file:../../../uni_modules/uni-cloud-router/uniCloud/cloudfunctions/common/uni-cloud-router"
+	},
+	"cloudfunction-config": {
+		"memorySize": 256,
+		"timeout": 10,
+		"concurrency": 20
+	}
+}

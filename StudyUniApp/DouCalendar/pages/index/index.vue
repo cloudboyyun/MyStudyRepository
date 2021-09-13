@@ -89,6 +89,12 @@
 		['羊', '/static/images/yang.png'],
 		['猪', '/static/images/zhu.png']
 	]);
+	const BGIMAGES = new Map([
+		['春', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')"],
+		['夏', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/9403b9d2-9b48-43a7-a335-bb19fa108b29.jfif')"],
+		['秋', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')"],
+		['冬', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/30a542f2-e973-473f-b2de-fd60b4860e40.jfif')"]
+	]);
 	import {
 		loadMonthData,
 		setDairyVersion,
@@ -139,29 +145,21 @@
 				return this.todayStr != this.selectedDate;
 			},
 			backgroundImage() {
-				let result =
-					"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')";
+				let result = BGIMAGES.get("春");
 				if (this.selectedDate && this.yearGanzhi) {
-					console.log('selectedDate', this.selectedDate);
-					console.log('yearGanzhi', this.yearGanzhi);
 					if (this.selectedDate < this.yearGanzhi.get('立春')) {
-						result =
-							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')"
+						result = BGIMAGES.get("冬");
 					} else if (this.selectedDate >= this.yearGanzhi.get('立春') &&
 						this.selectedDate < this.yearGanzhi.get('立夏')) {
-						result =
-							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')"
+						result = BGIMAGES.get("春");
 					} else if (this.selectedDate >= this.yearGanzhi.get('立夏') &&
 						this.selectedDate < this.yearGanzhi.get('立秋')) {
-						result =
-							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/16e792a5-6144-4de5-b403-596d96a1a691.jfif')"
+						result = BGIMAGES.get("夏");
 					} else if (this.selectedDate >= this.yearGanzhi.get('立秋') &&
 						this.selectedDate < this.yearGanzhi.get('立冬')) {
-						result =
-							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')"
+						result = BGIMAGES.get("秋");
 					} else if (this.selectedDate >= this.yearGanzhi.get('立冬')) {
-						result =
-							"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/d69f81d3-922b-4879-b2e4-4b228a3ff836.jfif')"
+						result = BGIMAGES.get("冬");
 					}
 				}
 				console.log("backgroundImage", result);
@@ -364,11 +362,9 @@
 					if (ty < 0) {
 						text = '向上滑动';
 						this.flag = 3;
-						this.nextMonth();
 					} else if (ty > 0) {
 						text = '向下滑动';
 						this.flag = 4;
-						// this.lastDay();
 					}
 				}
 
