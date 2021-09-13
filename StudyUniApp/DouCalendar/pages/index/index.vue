@@ -49,7 +49,7 @@
 		<view class='day-detail-section' @touchmove="handletouchmove" @touchstart="handletouchstart"
 			@touchend="handletouchend">
 			<view class='dds-main'>
-				<view class='dds-day'>{{month}}月{{day}}日</view>
+				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
 					<view class='dds-weekday'>星期{{selectedItem.weekday}}</view>
 					<view class='dds-lunar'>
@@ -105,6 +105,7 @@
 		monthIncrease,
 		monthDecrease
 	} from "../../utils/util.js";
+	let lastSelectedItem = null;
 	export default {
 		data() {
 			return {
@@ -125,7 +126,7 @@
 				text: '',
 				lastX: 0,
 				lastY: 0,
-				yearGanzhi: null
+				yearGanzhi: null,
 			}
 		},
 		computed: {
@@ -136,9 +137,13 @@
 						if (this.selectedDate == item.date) {
 							console.log("selectedItem", item);
 							item.animalImage = ANIMALS.get(item.animal);
+							lastSelectedItem = item;
 							return item;
 						}
 					}
+				}
+				if(lastSelectedItem) {
+					return lastSelectedItem;
 				}
 				return {
 					'weekday': '',
