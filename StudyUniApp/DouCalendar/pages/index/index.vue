@@ -49,7 +49,7 @@
 		<view class='day-detail-section' @touchmove="handletouchmove" @touchstart="handletouchstart"
 			@touchend="handletouchend">
 			<view class='dds-main'>
-				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
+				<view class='dds-day'>{{month}}月{{day}}日</view>
 				<view class='dds-daydesc'>
 					<view class='dds-weekday'>星期{{selectedItem.weekday}}</view>
 					<view class='dds-lunar'>
@@ -110,6 +110,7 @@
 			return {
 				year: null,
 				month: null,
+				day: null,
 				resultGroup: [{}, {}, {}],
 				selectedSwiperIndex: 1,
 				selectedDate: null,
@@ -139,7 +140,16 @@
 						}
 					}
 				}
-				return {};
+				return {
+					'weekday': '',
+					'lunar': '',
+					'gzYear': '',
+					'gzMonth': '',
+					'gzDate': '',
+					'animalImage': null,
+					'suit': '',
+					'avoid': ''
+				};
 			},
 			showTodayIcon() {
 				return this.todayStr != this.selectedDate;
@@ -162,7 +172,6 @@
 						result = BGIMAGES.get("冬");
 					}
 				}
-				console.log("backgroundImage", result);
 				return result;
 			}
 		},
@@ -184,7 +193,6 @@
 					},
 				})
 				const configData = configDataResult.result;
-				console.log('getDairyConfig', configData);
 				that.MIN_YEAR = configData.dairy_data_min_year;
 				that.MIN_MONTH = configData.dairy_data_min_month;
 				that.MAX_YEAR = configData.dairy_data_max_year;
@@ -226,8 +234,9 @@
 				if (!date) {
 					return;
 				}
-				let year = date.getFullYear();
-				let month = date.getMonth() + 1;
+				this.year = date.getFullYear();
+				this.month = date.getMonth() + 1;
+				this.day = date.getDate();
 				let currentSwiperIndex = this.selectedSwiperIndex;
 				let leftSwiperIndex = 0;
 				let rightSwiperIndex = 2;
@@ -241,17 +250,15 @@
 						rightSwiperIndex = 0;
 						break;
 				}
-				this.resultGroup[currentSwiperIndex] = await loadMonthData(year, month);
-				this.year = year;
-				this.month = month;
+				this.resultGroup[currentSwiperIndex] = await loadMonthData(this.year, this.month);
 				this.selectedDate = dateFormat(date, 'yyyy-MM-dd');
-				let leftMonth = monthDecrease(year, month);
+				let leftMonth = monthDecrease(this.year, this.month);
 				if (leftMonth.year < this.MIN_YEAR ||
 					(leftMonth.year == this.MIN_YEAR && leftMonth.month < this.MIN_MONTH)) {
 					leftMonth.year = this.MAX_YEAR;
 					leftMonth.month = this.MAX_MONTH;
 				}
-				let rightMonth = monthIncrease(year, month);
+				let rightMonth = monthIncrease(this.year, this.month);
 				if (rightMonth.year > this.MAX_YEAR ||
 					(rightMonth.year == this.MAX_YEAR && rightMonth.month > this.MAX_MONTH)) {
 					rightMonth.year = this.MIN_YEAR;
@@ -259,7 +266,7 @@
 				}
 				this.resultGroup[leftSwiperIndex] = await loadMonthData(leftMonth.year, leftMonth.month);
 				this.resultGroup[rightSwiperIndex] = await loadMonthData(rightMonth.year, rightMonth.month);
-				this.yearGanzhi = await loadYearGanzhi(year);
+				this.yearGanzhi = await loadYearGanzhi(this.year);
 				this.showLoading = false;
 				this.showFullLoading = false;
 			},
@@ -295,16 +302,12 @@
 				return result;
 			},
 
-			// solarDayClass(item) {
-			// 	let isWeekEnd = item.dayOfWeek == 6 || item.dayOfWeek == 0;
-			// 	return {
-			// 		'weekday': !isWeekEnd,
-			// 		'weekend': isWeekEnd
-			// 	};
-			// },
-
 			onDateClick(item) {
 				this.selectedDate = item.date;
+				let date = new Date(item.date);
+				this.year = date.getFullYear();
+				this.month = date.getMonth() + 1;
+				this.day = date.getDate();
 			},
 
 			onTodayIconClick() {

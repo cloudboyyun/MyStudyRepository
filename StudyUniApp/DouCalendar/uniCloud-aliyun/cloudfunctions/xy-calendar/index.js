@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
 	 */
 	let params = event.params || {}
 	let payload = {}
-	let noCheckAction = ['register']
+	let noCheckAction = ['getDairyConfig', 'loadMonthData', 'queryYearGanzhi']
 	if (noCheckAction.indexOf(event.action) === -1) {
 		if (!event.uniIdToken) {
 			console.error('缺少token', params)
