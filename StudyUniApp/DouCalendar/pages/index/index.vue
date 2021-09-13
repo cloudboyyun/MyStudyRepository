@@ -61,6 +61,12 @@
 				</view>
 				<image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image>
 			</view>
+			<view v-if="selectedItem.holidays.length" class='h-holidays'>
+				<view v-for="(item,index) in selectedItem.holidays" :key="index" class='h-holiday'>
+					<image class='h-holiday-icon' src="/static/images/holiday.png"></image>
+					<view class='h-holiday-txt'>{{item}}</view>
+				</view>
+			</view>
 			<view class='dds-suit'>
 				<view class='dds-suit-word'>宜</view>
 				<view class='dds-suit-content' v-if="selectedItem.suit">{{selectedItem.suit}}</view>
@@ -153,7 +159,8 @@
 					'gzDate': '',
 					'animalImage': null,
 					'suit': '',
-					'avoid': ''
+					'avoid': '',
+					'holidays': []
 				};
 			},
 			showTodayIcon() {
@@ -678,5 +685,41 @@
 		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
+	}
+	
+	.h-holidays {
+		display: flex;
+		flex-direction: row;
+		border: 1rpx solid #F0AD4E;
+		border-radius: 10rpx;
+		margin-top: 20rpx;
+		padding-top: 10rpx;
+		padding-bottom: 10rpx;
+		margin-right: 10rpx;
+	}
+	
+	.h-holiday {
+		margin-left: 10rpx;
+		display: flex;
+		flex-direction: row;
+		background-color: #bf9548;
+		border-radius: 15rpx;
+		height: 40rpx;
+		align-items: center;
+	}
+	
+	.h-holiday-icon {
+		margin-left: 10rpx;
+		width: 25rpx;
+		height: 25rpx;
+	}
+	
+	.h-holiday-txt {
+		margin-left: 10rpx;
+		margin-right: 10rpx;
+		font-size: 25rpx;
+		line-height: 25rpx;
+		color: #FFFFFF;
+		
 	}
 </style>
