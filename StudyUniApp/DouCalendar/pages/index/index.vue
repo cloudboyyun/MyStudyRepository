@@ -206,6 +206,7 @@
 				await that.loadPage(today);
 			},
 			async loginByWeixin() {
+				// #ifdef MP-WEIXIN
 				let code = await this.getWeixinCode();
 				let loginByWeixinResult = await uniCloud.callFunction({
 					name: 'uni-id-func',
@@ -219,6 +220,7 @@
 				});
 				uni.setStorageSync('uni_id_token', loginByWeixinResult.result.token)
 				uni.setStorageSync('uni_id_token_expired', loginByWeixinResult.result.tokenExpired);
+				// #endif
 			},
 			getWeixinCode() {
 				return new Promise((resolve, reject) => {

@@ -143,6 +143,17 @@ async function loadMonthData(params) {
 		} else {
 			lunarDesc = record.lDate;
 		}
+		let holidays = [];
+		if(record.term) {
+			holidays.push(record.term);
+		}
+		if(record.desc) {
+			holidays.push(record.desc);
+		}
+		if(record.value) {
+			holidays.push(record.value);
+		}
+		
 		let item = {
 			dayOfWeek: date.getDay(),
 			year: record.year,
@@ -152,6 +163,7 @@ async function loadMonthData(params) {
 			lunar: record.lMonth + "月" + record.lDate,
 			lunarDesc: lunarDesc,
 			holiday: record.term,
+			holidays: holidays,
 			gzYear: record.gzYear,
 			gzMonth: record.gzMonth,
 			gzDate: record.gzDate,

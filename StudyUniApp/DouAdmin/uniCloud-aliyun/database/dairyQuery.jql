@@ -42,12 +42,25 @@ db.collection('t_wan_dairy')
 // 	  })
 // 	.end();
 
+// db.collection('t_wan_dairy')
+// 	.field({
+// 		date: true,
+// 		term: true
+// 	})
+// 	.where({
+// 		term: dbCmd.in(['立春', '立夏','立秋','立冬']),
+// 		year: '2021'
+// 	}).get();
+
 db.collection('t_wan_dairy')
-	.field({
-		date: true,
-		term: true
-	})
-	.where({
-		term: dbCmd.in(['立春', '立夏','立秋','立冬']),
-		year: '2021'
-	}).get();
+	.field('value')
+	.distinct()
+	.get();
+
+// db.collection('t_wan_dairy')
+// 	.where({
+// 		"value": dbCmd.neq("").and(dbCmd.neq(null)),
+// 		"year": dbCmd.gte("2021"),
+// 		// "term": null
+// 	})
+// 	.get();
