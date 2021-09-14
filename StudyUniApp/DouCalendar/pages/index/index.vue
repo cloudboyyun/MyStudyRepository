@@ -196,7 +196,6 @@
 				let today = new Date();
 				this.todayStr = dateFormat(today, 'yyyy-MM-dd');
 				this.showFullLoading = true;
-				await this.loginByWeixin();
 				let configDataResult = await uniCloud.callFunction({
 					name: 'xy-calendar',
 					data: {
@@ -211,7 +210,10 @@
 				that.MAX_MONTH = configData.dairy_data_max_month;
 				setDairyVersion(configData.dairy_data_version);
 				await that.loadPage(today);
+				// await this.loginByWeixin();
+				this.loginByWeixin();
 			},
+			
 			async loginByWeixin() {
 				// #ifdef MP-WEIXIN
 				let code = await this.getWeixinCode();
