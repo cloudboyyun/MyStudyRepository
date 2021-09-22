@@ -39,6 +39,11 @@
 				type: String,
 				default: '#3df1f1',
 				required: false
+			},
+			marginTop: {
+				type: String,
+				default: '40vh',
+				required: false
 			}
 		},
 		async created() {
@@ -63,6 +68,7 @@
 				styleVar: {
 					"--opacity": this.opacity,
 					"--color": this.color,
+					"--marginTop": this.marginTop
  				}
 			}
 		},
@@ -102,7 +108,7 @@
 	  flex-direction: column;
 	  justify-content: center;
 	  align-items: center;
-	  margin-top: 40vh;
+	  margin-top: var(--marginTop);
 		transform-style: preserve-3d;
 	}
 
