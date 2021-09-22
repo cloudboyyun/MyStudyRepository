@@ -1,0 +1,11 @@
+{
+    "id": "xy-loading",
+    "name": "xy-loading",
+    "version": "1.0.0",
+    "description": "纯CSS环装加载动画",
+    "keywords": [
+        "Loading",
+        "加载",
+        "自定义"
+    ]
+}

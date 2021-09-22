@@ -1,5 +1,5 @@
 在DCloud插件市场引入本插件。
-在需要引用的页面：  
+在需要引用的页面：
 <xy-loading :opacity='1' brandText="...豆云日历..." 
 	loadingText="...Loading..." color="#FF9000" marginTop="40vh"></xy-loading>
 
@@ -10,5 +10,6 @@
 * color: Loading的颜色，缺省值：#FF9000
 * marginTop: Loading图案距离上边的距离，缺省值：40vh
 
-所有参数都有缺省值，使用缺省值的写法：<xy-loading></xy-loading>
+所有参数都有缺省值，使用缺省值的写法：
+<xy-loading></xy-loading>
 			
