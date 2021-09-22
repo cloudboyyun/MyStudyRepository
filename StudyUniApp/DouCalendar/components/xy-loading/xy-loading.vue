@@ -78,12 +78,7 @@
 	}
 </script>
 
-<style>
-	@font-face {
-	    font-family: 'sunzhongshan';
-	    src:url('/static/fonts/sunzhongshan.ttf');
-	}
-	
+<style scoped>
 	.xy-loading {
 		opacity: var(--opacity);
 		position: fixed;
