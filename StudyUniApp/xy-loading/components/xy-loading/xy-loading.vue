@@ -1,22 +1,26 @@
 <template>
-	<view class='xy-loading' :style="styleVar" @touchmove.stop.prevent="preventTouchMove">
+	<view class='xy-loading' :style='{"--opacity": opacity,"--color": color,"--margintop": marginTop}'
+		@touchmove.stop.prevent="preventTouchMove">
 		<view class='cylinder'>
-			<view class='circle' :style="circleStyle">
+			<view class='circle' :style='{"width": "" + SECTION_WIDTH + "rpx"}'>
 				<view class='sector' v-for="(character, i) in brandTextCharacters" :key="i"
-					:style="sectorStyle(i)">{{character}}</view>
+					:style='{"transform": "rotateY(" + 360*i/DIVIDES + "deg)" + " translateZ(" + RADIUS + "rpx)"}'>
+					{{character}}
+				</view>
 			</view>
-			<view class='circle' :style="circleStyle">
+			<view class='circle' :style='{"width": "" + SECTION_WIDTH + "rpx"}'>
 				<view class='sector' v-for="(character, i) in loadingTextCharacters" :key="i"
-					:style="sectorStyle(i)">{{character}}</view>
+					:style='{"transform": "rotateY(" + 360*i/DIVIDES + "deg)" + " translateZ(" + RADIUS + "rpx)"}'>
+				{{character}}</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	const radius = 100;
-	const divides = 30;
-	const sectionWidth = 2 * radius * 3.1415926 / divides;
+	const RADIUS = 100;
+	const DIVIDES = 30;
+	const SECTION_WIDTH = Math.ceil(2.0 * RADIUS * 3.15 / DIVIDES) + 1 ;
 	export default {
 		name:"xy-loading",
 		props: {
@@ -48,38 +52,26 @@
 		},
 		async created() {
 			this.loadingTextCharacters = this.loadingText.split("");
-			let makeUpLength = divides - this.loadingTextCharacters.length;
+			let makeUpLength = DIVIDES - this.loadingTextCharacters.length;
 			for(let i=0; i<makeUpLength; i++) {
 				this.loadingTextCharacters.push('');
 			}
 			this.brandTextCharacters = this.brandText.split("");
-			makeUpLength = divides - this.brandTextCharacters.length;
+			makeUpLength = DIVIDES - this.brandTextCharacters.length;
 			for(let i=0; i<makeUpLength; i++) {
 				this.brandTextCharacters.push('');
 			}
 		},
 		data() {
 			return {
-				circleStyle: {
-					"width": "" + sectionWidth + "rpx"
-				},
+				RADIUS: RADIUS,
+				DIVIDES: DIVIDES,
+				SECTION_WIDTH: SECTION_WIDTH,
 				loadingTextCharacters: [],
-				brandTextCharacters: [],
-				styleVar: {
-					"--opacity": this.opacity,
-					"--color": this.color,
-					"--marginTop": this.marginTop
- 				}
+				brandTextCharacters: []
 			}
 		},
 		methods: {
-			sectorStyle(i) {
-				let partitionDegree = 360 / divides;
-				let rotateDeg = partitionDegree * i;
-				return {
-					"transform": "rotateY(" + rotateDeg + "deg)" + " translateZ(" + radius + "rpx)"
-				}
-			},
 			preventTouchMove() {
 			}
 		}
@@ -108,7 +100,7 @@
 	  flex-direction: column;
 	  justify-content: center;
 	  align-items: center;
-	  margin-top: var(--marginTop);
+	  margin-top: var(--margintop);
 		transform-style: preserve-3d;
 	}
 
@@ -131,7 +123,7 @@
 	  top: 0;
 	  left: 0;
 	  text-align: center;
-	  text-transform: uppercase;
+	  /* text-transform: uppercase; */
 	}
 	.sector, .sector:empty:before {
 	  display: inline-block;
