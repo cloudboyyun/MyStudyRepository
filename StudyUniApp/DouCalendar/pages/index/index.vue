@@ -1,11 +1,7 @@
 <template>
 	<view class='main' :style="{backgroundImage: backgroundImage}">
-		<view v-if="showFullLoading" class='full-loading'>
-			<image class='loading-image' src='/static/images/loading.gif'></image>
-		</view>
-		<view v-if="showLoading" class='loading'>
-			<image class='loading-image' src='/static/images/loading.gif'></image>
-		</view>
+		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"></xy-loading>
+		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"></xy-loading>
 		<view class='title-area'>
 			<view class='year-month'>
 				{{year}}年{{month}}月
@@ -210,7 +206,6 @@
 				that.MAX_MONTH = configData.dairy_data_max_month;
 				setDairyVersion(configData.dairy_data_version);
 				await that.loadPage(today);
-				// await this.loginByWeixin();
 				this.loginByWeixin();
 			},
 			
