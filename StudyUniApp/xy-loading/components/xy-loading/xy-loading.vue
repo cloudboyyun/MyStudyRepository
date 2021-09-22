@@ -32,12 +32,12 @@
 			},
 			brandText: {
 				type: String,
-				default: '加载中',
+				default: 'CloudBoy',
 				required: false
 			},
 			color: {
 				type: String,
-				default: '#3df1f1',
+				default: '#FF9000',
 				required: false
 			},
 			marginTop: {
