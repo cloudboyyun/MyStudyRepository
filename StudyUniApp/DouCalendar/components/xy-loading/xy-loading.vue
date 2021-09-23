@@ -84,7 +84,7 @@
 		opacity: var(--opacity);
 		position: fixed;
 		width: 100%;
-		z-index: 999;
+		z-index: 990;
 		top: 0;
 		bottom: 0;
 		background-color:#ffffff;
@@ -92,6 +92,7 @@
 		flex-direction: column;
 		align-items: center;
 	  color: var(--color);
+		perspective: 40em;
 	}
 	
 	.cylinder {
@@ -103,6 +104,7 @@
 	  align-items: center;
 	  margin-top: var(--margintop);
 		transform-style: preserve-3d;
+		z-index: 991;
 	}
 
 	.circle {
@@ -114,6 +116,7 @@
 	  font-size: 20rpx;
 	  position: relative;
 	  height: 40rpx;
+		z-index: 992;
 	}
 	.circle:nth-child(even) {
 	  animation-direction: reverse;
@@ -124,6 +127,7 @@
 	  top: 0;
 	  left: 0;
 	  text-align: center;
+		z-index: 993;
 	  /* text-transform: uppercase; */
 	}
 	.sector, .sector:empty:before {

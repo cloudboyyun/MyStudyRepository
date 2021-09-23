@@ -1,7 +1,7 @@
 <template>
 	<view class='main' :style="{backgroundImage: backgroundImage}">
-		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"></xy-loading>
-		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"></xy-loading>
+		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000" marginTop="50vh"></xy-loading>
+		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000" marginTop="50vh"></xy-loading>
 		<view class='title-area'>
 			<view class='year-month'>
 				{{year}}年{{month}}月
