@@ -6,6 +6,8 @@
 					 ></uni-list-item>
 				<uni-list-item clickable title="纯css3云彩动画效果" 
 					@click="toPage('/pages/cloud/cloud')"></uni-list-item>
+				<uni-list-item clickable title="纯css3翻书效果"
+					@click="toPage('/pages/book/book')"></uni-list-item>
 		</uni-list>
 	</view>
 </template>
