@@ -93,7 +93,6 @@
 		align-items: center;
 	  color: var(--color);
 		perspective: 40em;
-		animation: gradient 7.5s ease-in-out infinite;
 	}
 	
 	.cylinder {

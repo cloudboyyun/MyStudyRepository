@@ -1,7 +1,9 @@
 <template>
 	<view class='main' :style="{backgroundImage: backgroundImage}">
-		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000" marginTop="50vh"></xy-loading>
-		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000" marginTop="50vh"></xy-loading>
+		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..."
+			color="#FF9000" marginTop="50vh"></xy-loading>
+		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"
+			marginTop="50vh"></xy-loading>
 		<view class='title-area'>
 			<view class='year-month'>
 				{{year}}年{{month}}月
@@ -92,10 +94,18 @@
 		['猪', '/static/images/zhu.png']
 	]);
 	const BGIMAGES = new Map([
-		['春', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')"],
-		['夏', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/9403b9d2-9b48-43a7-a335-bb19fa108b29.jfif')"],
-		['秋', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')"],
-		['冬', "url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/30a542f2-e973-473f-b2de-fd60b4860e40.jfif')"]
+		['春',
+			"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/e0d66a81-e6d7-4e24-bbc7-6036c1145b26.jpeg')"
+		],
+		['夏',
+			"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/9403b9d2-9b48-43a7-a335-bb19fa108b29.jfif')"
+		],
+		['秋',
+			"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/376b4b20-61b5-48e0-bf7b-7898e6fe2144.jfif')"
+		],
+		['冬',
+			"url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/30a542f2-e973-473f-b2de-fd60b4860e40.jfif')"
+		]
 	]);
 	import {
 		loadMonthData,
@@ -144,7 +154,7 @@
 						}
 					}
 				}
-				if(lastSelectedItem) {
+				if (lastSelectedItem) {
 					return lastSelectedItem;
 				}
 				return {
@@ -208,7 +218,7 @@
 				await that.loadPage(today);
 				this.loginByWeixin();
 			},
-			
+
 			async loginByWeixin() {
 				// #ifdef MP-WEIXIN
 				let code = await this.getWeixinCode();
@@ -463,10 +473,21 @@
 
 	.calendar {
 		height: 720rpx;
-		background-color: white;
+		/* background-color: #FFFFFF; */
+		/* background-color: #f8e7bd; */
+		background-color: #d7f3f9;
+		background-image: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/1cb2ad77-ac70-4974-9e9b-786bc7fe1f1c.png");
+		animation: gradient 50s linear infinite;
+		transform: translate3d(0, 0, 0);
 		padding-top: 20rpx;
 		padding-left: 20rpx;
 		padding-right: 20rpx;
+	}
+
+	@keyframes gradient {
+		50% {
+			background-position: 100% 0
+		}
 	}
 
 	.row {
@@ -508,10 +529,10 @@
 	}
 
 	.day {
-		width: 12%;
+		width: 13%;
 		padding-bottom: 10rpx;
 		margin-bottom: 10rpx;
-		border: 5rpx solid #ffffff;
+		/* border: 5rpx solid #ffffff; */
 	}
 
 	.selected {
@@ -683,7 +704,7 @@
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}
-	
+
 	.h-holidays {
 		display: flex;
 		flex-direction: row;
@@ -694,7 +715,7 @@
 		padding-bottom: 10rpx;
 		margin-right: 10rpx;
 	}
-	
+
 	.h-holiday {
 		margin-left: 10rpx;
 		display: flex;
@@ -704,19 +725,19 @@
 		height: 40rpx;
 		align-items: center;
 	}
-	
+
 	.h-holiday-icon {
 		margin-left: 10rpx;
 		width: 25rpx;
 		height: 25rpx;
 	}
-	
+
 	.h-holiday-txt {
 		margin-left: 10rpx;
 		margin-right: 10rpx;
 		font-size: 25rpx;
 		line-height: 25rpx;
 		color: #FFFFFF;
-		
+
 	}
 </style>
