@@ -651,7 +651,6 @@
 	}
 
 	.dds-ganzhi {
-		/* margin-top: 5rpx; */
 		font-size: 25rpx;
 		color: #181818;
 	}
@@ -661,6 +660,19 @@
 		margin-left: auto;
 		width: 100rpx;
 		height: 70rpx;
+		animation: ani-animal 20s linear infinite;
+	}
+	
+	@keyframes ani-animal {
+	  0% {
+	    filter: invert(0);
+	  }
+	  50% {
+	    filter: invert(100%);
+	  }
+		100% {
+		  filter: invert(0);
+		}
 	}
 
 	.dds-suit {
