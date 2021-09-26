@@ -40,6 +40,7 @@
 								@longpress="onDateDescPress(item, $event)">{{getDateDesc(item)}}</view>
 						</view>
 					</view>
+					<image src='/static/images/flyingBird.gif' class='flying-bird'></image>
 				</view>
 			</swiper-item>
 		</swiper>
@@ -57,7 +58,9 @@
 					<view class='dds-ganzhi'>{{selectedItem.gzYear}}年 {{selectedItem.gzMonth}}月 {{selectedItem.gzDate}}日
 					</view>
 				</view>
-				<image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image>
+				<xy-bubble class='dds-animalsyear' radius="120rpx" :image="selectedItem.animalImage" fontSize="100rpx"
+							fontFamily="sunzhongshan" fontColor="red"></xy-bubble>
+				<!-- <image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image> -->
 			</view>
 			<view v-if="selectedItem.holidays.length" class='h-holidays'>
 				<view v-for="(item,index) in selectedItem.holidays" :key="index" class='h-holiday'>
@@ -147,7 +150,6 @@
 					for (let index in this.resultGroup[this.selectedSwiperIndex].dates) {
 						let item = this.resultGroup[this.selectedSwiperIndex].dates[index];
 						if (this.selectedDate == item.date) {
-							console.log("selectedItem", item);
 							item.animalImage = ANIMALS.get(item.animal);
 							lastSelectedItem = item;
 							return item;
@@ -207,7 +209,7 @@
 					data: {
 						action: 'getDairyConfig',
 						params: {}
-					},
+					}					
 				})
 				const configData = configDataResult.result;
 				that.MIN_YEAR = configData.dairy_data_min_year;
@@ -473,23 +475,31 @@
 
 	.calendar {
 		height: 720rpx;
-		/* background-color: #FFFFFF; */
-		/* background-color: #f8e7bd; */
 		background-color: #d7f3f9;
 		background-image: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/1cb2ad77-ac70-4974-9e9b-786bc7fe1f1c.png");
-		animation: gradient 50s linear infinite;
+		animation: kf-cloud 50s linear infinite;
 		transform: translate3d(0, 0, 0);
 		padding-top: 20rpx;
 		padding-left: 20rpx;
 		padding-right: 20rpx;
+		position: relative;
 	}
-
-	@keyframes gradient {
+	
+	@keyframes kf-cloud {
 		50% {
 			background-position: 100% 0
 		}
 	}
-
+	
+	.flying-bird {
+		width: 100%;
+		height: 30%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transform: rotateY(180deg);
+	}
+	
 	.row {
 		width: 100%;
 		display: flex;
@@ -614,6 +624,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		position: relative;
 	}
 
 	.dds-day {
@@ -658,22 +669,9 @@
 	.dds-animalsyear {
 		margin-right: 20rpx;
 		margin-left: auto;
-		width: 100rpx;
-		height: 70rpx;
-		animation: ani-animal 20s linear infinite;
 	}
 	
-	@keyframes ani-animal {
-	  0% {
-	    filter: invert(0);
-	  }
-	  50% {
-	    filter: invert(100%);
-	  }
-		100% {
-		  filter: invert(0);
-		}
-	}
+	
 
 	.dds-suit {
 		margin-top: 20rpx;
@@ -750,6 +748,5 @@
 		font-size: 25rpx;
 		line-height: 25rpx;
 		color: #FFFFFF;
-
 	}
 </style>

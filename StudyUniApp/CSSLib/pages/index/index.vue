@@ -28,6 +28,8 @@
 					@click="toPage('/pages/eyeHolder/eyeHolder')"></uni-list-item>
 				<uni-list-item clickable title="测试"
 					@click="toPage('/pages/test/test')"></uni-list-item>
+				<uni-list-item clickable title="落叶"
+					@click="toPage('/pages/leaf/leaf')"></uni-list-item>
 		</uni-list>
 	</view>
 </template>

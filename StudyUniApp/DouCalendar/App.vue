@@ -13,6 +13,7 @@
 </script>
 
 <style>
+	@import url('/common/iconfont.css');
 	.full-loading {
 		position: fixed;
 		width: 100%;
