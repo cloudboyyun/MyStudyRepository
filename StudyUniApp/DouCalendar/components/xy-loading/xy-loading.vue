@@ -51,7 +51,6 @@
 			}
 		},
 		async created() {
-			console.log("SECTION_WIDTH", SECTION_WIDTH);
 			this.loadingTextCharacters = this.loadingText.split("");
 			let makeUpLength = DIVIDES - this.loadingTextCharacters.length;
 			for(let i=0; i<makeUpLength; i++) {

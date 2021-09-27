@@ -58,8 +58,10 @@
 					<view class='dds-ganzhi'>{{selectedItem.gzYear}}年 {{selectedItem.gzMonth}}月 {{selectedItem.gzDate}}日
 					</view>
 				</view>
-				<xy-bubble class='dds-animalsyear' radius="120rpx" :image="selectedItem.animalImage" fontSize="100rpx"
-							fontFamily="sunzhongshan" fontColor="red"></xy-bubble>
+				<xy-bubble class='dds-animalsyear' radius="120rpx" 
+					:image="selectedItem.animalImage?selectedItem.animalImage:''" 
+					fontSize="100rpx"
+					fontFamily="sunzhongshan" fontColor="red"></xy-bubble>
 				<!-- <image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image> -->
 			</view>
 			<view v-if="selectedItem.holidays.length" class='h-holidays'>
@@ -470,11 +472,11 @@
 	}
 
 	.swiper {
-		height: 720rpx;
+		height: 700rpx;
 	}
 
 	.calendar {
-		height: 720rpx;
+		height: 700rpx;
 		background-color: #d7f3f9;
 		background-image: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/1cb2ad77-ac70-4974-9e9b-786bc7fe1f1c.png");
 		animation: kf-cloud 50s linear infinite;
@@ -523,7 +525,7 @@
 	}
 
 	.lunar-day-common {
-		color: #a1a1a1;
+		color: #424040;
 	}
 
 	.lunar-day-holiday {

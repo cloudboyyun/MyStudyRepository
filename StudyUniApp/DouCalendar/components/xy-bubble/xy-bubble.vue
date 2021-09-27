@@ -20,7 +20,7 @@
 			},
 			text: {
 				type: String,
-				default: null,
+				default: "",
 				required: false
 			},
 			textFont: {

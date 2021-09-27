@@ -39,7 +39,6 @@ export async function loadMonthData(year, month) {
 
 export async function loadYearGanzhi(year) {
 	let key = DAIRY_VERSION + '-' + year;
-	console.log("xy2", key)
 	let records = uni.getStorageSync(key);
 	if (!records) {
 		let res = await uniCloud.callFunction({
