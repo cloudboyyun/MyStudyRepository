@@ -226,7 +226,6 @@ window.onload = function() {
 	};
 	
 	aBtn[0].onclick = function() {
-
 		oItem.bOff = true;
 		if (aBtn[1].disabled == false)
 			aBtn[0].className = 'active';
@@ -235,22 +234,19 @@ window.onload = function() {
 		startChange();
 		oItem.style.display = 'block';
 		setTimeout(function() {
-
 			setCss3(oItem, {
 				transform: 'scale(1)'
 			});
 			oItem.style.opacity = 1;
 			oDiv.style.display = 'none';
-
 		}, 1000);
-
 	};
+	
 	aClose[0].onclick = function() {
-
 		aBtn[0].className = '';
 		fn();
-
 	};
+	
 	aBtn[1].onclick = function() {
 
 		if (aBtn[0].disabled == false)
@@ -359,7 +355,6 @@ window.onload = function() {
 	}
 
 	function drawCone(obj, phi, i, j) {
-
 		obj.coneX = (2 * r / coneArr.length) * i * Math.tan(30 * Math.PI / 180) * Math.sin(phi * j) + 200;
 		obj.coneY = (2 * r / coneArr.length) * i + 50;
 		obj.coneZ = (2 * r / coneArr.length) * i * Math.tan(30 * Math.PI / 180) * Math.cos(phi * j);
@@ -369,13 +364,10 @@ window.onload = function() {
 			200;
 		obj.bigConeY = (2 * (r + 2000) / coneArr.length) * i + 50 - 2000;
 		obj.bigConeZ = (2 * (r + 2000) / coneArr.length) * i * Math.tan(30 * Math.PI / 180) * Math.cos(phi * j);
-
 	}
 
 	function startChange() {
-
 		for (var i = 0; i < aLi.length; i++) {
-
 			aLi[i].className = 'all';
 			setCss3(aLi[i], {
 				transform: 'translate3D(' + aLi[i].maxX + 'px,' + aLi[i].maxY + 'px,' + aLi[i].maxZ +
@@ -383,15 +375,11 @@ window.onload = function() {
 					'rad)'
 			});
 			aLi[i].style.opacity = 0;
-
 		}
-
 	}
 
 	function changeCircle() {
-
 		for (var i = 0; i < columnNum; i++) {
-
 			aLi[i].className = '';
 			aLi[i].maxX = aLi[i].bigCircleX;
 			aLi[i].maxY = aLi[i].bigCircleY;
@@ -420,9 +408,7 @@ window.onload = function() {
 	}
 
 	function changeColumn() {
-
 		for (var i = 0; i < columnNum; i++) {
-
 			aLi[i].className = '';
 			aLi[i].maxX = aLi[i].bigColumnX;
 			aLi[i].maxY = aLi[i].bigColumnY;
@@ -436,9 +422,7 @@ window.onload = function() {
 
 		}
 		setTimeout(function() {
-
 			for (var i = 0; i < columnNum; i++) {
-
 				aLi[i].className = 'one';
 				aLi[i].style.opacity = 1;
 				setCss3(aLi[i], {
@@ -488,9 +472,7 @@ window.onload = function() {
 	}
 
 	function changeCone() {
-
 		for (var i = 0; i < coneNum; i++) {
-
 			aLi[i].className = '';
 			aLi[i].maxX = aLi[i].bigConeX;
 			aLi[i].maxY = aLi[i].bigConeY;
@@ -501,12 +483,9 @@ window.onload = function() {
 				transform: 'translate3D(' + aLi[i].maxX + 'px,' + aLi[i].maxY + 'px,' + aLi[i].maxZ +
 					'px) rotateY(' + aLi[i].maxPhi + 'rad) rotateX(' + aLi[i].maxTheta + 'rad)'
 			});
-
 		}
 		setTimeout(function() {
-
 			for (var i = 0; i < coneNum; i++) {
-
 				aLi[i].className = 'one';
 				aLi[i].style.opacity = 1;
 				setCss3(aLi[i], {
@@ -514,15 +493,11 @@ window.onload = function() {
 							i].coneZ + 'px) rotateY(' + aLi[i].conePhi + 'rad) rotateX(' + aLi[i]
 						.coneTheta + 'rad)'
 				});
-
 			}
-
 		}, 100)
-
 	}
 
 	function fn() {
-
 		oItem.bOff = false;
 		setCss3(oItem, {
 			transform: 'translateZ(-2000px) rotateX(-180deg)'
