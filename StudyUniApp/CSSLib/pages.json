@@ -159,6 +159,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/3DTxt/3DTxt",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -35,6 +35,8 @@
 						@click="toPage('/pages/historySky/historySky')"></uni-list-item>
 					<uni-list-item clickable title="螺旋"
 						@click="toPage('/pages/luoxuan/luoxuan')"></uni-list-item>
+					<uni-list-item clickable title="3DTxt"
+						@click="toPage('/pages/3DTxt/3DTxt')"></uni-list-item>
 			</uni-list>
 		</scroll-view>
 	</view>

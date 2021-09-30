@@ -58,9 +58,8 @@
 					<view class='dds-ganzhi'>{{selectedItem.gzYear}}年 {{selectedItem.gzMonth}}月 {{selectedItem.gzDate}}日
 					</view>
 				</view>
-				<xy-bubble class='dds-animalsyear' radius="120rpx" 
-					:image="selectedItem.animalImage?selectedItem.animalImage:''" 
-					fontSize="100rpx"
+				<xy-bubble class='dds-animalsyear' radius="120rpx"
+					:image="selectedItem.animalImage?selectedItem.animalImage:''" fontSize="100rpx"
 					fontFamily="sunzhongshan" fontColor="red"></xy-bubble>
 				<!-- <image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image> -->
 			</view>
@@ -201,6 +200,13 @@
 			this._onLoad();
 		},
 		methods: {
+			onShareAppMessage: function(e) {
+				let title = '豆云日历'
+				return {
+					title: '豆云日历',
+					path: 'pages/index/index'
+				}
+			},
 			async _onLoad() {
 				let that = this;
 				let today = new Date();
@@ -211,7 +217,7 @@
 					data: {
 						action: 'getDairyConfig',
 						params: {}
-					}					
+					}
 				})
 				const configData = configDataResult.result;
 				that.MIN_YEAR = configData.dairy_data_min_year;
@@ -486,13 +492,13 @@
 		padding-right: 20rpx;
 		position: relative;
 	}
-	
+
 	@keyframes kf-cloud {
 		50% {
 			background-position: 100% 0
 		}
 	}
-	
+
 	.flying-bird {
 		width: 100%;
 		height: 30%;
@@ -501,7 +507,7 @@
 		left: 0;
 		transform: rotateY(180deg);
 	}
-	
+
 	.row {
 		width: 100%;
 		display: flex;
@@ -672,8 +678,8 @@
 		margin-right: 20rpx;
 		margin-left: auto;
 	}
-	
-	
+
+
 
 	.dds-suit {
 		margin-top: 20rpx;
