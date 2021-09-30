@@ -48,6 +48,7 @@
 				circleArr: [],
 				coneArr: [],
 				coneNum: 0,
+				iTimer: 0,
 				liNub: 0,
 				iTimer2: 0,
 				columnH: 0,
@@ -61,10 +62,11 @@
 			let angleX = 0;
 			let angleY = 0;
 			let that = this;
-			var iTimer = setInterval(function() {
+			this.iTimer = setInterval(function() {
 				angleY -= 3;
 				that.boxStyle = 'rotateX(' + angleX + 'deg) rotateY(' + angleY + 'deg)';
 			}, 60);
+			clearInterval(this.iTimer);
 		},
 		methods: {
 			star() {
