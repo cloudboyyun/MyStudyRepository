@@ -1,6 +1,6 @@
 <template>
 	<view class="middle">
-		<view class="scene">
+		<view class="scene" @touchstart='onTouchStart' @touchmove="onTouchMove" @touchend='onTouchEnd'>
 			<view class="box" :style = "{transform: boxStyle}">
 				<view class="ring">
 					<view v-for="(item, index) in liArr" :key="index" class='li'
@@ -46,9 +46,16 @@
 				boxStyle: '',
 				liArr: [],
 				circleArr: [],
+				iTimer: 0,
+				angleX: 0,
+				angleY: 0,
+				startX: 0,
+				startY: 0,
+				disX: 0,
+				disY: 0,
+				
 				coneArr: [],
 				coneNum: 0,
-				iTimer: 0,
 				liNub: 0,
 				iTimer2: 0,
 				columnH: 0,
@@ -59,18 +66,14 @@
 		},
 		onLoad (options) {
 			this.star();
-			let angleX = 0;
-			let angleY = 0;
 			let that = this;
 			this.iTimer = setInterval(function() {
-				angleY -= 3;
-				that.boxStyle = 'rotateX(' + angleX + 'deg) rotateY(' + angleY + 'deg)';
+				that.angleY -= 3;
+				that.boxStyle = 'rotateX(' + that.angleX + 'deg) rotateY(' + that.angleY + 'deg)';
 			}, 60);
-			clearInterval(this.iTimer);
 		},
 		methods: {
 			star() {
-				// layer是什么？
 				let layer = 0, num = 0;
 				for (let i = 4; i < 13; i++) {
 					num = i * i + (i + 1) * (i + 1);
@@ -131,11 +134,6 @@
 						newi = newi.replace(newi.substr(num, 2), newi.substr(num + 1, 1).toUpperCase());
 					}
 					obj.style[newi] = attrObj[i];
-					// newi = newi.replace(newi.charAt(0), newi.charAt(0).toUpperCase());
-					// obj.style["webkit" + newi] = attrObj[i];
-					// obj.style["moz" + newi] = attrObj[i];
-					// obj.style["o" + newi] = attrObj[i];
-					// obj.style["ms" + newi] = attrObj[i];
 				}
 			},
 			
@@ -156,8 +154,34 @@
 				obj.maxPhi = obj.circlePhi;
 			
 			},
+			
 			onGraphTypeClick(index) {
 				this.selectGraphType = index;
+			},
+			
+			onTouchStart(e) {
+				clearInterval(this.iTimer);
+				this.startX = e.touches[0].clientX;
+				this.startY = e.touches[0].clientY;
+			},
+			
+			onTouchMove(e) {
+				let x = e.touches[0].clientX;
+				let y = e.touches[0].clientY;
+				this.disX = x - this.startX;
+				this.disY = y - this.startY;
+				this.boxStyle = 'rotateX(' + (this.angleX - this.disY) + 'deg) rotateY(' 
+					+ (this.angleY + this.disX) + 'deg)';
+			},
+			
+			onTouchEnd(e) {
+				this.angleX = this.angleX - this.disY;
+				this.angleY = this.angleY + this.disX;
+				let that = this;
+				this.iTimer = setInterval(function() {
+					that.angleY -= 3;
+					that.boxStyle = 'rotateX(' + that.angleX + 'deg) rotateY(' + that.angleY + 'deg)';
+				}, 60);
 			}
 		}
 	}

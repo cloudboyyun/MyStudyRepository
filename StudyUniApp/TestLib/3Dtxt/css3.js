@@ -71,22 +71,16 @@ window.onload = function() {
 		}
 
 		for (var i = 0; i < layer; i++) {
-
 			if (i < (layer + 1) / 2) {
-
 				wordNum += 2;
-
 			} else {
-
 				wordNum -= 2;
-
 			}
 			circleArr.push(wordNum);
 		}
 
 		num = 0;
 		for (var i = 0; i < circleArr.length; i++) {
-
 			theta = Math.PI / circleArr.length;
 			phi = 2 * Math.PI / circleArr[i];
 			for (var j = 0; j < circleArr[i]; j++) {
@@ -137,29 +131,21 @@ window.onload = function() {
 	}
 
 	aA[0].onclick = function() {
-
 		clearTimeout(iTimer2);
 		aA[graph - 1].className = '';
 		graph = 1;
 		aA[graph - 1].className = 'active';
 		startChange();
 		if (oItem.bOff) {
-
 			fn();
-
 		} else {
-
 			iTimer2 = setTimeout(function() {
-
 				changeCircle();
-
 			}, 1000);
-
 		}
-
 	};
+	
 	aA[1].onclick = function() {
-
 		clearTimeout(iTimer2);
 		aA[graph - 1].className = '';
 		graph = 2;
@@ -173,54 +159,38 @@ window.onload = function() {
 			}, 1000);
 		}
 	};
+	
 	aA[2].onclick = function() {
-
 		clearTimeout(iTimer2);
 		aA[graph - 1].className = '';
 		graph = 3;
 		aA[graph - 1].className = 'active';
 		startChange();
 		if (oItem.bOff) {
-
 			fn();
-
 		} else {
-
 			iTimer2 = setTimeout(function() {
-
 				changeColumn();
-
 			}, 1000);
-
 		}
-
 	};
+	
 	aA[3].onclick = function() {
-
 		clearTimeout(iTimer2);
 		aA[graph - 1].className = '';
 		graph = 4;
 		aA[graph - 1].className = 'active';
 		startChange();
 		if (oItem.bOff) {
-
 			fn();
-
 		} else {
-
 			iTimer2 = setTimeout(function() {
-
 				changeColumn2();
-
 			}, 1000);
-
 		}
-
 	};
 
-
 	oScene.onmousedown = function(ev) {
-
 		clearInterval(iTimer);
 		var e = ev || event;
 		var clickX = e.clientX;
@@ -228,7 +198,6 @@ window.onload = function() {
 		var disX = 0;
 		var disY = 0;
 		document.onmousemove = function(ev) {
-
 			var e = ev || event;
 			disX = e.clientX - clickX;
 			disY = e.clientY - clickY;
@@ -236,33 +205,26 @@ window.onload = function() {
 				transform: 'rotateX(' + (angleX - disY) + 'deg) rotateY(' + (angleY + disX) +
 					'deg)'
 			});
-
 		}
 		document.onmouseup = function() {
-
 			document.onmousemove = null;
 			document.onmouseup = null;
 			angleX = angleX - disY;
 			angleY = angleY + disX;
 			if (disY == 0 && disX == 0) {
-
 				disX = -300;
-
 			}
 			iTimer = setInterval(function() {
-
 				angleX -= disY / 100;
 				angleY += disX / 100;
 				setCss3(oDiv, {
 					transform: 'rotateX(' + angleX + 'deg) rotateY(' + angleY + 'deg)'
 				});
-
 			}, 60);
-
 		}
 		return false;
-
 	};
+	
 	aBtn[0].onclick = function() {
 
 		oItem.bOff = true;
