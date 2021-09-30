@@ -126,7 +126,7 @@ window.onload = function() {
 				liNub++;
 			}
 		}
-		
+
 		for (var i = 0; i < aLi.length; i++) {
 			setCss3(aLi[i], {
 				transform: 'translate3D(' + aLi[i].circleX + 'px,' + aLi[i].circleY + 'px,' + aLi[i]
@@ -444,7 +444,6 @@ window.onload = function() {
 
 		}
 		setTimeout(function() {
-
 			for (var i = 0; i < aLi.length; i++) {
 				aLi[i].className = 'one';
 				aLi[i].style.opacity = 1;
@@ -453,9 +452,7 @@ window.onload = function() {
 						aLi[i].circleZ + 'px) rotateY(' + aLi[i].circlePhi + 'rad) rotateX(' + (
 							aLi[i].circleTheta - Math.PI / 2) + 'rad)'
 				});
-
 			}
-
 		}, 100);
 
 	}
@@ -571,9 +568,7 @@ window.onload = function() {
 		oItem.style.opacity = 0;
 		oDiv.style.display = 'block';
 		setTimeout(function() {
-
 			switch (graph) {
-
 				case 1:
 					changeCircle();
 					break;
@@ -598,16 +593,14 @@ window.onload = function() {
 		}, 600);
 
 	}
+
 	var angleX = 0;
 	var angleY = 0;
 	var iTimer = setInterval(function() {
-
-		//angleX -= 3;
 		angleY -= 3;
 		setCss3(oDiv, {
 			transform: 'rotateX(' + angleX + 'deg) rotateY(' + angleY + 'deg)'
 		});
-
 	}, 60);
 
 }

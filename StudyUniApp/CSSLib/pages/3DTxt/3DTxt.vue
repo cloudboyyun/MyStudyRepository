@@ -1,9 +1,10 @@
 <template>
 	<view class="middle">
 		<view class="scene">
-			<view class="box">
+			<view class="box" :style = "{transform: boxStyle}">
 				<view class="ring">
-					<view v-for="(item, index) in liArr" :key="index" class='li'>{{item.content}}</view>
+					<view v-for="(item, index) in liArr" :key="index" class='li'
+						:style="{transform: item.style.transform}">{{item.content}}</view>
 				</view>
 			</view>
 			<view class="item">
@@ -42,6 +43,7 @@
 				graphTypes: ['圆球', '圆锥', '柱状', '柱状扭曲'],
 				selectGraphType: 0,
 				r: 150,
+				boxStyle: '',
 				liArr: [],
 				circleArr: [],
 				coneArr: [],
@@ -52,8 +54,17 @@
 				columnNum: 0
 			}
 		},
+		computed: {
+		},
 		onLoad (options) {
 			this.star();
+			let angleX = 0;
+			let angleY = 0;
+			let that = this;
+			var iTimer = setInterval(function() {
+				angleY -= 3;
+				that.boxStyle = 'rotateX(' + angleX + 'deg) rotateY(' + angleY + 'deg)';
+			}, 60);
 		},
 		methods: {
 			star() {
@@ -67,7 +78,6 @@
 					}
 					layer = (i - 1) * 2 + 1;
 				}
-				console.log('layer=', layer);
 				
 				// 圆球数据
 				let wordNum = -1;
@@ -101,13 +111,12 @@
 				
 				for (var i = 0; i < this.liArr.length; i++) {
 					let attrObj = {
-						transform: 'translate3D(' + this.liArr[i].circleX + 'px,'
-							+ this.liArr[i].circleY + 'px,' + this.liArr[i]
-							.circleZ + 'px) rotateY(' + this.liArr[i].circlePhi + 'rad) rotateX(' 
+						transform: 'translate3D(' + this.liArr[i].circleX + 'rpx,'
+							+ this.liArr[i].circleY + 'rpx,' + this.liArr[i]
+							.circleZ + 'rpx) rotateY(' + this.liArr[i].circlePhi + 'rad) rotateX(' 
 							+ (this.liArr[i].circleTheta -
 								Math.PI / 2) + 'rad)'
 						};
-					console.log(attrObj);
 					this.setCss3(this.liArr[i], attrObj);
 				}
 			},
@@ -120,6 +129,11 @@
 						newi = newi.replace(newi.substr(num, 2), newi.substr(num + 1, 1).toUpperCase());
 					}
 					obj.style[newi] = attrObj[i];
+					// newi = newi.replace(newi.charAt(0), newi.charAt(0).toUpperCase());
+					// obj.style["webkit" + newi] = attrObj[i];
+					// obj.style["moz" + newi] = attrObj[i];
+					// obj.style["o" + newi] = attrObj[i];
+					// obj.style["ms" + newi] = attrObj[i];
 				}
 			},
 			
@@ -194,12 +208,12 @@
 	}
 	
 	.ring .li {
-		line-height: 30px;
+		line-height: 30rpx;
 		text-align: center;
-		font-size: 16px;
+		font-size: 16rpx;
 		position: absolute;
-		margin-top: -25px;
-		margin-left: -15px;
+		margin-top: -25rpx;
+		margin-left: -15rpx;
 		transition: all .6s;
 	}
 	
