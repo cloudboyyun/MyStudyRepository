@@ -32,8 +32,8 @@
 		</view>
 		<view class="line"></view>
 		<view class="btn2">
-			<view class='button' @click="onExpandClick">展开</view>
-			<view class='button' @click='onDefineTextClick'>自定义文字</view>
+			<button @click="onExpandClick" :disabled="button1Disable">展开</button>
+			<button @click='onDefineTextClick' :disabled="button2Disable">自定义文字</button>
 		</view>
 	</view>
 </template>
@@ -68,6 +68,8 @@
 				},
 				columnNum: 0,
 				iTimer2: 0,
+				button1Disable: false,
+				button2Disable: false
 			}
 		},
 		computed: {},
@@ -149,11 +151,9 @@
 				liNub = 0;
 				let columnH = Math.floor(this.liArr.length / (this.circleArr.length - 2));
 				this.columnNum = columnH * (this.circleArr.length - 2);
-				console.log('liArr', this.liArr);
 				for (let i = 0; i < this.circleArr.length - 1; i++) {
 					phi = 2 * Math.PI / columnH;
 					for (let j = 0; j < columnH; j++) {
-						console.log('liNub', liNub);
 						this.drawColumn(this.liArr[liNub], phi, i, j);
 						this.drawColumn2(this.liArr[liNub], phi, i, j);
 						liNub++;
@@ -404,6 +404,8 @@
 			},
 
 			onExpandClick() {
+				this.button1Disable = true;
+				this.button2Disable = true;
 				this.startChange();
 				let that = this;
 				that.oItem.isExpanded = true;
@@ -414,10 +416,14 @@
 			},
 
 			onExpandCloseButtonClick() {
+				this.button1Disable = false;
+				this.button2Disable = false;
 				this.fn();
 			},
 			
 			onDefineTextClick() {
+				this.button1Disable = true;
+				this.button2Disable = true;
 				let that = this;
 				that.oText.display = 'block';
 				setTimeout(function() {
@@ -427,6 +433,8 @@
 			},
 			
 			onCloseDefineTextClick() {
+				this.button1Disable = false;
+				this.button2Disable = false;
 				let that = this;
 				that.oText.transform = 'scale(0.5)';
 				that.oText.opacity = 0;
@@ -461,7 +469,7 @@
 	}
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 	$typeWidth: 50rpx;
 
 	page {
@@ -672,45 +680,51 @@
 	}
 
 	.btn2 {
-		width: 280rpx;
-		margin: 0 auto;
+		width: 100%;
+		/* margin: 0 auto; */
 		display: flex;
-		flex-direction: row;
+		flex-direction: clumn;
 		text-align: center;
+		justify-content: center;
+		align-items: center;
 	}
 
-	.btn2 .button {
-		width: 140rpx;
-		height: 30rpx;
+	.btn2 button {
+		width: 200rpx;
+		height: 60rpx;
 		border: 1rpx solid #cacaca;
 		font-size: 24rpx;
 	}
 
-	.btn2 .button:nth-of-type(1) {
+	.btn2 button:nth-of-type(1) {
 		border-radius: 15rpx 0 0 15rpx;
 	}
-
-	.btn2 .button:nth-of-type(2) {
-		margin-left: -1rpx;
+	
+	.btn2 button:nth-of-type(2) {
 		border-radius: 0 15rpx 15rpx 0;
 	}
+	
+	uni-button {
+		margin-left: 0;
+		margin-right: 0;
+	}
 
-	.button {
+	button {
 		background: linear-gradient(#fff, #e3ecf3);
 		color: #889199;
 	}
 
-	.button:hover {
+	button:hover {
 		background: linear-gradient(#fff, #bef5ff 10%, #6cb7df);
 		border-color: #bef5ff;
 		color: #00a0e9;
 	}
 
-	.button:active {
+	button:active {
 		background: linear-gradient(#fff, #6cb7df 10%, #bef5ff);
 	}
 
-	.button.active {
+	button.active {
 		background: linear-gradient(#fff, #6cb7df 10%, #bef5ff);
 	}
 
