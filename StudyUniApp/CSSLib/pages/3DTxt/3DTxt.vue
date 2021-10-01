@@ -42,7 +42,7 @@
 	export default {
 		data() {
 			return {
-				content: '北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。俱往矣，数风流人物，还看今朝。',
+				content: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
 				graphTypes: ['圆球', '圆锥', '柱状', '柱状扭曲'],
 				selectGraphType: 0,
 				radius: 200,
@@ -85,12 +85,16 @@
 		},
 		methods: {
 			star() {
-				console.log("star/content:", this.content);
+				console.log("content:", this.content);
+				console.log("content.lenght", this.content.length);
 				this.circleArr = [];
 				this.liArr = [];
 				this.coneNum = 0;
 				this.coneArr = [];
 				this.columnNum = 0;
+
+				// Step-1 开始计算圆球数据
+				// Step-1.1 根据文字的个数，计算得到：圆球需要有几层数据,存入：layer变量
 				let layer = 0, num = 0;
 				for (let i = 4; i < 13; i++) {
 					num = i * i + (i + 1) * (i + 1);
@@ -100,8 +104,10 @@
 					}
 					layer = (i - 1) * 2 + 1;
 				}
-
-				// 圆球数据
+				console.log('layer', layer);
+				
+				// Step-1.2 circleArr中计算得到圆球每一层的文字数
+				// 例如一个11层的圆球的circleArr数据为：[1, 3, 5, 7, 9, 11, 9, 7, 5, 3, 1]
 				let wordNum = -1;
 				for (let i = 0; i < layer; i++) {
 					if (i < (layer + 1) / 2) {
@@ -111,9 +117,10 @@
 					}
 					this.circleArr.push(wordNum);
 				}
+				console.log('circleArr', this.circleArr);
+				
 				num = 0;
-				let theta = 0,
-					phi = 0;
+				let theta = 0, phi = 0;
 				for (let i = 0; i < this.circleArr.length; i++) {
 					theta = Math.PI / this.circleArr.length;
 					phi = 2 * Math.PI / this.circleArr[i];
@@ -127,8 +134,10 @@
 						this.liArr.push(li);
 					}
 				}
+				console.log('liArr', this.liArr)
 
-				// 圆锥数据
+				// Step-2 圆锥数据
+				// Step-2.1 coneArr中计算得到圆锥每一层的文字数
 				for (let i = 0; i < this.liArr.length; i++) {
 					this.coneNum += 2 * i + 1;
 					if (this.coneNum > this.liArr.length) {
@@ -137,6 +146,7 @@
 					}
 					this.coneArr.push(2 * i + 1);
 				}
+				console.log('coneArr', this.coneArr)
 
 				let liNub = 0;
 				for (let i = 0; i < this.coneArr.length; i++) {
@@ -147,7 +157,7 @@
 					}
 				}
 
-				// 柱状数据和柱状扭曲数据
+				// Step3 柱状数据和柱状扭曲数据
 				liNub = 0;
 				let columnH = Math.floor(this.liArr.length / (this.circleArr.length - 2));
 				this.columnNum = columnH * (this.circleArr.length - 2);
