@@ -321,7 +321,6 @@ window.onload = function() {
 	}
 
 	function drawColumn(obj, phi, i, j) {
-
 		obj.columnX = r / 1.5 * Math.sin(phi * j) + 200;
 		obj.columnY = (2 * r / (circleArr.length - 2)) * i + 50;
 		obj.columnZ = (r / 1.5 * Math.cos(phi * j)).toFixed(2);
@@ -329,7 +328,6 @@ window.onload = function() {
 		obj.bigColumnX = (r + 2000) / 1.5 * Math.sin(phi * j) + 200;
 		obj.bigColumnY = (2 * (r + 2000) / (circleArr.length - 2)) * i + 50 - 2000;
 		obj.bigColumnZ = ((r + 2000) / 1.5 * Math.cos(phi * j)).toFixed(2);
-
 	}
 
 	function drawColumn2(obj, phi, i, j) {

@@ -19,10 +19,10 @@
 							display: oText.display,
 							transform: oText.transform}'>
 			<view class='p'>在下面输入你自己的文字（建议50-350字）</view>
-			<textarea cols="30" rows="10" :value="oText.value" auto-height=""></textarea>
+			<textarea cols="30" rows="10" :value="oText.value" auto-height="" @blur="onTextAreaBlue"></textarea>
 			<view class="btn">
-				<view class='button'>提交</view>
-				<view class='button'>重置</view>
+				<view class='button' @click="onTextSubmit">提交</view>
+				<view class='button' @click="onTextReset">重置</view>
 			</view>
 			<view class='a' @click="onCloseDefineTextClick"></view>
 		</view>
@@ -83,8 +83,13 @@
 		},
 		methods: {
 			star() {
-				let layer = 0,
-					num = 0;
+				console.log("star/content:", this.content);
+				this.circleArr = [];
+				this.liArr = [];
+				this.coneNum = 0;
+				this.coneArr = [];
+				this.columnNum = 0;
+				let layer = 0, num = 0;
 				for (let i = 4; i < 13; i++) {
 					num = i * i + (i + 1) * (i + 1);
 					if (num >= this.content.length) {
@@ -96,7 +101,6 @@
 
 				// 圆球数据
 				let wordNum = -1;
-				this.circleArr = [];
 				for (let i = 0; i < layer; i++) {
 					if (i < (layer + 1) / 2) {
 						wordNum += 2;
@@ -145,9 +149,11 @@
 				liNub = 0;
 				let columnH = Math.floor(this.liArr.length / (this.circleArr.length - 2));
 				this.columnNum = columnH * (this.circleArr.length - 2);
-				for (var i = 0; i < this.circleArr.length - 1; i++) {
+				console.log('liArr', this.liArr);
+				for (let i = 0; i < this.circleArr.length - 1; i++) {
 					phi = 2 * Math.PI / columnH;
-					for (var j = 0; j < columnH; j++) {
+					for (let j = 0; j < columnH; j++) {
+						console.log('liNub', liNub);
 						this.drawColumn(this.liArr[liNub], phi, i, j);
 						this.drawColumn2(this.liArr[liNub], phi, i, j);
 						liNub++;
@@ -427,6 +433,29 @@
 				setTimeout(function() {
 					that.oText.display = 'none';
 				}, 60);
+			},
+			
+			onTextSubmit(e) {
+				let s = this.oText.value;
+				if (s.length < 50 || s.length > 364) {
+					uni.showModal({
+						title: '提示',
+						content: '您输入的文字不得小于50或大于364个',
+						showCancel: false
+					});
+					return;
+				}
+				this.content = this.oText.value;
+				this.star();
+				this.onCloseDefineTextClick();
+			},
+			
+			onTextReset() {
+				this.oText.value = this.content;
+			},
+			
+			onTextAreaBlue(e) {
+				this.oText.value = e.detail.value;
 			}
 		}
 	}
