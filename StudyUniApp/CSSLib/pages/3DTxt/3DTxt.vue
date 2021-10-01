@@ -4,7 +4,9 @@
 			<view class="box" :style="{transform: boxStyle}">
 				<view class="ring">
 					<view v-for="(item, index) in liArr" :key="index" class='li' :class="item.className"
-						:style="{transform: item.style.transform, opacity: item.style.opacity}">{{item.content}}</view>
+						:style="{transform: item.style.transform,
+							opacity: item.style.opacity,
+							transition: item.style.transition}">{{item.content}}</view>
 				</view>
 			</view>
 			<view class="item" :style='{transform: oItem.transform,opacity: oItem.opacity}'>
@@ -40,7 +42,7 @@
 				content: '北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。俱往矣，数风流人物，还看今朝。',
 				graphTypes: ['圆球', '圆锥', '柱状', '柱状扭曲'],
 				selectGraphType: 0,
-				radius: 280,
+				radius: 200,
 				boxStyle: '',
 				liArr: [],
 				circleArr: [],
@@ -110,9 +112,9 @@
 				}
 
 				// 圆锥数据
-				for (let i = 0; i < this.circleArr.length; i++) {
+				for (let i = 0; i < this.liArr.length; i++) {
 					this.coneNum += 2 * i + 1;
-					if (this.coneNum > this.circleArr.length) {
+					if (this.coneNum > this.liArr.length) {
 						this.coneNum -= 2 * i + 1;
 						break;
 					}
@@ -206,7 +208,7 @@
 
 			startChange() {
 				for (let i = 0; i < this.liArr.length; i++) {
-					this.liArr[i].className = 'all';
+					this.liArr[i].style.transition = 'all .6s cubic-bezier(.75,.25,1,1)';
 					this.liArr[i].style.transform = 'translate3D(' + this.liArr[i].maxX + 'rpx,' +
 						this.liArr[i].maxY + 'rpx,' + this.liArr[i].maxZ +
 						'rpx) rotateY(' + this.liArr[i].maxPhi + 'rad) rotateX(' +
@@ -240,23 +242,23 @@
 			},
 
 			changeCircle() {
-				for (let i = 0; i < this.columnNum; i++) {
-					this.liArr[i].className = '';
-					this.liArr[i].maxX = this.liArr[i].bigCircleX;
-					this.liArr[i].maxY = this.liArr[i].bigCircleY;
-					this.liArr[i].maxZ = this.liArr[i].bigCircleZ;
-					this.liArr[i].maxTheta = this.liArr[i].circleTheta;
-					this.liArr[i].maxPhi = this.liArr[i].circlePhi;
-					this.liArr[i].style.transform = 'translate3D(' + this.liArr[i].maxX + 'rpx,' + this.liArr[i].maxY +
-						'rpx,' +
-						this.liArr[i].maxZ + 'rpx) rotateY(' +
-						this.liArr[i].maxPhi + 'rad) rotateX(' +
-						(this.liArr[i].maxTheta - Math.PI / 2) + 'rad)';
-				}
 				let that = this;
+				for (let i = 0; i < that.columnNum; i++) {
+					that.liArr[i].style.transition = '';
+					that.liArr[i].maxX = that.liArr[i].bigCircleX;
+					that.liArr[i].maxY = that.liArr[i].bigCircleY;
+					that.liArr[i].maxZ = that.liArr[i].bigCircleZ;
+					that.liArr[i].maxTheta = that.liArr[i].circleTheta;
+					that.liArr[i].maxPhi = that.liArr[i].circlePhi;
+					that.liArr[i].style.transform = 'translate3D(' + that.liArr[i].maxX + 'rpx,' 
+						+ that.liArr[i].maxY + 'rpx,' +
+						that.liArr[i].maxZ + 'rpx) rotateY(' +
+						that.liArr[i].maxPhi + 'rad) rotateX(' +
+						(that.liArr[i].maxTheta - Math.PI / 2) + 'rad)';
+				}
 				setTimeout(function() {
 					for (let i = 0; i < that.liArr.length; i++) {
-						that.liArr[i].className = 'one';
+						that.liArr[i].style.transition = 'transform .6s cubic-bezier(0,0,.25,.75)';
 						that.liArr[i].style.opacity = 1;
 						that.liArr[i].style.transform = 'translate3D(' + that.liArr[i].circleX + 'rpx,' +
 							that.liArr[i].circleY + 'rpx,' +
@@ -269,8 +271,9 @@
 
 			changeCone() {
 				let that = this;
-				for (let i = 0; i < this.coneNum; i++) {
-					that.liArr[i].className = '';
+				console.log('coneNum',that.coneNum);
+				for (let i = 0; i < that.coneNum; i++) {
+					that.liArr[i].style.transition = '';
 					that.liArr[i].maxX = that.liArr[i].bigConeX;
 					that.liArr[i].maxY = that.liArr[i].bigConeY;
 					that.liArr[i].maxZ = that.liArr[i].bigConeZ;
@@ -283,7 +286,7 @@
 				}
 				setTimeout(function() {
 					for (var i = 0; i < that.coneNum; i++) {
-						that.liArr[i].className = 'one';
+						that.liArr[i].style.transition = 'transform .6s cubic-bezier(0,0,.25,.75)';
 						that.liArr[i].style.opacity = 1;
 						that.liArr[i].style.transform = 'translate3D(' + that.liArr[i].coneX + 'rpx,' +
 							that.liArr[i].coneY + 'rpx,' +
@@ -297,7 +300,7 @@
 			changeColumn() {
 				let that = this;
 				for (var i = 0; i < that.columnNum; i++) {
-					that.liArr[i].className = '';
+					that.liArr[i].style.transition = '';
 					that.liArr[i].maxX = that.liArr[i].bigColumnX;
 					that.liArr[i].maxY = that.liArr[i].bigColumnY;
 					that.liArr[i].maxZ = that.liArr[i].bigColumnZ;
@@ -312,7 +315,7 @@
 				}
 				setTimeout(function() {
 					for (var i = 0; i < that.columnNum; i++) {
-						that.liArr[i].className = 'one';
+						that.liArr[i].style.transition = 'transform .6s cubic-bezier(0,0,.25,.75)';
 						that.liArr[i].style.opacity = 1;
 						that.liArr[i].style.transform = 'translate3D(' + that.liArr[i].columnX + 'rpx,'
 						 + that.liArr[i].columnY + 'rpx,'
@@ -325,7 +328,7 @@
 			changeColumn2() {
 				let that = this;
 				for (var i = 0; i < that.columnNum; i++) {
-					that.liArr[i].className = '';
+					that.liArr[i].style.transition = '';
 					that.liArr[i].maxX = that.liArr[i].bigColumn2X;
 					that.liArr[i].maxY = that.liArr[i].bigColumn2Y;
 					that.liArr[i].maxZ = that.liArr[i].bigColumn2Z;
@@ -339,7 +342,7 @@
 				}
 				setTimeout(function() {
 					for (var i = 0; i < that.columnNum; i++) {
-						that.liArr[i].className = 'one';
+						that.liArr[i].style.transition = 'transform .6s cubic-bezier(0,0,.25,.75)';
 						that.liArr[i].style.opacity = 1;
 						that.liArr[i].style.transform = 'translate3D(' + that.liArr[i].column2X + 'rpx,'
 						 + that.liArr[i].column2Y + 'rpx,' 
