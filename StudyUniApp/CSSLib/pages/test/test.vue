@@ -1,6 +1,7 @@
 <template>
 	<view class="main">
-		<xy-bubble radius="200rpx" image='/static/images/niu.png' ></xy-bubble>
+		<view class='box'></view>
+		<!-- <xy-bubble radius="200rpx" image='/static/images/niu.png' ></xy-bubble> -->
 	</view>
 </template>
 
@@ -31,5 +32,17 @@
 		align-items: center;
 		justify-content: center;
 		margin-top: 50rpx;
+	}
+	
+	.box {
+		width: 100rpx;
+		height: 100rpx;
+		background: blue;
+		transition: all .6s cubic-bezier(.75,.25,1,1);
+	}
+	
+	.box:hover {
+		width: 300rpx;
+		background: red;
 	}
 </style>

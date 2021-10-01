@@ -248,7 +248,6 @@ window.onload = function() {
 	};
 	
 	aBtn[1].onclick = function() {
-
 		if (aBtn[0].disabled == false)
 			aBtn[1].className = 'active';
 		oText.style.display = 'block';
@@ -264,14 +263,10 @@ window.onload = function() {
 
 	};
 	aBtn2[0].onclick = function() {
-
 		s = oTextarea.value;
 		if (s.length < 50 || s.length > 364) {
-
 			alert('您输入的文字不得小于50或大于364个');
-
 		} else {
-
 			oUl.innerHTML = '';
 			oP.innerHTML = s;
 			star();
@@ -288,15 +283,12 @@ window.onload = function() {
 			}, 60);
 
 		}
-
 	};
 	aBtn2[1].onclick = function() {
-
 		oTextarea.value = '';
-
 	};
+	
 	aClose[1].onclick = function() {
-
 		oTextarea.value = '';
 		setCss3(oText, {
 			transform: 'scale(.5)'
@@ -309,8 +301,6 @@ window.onload = function() {
 			aBtn[1].disabled = false;
 			aBtn[1].className = '';
 		}, 60);
-
-
 	};
 
 	function drawCircle(obj, theta, phi, i, j) {

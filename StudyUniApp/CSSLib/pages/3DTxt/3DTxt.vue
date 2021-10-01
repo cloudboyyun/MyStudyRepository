@@ -14,14 +14,17 @@
 				<view class='a' @click="onExpandCloseButtonClick"></view>
 			</view>
 		</view>
-		<view class="text">
-			<p>在下面输入你自己的文字（建议50-350字）</p>
-			<textarea cols="30" rows="10"></textarea>
-			<div class="btn">
-				<button>提交</button>
-				<button>重置</button>
-			</div>
-			<a href="javascript:;" class="close"></a>
+		<view class="text" 
+			:style='{opacity: oText.opacity, 
+							display: oText.display,
+							transform: oText.transform}'>
+			<view class='p'>在下面输入你自己的文字（建议50-350字）</view>
+			<textarea cols="30" rows="10" :value="oText.value" auto-height=""></textarea>
+			<view class="btn">
+				<view class='button'>提交</view>
+				<view class='button'>重置</view>
+			</view>
+			<view class='a' @click="onCloseDefineTextClick"></view>
 		</view>
 		<view class="table">
 			<view v-for="(item,index) in graphTypes" :key="index" class='graphtype'
@@ -30,7 +33,7 @@
 		<view class="line"></view>
 		<view class="btn2">
 			<view class='button' @click="onExpandClick">展开</view>
-			<view class='button'>自定义文字</view>
+			<view class='button' @click='onDefineTextClick'>自定义文字</view>
 		</view>
 	</view>
 </template>
@@ -57,12 +60,20 @@
 				disY: 0,
 				isExpanded: false,
 				oItem: {},
+				oText: {
+					display: 'none',
+					opacity: 0,
+					transform: 'scale(.5)',
+					value: ""
+				},
 				columnNum: 0,
 				iTimer2: 0,
 			}
 		},
 		computed: {},
 		onLoad(options) {
+			this.oText.value = this.content;
+			console.log(this.oText.value);
 			this.star();
 			let that = this;
 			this.iTimer = setInterval(function() {
@@ -271,7 +282,6 @@
 
 			changeCone() {
 				let that = this;
-				console.log('coneNum',that.coneNum);
 				for (let i = 0; i < that.coneNum; i++) {
 					that.liArr[i].style.transition = '';
 					that.liArr[i].maxX = that.liArr[i].bigConeX;
@@ -399,6 +409,24 @@
 
 			onExpandCloseButtonClick() {
 				this.fn();
+			},
+			
+			onDefineTextClick() {
+				let that = this;
+				that.oText.display = 'block';
+				setTimeout(function() {
+					that.oText.transform = 'scale(1)';
+					that.oText.opacity = 1;
+				}, 12);
+			},
+			
+			onCloseDefineTextClick() {
+				let that = this;
+				that.oText.transform = 'scale(0.5)';
+				that.oText.opacity = 0;
+				setTimeout(function() {
+					that.oText.display = 'none';
+				}, 60);
 			}
 		}
 	}
@@ -469,65 +497,64 @@
 	}
 
 	.text {
+		font-size: 20rpx;
 		position: absolute;
-		top: 30px;
+		top: 200rpx;
 		left: 50%;
-		margin-left: -329px;
-		padding: 15px 18px;
-		width: 602px;
-		height: 318px;
-		border: 1px solid #e5e5e5;
-		border-radius: 8px;
-		box-shadow: 0 5px 5px #d4dbe1;
+		margin-left: -329rpx;
+		padding: 15rpx 18rpx;
+		width: 602rpx;
+		border: 1rpx solid #e5e5e5;
+		border-radius: 8rpx;
+		box-shadow: 0 5rpx 5rpx #d4dbe1;
 		background-color: #fff;
-		transform: scale(.5);
-		opacity: 0;
 		transition: opacity .3s cubic-bezier(.15, .84, .35, 1), transform .3s cubic-bezier(.15, .84, .35, 1);
-		display: none;
 	}
 
-	.text p {
-		margin-bottom: 12px;
-		font-size: 12px;
+	.text .p {
+		margin-bottom: 12rpx;
+		font-size: 12rpx;
 	}
 
 	.text textarea {
 		resize: none;
-		width: 580px;
-		height: 220px;
-		padding: 10px;
-		border: 1px solid #cacaca;
-		border-radius: 8px;
+		height: 220rpx;
+		padding: 10rpx;
+		border: 1rpx solid #cacaca;
+		border-radius: 8rpx;
 		background-color: #f3f7fa;
-		margin-bottom: 15px;
+		margin-bottom: 15rpx;
 		color: #00a0e9;
 	}
 
-	.text a {
+	.text .a {
 		position: absolute;
-		top: 10px;
-		right: 10px;
-		width: 19px;
-		height: 19px;
+		top: 10rpx;
+		right: 10rpx;
+		width: 19rpx;
+		height: 19rpx;
 		background: url("/static/icons/close.png") no-repeat center;
 	}
 
 	.btn {
-		margin: 0 auto;
-		width: 260px;
-		overflow: hidden;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
 	}
 
-	.btn button {
+	.btn .button {
 		width: 120rpx;
 		height: 30rpx;
 		border: 1rpx solid #cacaca;
 		border-radius: 15rpx;
-		float: left;
+		font-size: 10rpx;
+		text-align: center;
 	}
 
-	.btn button:nth-of-type(1) {
-		margin-right: 18px;
+	.btn .button:nth-of-type(1) {
+		margin-right: 18rpx;
 	}
 
 	.table {
