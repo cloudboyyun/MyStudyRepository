@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "云日历",
+				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false,
 				"disableScroll": false

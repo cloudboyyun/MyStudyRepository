@@ -1,15 +1,34 @@
 <template>
-	<view class='main' :style="{backgroundImage: backgroundImage}">
+	<view class='main' :style="{backgroundImage: backgroundImage}"
+		:class="{daylight: !isNight, night: isNight}">
 		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..."
 			color="#FF9000" marginTop="50vh"></xy-loading>
 		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"
 			marginTop="50vh"></xy-loading>
 		<view class='title-area'>
+			<view class='app-name'>豆云日历</view>
 			<view class='year-month'>
 				{{year}}年{{month}}月
 				<view class='today-icon' @click="onTodayIconClick()">
 					<image class='today-icon-image' v-show="showTodayIcon" src='/static/images/today.png'></image>
 				</view>
+			</view>
+			<view class='sun-container' :style="{transform: 'rotate(' + sunDeg + 'deg)'}">
+				<view class='sun' :class="{'sun-fade': isNight}"></view>
+			</view>
+			<image src='/static/images/flyingBird.gif' class='flying-bird'></image>
+			<view class='stars' :class="{'stars-fade': isNight}">
+				<view class="shooting-star" :class="{'shooting': isNight}"></view>
+				<view class="star star-1"></view>
+				<view class="star star-2"></view>
+				<view class="star star-3"></view>
+				<view class="star star-4"></view>
+				<!-- <view class="star star-5"></view> -->
+				<view class="star star-6"></view>
+				<view class="star star-7"></view>
+				<view class="star star-8"></view>
+				<view class="star star-9"></view>
+				<view class="star star-10"></view>
 			</view>
 		</view>
 		<swiper class='swiper' :current="selectedSwiperIndex" circular="true" @change="onSwiperItemChange">
@@ -40,7 +59,7 @@
 								@longpress="onDateDescPress(item, $event)">{{getDateDesc(item)}}</view>
 						</view>
 					</view>
-					<image src='/static/images/flyingBird.gif' class='flying-bird'></image>
+					
 				</view>
 			</swiper-item>
 		</swiper>
@@ -60,7 +79,7 @@
 				</view>
 				<xy-bubble class='dds-animalsyear' radius="120rpx"
 					:image="selectedItem.animalImage?selectedItem.animalImage:''" fontSize="100rpx"
-					fontFamily="sunzhongshan" fontColor="red"></xy-bubble>
+					fontFamily="sunzhongshan" fontColor="red" @click.native='onSwitcherClick()'></xy-bubble>
 				<!-- <image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image> -->
 			</view>
 			<view v-if="selectedItem.holidays.length" class='h-holidays'>
@@ -143,6 +162,8 @@
 				lastX: 0,
 				lastY: 0,
 				yearGanzhi: null,
+				isNight: true,
+				sunDeg: 0
 			}
 		},
 		computed: {
@@ -342,6 +363,7 @@
 			},
 
 			onTodayIconClick() {
+				console.log("onTodayIconClick");
 				this.loadPage(new Date());
 			},
 
@@ -425,12 +447,22 @@
 				let selectedDate = new Date(this.selectedDate);
 				let newDate = new Date(selectedDate.getTime() - 1000 * 60 * 60 * 24);
 				this.loadPage(newDate);
+			},
+			
+			onSwitcherClick() {
+				this.isNight = !this.isNight;
+				this.sunDeg += 360;
 			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@font-face {
+	    font-family: 'sunzhongshan';
+	    src:url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/fa3b69e8-ffc9-46d3-9111-7cf472412576.ttf');
+	}
+	
 	page {
 		width: 100%;
 		height: 100%;
@@ -443,47 +475,194 @@
 		background-position: left top;
 		background-size: 100% 100%;
 	}
-
+	
 	.title-area {
 		padding-top: calc(var(--status-bar-height) + 60rpx);
+		padding-left: 20rpx;
 		width: 100%;
 		padding-bottom: 20rpx;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
+		position: relative;
+		transition: background 5s ease;
+		transition-delay: 2s;
 	}
-
-	.year-month {
+	
+	.stars {
+		opacity: 0;
+		transition: opacity 2s ease;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	
+	.shooting-star {
+		position: absolute;
+		background: linear-gradient(to right,
+				rgba(255, 255, 255, 1) 0%,
+				rgba(255, 255, 255, 0) 100%);
+		width: 35rpx;
+		height: 3rpx;
+		left: 310rpx;
+		top: 10rpx;
+		transform-origin: left;
+		transform: rotate(-40deg);
+	}
+	
+	.shooting {
+		animation: shooting-star 2s 1 ease-in-out;
+		animation-delay: 5s;
+	}
+	
+	@keyframes shooting-star {
+		100% {
+			transform: rotate(-40deg)translateX(-450rpx);
+		}
+	}
+	
+	.star {
+		border-radius: 50%;
+		background-color: #fff;
+		position: relative;
+	}
+	
+	.star-1 {
+		width: 5rpx;
+		height: 5rpx;
+		left: 100rpx;
+		top: 150rpx;
+	}
+	
+	.star-2 {
+		width: 5rpx;
+		height: 5rpx;
+		left: 120rpx;
+		top: 100rpx;
+	}
+	
+	.star-3 {
+		width: 4rpx;
+		height: 4rpx;
+		left: 180rpx;
+		top: 120rpx;
+	}
+	
+	.star-4 {
+		width: 5rpx;
+		height: 5rpx;
+		left: 260rpx;
+		top: 160rpx;
+	}
+	
+	.star-5 {
+		width: 5rpx;
+		height: 5rpx;
+		left: 300rpx;
+		top: 200rpx;
+	}
+	
+	.star-6 {
+		width: 5rpx;
+		height: 5rpx;
+		left: 300rpx;
+		top: 150rpx;
+	}
+	
+	.star-7 {
+		width: 3rpx;
+		height: 3rpx;
+		left: 360rpx;
+		top: 170rpx;
+	}
+	
+	.star-8 {
+		width: 4rpx;
+		height: 4rpx;
+		left: 450rpx;
+		top: 210rpx;
+	}
+	
+	.star-9 {
+		width: 3rpx;
+		height: 3rpx;
+		left: 490rpx;
+		top: 150rpx;
+	}
+	
+	.star-10 {
+		width: 4rpx;
+		height: 4rpx;
+		left: 600rpx;
+		top: 150rpx;
+	}
+	
+	.stars-fade {
+		opacity: 1;
+		transition-delay: 4s;
+	}
+	
+	.sun-container {
+		position: absolute;
+		left: 200rpx;
+		top: 100rpx;
+		width: 350rpx;
+		height: 350rpx;
+		transform-origin: center center;
+		transition: all 5s ease-in-out;
+	}
+	
+	.sun {
+		position: relative;
+		top: 0;
+		left: 0;
+	  width: 30rpx;
+	  height: 30rpx;
+	  border-radius: 50%;
+		opacity: 1;
+		box-shadow: 0rpx 0rpx 50rpx #FFFF00;
+		transition: background-color 10s ease-in-out;
+	}
+	
+	.app-name {
+		font: 38rpx sunzhongshan;
+		align-self: center;
 		color: #ffffff;
 		font-weight: bolder;
-		font-size: 32rpx;
+	}
+	
+	.year-month {
+		margin-top: 40rpx;
+		color: #ffffff;
+		font-weight: bold;
+		font-size: 28rpx;
 		position: relative;
 		display: flex;
 		flex-direction: row;
 		line-height: 50rpx;
 	}
-
+	
 	.today-icon {
 		position: absolute;
 		width: 50rpx;
 		height: 50rpx;
-		left: -60rpx;
-		top: 0rpx
+		right: -60rpx;
+		top: 0rpx;
+		z-index: 10;
 	}
-
+	
 	.today-icon-image {
 		width: 100%;
 		height: 100%;
 	}
-
+	
 	.swiper {
 		height: 700rpx;
 	}
-
+	
 	.calendar {
 		height: 700rpx;
-		background-color: #d7f3f9;
 		background-image: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/1cb2ad77-ac70-4974-9e9b-786bc7fe1f1c.png");
 		animation: kf-cloud 50s linear infinite;
 		transform: translate3d(0, 0, 0);
@@ -491,23 +670,25 @@
 		padding-left: 20rpx;
 		padding-right: 20rpx;
 		position: relative;
+		transition: background 5s ease;
+		transition-delay: 2s;
 	}
-
+	
 	@keyframes kf-cloud {
 		50% {
 			background-position: 100% 0
 		}
 	}
-
+	
 	.flying-bird {
 		width: 100%;
-		height: 30%;
+		height: 200rpx;
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		transform: rotateY(180deg);
 	}
-
+	
 	.row {
 		width: 100%;
 		display: flex;
@@ -516,61 +697,48 @@
 		flex-wrap: wrap;
 		text-align: center;
 	}
-
+	
 	.day-of-week {
 		font-size: 21rpx;
 	}
-
+	
 	.solar-day {
 		font-size: 35rpx;
 		font-weight: bold;
+		transition: color 5s ease;
+		transition-delay: 2s;
 	}
-
+	
 	.lunar-day {
 		font-size: 20rpx;
+		transition: color 5s ease;
+		transition-delay: 2s;
 	}
-
-	.lunar-day-common {
-		color: #424040;
-	}
-
-	.lunar-day-holiday {
-		color: #b74854;
-	}
-
-	.weekday {
-		color: #111111;
-	}
-
-	.weekend {
-		color: #c1252d;
-	}
-
+	
 	.day {
 		width: 13%;
 		padding-bottom: 10rpx;
 		margin-bottom: 10rpx;
-		/* border: 5rpx solid #ffffff; */
 	}
-
+	
 	.selected {
 		border: 3rpx solid #729e82;
 		border-radius: 20rpx;
 	}
-
+	
 	.today {
 		border: 5rpx solid #bf5445;
 		border-radius: 20rpx;
 	}
-
+	
 	.mask {
 		opacity: 0.3;
 	}
-
+	
 	.workingDay {
 		position: relative;
 	}
-
+	
 	.workingDay:after {
 		content: '班';
 		font-size: 16rpx;
@@ -585,11 +753,11 @@
 		background-color: #07C160;
 		color: #ffffff;
 	}
-
+	
 	.restingDay {
 		position: relative;
 	}
-
+	
 	.restingDay:after {
 		content: '休';
 		font-size: 16rpx;
@@ -604,7 +772,7 @@
 		background-color: #c1252d;
 		color: #ffffff;
 	}
-
+	
 	.day-detail-section {
 		border-radius: 20rpx;
 		margin-top: 20rpx;
@@ -619,7 +787,7 @@
 		background-size: 100% 100%;
 		height: 620rpx;
 	}
-
+	
 	.dds-daydesc {
 		margin-left: 30rpx;
 		display: flex;
@@ -627,19 +795,19 @@
 		align-items: flex-start;
 		justify-content: flex-start;
 	}
-
+	
 	.dds-main {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		position: relative;
 	}
-
+	
 	.dds-day {
 		font-size: 55rpx;
 		color: #d8272a;
 	}
-
+	
 	.dds-weekday {
 		display: flex;
 		flex-direction: row;
@@ -648,7 +816,7 @@
 		color: #181818;
 		line-height: 25rpx;
 	}
-
+	
 	.dds-lunar {
 		margin-top: 2rpx;
 		display: flex;
@@ -656,31 +824,29 @@
 		align-items: center;
 		text-align: center;
 	}
-
+	
 	.dds-lunar-png {
 		width: 20rpx;
 		height: 20rpx;
 	}
-
+	
 	.dds-lunar-value {
 		margin-left: 10rpx;
 		font-size: 32rpx;
 		color: #181818;
 		font-weight: bold;
 	}
-
+	
 	.dds-ganzhi {
 		font-size: 25rpx;
 		color: #181818;
 	}
-
+	
 	.dds-animalsyear {
 		margin-right: 20rpx;
 		margin-left: auto;
 	}
-
-
-
+	
 	.dds-suit {
 		margin-top: 20rpx;
 		display: flex;
@@ -690,39 +856,39 @@
 		align-content: flex-start;
 		align-items: flex-start;
 	}
-
+	
 	.dds-avoid {
 		margin-top: 20rpx;
 		display: flex;
 		flex-direction: row;
 	}
-
+	
 	.dds-suit-word {
 		color: #80afcc;
 		font-size: 40rpx;
 		margin-right: 20rpx;
 	}
-
+	
 	.dds-avoid-word {
 		color: #db8399;
 		font-size: 40rpx;
 		margin-right: 20rpx;
 	}
-
+	
 	.dds-suit-content {
 		margin-top: 10rpx;
 		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}
-
+	
 	.dds-avoid-content {
 		margin-top: 10rpx;
 		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}
-
+	
 	.h-holidays {
 		display: flex;
 		flex-direction: row;
@@ -733,7 +899,7 @@
 		padding-bottom: 10rpx;
 		margin-right: 10rpx;
 	}
-
+	
 	.h-holiday {
 		margin-left: 10rpx;
 		display: flex;
@@ -743,13 +909,13 @@
 		height: 40rpx;
 		align-items: center;
 	}
-
+	
 	.h-holiday-icon {
 		margin-left: 10rpx;
 		width: 25rpx;
 		height: 25rpx;
 	}
-
+	
 	.h-holiday-txt {
 		margin-left: 10rpx;
 		margin-right: 10rpx;
@@ -757,4 +923,70 @@
 		line-height: 25rpx;
 		color: #FFFFFF;
 	}
+	
+	.daylight {
+		.title-area {
+			// background: linear-gradient(45deg,blue 0%, white 100%);
+			background-color: blue;
+		}
+		
+		.calendar {
+			background-color: #d7f3f9;
+		}
+		
+		.weekday {
+			color: #111111;
+		}
+		
+		.weekend {
+			color: #c1252d;
+		}
+		
+		.lunar-day-common {
+			color: #424040;
+		}
+		
+		.lunar-day-holiday {
+			color: #b74854;
+		}
+		
+		.sun {
+		  // background: radial-gradient(circle at center, red, gold);
+			background-color: red;
+		}
+	}
+	
+	.night {
+		.title-area {
+			// background: linear-gradient(45deg, #000 0%, white 100%);
+			background-color: #000;
+		}
+		
+		.calendar {
+			background-color: #aaa;
+		}
+		
+		.weekday {
+			color: #fff;
+		}
+		
+		.weekend {
+			color: #c1252d;
+		}
+		
+		.lunar-day-common {
+			color: #f2f0f0;
+		}
+		
+		.lunar-day-holiday {
+			color: #b74854;
+		}
+		
+		.sun {
+		  // background: linear-gradient(#fefefe, #fffbe8);
+			background-color: #fefefe;
+		}
+	}
+
+	
 </style>
