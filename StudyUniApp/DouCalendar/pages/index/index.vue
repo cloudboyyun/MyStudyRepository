@@ -6,6 +6,7 @@
 		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"
 			marginTop="50vh"></xy-loading>
 		<view class='title-area'>
+			<view class="cloud cloud-1" :class="{'cloud-fade': isNight}"></view>
 			<view class='app-name'>豆云日历</view>
 			<view class='year-month'>
 				{{year}}年{{month}}月
@@ -16,7 +17,7 @@
 			<view class='sun-container' :style="{transform: 'rotate(' + sunDeg + 'deg)'}">
 				<view class='sun' :class="{'sun-fade': isNight}"></view>
 			</view>
-			<image src='/static/images/flyingBird.gif' class='flying-bird'></image>
+			<image src='/static/images/flyingBird.gif' class='flying-bird' :style="{opacity: isNight?0:1}"></image>
 			<view class='stars' :class="{'stars-fade': isNight}">
 				<view class="shooting-star" :class="{'shooting': isNight}"></view>
 				<view class="star star-1"></view>
@@ -162,7 +163,7 @@
 				lastX: 0,
 				lastY: 0,
 				yearGanzhi: null,
-				isNight: true,
+				isNight: false,
 				sunDeg: 0
 			}
 		},
@@ -505,7 +506,7 @@
 				rgba(255, 255, 255, 0) 100%);
 		width: 35rpx;
 		height: 3rpx;
-		left: 310rpx;
+		left: 510rpx;
 		top: 10rpx;
 		transform-origin: left;
 		transform: rotate(-40deg);
@@ -625,6 +626,73 @@
 		transition: background-color 10s ease-in-out;
 	}
 	
+	.cloud {
+		background: #fff;
+		position: absolute;
+		z-index: 500;
+		width: 65rpx;
+		height: 12rpx;
+		border-radius: 20rpx;
+		opacity: 1;
+		animation: cloud 4s infinite;
+		transition: opacity 5s ease;
+	}
+	
+	.cloud-fade {
+		opacity: 0;
+	}
+	
+	.cloud:after {
+		content: "";
+		position: absolute;
+		background: #fff;
+		z-index: 500;
+		border-radius: 50%;
+		height: 30rpx;
+		left: 27rpx;
+		top: -18rpx;
+		width: 30rpx;
+	}
+	
+	.cloud:before {
+		content: "";
+		position: absolute;
+		background: #fff;
+		z-index: 500;
+		border-radius: 50%;
+		height: 20rpx;
+		left: 12rpx;
+		top: -11rpx;
+		width: 20rpx;
+	}
+	
+	@keyframes cloud {
+		0% {
+			transform: translate(0px, 0px);
+		}
+	
+		25% {
+			transform: translate(1px, 1px);
+		}
+	
+		50% {
+			transform: translate(0px, 0px);
+		}
+	
+		75% {
+			transform: translate(-1px, -1px);
+		}
+	
+		100% {
+			transform: translate(0px, 0px);
+		}
+	}
+	
+	.cloud-1 {
+		left: 70rpx;
+		top: 150rpx;
+	}
+	
 	.app-name {
 		font: 38rpx sunzhongshan;
 		align-self: center;
@@ -684,9 +752,11 @@
 		width: 100%;
 		height: 200rpx;
 		position: absolute;
-		bottom: 0;
-		left: 0;
+		bottom: -50rpx;
+		left: 220rpx;
 		transform: rotateY(180deg);
+		opacity: 1;
+		transition: opacity 5s ease;
 	}
 	
 	.row {
@@ -952,7 +1022,7 @@
 		
 		.sun {
 		  // background: radial-gradient(circle at center, red, gold);
-			background-color: red;
+			background-color: gold;
 		}
 	}
 	
