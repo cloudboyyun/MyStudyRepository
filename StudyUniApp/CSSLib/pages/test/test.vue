@@ -1,7 +1,8 @@
 <template>
 	<view class="main">
-		<view class='box'></view>
-		<!-- <xy-bubble radius="200rpx" image='/static/images/niu.png' ></xy-bubble> -->
+		<view class='box'>
+			<image src='/static/images/niu.png' class='dds-animal-image'></image>
+		</view>
 	</view>
 </template>
 
@@ -24,25 +25,54 @@
 	    src:url('/static/fonts/方圆孙中山行书.ttf');
 	}
 	
+	page {
+		width: 100%;
+		height: 100%;
+	}
+	
 	.main {
 		width: 100%;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		margin-top: 50rpx;
+		justify-content: space-around;
+		padding-top: 50rpx;
+	}
+	
+	.dds-animal-image {
+		width: 80rpx;
+		height: 80rpx;
+		animation: switcher2 2s infinite ease-in-out;
 	}
 	
 	.box {
-		width: 100rpx;
-		height: 100rpx;
-		background: blue;
-		transition: all .6s cubic-bezier(.75,.25,1,1);
+		width: 120rpx;
+		height: 120rpx;
+		border-radius: 50%;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-top: 5rpx solid red;
+		animation: switcher 2s infinite ease-in-out;
 	}
 	
-	.box:hover {
-		width: 300rpx;
-		background: red;
+	@keyframes switcher {
+		50% {
+			transform: rotate(-40deg);
+		}
+		100% {
+			transform: rotate(40deg);
+		}
+	}
+	
+	@keyframes switcher2 {
+		50% {
+			transform: rotate(40deg);
+		}
+		100% {
+			transform: rotate(-40deg);
+		}
 	}
 </style>

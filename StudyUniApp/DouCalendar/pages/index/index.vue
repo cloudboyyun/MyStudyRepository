@@ -6,7 +6,8 @@
 		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"
 			marginTop="50vh"></xy-loading>
 		<view class='title-area'>
-			<view class="cloud cloud-1" :class="{'cloud-fade': isNight}"></view>
+			<xy-cloud class="cloud-1" :class="{'cloud-fade': isNight}"></xy-cloud>
+			<xy-cloud class="cloud-2" :class="{'cloud-fade': isNight}"></xy-cloud>
 			<view class='app-name'>豆云日历</view>
 			<view class='year-month'>
 				{{year}}年{{month}}月
@@ -60,13 +61,12 @@
 								@longpress="onDateDescPress(item, $event)">{{getDateDesc(item)}}</view>
 						</view>
 					</view>
-					
 				</view>
 			</swiper-item>
 		</swiper>
 
 		<view class='day-detail-section' @touchmove="handletouchmove" @touchstart="handletouchstart"
-			@touchend="handletouchend">
+			@touchend="handletouchend" :style="{'filter': 'invert(' + (isNight?'80%':'0') + ')'}">
 			<view class='dds-main'>
 				<view class='dds-day'>{{selectedItem.month}}月{{selectedItem.day}}日</view>
 				<view class='dds-daydesc'>
@@ -78,10 +78,15 @@
 					<view class='dds-ganzhi'>{{selectedItem.gzYear}}年 {{selectedItem.gzMonth}}月 {{selectedItem.gzDate}}日
 					</view>
 				</view>
-				<xy-bubble class='dds-animalsyear' radius="120rpx"
+				<!-- <xy-bubble class='dds-animalsyear' radius="120rpx"
 					:image="selectedItem.animalImage?selectedItem.animalImage:''" fontSize="100rpx"
-					fontFamily="sunzhongshan" fontColor="red" @click.native='onSwitcherClick()'></xy-bubble>
-				<!-- <image class='dds-animalsyear' :src='selectedItem.animalImage' @longpress='onClearStorageClick'></image> -->
+					fontFamily="sunzhongshan" fontColor="red" @click.native='onSwitcherClick()'></xy-bubble> -->
+				<view class='dds-animal-switcher'>
+					<xy-bubble class='dds-animalsyear' radius="80rpx"
+						:image="selectedItem.animalImage?selectedItem.animalImage:''" fontSize="100rpx"
+						fontFamily="sunzhongshan" fontColor="red" @click.native='onSwitcherClick()'
+						:class="{'switcher-fade': isNight}"></xy-bubble>
+				</view>
 			</view>
 			<view v-if="selectedItem.holidays.length" class='h-holidays'>
 				<view v-for="(item,index) in selectedItem.holidays" :key="index" class='h-holiday'>
@@ -513,11 +518,14 @@
 	}
 	
 	.shooting {
-		animation: shooting-star 2s 1 ease-in-out;
+		animation: shooting-star 10s infinite ease-in-out;
 		animation-delay: 5s;
 	}
 	
 	@keyframes shooting-star {
+		20% {
+			transform: rotate(-40deg)translateX(-450rpx);
+		}
 		100% {
 			transform: rotate(-40deg)translateX(-450rpx);
 		}
@@ -527,6 +535,16 @@
 		border-radius: 50%;
 		background-color: #fff;
 		position: relative;
+		animation: star 3s infinite ease;
+	}
+	
+	@keyframes star {
+		50% {
+			transform: scale(0.8);
+		}
+		100% {
+			transform: scale(1.2);
+		}
 	}
 	
 	.star-1 {
@@ -534,6 +552,7 @@
 		height: 5rpx;
 		left: 100rpx;
 		top: 150rpx;
+		animation-delay: 5s;
 	}
 	
 	.star-2 {
@@ -541,13 +560,15 @@
 		height: 5rpx;
 		left: 120rpx;
 		top: 100rpx;
+		animation-delay: 3s;
 	}
 	
 	.star-3 {
 		width: 4rpx;
 		height: 4rpx;
-		left: 180rpx;
+		left: 170rpx;
 		top: 120rpx;
+		animation-delay: 7s;
 	}
 	
 	.star-4 {
@@ -555,6 +576,7 @@
 		height: 5rpx;
 		left: 260rpx;
 		top: 160rpx;
+		animation-delay: 10s;
 	}
 	
 	.star-5 {
@@ -562,6 +584,7 @@
 		height: 5rpx;
 		left: 300rpx;
 		top: 200rpx;
+		animation-delay: 5s;
 	}
 	
 	.star-6 {
@@ -569,6 +592,7 @@
 		height: 5rpx;
 		left: 300rpx;
 		top: 150rpx;
+		animation-delay: 7s;
 	}
 	
 	.star-7 {
@@ -576,6 +600,7 @@
 		height: 3rpx;
 		left: 360rpx;
 		top: 170rpx;
+		animation-delay: 6s;
 	}
 	
 	.star-8 {
@@ -583,6 +608,7 @@
 		height: 4rpx;
 		left: 450rpx;
 		top: 210rpx;
+		animation-delay: 9s;
 	}
 	
 	.star-9 {
@@ -590,6 +616,7 @@
 		height: 3rpx;
 		left: 490rpx;
 		top: 150rpx;
+		animation-delay: 4s;
 	}
 	
 	.star-10 {
@@ -597,6 +624,7 @@
 		height: 4rpx;
 		left: 600rpx;
 		top: 150rpx;
+		animation-delay: 3s;
 	}
 	
 	.stars-fade {
@@ -623,74 +651,73 @@
 	  border-radius: 50%;
 		opacity: 1;
 		box-shadow: 0rpx 0rpx 50rpx #FFFF00;
-		transition: background-color 10s ease-in-out;
-	}
-	
-	.cloud {
-		background: #fff;
-		position: absolute;
-		z-index: 500;
-		width: 65rpx;
-		height: 12rpx;
-		border-radius: 20rpx;
-		opacity: 1;
-		animation: cloud 4s infinite;
-		transition: opacity 5s ease;
+		transition: background-color 5s ease-in-out;
 	}
 	
 	.cloud-fade {
 		opacity: 0;
 	}
 	
-	.cloud:after {
-		content: "";
+	.cloud-1 {
 		position: absolute;
-		background: #fff;
-		z-index: 500;
-		border-radius: 50%;
-		height: 30rpx;
-		left: 27rpx;
-		top: -18rpx;
-		width: 30rpx;
+		left: 100rpx;
+		top: 160rpx;
+		
+		animation: cloud1 8s infinite;
+		animation-delay: 0.5s;
+		transition: opacity 8s ease;
 	}
 	
-	.cloud:before {
-		content: "";
+	.cloud-2 {
 		position: absolute;
-		background: #fff;
-		z-index: 500;
-		border-radius: 50%;
-		height: 20rpx;
-		left: 12rpx;
-		top: -11rpx;
-		width: 20rpx;
+		left: 40rpx;
+		top: 140rpx;
+		animation: cloud2 5s infinite;
+		transition: opacity 8s ease;
 	}
 	
-	@keyframes cloud {
+	@keyframes cloud1 {
 		0% {
-			transform: translate(0px, 0px);
+			transform: translate(0px, 0px) scale(0.8);
 		}
 	
 		25% {
-			transform: translate(1px, 1px);
+			transform: translate(1px, 1px) scale(0.8);
 		}
 	
 		50% {
-			transform: translate(0px, 0px);
+			transform: translate(0px, 0px) scale(0.8);
 		}
 	
 		75% {
-			transform: translate(-1px, -1px);
+			transform: translate(-1px, -1px) scale(0.8);
 		}
 	
 		100% {
-			transform: translate(0px, 0px);
+			transform: translate(0px, 0px) scale(0.8);
 		}
 	}
 	
-	.cloud-1 {
-		left: 70rpx;
-		top: 150rpx;
+	@keyframes cloud2 {
+		0% {
+			transform: translate(0px, 0px) scale(0.6);
+		}
+	
+		25% {
+			transform: translate(1px, 1px) scale(0.6);
+		}
+	
+		50% {
+			transform: translate(0px, 0px) scale(0.6);
+		}
+	
+		75% {
+			transform: translate(-1px, -1px) scale(0.6);
+		}
+	
+		100% {
+			transform: translate(0px, 0px) scale(0.6);
+		}
 	}
 	
 	.app-name {
@@ -856,6 +883,8 @@
 		background-position: left top;
 		background-size: 100% 100%;
 		height: 620rpx;
+		transition: filter 5s ease;
+		transition-delay: 2s;
 	}
 	
 	.dds-daydesc {
@@ -912,9 +941,30 @@
 		color: #181818;
 	}
 	
-	.dds-animalsyear {
-		margin-right: 20rpx;
+	.dds-animal-switcher {
+		margin-right: 0rpx;
 		margin-left: auto;
+		width: 140rpx;
+		height: 40rpx;
+		border-radius: 30rpx;
+		position: relative;
+		
+		background-color: transparent;
+		border-radius: .75em;
+		box-shadow: -0.1em -0.1em .1em #ffffff inset,0.1em .1em .1em #808080 inset;
+	}
+	
+	.dds-animalsyear {
+		position: absolute;
+		left: 0;
+		top: -50%;
+		transform-origin: center center;
+		transition: all 1s ease;
+	}
+	
+	.switcher-fade {
+		transform: rotateZ(360deg);
+		left: 60rpx;
 	}
 	
 	.dds-suit {
