@@ -484,7 +484,7 @@
 	
 	.title-area {
 		padding-top: calc(var(--status-bar-height) + 60rpx);
-		padding-left: 20rpx;
+		// padding-left: 20rpx;
 		width: 100%;
 		padding-bottom: 20rpx;
 		display: flex;
@@ -494,6 +494,7 @@
 		position: relative;
 		transition: background 5s ease;
 		transition-delay: 2s;
+		// overflow-x:hidden;
 	}
 	
 	.stars {
@@ -728,6 +729,7 @@
 	}
 	
 	.year-month {
+		margin-left: 20rpx;
 		margin-top: 40rpx;
 		color: #ffffff;
 		font-weight: bold;
@@ -776,11 +778,12 @@
 	}
 	
 	.flying-bird {
-		width: 100%;
+		// width: 100%;
 		height: 200rpx;
 		position: absolute;
 		bottom: -50rpx;
 		left: 220rpx;
+		width: 530rpx;
 		transform: rotateY(180deg);
 		opacity: 1;
 		transition: opacity 5s ease;
