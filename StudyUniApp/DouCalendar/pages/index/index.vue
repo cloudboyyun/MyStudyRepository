@@ -974,8 +974,9 @@
 	}
 	
 	.switcher-fade {
-		transform: rotateZ(360deg);
-		left: 60rpx;
+		// transform:  translateX(60rpx);
+		transform: translateX(60rpx) rotateZ(360deg);
+		// left: 60rpx;
 	}
 	
 	.dds-suit {
