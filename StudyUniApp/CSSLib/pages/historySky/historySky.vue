@@ -14,8 +14,8 @@
 				datas: [
 					{year: -221,event: '秦始皇统一六国'},
 					{year: 305,event: '张三做了某事'},
-					{year: 2021, event: '土豆云开始编这个app'},
-					{year: -221,event: '秦始皇统一六国'},
+					// {year: 2021, event: '土豆云开始编这个app'},
+					// {year: -221,event: '秦始皇统一六国'},
 					{year: 305,event: '张三做了某事'},
 					{year: 2021, event: '土豆云开始编这个app'},
 					{year: -221,event: '秦始皇统一六国'},

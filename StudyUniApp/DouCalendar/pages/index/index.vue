@@ -650,7 +650,7 @@
 	  height: 30rpx;
 	  border-radius: 50%;
 		opacity: 1;
-		box-shadow: 0rpx 0rpx 50rpx #FFFF00;
+		box-shadow: 0rpx 0rpx 35rpx 8rpx #F0F0F0;
 		transition: background-color 5s ease-in-out;
 	}
 	

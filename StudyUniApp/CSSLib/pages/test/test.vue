@@ -1,8 +1,8 @@
 <template>
 	<view class="main">
-		<view class='box'>
-			<image src='/static/images/niu.png' class='dds-animal-image'></image>
-		</view>
+		<view class='sun'></view>
+		<!-- <xy-event-ball :data="data"
+			class='xy-event-ball'></xy-event-ball> -->
 	</view>
 </template>
 
@@ -10,7 +10,7 @@
 	export default {
 		data() {
 			return {
-				
+				data: {year: -221,event: '秦始皇统一六国'},
 			}
 		},
 		methods: {
@@ -38,41 +38,17 @@
 		align-items: center;
 		justify-content: space-around;
 		padding-top: 50rpx;
+		background-color: black;
 	}
 	
-	.dds-animal-image {
-		width: 80rpx;
-		height: 80rpx;
-		animation: switcher2 2s infinite ease-in-out;
-	}
-	
-	.box {
-		width: 120rpx;
-		height: 120rpx;
-		border-radius: 50%;
+	.sun {
 		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-top: 5rpx solid red;
-		animation: switcher 2s infinite ease-in-out;
-	}
-	
-	@keyframes switcher {
-		50% {
-			transform: rotate(-40deg);
-		}
-		100% {
-			transform: rotate(40deg);
-		}
-	}
-	
-	@keyframes switcher2 {
-		50% {
-			transform: rotate(40deg);
-		}
-		100% {
-			transform: rotate(-40deg);
-		}
+		top: 0;
+		left: 0;
+	  width: 30rpx;
+	  height: 30rpx;
+	  border-radius: 50%;
+		box-shadow: 0rpx 0rpx 35rpx 10rpx #FFFF00;
+		background-color: gold;
 	}
 </style>
