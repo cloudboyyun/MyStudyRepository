@@ -456,8 +456,16 @@
 			},
 			
 			onSwitcherClick() {
+				if(this.switcherDisabled) {
+					return;
+				}
+				this.switcherDisabled = true;
 				this.isNight = !this.isNight;
 				this.sunDeg += 360;
+				let that = this;
+				setTimeout(()=> {
+					that.switcherDisabled = false;
+				}, 5000);
 			}
 		}
 	}
@@ -480,6 +488,7 @@
 		background-repeat: no-repeat;
 		background-position: left top;
 		background-size: 100% 100%;
+		// overflow-x:hidden;
 	}
 	
 	.title-area {
@@ -494,7 +503,6 @@
 		position: relative;
 		transition: background 5s ease;
 		transition-delay: 2s;
-		// overflow-x:hidden;
 	}
 	
 	.stars {
