@@ -109,6 +109,7 @@
 </template>
 
 <script>
+	const innerAudioContext = uni.createInnerAudioContext();
 	const ANIMALS = new Map([
 		['狗', '/static/images/gou.png'],
 		['猴', '/static/images/hou.png'],
@@ -225,6 +226,9 @@
 		},
 		onLoad() {
 			this._onLoad();
+			innerAudioContext.autoplay = false;
+			innerAudioContext.loop = false;
+			innerAudioContext.src = '/static/sounds/2.mp3';
 		},
 		methods: {
 			onShareAppMessage: function(e) {
@@ -459,6 +463,7 @@
 				if(this.switcherDisabled) {
 					return;
 				}
+				innerAudioContext.play();
 				this.switcherDisabled = true;
 				this.isNight = !this.isNight;
 				this.sunDeg += 360;
