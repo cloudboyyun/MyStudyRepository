@@ -100,6 +100,10 @@
 						'url': '/pages/boat/boat',
 						'thumbnail': '/static/thumbnail/21.png'
 					},
+					{'title': '22. css3汽车道路穿梭动画',
+						'url': '/pages/car/car',
+						'thumbnail': '/static/thumbnail/22.png'
+					},
 				]
 			}
 		},
