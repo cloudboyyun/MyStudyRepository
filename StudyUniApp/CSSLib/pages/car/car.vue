@@ -169,7 +169,7 @@
 	.grid {
 		background: #010101;
 		height: 960rpx;
-		transform: scale(1.4) rotateX(90deg);
+		// transform: scale(1.4) rotateX(90deg);
 		position: absolute;
 		width: 600%;
 		margin-left: -250%;
@@ -188,7 +188,6 @@
 				rgba(0, 0, 0, 0) 0px);
 		background-size: 60rpx 60rpx;
 		background-color: rgba(2, 40, 45, 0.5);
-		background-position: 0% 100%;
 		content: "";
 		width: 10%;
 		height: 100%;

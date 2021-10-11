@@ -104,6 +104,14 @@
 						'url': '/pages/car/car',
 						'thumbnail': '/static/thumbnail/22.png'
 					},
+					{'title': '23. 基础',
+						'url': '/pages/basicConcept/basicConcept',
+						'thumbnail': '/static/thumbnail/23.png'
+					},
+					{'title': '24. grid',
+						'url': '/pages/grid/grid',
+						'thumbnail': '/static/thumbnail/24.png'
+					},
 				]
 			}
 		},

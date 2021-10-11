@@ -64,7 +64,7 @@
 		      在最后一帧的起点，等到这一帧的持续时间结束，整个动画的执行也已经结束，执行动画的元
 		      素来不及跳到这一帧的终点，直接回到了整个动画起点，开始了第二次动画。;
 		*/
-		animation: 10s test steps(5, start) infinite;
+		animation: 5s test steps(5, start) infinite;
 	}
 	
 	@keyframes test {
