@@ -1,6 +1,5 @@
 <template>
-	<view class='main' :style="{backgroundImage: backgroundImage}"
-		:class="{daylight: !isNight, night: isNight}">
+	<view class='main' :style="{backgroundImage: backgroundImage}" :class="{daylight: !isNight, night: isNight}">
 		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云日历..." loadingText="...Loading..."
 			color="#FF9000" marginTop="50vh"></xy-loading>
 		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云日历..." loadingText="...Loading..." color="#FF9000"
@@ -458,9 +457,9 @@
 				let newDate = new Date(selectedDate.getTime() - 1000 * 60 * 60 * 24);
 				this.loadPage(newDate);
 			},
-			
+
 			onSwitcherClick() {
-				if(this.switcherDisabled) {
+				if (this.switcherDisabled) {
 					return;
 				}
 				innerAudioContext.play();
@@ -468,7 +467,7 @@
 				this.isNight = !this.isNight;
 				this.sunDeg += 360;
 				let that = this;
-				setTimeout(()=> {
+				setTimeout(() => {
 					that.switcherDisabled = false;
 				}, 5000);
 			}
@@ -478,10 +477,10 @@
 
 <style lang="scss">
 	@font-face {
-	    font-family: 'sunzhongshan';
-	    src:url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/fa3b69e8-ffc9-46d3-9111-7cf472412576.ttf');
+		font-family: 'sunzhongshan';
+		src: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/fa3b69e8-ffc9-46d3-9111-7cf472412576.ttf');
 	}
-	
+
 	page {
 		width: 100%;
 		height: 100%;
@@ -495,7 +494,7 @@
 		background-size: 100% 100%;
 		// overflow-x:hidden;
 	}
-	
+
 	.title-area {
 		padding-top: calc(var(--status-bar-height) + 60rpx);
 		// padding-left: 20rpx;
@@ -509,7 +508,7 @@
 		transition: background 5s ease;
 		transition-delay: 2s;
 	}
-	
+
 	.stars {
 		opacity: 0;
 		transition: opacity 2s ease;
@@ -517,7 +516,7 @@
 		left: 0;
 		top: 0;
 	}
-	
+
 	.shooting-star {
 		position: absolute;
 		background: linear-gradient(to right,
@@ -530,37 +529,39 @@
 		transform-origin: left;
 		transform: rotate(-40deg);
 	}
-	
+
 	.shooting {
 		animation: shooting-star 10s infinite ease-in-out;
 		animation-delay: 5s;
 	}
-	
+
 	@keyframes shooting-star {
 		20% {
 			transform: rotate(-40deg)translateX(-450rpx);
 		}
+
 		100% {
 			transform: rotate(-40deg)translateX(-450rpx);
 		}
 	}
-	
+
 	.star {
 		border-radius: 50%;
 		background-color: #fff;
 		position: relative;
 		animation: star 3s infinite ease;
 	}
-	
+
 	@keyframes star {
 		50% {
 			transform: scale(0.8);
 		}
+
 		100% {
 			transform: scale(1.2);
 		}
 	}
-	
+
 	.star-1 {
 		width: 5rpx;
 		height: 5rpx;
@@ -568,7 +569,7 @@
 		top: 150rpx;
 		animation-delay: 5s;
 	}
-	
+
 	.star-2 {
 		width: 5rpx;
 		height: 5rpx;
@@ -576,7 +577,7 @@
 		top: 100rpx;
 		animation-delay: 3s;
 	}
-	
+
 	.star-3 {
 		width: 4rpx;
 		height: 4rpx;
@@ -584,7 +585,7 @@
 		top: 120rpx;
 		animation-delay: 7s;
 	}
-	
+
 	.star-4 {
 		width: 5rpx;
 		height: 5rpx;
@@ -592,7 +593,7 @@
 		top: 160rpx;
 		animation-delay: 10s;
 	}
-	
+
 	.star-5 {
 		width: 5rpx;
 		height: 5rpx;
@@ -600,7 +601,7 @@
 		top: 200rpx;
 		animation-delay: 5s;
 	}
-	
+
 	.star-6 {
 		width: 5rpx;
 		height: 5rpx;
@@ -608,7 +609,7 @@
 		top: 150rpx;
 		animation-delay: 7s;
 	}
-	
+
 	.star-7 {
 		width: 3rpx;
 		height: 3rpx;
@@ -616,7 +617,7 @@
 		top: 170rpx;
 		animation-delay: 6s;
 	}
-	
+
 	.star-8 {
 		width: 4rpx;
 		height: 4rpx;
@@ -624,7 +625,7 @@
 		top: 210rpx;
 		animation-delay: 9s;
 	}
-	
+
 	.star-9 {
 		width: 3rpx;
 		height: 3rpx;
@@ -632,7 +633,7 @@
 		top: 150rpx;
 		animation-delay: 4s;
 	}
-	
+
 	.star-10 {
 		width: 4rpx;
 		height: 4rpx;
@@ -640,12 +641,12 @@
 		top: 150rpx;
 		animation-delay: 3s;
 	}
-	
+
 	.stars-fade {
 		opacity: 1;
 		transition-delay: 4s;
 	}
-	
+
 	.sun-container {
 		position: absolute;
 		left: 200rpx;
@@ -655,33 +656,33 @@
 		transform-origin: center center;
 		transition: all 5s ease-in-out;
 	}
-	
+
 	.sun {
 		position: relative;
 		top: 0;
 		left: 0;
-	  width: 30rpx;
-	  height: 30rpx;
-	  border-radius: 50%;
+		width: 30rpx;
+		height: 30rpx;
+		border-radius: 50%;
 		opacity: 1;
 		box-shadow: 0rpx 0rpx 35rpx 8rpx #F0F0F0;
 		transition: background-color 5s ease-in-out;
 	}
-	
+
 	.cloud-fade {
 		opacity: 0;
 	}
-	
+
 	.cloud-1 {
 		position: absolute;
 		left: 100rpx;
 		top: 160rpx;
-		
+
 		animation: cloud1 8s infinite;
 		animation-delay: 0.5s;
 		transition: opacity 8s ease;
 	}
-	
+
 	.cloud-2 {
 		position: absolute;
 		left: 40rpx;
@@ -689,58 +690,58 @@
 		animation: cloud2 5s infinite;
 		transition: opacity 8s ease;
 	}
-	
+
 	@keyframes cloud1 {
 		0% {
 			transform: translate(0px, 0px) scale(0.8);
 		}
-	
+
 		25% {
 			transform: translate(1px, 1px) scale(0.8);
 		}
-	
+
 		50% {
 			transform: translate(0px, 0px) scale(0.8);
 		}
-	
+
 		75% {
 			transform: translate(-1px, -1px) scale(0.8);
 		}
-	
+
 		100% {
 			transform: translate(0px, 0px) scale(0.8);
 		}
 	}
-	
+
 	@keyframes cloud2 {
 		0% {
 			transform: translate(0px, 0px) scale(0.6);
 		}
-	
+
 		25% {
 			transform: translate(1px, 1px) scale(0.6);
 		}
-	
+
 		50% {
 			transform: translate(0px, 0px) scale(0.6);
 		}
-	
+
 		75% {
 			transform: translate(-1px, -1px) scale(0.6);
 		}
-	
+
 		100% {
 			transform: translate(0px, 0px) scale(0.6);
 		}
 	}
-	
+
 	.app-name {
 		font: 38rpx sunzhongshan;
 		align-self: center;
 		color: #ffffff;
 		font-weight: bolder;
 	}
-	
+
 	.year-month {
 		margin-left: 20rpx;
 		margin-top: 40rpx;
@@ -752,7 +753,7 @@
 		flex-direction: row;
 		line-height: 50rpx;
 	}
-	
+
 	.today-icon {
 		position: absolute;
 		width: 50rpx;
@@ -761,16 +762,16 @@
 		top: 0rpx;
 		z-index: 10;
 	}
-	
+
 	.today-icon-image {
 		width: 100%;
 		height: 100%;
 	}
-	
+
 	.swiper {
 		height: 700rpx;
 	}
-	
+
 	.calendar {
 		height: 700rpx;
 		background-image: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/1cb2ad77-ac70-4974-9e9b-786bc7fe1f1c.png");
@@ -783,13 +784,13 @@
 		transition: background 5s ease;
 		transition-delay: 2s;
 	}
-	
+
 	@keyframes kf-cloud {
 		50% {
 			background-position: 100% 0
 		}
 	}
-	
+
 	.flying-bird {
 		// width: 100%;
 		height: 200rpx;
@@ -801,7 +802,7 @@
 		opacity: 1;
 		transition: opacity 5s ease;
 	}
-	
+
 	.row {
 		width: 100%;
 		display: flex;
@@ -810,48 +811,48 @@
 		flex-wrap: wrap;
 		text-align: center;
 	}
-	
+
 	.day-of-week {
 		font-size: 21rpx;
 	}
-	
+
 	.solar-day {
 		font-size: 35rpx;
 		font-weight: bold;
 		transition: color 5s ease;
 		transition-delay: 2s;
 	}
-	
+
 	.lunar-day {
 		font-size: 20rpx;
 		transition: color 5s ease;
 		transition-delay: 2s;
 	}
-	
+
 	.day {
 		width: 13%;
 		padding-bottom: 10rpx;
 		margin-bottom: 10rpx;
 	}
-	
+
 	.selected {
 		border: 3rpx solid #729e82;
 		border-radius: 20rpx;
 	}
-	
+
 	.today {
 		border: 5rpx solid #bf5445;
 		border-radius: 20rpx;
 	}
-	
+
 	.mask {
 		opacity: 0.3;
 	}
-	
+
 	.workingDay {
 		position: relative;
 	}
-	
+
 	.workingDay:after {
 		content: '班';
 		font-size: 16rpx;
@@ -866,11 +867,11 @@
 		background-color: #07C160;
 		color: #ffffff;
 	}
-	
+
 	.restingDay {
 		position: relative;
 	}
-	
+
 	.restingDay:after {
 		content: '休';
 		font-size: 16rpx;
@@ -885,7 +886,7 @@
 		background-color: #c1252d;
 		color: #ffffff;
 	}
-	
+
 	.day-detail-section {
 		border-radius: 20rpx;
 		margin-top: 20rpx;
@@ -902,7 +903,7 @@
 		transition: filter 5s ease;
 		transition-delay: 2s;
 	}
-	
+
 	.dds-daydesc {
 		margin-left: 30rpx;
 		display: flex;
@@ -910,19 +911,19 @@
 		align-items: flex-start;
 		justify-content: flex-start;
 	}
-	
+
 	.dds-main {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		position: relative;
 	}
-	
+
 	.dds-day {
 		font-size: 55rpx;
 		color: #d8272a;
 	}
-	
+
 	.dds-weekday {
 		display: flex;
 		flex-direction: row;
@@ -931,7 +932,7 @@
 		color: #181818;
 		line-height: 25rpx;
 	}
-	
+
 	.dds-lunar {
 		margin-top: 2rpx;
 		display: flex;
@@ -939,24 +940,24 @@
 		align-items: center;
 		text-align: center;
 	}
-	
+
 	.dds-lunar-png {
 		width: 20rpx;
 		height: 20rpx;
 	}
-	
+
 	.dds-lunar-value {
 		margin-left: 10rpx;
 		font-size: 32rpx;
 		color: #181818;
 		font-weight: bold;
 	}
-	
+
 	.dds-ganzhi {
 		font-size: 25rpx;
 		color: #181818;
 	}
-	
+
 	.dds-animal-switcher {
 		margin-right: 0rpx;
 		margin-left: auto;
@@ -964,12 +965,12 @@
 		height: 40rpx;
 		border-radius: 30rpx;
 		position: relative;
-		
+
 		background-color: transparent;
 		border-radius: .75em;
-		box-shadow: -0.1em -0.1em .1em #ffffff inset,0.1em .1em .1em #808080 inset;
+		box-shadow: -0.1em -0.1em .1em #ffffff inset, 0.1em .1em .1em #808080 inset;
 	}
-	
+
 	.dds-animalsyear {
 		position: absolute;
 		left: 0;
@@ -977,13 +978,13 @@
 		transform-origin: center center;
 		transition: all 1s ease;
 	}
-	
+
 	.switcher-fade {
 		// transform:  translateX(60rpx);
 		transform: translateX(60rpx) rotateZ(360deg);
 		// left: 60rpx;
 	}
-	
+
 	.dds-suit {
 		margin-top: 20rpx;
 		display: flex;
@@ -993,39 +994,39 @@
 		align-content: flex-start;
 		align-items: flex-start;
 	}
-	
+
 	.dds-avoid {
 		margin-top: 20rpx;
 		display: flex;
 		flex-direction: row;
 	}
-	
+
 	.dds-suit-word {
 		color: #80afcc;
 		font-size: 40rpx;
 		margin-right: 20rpx;
 	}
-	
+
 	.dds-avoid-word {
 		color: #db8399;
 		font-size: 40rpx;
 		margin-right: 20rpx;
 	}
-	
+
 	.dds-suit-content {
 		margin-top: 10rpx;
 		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}
-	
+
 	.dds-avoid-content {
 		margin-top: 10rpx;
 		margin-right: 20rpx;
 		line-height: 50rpx;
 		font-size: 25rpx;
 	}
-	
+
 	.h-holidays {
 		display: flex;
 		flex-direction: row;
@@ -1036,7 +1037,7 @@
 		padding-bottom: 10rpx;
 		margin-right: 10rpx;
 	}
-	
+
 	.h-holiday {
 		margin-left: 10rpx;
 		display: flex;
@@ -1046,13 +1047,13 @@
 		height: 40rpx;
 		align-items: center;
 	}
-	
+
 	.h-holiday-icon {
 		margin-left: 10rpx;
 		width: 25rpx;
 		height: 25rpx;
 	}
-	
+
 	.h-holiday-txt {
 		margin-left: 10rpx;
 		margin-right: 10rpx;
@@ -1060,70 +1061,68 @@
 		line-height: 25rpx;
 		color: #FFFFFF;
 	}
-	
+
 	.daylight {
 		.title-area {
 			// background: linear-gradient(45deg,blue 0%, white 100%);
 			background-color: blue;
 		}
-		
+
 		.calendar {
 			background-color: #d7f3f9;
 		}
-		
+
 		.weekday {
 			color: #111111;
 		}
-		
+
 		.weekend {
 			color: #c1252d;
 		}
-		
+
 		.lunar-day-common {
 			color: #424040;
 		}
-		
+
 		.lunar-day-holiday {
 			color: #b74854;
 		}
-		
+
 		.sun {
-		  // background: radial-gradient(circle at center, red, gold);
+			// background: radial-gradient(circle at center, red, gold);
 			background-color: gold;
 		}
 	}
-	
+
 	.night {
 		.title-area {
 			// background: linear-gradient(45deg, #000 0%, white 100%);
 			background-color: #000;
 		}
-		
+
 		.calendar {
 			background-color: #aaa;
 		}
-		
+
 		.weekday {
 			color: #fff;
 		}
-		
+
 		.weekend {
 			color: #c1252d;
 		}
-		
+
 		.lunar-day-common {
 			color: #f2f0f0;
 		}
-		
+
 		.lunar-day-holiday {
 			color: #b74854;
 		}
-		
+
 		.sun {
-		  // background: linear-gradient(#fefefe, #fffbe8);
+			// background: linear-gradient(#fefefe, #fffbe8);
 			background-color: #fefefe;
 		}
 	}
-
-	
 </style>
