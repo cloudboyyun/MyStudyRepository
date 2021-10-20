@@ -1,0 +1,5 @@
+db.collection('uni-id-users').where({
+	'role': 'card-miniprogram-user'
+}).get();
+
+// db.collection('uni-id-roles').get();
