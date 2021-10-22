@@ -118,7 +118,8 @@ export default async function() {
 		async invoke(option) {
 			// #ifdef APP-PLUS
 			// 判断如果是执行登陆（无论是哪种登陆方式），就记录用户的相关设备id
-			if (option.name == 'uni-id-cf' && (option.data.action == 'register' || option.data.action.slice(0, 5) == 'login')) {
+			if (option.name == 'uni-id-cf' && (option.data.action == 'register' || option.data.action
+					.slice(0, 5) == 'login')) {
 				let oaid = await new Promise((callBack, fail) => {
 					if (uni.getSystemInfoSync().platform == "android") {
 						plus.device.getOAID({
@@ -313,10 +314,10 @@ export default async function() {
 					//获取要前往的页面路径（即url去掉"?"和"?"后的参数）
 					pages = getCurrentPages(),
 					fromUrl = pages[pages.length - 1].route;
-				
-				
+
+
 				let inLoginPage = fromUrl.split('/')[2] == 'login-page'
-					
+
 				//控制登录优先级
 				if ( //判断当前窗口是否为登陆页面，如果是则不重定向路由
 					url == '/pages/ucenter/login-page/index/index' &&
@@ -338,16 +339,16 @@ export default async function() {
 					//pattern
 					if (needLogin) {
 						pass = needLogin.every((item) => {
-							if(typeof(item) == 'object' && item.pattern){
+							if (typeof(item) == 'object' && item.pattern) {
 								return !item.pattern.test(url)
 							}
 							return url != item
 						})
 						// console.log(pass)
 					}
-					if (visitor&&!inLoginPage) {
+					if (visitor && !inLoginPage) {
 						pass = visitor.some((item) => {
-							if(typeof(item) == 'object' && item.pattern){
+							if (typeof(item) == 'object' && item.pattern) {
 								return item.pattern.test(url)
 							}
 							return url == item

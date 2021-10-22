@@ -1,0 +1,20 @@
+
+.item {
+	width: 750rpx;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.avatarUrl {
+	width: 50px;
+	height: 50px;
+	border-radius: 6px;
+}
+.chooseAvatar {
+	border: solid 1px #ddd;
+	border-radius: 10px;
+	width: 130rpx;
+	height: 130rpx;
+	line-height: 130rpx;
+}
+

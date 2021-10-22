@@ -1,9 +1,6 @@
 <template>
 	<view class="container">
-		
-		<view class="intro">本项目已包含uni ui组件，无需import和注册，可直接使用。在代码区键入字母u，即可通过代码助手列出所有可用组件。光标置于组件名称处按F1，即可查看组件文档。</view>
-		<text class="intro">详见：</text>
-		<uni-link :href="href" :text="href"></uni-link>
+		<view @click="onClick">点我</view>
 	</view>
 </template>
 
@@ -18,6 +15,18 @@
 			this._onLoad();
 		},
 		methods: {
+			onClick() {
+				uni.getUserProfile({
+					desc: "用于快速生成名片",
+					lang: 'zh_CN',
+					success: function(userProfile) {
+						console.log('userProfile', userProfile);
+					},
+					fail: function(err) {
+						console.log("error", err);
+					}
+				});
+			},
 			async _onLoad() {
 				this.loginByWeixin();
 			},

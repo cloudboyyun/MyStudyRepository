@@ -1,0 +1,18 @@
+
+.short-code-btn.data-v-6e7445d8 {
+	width: 200rpx;
+	height: 85rpx;
+
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+}
+.inner-text.data-v-6e7445d8 {
+	font-size: 28rpx;
+	color: #AAAAAA;
+}
+.inner-text-active.data-v-6e7445d8 {
+	color: #007aff;
+}
+

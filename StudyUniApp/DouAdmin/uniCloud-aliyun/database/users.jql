@@ -2,4 +2,13 @@ db.collection('uni-id-users').where({
 	'role': 'card-miniprogram-user'
 }).get();
 
-// db.collection('uni-id-roles').get();
+db.collection('uni-id-users').where({
+	'_id': '616fc2173040bf0001d67c59'
+}).get();
+
+// db.collection('uni-id-log')
+// .where('user_id=="616f7f81be6f9700012ab265"')
+// .field(
+// 	'_id,	create_date, dateToString(timestampToDate(create_date), "%Y-%m-%d %H:%M:%S", "Asia/Shanghai") as createDate')
+// .get();
+

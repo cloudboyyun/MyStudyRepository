@@ -1,0 +1,5 @@
+{
+	"noCheckActions": ["register", "checkToken", "encryptPwd", "login", "loginByWeixin", "sendSmsCode",
+		"setVerifyCode", "loginBySms", "loginByEmail", "code2SessionWeixin", "code2SessionAlipay", "test"
+	]
+}

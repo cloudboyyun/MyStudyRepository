@@ -1,0 +1,45 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "",
+  "appid": "wx91b4cd35e5b876da",
+  "projectname": "DouShare",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "pathName": "pages/list/list"
+        },
+        {
+          "id": 1,
+          "pathName": "pages/ucenter/login-page/index/index"
+        },
+        {
+          "id": 2,
+          "pathName": "pages/ucenter/userinfo/userinfo"
+        },
+        {
+          "id": 3,
+          "pathName": "pages/ucenter/settings/settings"
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,21 @@
 'use strict';
 
-const uniID = require('uni-id')
+const uniID = require('uni-id');
+const createConfig = require('uni-config-center');
+const userUtilsConfig = createConfig({
+	pluginId: 'uni-id-func', // 插件id，同uni-config-center下的目录名
+	defaultConfig: { // 默认配置
+		"noCheckActions": ["register", "checkToken", "encryptPwd", "login", "loginByWeixin", "sendSmsCode",
+			"setVerifyCode", "loginBySms", "loginByEmail", "code2SessionWeixin", "code2SessionAlipay"
+		]
+	},
+	customMerge: function(defaultConfig, userConfig) { // 自定义默认配置和用户配置的合并规则，不设置的情况侠会对默认配置和用户配置进行深度合并
+		// defaudltConfig 默认配置
+		// userConfig 用户配置
+		return Object.assign(defaultConfig, userConfig)
+	}
+})
+
 exports.main = async (event, context) => {
 	console.log("uni-id-func executed.")
 	let uniIDIns = uniID.createInstance({ // 创建uni-id实例，其上方法同uniID
@@ -13,6 +28,8 @@ exports.main = async (event, context) => {
 	 */
 	let params = event.params || {}
 	let payload = {}
+	let noCheckActions = userUtilsConfig.config('noCheckActions');
+	console.log("noCheckActions", noCheckActions);
 	let noCheckAction = ['register', 'checkToken', 'encryptPwd', 'login', 'loginByWeixin', 'sendSmsCode',
 		'setVerifyCode', 'loginBySms', 'loginByEmail', 'code2SessionWeixin', 'code2SessionAlipay'
 	]

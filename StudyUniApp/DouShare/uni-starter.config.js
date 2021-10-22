@@ -15,7 +15,7 @@ module.exports = {
 	"mp": {
 		"weixin": {
 			//微信小程序原始id，微信小程序分享时
-			"id": "gh_33446d7f7a26"
+			"id": "wx91b4cd35e5b876da"
 		}
 	},
 	"router": {
@@ -50,7 +50,7 @@ module.exports = {
 	//关于应用
 	"about": {
 		//应用名称
-		"appName": "土豆云名片",
+		"appName": "豆云名片",
 		//应用logo
 		"logo": "/static/logo.png",
 		//公司名称
