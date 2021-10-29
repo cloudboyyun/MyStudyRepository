@@ -1,0 +1,8 @@
+{
+  "version": "1.0.31",
+  "files": [
+    "cloudfunctions-aliyun/common/explain/**",
+    "cloudfunctions-aliyun/common/explain-qrcode/**",
+    "cloudfunctions-aliyun/explain-qrcode/**"
+  ]
+}
