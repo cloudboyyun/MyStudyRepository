@@ -20,6 +20,13 @@
       "unicode_decimal": 58953
     },
     {
+      "icon_id": "673794",
+      "name": "链接",
+      "font_class": "lianjie",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
       "icon_id": "1062293",
       "name": "赞",
       "font_class": "zan",
@@ -53,6 +60,13 @@
       "font_class": "dayan",
       "unicode": "e815",
       "unicode_decimal": 59413
+    },
+    {
+      "icon_id": "15550459",
+      "name": "copy-template",
+      "font_class": "copy-template",
+      "unicode": "e616",
+      "unicode_decimal": 58902
     }
   ]
 }

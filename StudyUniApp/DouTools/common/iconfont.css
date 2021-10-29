@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('@/common/iconfont.ttf?t=1635208079038') format('truetype');
+  src: url('@/common/iconfont.ttf?t=1635521530329') format('truetype');
 }
 
 .iconfont {
@@ -17,6 +17,10 @@
 
 .icon-saoyisao:before {
   content: "\e649";
+}
+
+.icon-lianjie:before {
+  content: "\e6c8";
 }
 
 .icon-zan:before {
@@ -37,5 +41,9 @@
 
 .icon-dayan:before {
   content: "\e815";
+}
+
+.icon-copy-template:before {
+  content: "\e616";
 }
 

@@ -57,11 +57,17 @@
 			
 			onScanClick() {
 				console.log("onScanClick")
-				uni.scanCode({
-					success: function(res) {
-						console.log(res);
-					}
+				uni.navigateTo({
+					url: "../scanResult/scanResult"
 				})
+				// uni.scanCode({
+				// 	success: function(res) {
+				// 		console.log(res.result);
+				// 		uni.navigateTo({
+				// 			url: "../scanResult/scanResult?content=" + res.result
+				// 		})
+				// 	}
+				// })
 			}
 
 		},
@@ -82,15 +88,16 @@
 	.main {
 		width: 100%;
 		height: 100%;
+		background-image: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/2d281b43-80b9-4159-8ae3-b21ca0162b5a.jpeg');
+		// background-image: url('/static/images/bg16.jpeg');
 		background-repeat: no-repeat;
 		background-position: left top;
 		background-size: 100% 100%;
-		// overflow-x:hidden;
 	}
 
 	.title-area {
 		padding-top: calc(var(--status-bar-height) + 60rpx);
-		background-color: blue;
+		background-color: #007aff;
 		width: 100%;
 		padding-bottom: 20rpx;
 		display: flex;
@@ -153,6 +160,7 @@
 		.item-name {
 			margin-top: 10rpx;
 			font-size: 28rpx;
+			color: white;
 		}
 	}
 </style>
