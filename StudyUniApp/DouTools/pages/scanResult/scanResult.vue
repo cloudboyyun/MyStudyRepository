@@ -20,8 +20,7 @@
 	export default {
 		data() {
 			return {
-				content: "http://localhost:8080/#/pages/scanResult/scanResult"
-				// content: "你好妞妞"
+				content: "豆云工具箱"
 			}
 		},
 		computed: {

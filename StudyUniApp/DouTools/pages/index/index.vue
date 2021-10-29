@@ -57,17 +57,17 @@
 			
 			onScanClick() {
 				console.log("onScanClick")
-				uni.navigateTo({
-					url: "../scanResult/scanResult"
-				})
-				// uni.scanCode({
-				// 	success: function(res) {
-				// 		console.log(res.result);
-				// 		uni.navigateTo({
-				// 			url: "../scanResult/scanResult?content=" + res.result
-				// 		})
-				// 	}
+				// uni.navigateTo({
+				// 	url: "../scanResult/scanResult"
 				// })
+				uni.scanCode({
+					success: function(res) {
+						console.log(res.result);
+						uni.navigateTo({
+							url: "../scanResult/scanResult?content=" + res.result
+						})
+					}
+				})
 			}
 
 		},
