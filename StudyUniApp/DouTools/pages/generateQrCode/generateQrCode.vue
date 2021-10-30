@@ -6,9 +6,9 @@
 				<xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#fa5c65"
 					fontColor="#ffffff" iconFont="iconfont icon-baocun" 
 					:disabled="!barCode" @click="onSaveClick">保存</xy-button>
-				<xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#fa9a28"
+				<!-- <xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#268aff"
 					fontColor="#ffffff" iconFont="iconfont icon-zhuanfa" 
-					:disabled="!barCode" @click="onForwardClick">转发</xy-button>
+					:disabled="!barCode" @click="onForwardClick">转发</xy-button> -->
 			</view>
 		</view>
 		
@@ -16,7 +16,8 @@
 			confirm-type="done" :value="content"
 			@input="bindTextAreaInput"></textarea>
 		<view class='action-area'>
-			<xy-button width="150rpx" height="60rpx" backgroundColor="#268aff"
+			<xy-button width="150rpx" height="60rpx" 
+				backgroundColor="#fa9a28"
 				fontColor="#ffffff" iconFont="iconfont icon-iconfontyijiantuiguang" 
 				 @click="onGenClick">生成</xy-button>
 		</view>
@@ -32,6 +33,13 @@
 			}
 		},
 		methods: {
+			onShareAppMessage: function(e) {
+				let title = '豆云日历'
+				return {
+					title: '豆云日历',
+					path: 'pages/index/index'
+				}
+			},
 			onGenClick() {
 				let url = "https://aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983.bspapp.com/xyQrCode?content="
 					+ this.content + "&action=httpUrl";
@@ -73,6 +81,19 @@
 			
 			onForwardClick(e) {
 				console.log("onForwardClick");
+				let that = this;
+				uni.share({
+					provider: "weixin",
+					scene: "WXSceneSession",
+					type: 2,
+					imageUrl: that.barCode,
+					success: (res) => {
+						console.log("success", res);
+					},
+					fail: (error) => {
+						console.log("fail", error);
+					}
+				})
 			}
 		}
 	}

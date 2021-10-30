@@ -8,10 +8,10 @@
 				<view class='iconfont icon-copy-template'></view>
 				<view class='text'>复制</view>
 			</view>
-			<view class='button' v-if="isHyperLink" :style="{'background-color': '#fa5c65'}" @click="onHyperLinkButtonClick">
+			<!-- <view class='button' v-if="isHyperLink" :style="{'background-color': '#fa5c65'}" @click="onHyperLinkButtonClick">
 				<view class='iconfont icon-lianjie'></view>
 				<view class='text'>跳转</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -38,6 +38,13 @@
 			} 
 		},
 		methods: {
+			onShareAppMessage: function(e) {
+				let title = '豆云日历'
+				return {
+					title: '豆云日历',
+					path: 'pages/index/index'
+				}
+			},
 			onCopyButtonClick() {
 				uni.setClipboardData({
 					data: this.content,
