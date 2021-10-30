@@ -191,18 +191,16 @@ var _default =
 
     onQrCodeClick: function onQrCodeClick() {
       console.log("onQrCodeClick");
+      uni.navigateTo({
+        url: "/pages/generateQrCode/generateQrCode" });
+
     },
 
     onScanClick: function onScanClick() {
-      console.log("onScanClick");
-      // uni.navigateTo({
-      // 	url: "../scanResult/scanResult"
-      // })
       uni.scanCode({
         success: function success(res) {
-          console.log(res.result);
           uni.navigateTo({
-            url: "../scanResult/scanResult?content=" + res.result });
+            url: "/pages/scanResult/scanResult?content=" + res.result });
 
         } });
 

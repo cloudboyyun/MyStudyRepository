@@ -5,11 +5,11 @@
 		<view class='action-area'>
 			<!-- <button size="mini" type='primary'>开始</button> -->
 			<view class='button' :style="{'background-color': '#fa9a28'}" @click="onCopyButtonClick">
-				<view class='iconfont icon-copy-template icon1'></view>
+				<view class='iconfont icon-copy-template'></view>
 				<view class='text'>复制</view>
 			</view>
 			<view class='button' v-if="isHyperLink" :style="{'background-color': '#fa5c65'}" @click="onHyperLinkButtonClick">
-				<view class='iconfont icon-lianjie icon2'></view>
+				<view class='iconfont icon-lianjie'></view>
 				<view class='text'>跳转</view>
 			</view>
 		</view>

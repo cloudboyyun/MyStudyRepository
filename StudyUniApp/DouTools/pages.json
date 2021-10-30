@@ -23,6 +23,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/generateQrCode/generateQrCode",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
