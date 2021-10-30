@@ -1,14 +1,15 @@
 <template>
 	<view class='main'>
+		<xy-loading v-if="showFullLoading" :opacity='1' brandText="...豆云工具箱..." loadingText="...Loading..."
+			color="#007aff" marginTop="50vh"></xy-loading>
+		<xy-loading v-if="showLoading" :opacity='0.7' brandText="...豆云工具箱..." loadingText="...Loading..." 
+			color="#007aff" marginTop="50vh"></xy-loading>
 		<view class='result-area'>
 			<image class='bar-code' :src="barCode"></image>
 			<view class='r-a-button-area'>
 				<xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#fa5c65"
 					fontColor="#ffffff" iconFont="iconfont icon-baocun" 
 					:disabled="!barCode" @click="onSaveClick">保存</xy-button>
-				<!-- <xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#268aff"
-					fontColor="#ffffff" iconFont="iconfont icon-zhuanfa" 
-					:disabled="!barCode" @click="onForwardClick">转发</xy-button> -->
 			</view>
 		</view>
 		
@@ -29,7 +30,9 @@
 		data() {
 			return {
 				barCode: null,
-				content: null
+				content: null,
+				showFullLoading: false,
+				showLoading:false
 			}
 		},
 		methods: {
@@ -44,16 +47,11 @@
 				let url = "https://aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983.bspapp.com/xyQrCode?content="
 					+ this.content + "&action=httpUrl";
 				this.barCode = url;
-				// uniCloud.callFunction({
-				// 	name: 'xy-qrcode',
-				// 	data: {
-				// 		action: 'httpUrl',
-				// 		content: this.content
-				// 	}
-				// }).then(res => {
-				// 	console.log("res", res);
-				// 	this.barCode = res.result
-				// })
+				let that = this;
+				that.showLoading = true;
+				setTimeout(function() {
+					that.showLoading = false;
+				}, 2000);
 			},
 			
 			bindTextAreaInput(e) {
@@ -61,8 +59,8 @@
 			},
 			
 			onSaveClick(e) {
-				console.log("onSaveClick");
 				let that = this;
+				that.showLoading = true;
 				uni.downloadFile({
 					url: that.barCode,
 					success: (res) => {
@@ -75,6 +73,9 @@
 								})
 							}
 						})
+					},
+					complete: () => {
+						that.showLoading = false;
 					}
 				})
 			},
