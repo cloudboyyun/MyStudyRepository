@@ -3,14 +3,12 @@
 		<view class='result-area'>
 			<image class='bar-code' :src="barCode"></image>
 			<view class='r-a-button-area'>
-				<view class='button' :style="{'background-color': '#fa5c65'}" @click="onGenClick">
-					<view class='iconfont icon-baocun'></view>
-					<view class='text'>保存</view>
-				</view>
-				<view class='button' :style="{'background-color': '#fa9a28'}" @click="onGenClick">
-					<view class='iconfont icon-zhuanfa'></view>
-					<view class='text'>转发</view>
-				</view>
+				<xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#fa5c65"
+					fontColor="#ffffff" iconFont="iconfont icon-baocun" 
+					:disabled="!barCode" @click="onSaveClick">保存</xy-button>
+				<xy-button class='button' width="150rpx" height="60rpx" backgroundColor="#fa9a28"
+					fontColor="#ffffff" iconFont="iconfont icon-zhuanfa" 
+					:disabled="!barCode" @click="onForwardClick">转发</xy-button>
 			</view>
 		</view>
 		
@@ -18,10 +16,9 @@
 			confirm-type="done" :value="content"
 			@input="bindTextAreaInput"></textarea>
 		<view class='action-area'>
-			<view class='button' :style="{'background-color': '#268aff'}" @click="onGenClick">
-				<view class='iconfont icon-iconfontyijiantuiguang'></view>
-				<view class='text'>生成</view>
-			</view>
+			<xy-button width="150rpx" height="60rpx" backgroundColor="#268aff"
+				fontColor="#ffffff" iconFont="iconfont icon-iconfontyijiantuiguang" 
+				 @click="onGenClick">生成</xy-button>
 		</view>
 	</view>
 </template>
@@ -36,26 +33,52 @@
 		},
 		methods: {
 			onGenClick() {
-				console.log('onGenClick', this.content);
-				uniCloud.callFunction({
-					name: 'xy-qrcode',
-					data: {
-						content: this.content
-					}
-				}).then(res => {
-					console.log("res", res);
-					this.barCode = res.result
-				})
+				let url = "https://aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983.bspapp.com/xyQrCode?content="
+					+ this.content + "&action=httpUrl";
+				this.barCode = url;
+				// uniCloud.callFunction({
+				// 	name: 'xy-qrcode',
+				// 	data: {
+				// 		action: 'httpUrl',
+				// 		content: this.content
+				// 	}
+				// }).then(res => {
+				// 	console.log("res", res);
+				// 	this.barCode = res.result
+				// })
 			},
 			
 			bindTextAreaInput(e) {
 				this.content = e.detail.value;
+			},
+			
+			onSaveClick(e) {
+				console.log("onSaveClick");
+				let that = this;
+				uni.downloadFile({
+					url: that.barCode,
+					success: (res) => {
+						console.log("res", res);
+						uni.saveImageToPhotosAlbum({
+							filePath: res.tempFilePath,
+							success: (res2) => {
+								uni.showToast({
+									title: '已保存在您的相册。'
+								})
+							}
+						})
+					}
+				})
+			},
+			
+			onForwardClick(e) {
+				console.log("onForwardClick");
 			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	page {
 		width: 100%;
 		height: 100%;
@@ -94,6 +117,10 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				.button {
+					margin-top: 10rpx;
+					margin-bottom: 10rpx;
+				}
 			}
 		}
 	}
@@ -117,28 +144,5 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
-	}
-
-	.button {
-		margin-top: 10rpx;
-		margin-bottom: 10rpx;
-		width: 150rpx;
-		height: 60rpx;
-		background-color: white;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		border-radius: 10rpx;
-		color: white;
-
-		.iconfont {
-			font-size: 28rpx;
-		}
-
-		.text {
-			margin-left: 10rpx;
-			font-size: 28rpx;
-		}
 	}
 </style>
