@@ -8,8 +8,8 @@
 		opacity: disabled ? 0.4 : 1.0,
 		}"
 		@tap.stop="onClick">
-		<view v-if="iconFont" class='icon' :class="[iconFont]"></view>
-		<view class='content'><slot></slot></view>
+		<view v-if="iconFont" class='xy-button-icon' :class="[iconFont]"></view>
+		<view class='xy-button-content'><slot></slot></view>
 	</view>
 </template>
 
@@ -62,20 +62,19 @@
 	}
 </script>
 
-<style>
+<style scoped lang="scss">
 	.xy-button {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		border-radius: 10rpx;
+		.xy-button-icon {
+			font-size: inherit;
+		}
+		.xy-button-content {
+			margin-left: 10rpx;
+		}
 	}
 	
-	.icon {
-		font-size: inherit;
-	}
-	
-	.content {
-		margin-left: 10rpx;
-	}
 </style>

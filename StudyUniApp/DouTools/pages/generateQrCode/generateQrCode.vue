@@ -101,7 +101,7 @@
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	page {
 		width: 100%;
 		height: 100%;
@@ -114,7 +114,11 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		
+		background-image: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/bdf22c47-e035-4df1-9636-376690d52903.jpeg');
+		background-repeat: no-repeat;
+		background-position: left top;
+		background-size: 100% 100%;
+
 		.result-area {
 			box-sizing: border-box;
 			width: 100%;
@@ -146,26 +150,27 @@
 				}
 			}
 		}
+		
+		.content {
+			margin-left: 20rpx;
+			width: 710rpx;
+			height: 600rpx;
+			box-sizing: border-box;
+			padding-top: 100rpx;
+			padding-left: 50rpx;
+			background-image: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/c62db415-f279-4f7c-9678-3e195317e9db.png');
+			background-repeat: no-repeat;
+			background-position: left top;
+			background-size: 710rpx 100%;
+			font-size: 32rpx;
+			line-height: 50rpx;
+		}
+		
+		.action-area {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+		}
 	}
 	
-	.content {
-		margin-left: 20rpx;
-		width: 710rpx;
-		height: 600rpx;
-		box-sizing: border-box;
-		padding-top: 100rpx;
-		padding-left: 50rpx;
-		background-image: url('https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aa1f9ef9-8c87-45d9-bf88-9cc5b38a7983/c62db415-f279-4f7c-9678-3e195317e9db.png');
-		background-repeat: no-repeat;
-		background-position: left top;
-		background-size: 710rpx 100%;
-		font-size: 32rpx;
-		line-height: 50rpx;
-	}
-
-	.action-area {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-	}
 </style>
