@@ -64,10 +64,11 @@
 				uni.downloadFile({
 					url: that.barCode,
 					success: (res) => {
-						console.log("res", res);
+						that.errorMsg = that.errorMsg + ' 下载成功';
 						uni.saveImageToPhotosAlbum({
 							filePath: res.tempFilePath,
 							success: (res2) => {
+								that.errorMsg = that.errorMsg + ' 保存成功';
 								uni.showToast({
 									title: '已保存在您的相册。'
 								})
