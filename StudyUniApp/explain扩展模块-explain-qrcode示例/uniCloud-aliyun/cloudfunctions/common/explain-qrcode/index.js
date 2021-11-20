@@ -1,1 +1,0 @@
-"use strict";const _qr=require("qr-image");module.exports=class{static qr(){return _qr}static make({text:e,type:r="buffer",imageType:t="png",errorCorrectLevel:a="M",margin:s=1}){let c=_qr.imageSync(e,{type:t,ec_level:a,margin:parseInt(s)});switch(r){case"buffer":return c;case"base64":return new Buffer(c).toString("base64")}}};
