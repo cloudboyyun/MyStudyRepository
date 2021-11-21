@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "云日历",
-  "navigationStyle": "custom",
-  "enablePullDownRefresh": false,
-  "disableScroll": true,
-  "usingComponents": {}
-}

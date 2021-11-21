@@ -1,1 +1,0 @@
-<view class="container"><view data-event-opts="{{[['tap',[['onClick',['$event']]]]]}}" bindtap="__e">点我</view></view>
